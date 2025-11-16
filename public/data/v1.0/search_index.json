@@ -45,7 +45,7 @@
     {
       "name": "TestDrug",
       "synonyms": [],
-      "fda_status": "Experimental",
+      "fda_status": "Investigational",
       "target_class": "Unknown",
       "mechanism": "Unknown",
       "variant_count": 3136
@@ -25141,7 +25141,7 @@
       "searchable_text": "K652 R483Q p.R483Q"
     }
   ],
-  "lastUpdate": "2025-11-16T19:34:43.923147+00:00",
+  "lastUpdate": "2025-11-16T19:37:26.360922+00:00",
   "stats": {
     "total_genes": 1,
     "total_drugs": 4,

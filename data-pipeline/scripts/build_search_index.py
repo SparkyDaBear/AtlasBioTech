@@ -48,7 +48,7 @@ def collect_genes_from_variants(variants_dir):
                         drugs[drug] = {
                             'name': drug,
                             'synonyms': [],
-                            'fda_status': 'Experimental',
+                            'fda_status': 'Investigational',
                             'target_class': 'Unknown',
                             'mechanism': 'Unknown',
                             'variant_count': 0
