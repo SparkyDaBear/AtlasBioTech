@@ -68,7 +68,57 @@ def process_variant_data(csv_path):
                     'date_created': datetime.now(timezone.utc).isoformat(),
                     'version': '1.0'
                 }
-            }\n        \n        # Add drug data\n        drug = normalize_drug_name(row['drug'])\n        if drug not in variants[variant_key]['drugs_tested']:\n            variants[variant_key]['drugs_tested'].append(drug)\n        \n        # Add IC50 data\n        ic50_data = {\n            'drug': drug,\n            'ic50': float(row['ic50']),\n            'replicate_count': int(row.get('replicate_count', 1))\n        }\n        \n        if pd.notna(row.get('ic50_wt')):\n            ic50_data['ic50_wt'] = float(row['ic50_wt'])\n            ic50_data['fold_change'] = float(row.get('fold_change', ic50_data['ic50'] / ic50_data['ic50_wt']))\n        \n        if pd.notna(row.get('std_error')):\n            ic50_data['confidence_interval'] = calculate_confidence_interval(\n                ic50_data['ic50'], float(row['std_error']), ic50_data['replicate_count']\n            )\n        \n        # Add QC flags\n        if row.get('qc_flags'):\n            qc_flags = [flag.strip() for flag in str(row['qc_flags']).split(',') if flag.strip()]\n            ic50_data['qc_flags'] = qc_flags\n        \n        variants[variant_key]['ic50_values'].append(ic50_data)\n        \n        # Add plot information\n        if pd.notna(row.get('plot_url')):\n            plot_info = {\n                'drug': drug,\n                'plot_url': row['plot_url'],\n                'plot_type': row.get('plot_type', 'dose_response')\n            }\n            variants[variant_key]['plots'].append(plot_info)\n        \n        # Add PDB structure information\n        if pd.notna(row.get('pdb_id')):\n            variants[variant_key]['pdb_structure'] = {\n                'pdb_id': row['pdb_id'],\n                'chain': row.get('pdb_chain', 'A'),\n                'residue_number': int(row.get('pdb_residue', row['position'])),\n                'pocket_residues': []\n            }\n            \n            if pd.notna(row.get('pocket_residues')):\n                pocket_residues = [int(r.strip()) for r in str(row['pocket_residues']).split(',')]\n                variants[variant_key]['pdb_structure']['pocket_residues'] = pocket_residues\n    \n    return variants
+            }
+        
+        # Add drug data
+        drug = normalize_drug_name(row['drug'])
+        if drug not in variants[variant_key]['drugs_tested']:
+            variants[variant_key]['drugs_tested'].append(drug)
+        
+        # Add IC50 data
+        ic50_data = {
+            'drug': drug,
+            'ic50': float(row['ic50']),
+            'replicate_count': int(row.get('replicate_count', 1))
+        }
+        
+        if pd.notna(row.get('ic50_wt')):
+            ic50_data['ic50_wt'] = float(row['ic50_wt'])
+            ic50_data['fold_change'] = float(row.get('fold_change', ic50_data['ic50'] / ic50_data['ic50_wt']))
+        
+        if pd.notna(row.get('std_error')):
+            ic50_data['confidence_interval'] = calculate_confidence_interval(
+                ic50_data['ic50'], float(row['std_error']), ic50_data['replicate_count']
+            )
+        
+        # Add QC flags
+        if row.get('qc_flags'):
+            qc_flags = [flag.strip() for flag in str(row['qc_flags']).split(',') if flag.strip()]
+            ic50_data['qc_flags'] = qc_flags
+        
+        variants[variant_key]['ic50_values'].append(ic50_data)
+        
+        # Add plot information
+        if pd.notna(row.get('plot_url')):
+            plot_info = {
+                'drug': drug,
+                'plot_url': row['plot_url'],
+                'plot_type': row.get('plot_type', 'dose_response')
+            }
+            variants[variant_key]['plots'].append(plot_info)
+        
+        # Add PDB structure information
+        if pd.notna(row.get('pdb_id')):
+            variants[variant_key]['pdb_structure'] = {
+                'pdb_id': row['pdb_id'],
+                'chain': row.get('pdb_chain', 'A'),
+                'residue_number': int(row.get('pdb_residue', row['position'])),
+                'pocket_residues': []
+            }
+            
+            if pd.notna(row.get('pocket_residues')):
+                pocket_residues = [int(r.strip()) for r in str(row['pocket_residues']).split(',')]
+                variants[variant_key]['pdb_structure']['pocket_residues'] = pocket_residues\n    \n    return variants
 
 def process_drug_data(csv_path):\n    """Process drug CSV data into structured format."""\n    if not os.path.exists(csv_path):\n        logger.warning(f"Drug CSV file not found: {csv_path}")\n        return {}\n    \n    df = pd.read_csv(csv_path)\n    drugs = {}\n    \n    for _, row in df.iterrows():\n        drug_name = normalize_drug_name(row['name'])\n        \n        drugs[drug_name] = {\n            'name': drug_name,\n            'synonyms': [s.strip() for s in str(row.get('synonyms', '')).split(',') if s.strip()],\n            'fda_status': row.get('fda_status', 'Unknown'),\n            'target_class': row.get('target_class', ''),\n            'mechanism': row.get('mechanism', ''),\n            'variant_count': 0  # Will be updated when processing variants\n        }\n    \n    return drugs
 
