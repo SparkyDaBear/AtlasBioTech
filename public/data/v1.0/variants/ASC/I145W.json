@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "I145W",
+  "protein_change": "p.I145W",
+  "transcript_id": "UNKNOWN",
+  "position": 145,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.020332340099307,
+          0.0156702520365775,
+          0.0099154162276627
+        ],
+        "responses_rep2": [
+          0.023440441062144,
+          0.0160681494591356,
+          0.014773409300618
+        ],
+        "avg_responses": [
+          0.0218863905807255,
+          0.01586920074785655,
+          0.01234441276414035
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.992504+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "I145W"
+  }
+}

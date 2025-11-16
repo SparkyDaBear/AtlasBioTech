@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Q252N",
+  "protein_change": "p.Q252N",
+  "transcript_id": "UNKNOWN",
+  "position": 252,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 67.39606378584051,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.036044178349068,
+          0.0223510942693341,
+          0.0155756494938112
+        ],
+        "responses_rep2": [
+          0.0363916272169008,
+          0.0192847468856071,
+          0.0159185979306001
+        ],
+        "avg_responses": [
+          0.036217902782984396,
+          0.0208179205774706,
+          0.01574712371220565
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.024434+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Q252N"
+  }
+}

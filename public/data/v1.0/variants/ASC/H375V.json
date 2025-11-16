@@ -1,0 +1,55 @@
+{
+  "gene": "ASC",
+  "variant_string": "H375V",
+  "protein_change": "p.H375V",
+  "transcript_id": "UNKNOWN",
+  "position": 375,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 81.19530133410306,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0270979036150893,
+          0.0185526956194362,
+          0.0077722588694435
+        ],
+        "responses_rep2": [
+          0.0294254489800044,
+          0.0118798223944033,
+          0.0196920390894188
+        ],
+        "avg_responses": [
+          0.028261676297546848,
+          0.01521625900691975,
+          0.01373214897943115
+        ]
+      },
+      "qc_flags": [
+        "high_variability"
+      ]
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.990320+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "H375V"
+  }
+}

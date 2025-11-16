@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "D276N",
+  "protein_change": "p.D276N",
+  "transcript_id": "UNKNOWN",
+  "position": 276,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 94.07992542063207,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0246440042513231,
+          0.0166274286067382,
+          0.0128787245940704
+        ],
+        "responses_rep2": [
+          0.0250054161476933,
+          0.0168331800319121,
+          0.011148151299546
+        ],
+        "avg_responses": [
+          0.0248247101995082,
+          0.01673030431932515,
+          0.0120134379468082
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.953171+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "D276N"
+  }
+}

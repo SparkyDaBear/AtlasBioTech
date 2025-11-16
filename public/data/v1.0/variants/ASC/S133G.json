@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "S133G",
+  "protein_change": "p.S133G",
+  "transcript_id": "UNKNOWN",
+  "position": 133,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0256118977902197,
+          0.0235307145240458,
+          0.0136931733902477
+        ],
+        "responses_rep2": [
+          0.0279997615765095,
+          0.0191039883965392,
+          0.0131236962586199
+        ],
+        "avg_responses": [
+          0.0268058296833646,
+          0.0213173514602925,
+          0.0134084348244338
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.032939+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S133G"
+  }
+}

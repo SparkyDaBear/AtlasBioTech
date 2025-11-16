@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L364M",
+  "protein_change": "p.L364M",
+  "transcript_id": "UNKNOWN",
+  "position": 364,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0268621282155491,
+          0.0251859808942674,
+          0.0198640972689311
+        ],
+        "responses_rep2": [
+          0.0320946919611818,
+          0.017903753786602,
+          0.0209575511568861
+        ],
+        "avg_responses": [
+          0.02947841008836545,
+          0.0215448673404347,
+          0.0204108242129086
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.007678+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L364M"
+  }
+}

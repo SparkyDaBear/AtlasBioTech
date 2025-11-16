@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "D325K",
+  "protein_change": "p.D325K",
+  "transcript_id": "UNKNOWN",
+  "position": 325,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0335453931310005,
+          0.0211135476982133,
+          0.0179416336197561
+        ],
+        "responses_rep2": [
+          0.0255202972129646,
+          0.0124614302581447,
+          0.0178416320536387
+        ],
+        "avg_responses": [
+          0.029532845171982552,
+          0.016787488978179,
+          0.0178916328366974
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.961755+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "D325K"
+  }
+}

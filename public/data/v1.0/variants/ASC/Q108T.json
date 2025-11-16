@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Q108T",
+  "protein_change": "p.Q108T",
+  "transcript_id": "UNKNOWN",
+  "position": 108,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 90.9589540665348,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0270345533857883,
+          0.0192783674391912,
+          0.0098290879042615
+        ],
+        "responses_rep2": [
+          0.029982877601786,
+          0.0182346861502578,
+          0.0173441611995598
+        ],
+        "avg_responses": [
+          0.02850871549378715,
+          0.018756526794724497,
+          0.01358662455191065
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.023651+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Q108T"
+  }
+}

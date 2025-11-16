@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "G254P",
+  "protein_change": "p.G254P",
+  "transcript_id": "UNKNOWN",
+  "position": 254,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 66.3110728611833,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0254702652369582,
+          0.0168068497002184,
+          0.0105338271857247
+        ],
+        "responses_rep2": [
+          0.0256162187245914,
+          0.0141677861660039,
+          0.0099702402829508
+        ],
+        "avg_responses": [
+          0.0255432419807748,
+          0.01548731793311115,
+          0.010252033734337751
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.984189+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "G254P"
+  }
+}

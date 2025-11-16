@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "P484H",
+  "protein_change": "p.P484H",
+  "transcript_id": "UNKNOWN",
+  "position": 484,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 40.52104059472144,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.028044024190104,
+          0.0152224066653966,
+          0.0064783996574579
+        ],
+        "responses_rep2": [
+          0.0313943957935293,
+          0.0168744693466585,
+          0.0097990695270829
+        ],
+        "avg_responses": [
+          0.029719209991816653,
+          0.01604843800602755,
+          0.008138734592270401
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.022407+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "P484H"
+  }
+}

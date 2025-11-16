@@ -1,0 +1,55 @@
+{
+  "gene": "ASC",
+  "variant_string": "K87F",
+  "protein_change": "p.K87F",
+  "transcript_id": "UNKNOWN",
+  "position": 87,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0271476174738477,
+          0.0229647574568382,
+          0.0198220652958903
+        ],
+        "responses_rep2": [
+          0.0285170018998255,
+          0.0111254826038424,
+          0.0080303798653101
+        ],
+        "avg_responses": [
+          0.0278323096868366,
+          0.0170451200303403,
+          0.013926222580600202
+        ]
+      },
+      "qc_flags": [
+        "high_variability"
+      ]
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.001143+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "K87F"
+  }
+}

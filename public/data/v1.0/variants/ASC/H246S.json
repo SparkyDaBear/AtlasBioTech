@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "H246S",
+  "protein_change": "p.H246S",
+  "transcript_id": "UNKNOWN",
+  "position": 246,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 23.776428742207735,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0236296182370829,
+          0.0086140310071976,
+          0.005745980211971
+        ],
+        "responses_rep2": [
+          0.0258649587139965,
+          0.0079306053357538,
+          0.0068659800700438
+        ],
+        "avg_responses": [
+          0.0247472884755397,
+          0.008272318171475699,
+          0.006305980141007399
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.990025+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "H246S"
+  }
+}

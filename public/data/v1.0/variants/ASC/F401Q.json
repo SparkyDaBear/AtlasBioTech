@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "F401Q",
+  "protein_change": "p.F401Q",
+  "transcript_id": "UNKNOWN",
+  "position": 401,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 28.67576201940411,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0320527513778123,
+          0.0167684587147613,
+          0.0109275923585235
+        ],
+        "responses_rep2": [
+          0.0319026924965786,
+          0.0134206781755215,
+          0.0073257454793407
+        ],
+        "avg_responses": [
+          0.03197772193719545,
+          0.015094568445141399,
+          0.0091266689189321
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.976184+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F401Q"
+  }
+}

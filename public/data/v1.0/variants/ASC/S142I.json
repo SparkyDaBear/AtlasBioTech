@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "S142I",
+  "protein_change": "p.S142I",
+  "transcript_id": "UNKNOWN",
+  "position": 142,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0252191500983825,
+          0.0196917307527222,
+          0.0150772021439851
+        ],
+        "responses_rep2": [
+          0.0255633154115658,
+          0.0191061533860143,
+          0.0148206605151365
+        ],
+        "avg_responses": [
+          0.02539123275497415,
+          0.01939894206936825,
+          0.014948931329560801
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.033595+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "S142I"
+  }
+}

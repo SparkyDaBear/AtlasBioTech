@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "S265R",
+  "protein_change": "p.S265R",
+  "transcript_id": "UNKNOWN",
+  "position": 265,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 69.66522629205232,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0302461595450944,
+          0.0184868494415362,
+          0.0133570055498504
+        ],
+        "responses_rep2": [
+          0.030744209709691,
+          0.0169579610377881,
+          0.013352853889887
+        ],
+        "avg_responses": [
+          0.0304951846273927,
+          0.017722405239662148,
+          0.0133549297198687
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.038164+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "S265R"
+  }
+}

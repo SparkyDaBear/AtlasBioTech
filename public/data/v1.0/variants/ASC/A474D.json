@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "A474D",
+  "protein_change": "p.A474D",
+  "transcript_id": "UNKNOWN",
+  "position": 474,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 56.541719138324794,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0278503616093527,
+          0.015249661002888,
+          0.0126144250522697
+        ],
+        "responses_rep2": [
+          0.0284660768820505,
+          0.0160738714105692,
+          0.0103610451807331
+        ],
+        "avg_responses": [
+          0.0281582192457016,
+          0.0156617662067286,
+          0.0114877351165014
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.947634+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "A474D"
+  }
+}

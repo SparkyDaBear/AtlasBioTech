@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L165D",
+  "protein_change": "p.L165D",
+  "transcript_id": "UNKNOWN",
+  "position": 165,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0232884730330433,
+          0.0249964383675978,
+          0.0187831399922664
+        ],
+        "responses_rep2": [
+          0.0245891356872247,
+          0.024918779429039,
+          0.0192802787163589
+        ],
+        "avg_responses": [
+          0.023938804360134,
+          0.024957608898318398,
+          0.01903170935431265
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.003757+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L165D"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "T315E",
+  "protein_change": "p.T315E",
+  "transcript_id": "UNKNOWN",
+  "position": 315,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.028592154041198,
+          0.0186870888060896,
+          0.0196450986879708
+        ],
+        "responses_rep2": [
+          0.0305621025706966,
+          0.0199959750214986,
+          0.0159905912920377
+        ],
+        "avg_responses": [
+          0.0295771283059473,
+          0.019341531913794098,
+          0.01781784499000425
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.045270+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "T315E"
+  }
+}

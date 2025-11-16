@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "I313S",
+  "protein_change": "p.I313S",
+  "transcript_id": "UNKNOWN",
+  "position": 313,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 29.21020593463196,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0214740157371513,
+          0.0098184670067306,
+          0.0029723898476853
+        ],
+        "responses_rep2": [
+          0.0267413027163292,
+          0.0135027434703128,
+          0.0026110656720509
+        ],
+        "avg_responses": [
+          0.024107659226740248,
+          0.0116606052385217,
+          0.0027917277598681
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.993897+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "I313S"
+  }
+}

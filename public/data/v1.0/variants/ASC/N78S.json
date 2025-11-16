@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "N78S",
+  "protein_change": "p.N78S",
+  "transcript_id": "UNKNOWN",
+  "position": 78,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.02791547985671,
+          0.0213006974469129,
+          0.0146376661994172
+        ],
+        "responses_rep2": [
+          0.0241010817815163,
+          0.0190826934392886,
+          0.0147073082355315
+        ],
+        "avg_responses": [
+          0.02600828081911315,
+          0.02019169544310075,
+          0.014672487217474349
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.018217+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "N78S"
+  }
+}

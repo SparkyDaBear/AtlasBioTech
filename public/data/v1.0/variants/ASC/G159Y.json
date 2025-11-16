@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "G159Y",
+  "protein_change": "p.G159Y",
+  "transcript_id": "UNKNOWN",
+  "position": 159,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0299852412192916,
+          0.0254408948830574,
+          0.0199298104712838
+        ],
+        "responses_rep2": [
+          0.0311703476060332,
+          0.0245883079155931,
+          0.0180364520401113
+        ],
+        "avg_responses": [
+          0.030577794412662403,
+          0.02501460139932525,
+          0.01898313125569755
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.982214+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "G159Y"
+  }
+}

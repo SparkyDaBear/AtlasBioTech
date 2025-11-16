@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "S481P",
+  "protein_change": "p.S481P",
+  "transcript_id": "UNKNOWN",
+  "position": 481,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 87.15755488285966,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0280843844998162,
+          0.0188314507689532,
+          0.0130191895292157
+        ],
+        "responses_rep2": [
+          0.0264008377786474,
+          0.0169991206611371,
+          0.0122938357673473
+        ],
+        "avg_responses": [
+          0.0272426111392318,
+          0.01791528571504515,
+          0.0126565126482815
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.039060+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "S481P"
+  }
+}

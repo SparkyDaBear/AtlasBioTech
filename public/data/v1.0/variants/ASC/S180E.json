@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "S180E",
+  "protein_change": "p.S180E",
+  "transcript_id": "UNKNOWN",
+  "position": 180,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 48.62219556661138,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0334630275098752,
+          0.0173108867106606,
+          0.0157271942807331
+        ],
+        "responses_rep2": [
+          0.0276685440471585,
+          0.0157879170669849,
+          0.0078501081624019
+        ],
+        "avg_responses": [
+          0.030565785778516846,
+          0.01654940188882275,
+          0.011788651221567501
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.037371+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S180E"
+  }
+}

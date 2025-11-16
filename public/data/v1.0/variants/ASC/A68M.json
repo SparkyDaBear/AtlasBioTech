@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "A68M",
+  "protein_change": "p.A68M",
+  "transcript_id": "UNKNOWN",
+  "position": 68,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 86.05323846705609,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0281405971661806,
+          0.0175361080722859,
+          0.0132885045191584
+        ],
+        "responses_rep2": [
+          0.0289221929946288,
+          0.0192491142637145,
+          0.0131892329383141
+        ],
+        "avg_responses": [
+          0.028531395080404698,
+          0.0183926111680002,
+          0.01323886872873625
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.949790+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "A68M"
+  }
+}

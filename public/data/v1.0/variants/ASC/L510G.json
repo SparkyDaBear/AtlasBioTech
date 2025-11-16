@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L510G",
+  "protein_change": "p.L510G",
+  "transcript_id": "UNKNOWN",
+  "position": 510,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0285899871514367,
+          0.0210206019610766,
+          0.0163613570082878
+        ],
+        "responses_rep2": [
+          0.027829287179976,
+          0.0216223353855082,
+          0.0163549115081011
+        ],
+        "avg_responses": [
+          0.02820963716570635,
+          0.0213214686732924,
+          0.01635813425819445
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.009082+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L510G"
+  }
+}

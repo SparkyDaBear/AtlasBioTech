@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "E409K",
+  "protein_change": "p.E409K",
+  "transcript_id": "UNKNOWN",
+  "position": 409,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 32.48963849989264,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0228840209425718,
+          0.01467100107283,
+          0.0078283870637788
+        ],
+        "responses_rep2": [
+          0.028583251767322,
+          0.0114439572377279,
+          0.0075651203638815
+        ],
+        "avg_responses": [
+          0.025733636354946902,
+          0.01305747915527895,
+          0.00769675371383015
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.971190+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "E409K"
+  }
+}

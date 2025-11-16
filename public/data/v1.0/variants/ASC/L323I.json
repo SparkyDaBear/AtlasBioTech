@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L323I",
+  "protein_change": "p.L323I",
+  "transcript_id": "UNKNOWN",
+  "position": 323,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 69.70588650541941,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0283748800387139,
+          0.0199729599788989,
+          0.0095989411674138
+        ],
+        "responses_rep2": [
+          0.026103414279814,
+          0.0135792292080776,
+          0.0128235899050269
+        ],
+        "avg_responses": [
+          0.027239147159263948,
+          0.01677609459348825,
+          0.011211265536220351
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.007002+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "L323I"
+  }
+}

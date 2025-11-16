@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "N120D",
+  "protein_change": "p.N120D",
+  "transcript_id": "UNKNOWN",
+  "position": 120,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 95.81047881399093,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0246012530495876,
+          0.0184846935593106,
+          0.014751229909398
+        ],
+        "responses_rep2": [
+          0.0280398568021193,
+          0.0164434482798134,
+          0.0110213626192286
+        ],
+        "avg_responses": [
+          0.026320554925853452,
+          0.017464070919562,
+          0.0128862962643133
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.014133+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "N120D"
+  }
+}

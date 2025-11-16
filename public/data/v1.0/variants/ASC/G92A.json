@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "G92A",
+  "protein_change": "p.G92A",
+  "transcript_id": "UNKNOWN",
+  "position": 92,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0253575311646244,
+          0.0197015911602162,
+          0.0142355913657716
+        ],
+        "responses_rep2": [
+          0.0229426281241773,
+          0.0160545492484591,
+          0.0160748848280436
+        ],
+        "avg_responses": [
+          0.02415007964440085,
+          0.017878070204337647,
+          0.0151552380969076
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.987146+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "G92A"
+  }
+}

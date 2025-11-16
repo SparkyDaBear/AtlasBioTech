@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "F317R",
+  "protein_change": "p.F317R",
+  "transcript_id": "UNKNOWN",
+  "position": 317,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0304648314562636,
+          0.0237797317973132,
+          0.023966479397729
+        ],
+        "responses_rep2": [
+          0.0225394669111982,
+          0.0270109144425509,
+          0.0223945253033963
+        ],
+        "avg_responses": [
+          0.0265021491837309,
+          0.025395323119932048,
+          0.02318050235056265
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.976033+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F317R"
+  }
+}

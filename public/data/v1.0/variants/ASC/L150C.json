@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L150C",
+  "protein_change": "p.L150C",
+  "transcript_id": "UNKNOWN",
+  "position": 150,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 80.76441959135502,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0274697079443493,
+          0.0160152204636213,
+          0.0128345285624009
+        ],
+        "responses_rep2": [
+          0.0244473366503042,
+          0.0166791917993172,
+          0.0105716400568908
+        ],
+        "avg_responses": [
+          0.02595852229732675,
+          0.016347206131469248,
+          0.01170308430964585
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.003200+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L150C"
+  }
+}

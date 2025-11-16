@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "A137Y",
+  "protein_change": "p.A137Y",
+  "transcript_id": "UNKNOWN",
+  "position": 137,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.024196871702945,
+          0.0152705791619631,
+          0.0159007692971357
+        ],
+        "responses_rep2": [
+          0.0266913126149472,
+          0.0184280473972934,
+          0.0126257042285087
+        ],
+        "avg_responses": [
+          0.0254440921589461,
+          0.01684931327962825,
+          0.0142632367628222
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.945005+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "A137Y"
+  }
+}

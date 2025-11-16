@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "A136P",
+  "protein_change": "p.A136P",
+  "transcript_id": "UNKNOWN",
+  "position": 136,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0214329396271438,
+          0.0197476050190734,
+          0.0134614792901283
+        ],
+        "responses_rep2": [
+          0.0266320436583534,
+          0.0159861475605877,
+          0.015658724299862
+        ],
+        "avg_responses": [
+          0.0240324916427486,
+          0.017866876289830552,
+          0.014560101794995148
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.944147+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "A136P"
+  }
+}

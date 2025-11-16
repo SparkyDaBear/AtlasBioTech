@@ -77,6 +77,11 @@ jobs:
         name: processed-data
         path: ./
     
+    - name: Copy data to public directory
+      run: |
+        mkdir -p public/data
+        cp -r data/v1.0 public/data/
+    
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:

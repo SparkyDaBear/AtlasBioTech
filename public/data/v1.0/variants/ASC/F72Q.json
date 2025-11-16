@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "F72Q",
+  "protein_change": "p.F72Q",
+  "transcript_id": "UNKNOWN",
+  "position": 72,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0270427172145843,
+          0.0236126867827233,
+          0.0141046697067804
+        ],
+        "responses_rep2": [
+          0.023854972815758,
+          0.0223423898422798,
+          0.0155133452793844
+        ],
+        "avg_responses": [
+          0.02544884501517115,
+          0.02297753831250155,
+          0.0148090074930824
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.978934+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F72Q"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "T79I",
+  "protein_change": "p.T79I",
+  "transcript_id": "UNKNOWN",
+  "position": 79,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 77.11893245291475,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0213940467435191,
+          0.0202827684429248,
+          0.0064189487447424
+        ],
+        "responses_rep2": [
+          0.0187249259942299,
+          0.0127926766063407,
+          0.0073199566123763
+        ],
+        "avg_responses": [
+          0.020059486368874502,
+          0.01653772252463275,
+          0.00686945267855935
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.046276+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "T79I"
+  }
+}

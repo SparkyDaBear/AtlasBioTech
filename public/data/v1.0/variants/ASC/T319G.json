@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "T319G",
+  "protein_change": "p.T319G",
+  "transcript_id": "UNKNOWN",
+  "position": 319,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0317918926117472,
+          0.024797996060257,
+          0.0199942167290818
+        ],
+        "responses_rep2": [
+          0.0287206297714439,
+          0.0231890447802529,
+          0.0186265217622707
+        ],
+        "avg_responses": [
+          0.030256261191595548,
+          0.02399352042025495,
+          0.01931036924567625
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.045477+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "T319G"
+  }
+}

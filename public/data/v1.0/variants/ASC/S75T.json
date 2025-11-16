@@ -1,0 +1,55 @@
+{
+  "gene": "ASC",
+  "variant_string": "S75T",
+  "protein_change": "p.S75T",
+  "transcript_id": "UNKNOWN",
+  "position": 75,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 28.560538705788932,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0258042117900862,
+          0.0083027682500176,
+          0.0025094160042967
+        ],
+        "responses_rep2": [
+          0.0242189037114813,
+          0.0151806763391884,
+          0.0150779849194669
+        ],
+        "avg_responses": [
+          0.02501155775078375,
+          0.011741722294603001,
+          0.0087937004618818
+        ]
+      },
+      "qc_flags": [
+        "high_variability"
+      ]
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.041870+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S75T"
+  }
+}

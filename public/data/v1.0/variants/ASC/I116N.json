@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "I116N",
+  "protein_change": "p.I116N",
+  "transcript_id": "UNKNOWN",
+  "position": 116,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.026006963189263,
+          0.0210424232917401,
+          0.0158351496311828
+        ],
+        "responses_rep2": [
+          0.0245642216861361,
+          0.0197938214685837,
+          0.0162659082062278
+        ],
+        "avg_responses": [
+          0.02528559243769955,
+          0.0204181223801619,
+          0.0160505289187053
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.991800+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "I116N"
+  }
+}

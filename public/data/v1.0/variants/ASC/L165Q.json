@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L165Q",
+  "protein_change": "p.L165Q",
+  "transcript_id": "UNKNOWN",
+  "position": 165,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 56.84735622769449,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0264663165645399,
+          0.015938404210368,
+          0.0110053671602073
+        ],
+        "responses_rep2": [
+          0.0272095792510252,
+          0.0146154918666379,
+          0.009859814332034
+        ],
+        "avg_responses": [
+          0.02683794790778255,
+          0.01527694803850295,
+          0.01043259074612065
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.004146+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "L165Q"
+  }
+}

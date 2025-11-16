@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "W478K",
+  "protein_change": "p.W478K",
+  "transcript_id": "UNKNOWN",
+  "position": 478,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 49.522965284106576,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.031139444741925,
+          0.0206224711227177,
+          0.0100434320816865
+        ],
+        "responses_rep2": [
+          0.0336040909273495,
+          0.0161687128659787,
+          0.0109018429335413
+        ],
+        "avg_responses": [
+          0.03237176783463725,
+          0.0183955919943482,
+          0.010472637507613899
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.056630+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "W478K"
+  }
+}

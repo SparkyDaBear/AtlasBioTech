@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "R134A",
+  "protein_change": "p.R134A",
+  "transcript_id": "UNKNOWN",
+  "position": 134,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0250960389924289,
+          0.0145662183825019,
+          0.0069507024396974
+        ],
+        "responses_rep2": [
+          0.018636762335223,
+          0.0156796392972018,
+          0.016802754629096
+        ],
+        "avg_responses": [
+          0.02186640066382595,
+          0.01512292883985185,
+          0.0118767285343967
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.026279+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "R134A"
+  }
+}

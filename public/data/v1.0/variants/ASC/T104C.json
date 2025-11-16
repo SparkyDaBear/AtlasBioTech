@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "T104C",
+  "protein_change": "p.T104C",
+  "transcript_id": "UNKNOWN",
+  "position": 104,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0228879106254803,
+          0.0202758677402622,
+          0.0119930530341928
+        ],
+        "responses_rep2": [
+          0.0247940293743656,
+          0.0134819112366208,
+          0.015305778727331
+        ],
+        "avg_responses": [
+          0.02384096999992295,
+          0.0168788894884415,
+          0.013649415880761899
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.042231+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "T104C"
+  }
+}

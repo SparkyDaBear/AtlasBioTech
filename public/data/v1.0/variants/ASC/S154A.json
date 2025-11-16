@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "S154A",
+  "protein_change": "p.S154A",
+  "transcript_id": "UNKNOWN",
+  "position": 154,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.035648735005807,
+          0.0298852873264162,
+          0.021150735742606
+        ],
+        "responses_rep2": [
+          0.033171588507247,
+          0.0307238752024517,
+          0.0263566375805855
+        ],
+        "avg_responses": [
+          0.034410161756527,
+          0.03030458126443395,
+          0.02375368666159575
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.035050+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S154A"
+  }
+}

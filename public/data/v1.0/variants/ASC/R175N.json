@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "R175N",
+  "protein_change": "p.R175N",
+  "transcript_id": "UNKNOWN",
+  "position": 175,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 85.5433746055547,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0216673458444449,
+          0.0141215796707206,
+          0.0104288792760408
+        ],
+        "responses_rep2": [
+          0.0239122858379001,
+          0.0152133149326905,
+          0.0106574075211229
+        ],
+        "avg_responses": [
+          0.022789815841172498,
+          0.01466744730170555,
+          0.01054314339858185
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.029055+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "R175N"
+  }
+}

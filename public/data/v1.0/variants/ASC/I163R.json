@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "I163R",
+  "protein_change": "p.I163R",
+  "transcript_id": "UNKNOWN",
+  "position": 163,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 27.064046479247015,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0255849370013446,
+          0.0135501337123454,
+          0.0089215759404952
+        ],
+        "responses_rep2": [
+          0.0258239226471154,
+          0.0087339347873026,
+          0.0098357762288757
+        ],
+        "avg_responses": [
+          0.025704429824229998,
+          0.011142034249824,
+          0.00937867608468545
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.992847+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "I163R"
+  }
+}

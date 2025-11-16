@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Y185A",
+  "protein_change": "p.Y185A",
+  "transcript_id": "UNKNOWN",
+  "position": 185,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0256207886042823,
+          0.0196014683254882,
+          0.0148715597793816
+        ],
+        "responses_rep2": [
+          0.02747687090103,
+          0.0181262476769629,
+          0.0121559444722346
+        ],
+        "avg_responses": [
+          0.02654882975265615,
+          0.01886385800122555,
+          0.0135137521258081
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.060432+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Y185A"
+  }
+}

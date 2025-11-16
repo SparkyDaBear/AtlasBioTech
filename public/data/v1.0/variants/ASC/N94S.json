@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "N94S",
+  "protein_change": "p.N94S",
+  "transcript_id": "UNKNOWN",
+  "position": 94,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 99.85569909720245,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0291174010219756,
+          0.0211396325957005,
+          0.0131363077379295
+        ],
+        "responses_rep2": [
+          0.0288273848130046,
+          0.022784022812445,
+          0.0158052003598072
+        ],
+        "avg_responses": [
+          0.028972392917490097,
+          0.02196182770407275,
+          0.01447075404886835
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.018647+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "N94S"
+  }
+}

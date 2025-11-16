@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "A399H",
+  "protein_change": "p.A399H",
+  "transcript_id": "UNKNOWN",
+  "position": 399,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0312680756481306,
+          0.026493033840459,
+          0.016013592057109
+        ],
+        "responses_rep2": [
+          0.0347975241538118,
+          0.0248769664522827,
+          0.0173720874193994
+        ],
+        "avg_responses": [
+          0.0330327999009712,
+          0.025685000146370852,
+          0.016692839738254202
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.947234+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "A399H"
+  }
+}

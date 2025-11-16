@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "K84V",
+  "protein_change": "p.K84V",
+  "transcript_id": "UNKNOWN",
+  "position": 84,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 92.2470021514489,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0196174555178054,
+          0.0145869592091535,
+          0.0095576762845753
+        ],
+        "responses_rep2": [
+          0.0196347063337886,
+          0.0137915625202933,
+          0.0089782693355058
+        ],
+        "avg_responses": [
+          0.019626080925797,
+          0.0141892608647234,
+          0.009267972810040551
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.001079+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "K84V"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Q447F",
+  "protein_change": "p.Q447F",
+  "transcript_id": "UNKNOWN",
+  "position": 447,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 87.04289876794994,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0228937328487137,
+          0.0207942958954239,
+          0.0118340082534154
+        ],
+        "responses_rep2": [
+          0.0264857440045489,
+          0.0192399292323828,
+          0.0093702819958753
+        ],
+        "avg_responses": [
+          0.024689738426631302,
+          0.02001711256390335,
+          0.01060214512464535
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.024626+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Q447F"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "gene": "ASC",
+  "variant_string": "L140R",
+  "protein_change": "p.L140R",
+  "transcript_id": "UNKNOWN",
+  "position": 140,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.024266814349022,
+          0.0139884615163906,
+          0.0130322058588034
+        ],
+        "responses_rep2": [
+          0.0241037080495595,
+          0.0243140105029052,
+          0.0112590966300497
+        ],
+        "avg_responses": [
+          0.02418526119929075,
+          0.0191512360096479,
+          0.012145651244426549
+        ]
+      },
+      "qc_flags": [
+        "high_variability"
+      ]
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.002355+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L140R"
+  }
+}

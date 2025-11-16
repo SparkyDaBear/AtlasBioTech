@@ -1,0 +1,55 @@
+{
+  "gene": "ASC",
+  "variant_string": "R166W",
+  "protein_change": "p.R166W",
+  "transcript_id": "UNKNOWN",
+  "position": 166,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0306163070392158,
+          0.017311022050727,
+          0.0146153718441331
+        ],
+        "responses_rep2": [
+          0.0167376661849446,
+          0.0175506000763812,
+          0.0156424330389805
+        ],
+        "avg_responses": [
+          0.0236769866120802,
+          0.0174308110635541,
+          0.015128902441556801
+        ]
+      },
+      "qc_flags": [
+        "high_variability"
+      ]
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.028380+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "R166W"
+  }
+}

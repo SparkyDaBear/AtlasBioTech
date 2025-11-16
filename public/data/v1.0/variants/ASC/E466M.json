@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "E466M",
+  "protein_change": "p.E466M",
+  "transcript_id": "UNKNOWN",
+  "position": 466,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 31.973764574116604,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0242225366594884,
+          0.0132811410828204,
+          0.0092755836299091
+        ],
+        "responses_rep2": [
+          0.0233243931362582,
+          0.0105999370348892,
+          0.0107889676905697
+        ],
+        "avg_responses": [
+          0.0237734648978733,
+          0.0119405390588548,
+          0.0100322756602394
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.971512+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "E466M"
+  }
+}

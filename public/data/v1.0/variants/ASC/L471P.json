@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L471P",
+  "protein_change": "p.L471P",
+  "transcript_id": "UNKNOWN",
+  "position": 471,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 88.29931447184748,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0275563522534829,
+          0.0180995207241892,
+          0.0127342179224657
+        ],
+        "responses_rep2": [
+          0.0282602954186659,
+          0.0177008411101975,
+          0.0135901721121388
+        ],
+        "avg_responses": [
+          0.0279083238360744,
+          0.01790018091719335,
+          0.01316219501730225
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.008697+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "L471P"
+  }
+}

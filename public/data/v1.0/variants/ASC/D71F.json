@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "D71F",
+  "protein_change": "p.D71F",
+  "transcript_id": "UNKNOWN",
+  "position": 71,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0309650269257035,
+          0.0231205024544828,
+          0.0171792652767909
+        ],
+        "responses_rep2": [
+          0.0240638271575974,
+          0.0215892392449548,
+          0.0186320548965312
+        ],
+        "avg_responses": [
+          0.027514427041650448,
+          0.0223548708497188,
+          0.01790566008666105
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.963183+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "D71F"
+  }
+}

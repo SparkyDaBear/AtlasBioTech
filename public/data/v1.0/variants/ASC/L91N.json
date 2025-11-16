@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L91N",
+  "protein_change": "p.L91N",
+  "transcript_id": "UNKNOWN",
+  "position": 91,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0347680331217206,
+          0.0240636818854684,
+          0.0228408132458358
+        ],
+        "responses_rep2": [
+          0.0322896218178729,
+          0.0254160156816659,
+          0.0215786516006867
+        ],
+        "avg_responses": [
+          0.033528827469796754,
+          0.02473984878356715,
+          0.02220973242326125
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.011251+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L91N"
+  }
+}

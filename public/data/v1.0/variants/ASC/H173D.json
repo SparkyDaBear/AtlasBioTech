@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "H173D",
+  "protein_change": "p.H173D",
+  "transcript_id": "UNKNOWN",
+  "position": 173,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 29.564545340243303,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0249949792501351,
+          0.0121652576381529,
+          0.0081724785565129
+        ],
+        "responses_rep2": [
+          0.0233118189663603,
+          0.0115599751822613,
+          0.0046976402497436
+        ],
+        "avg_responses": [
+          0.0241533991082477,
+          0.0118626164102071,
+          0.00643505940312825
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.989218+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "H173D"
+  }
+}

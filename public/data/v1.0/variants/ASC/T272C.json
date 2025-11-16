@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "T272C",
+  "protein_change": "p.T272C",
+  "transcript_id": "UNKNOWN",
+  "position": 272,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 28.336859495462296,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0249975997495208,
+          0.0126497868307025,
+          0.009907693842752
+        ],
+        "responses_rep2": [
+          0.0298119417194368,
+          0.0128019368695366,
+          0.0065312106044772
+        ],
+        "avg_responses": [
+          0.0274047707344788,
+          0.01272586185011955,
+          0.008219452223614601
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.044386+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "T272C"
+  }
+}

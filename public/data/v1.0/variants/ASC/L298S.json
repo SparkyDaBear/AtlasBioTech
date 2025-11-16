@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L298S",
+  "protein_change": "p.L298S",
+  "transcript_id": "UNKNOWN",
+  "position": 298,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0316846176615068,
+          0.0237820502445441,
+          0.019420728604812
+        ],
+        "responses_rep2": [
+          0.0270833887387241,
+          0.0273186671649003,
+          0.0188313630397661
+        ],
+        "avg_responses": [
+          0.02938400320011545,
+          0.0255503587047222,
+          0.01912604582228905
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.006838+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L298S"
+  }
+}

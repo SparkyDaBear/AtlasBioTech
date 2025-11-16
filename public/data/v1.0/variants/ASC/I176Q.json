@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "I176Q",
+  "protein_change": "p.I176Q",
+  "transcript_id": "UNKNOWN",
+  "position": 176,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 79.0714684930949,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0291898932475021,
+          0.0183716468976776,
+          0.0155057357411269
+        ],
+        "responses_rep2": [
+          0.0294593155372084,
+          0.0178324392714022,
+          0.0108848327330732
+        ],
+        "avg_responses": [
+          0.02932460439235525,
+          0.0181020430845399,
+          0.01319528423710005
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.993317+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "I176Q"
+  }
+}

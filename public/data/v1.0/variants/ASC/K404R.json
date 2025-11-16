@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "K404R",
+  "protein_change": "p.K404R",
+  "transcript_id": "UNKNOWN",
+  "position": 404,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.04159927310071,
+          0.0281279263763043,
+          0.0212793234495967
+        ],
+        "responses_rep2": [
+          0.0354249092557967,
+          0.028430301253418,
+          0.0199790284351409
+        ],
+        "avg_responses": [
+          0.038512091178253355,
+          0.028279113814861152,
+          0.0206291759423688
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.999570+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "K404R"
+  }
+}

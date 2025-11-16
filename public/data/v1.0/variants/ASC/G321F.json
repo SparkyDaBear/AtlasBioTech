@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "G321F",
+  "protein_change": "p.G321F",
+  "transcript_id": "UNKNOWN",
+  "position": 321,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0293122793550996,
+          0.0251794560637724,
+          0.0172293466159559
+        ],
+        "responses_rep2": [
+          0.0293106410012186,
+          0.0252335348257913,
+          0.0179205199425376
+        ],
+        "avg_responses": [
+          0.0293114601781591,
+          0.02520649544478185,
+          0.01757493327924675
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.984460+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "G321F"
+  }
+}

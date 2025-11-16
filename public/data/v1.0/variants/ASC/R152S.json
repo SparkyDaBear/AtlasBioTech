@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "R152S",
+  "protein_change": "p.R152S",
+  "transcript_id": "UNKNOWN",
+  "position": 152,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0167568112699531,
+          0.0194434769897972,
+          0.0136365928610974
+        ],
+        "responses_rep2": [
+          0.0226646595179743,
+          0.0204652001934644,
+          0.013001503675954
+        ],
+        "avg_responses": [
+          0.019710735393963702,
+          0.019954338591630802,
+          0.0133190482685257
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.027294+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "R152S"
+  }
+}

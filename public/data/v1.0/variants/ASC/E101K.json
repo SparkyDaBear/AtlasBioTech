@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "E101K",
+  "protein_change": "p.E101K",
+  "transcript_id": "UNKNOWN",
+  "position": 101,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0283061149815825,
+          0.0206242334459805,
+          0.017576636289471
+        ],
+        "responses_rep2": [
+          0.0284351322245391,
+          0.0174239172662526,
+          0.0171486174727373
+        ],
+        "avg_responses": [
+          0.0283706236030608,
+          0.01902407535611655,
+          0.017362626881104147
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.964410+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "E101K"
+  }
+}

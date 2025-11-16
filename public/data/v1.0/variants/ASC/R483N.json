@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "R483N",
+  "protein_change": "p.R483N",
+  "transcript_id": "UNKNOWN",
+  "position": 483,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 20.98660585511317,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0243120040092725,
+          0.006932371551687,
+          0.0041290122411277
+        ],
+        "responses_rep2": [
+          0.0266990662271302,
+          0.0041929103107507,
+          -0.00098844219593
+        ],
+        "avg_responses": [
+          0.02550553511820135,
+          0.005562640931218849,
+          0.00157028502259885
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.030754+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "R483N"
+  }
+}

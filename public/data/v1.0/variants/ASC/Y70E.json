@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Y70E",
+  "protein_change": "p.Y70E",
+  "transcript_id": "UNKNOWN",
+  "position": 70,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0298265404882667,
+          0.0178897996222205,
+          0.0137709723933338
+        ],
+        "responses_rep2": [
+          0.0280522030022197,
+          0.0169045319392154,
+          0.0174031309759188
+        ],
+        "avg_responses": [
+          0.0289393717452432,
+          0.017397165780717948,
+          0.015587051684626301
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.063595+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Y70E"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Y115N",
+  "protein_change": "p.Y115N",
+  "transcript_id": "UNKNOWN",
+  "position": 115,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0275348247212202,
+          0.0209547164879499,
+          0.0205598894925208
+        ],
+        "responses_rep2": [
+          0.0291626091970734,
+          0.0217234177871723,
+          0.0177487428128519
+        ],
+        "avg_responses": [
+          0.0283487169591468,
+          0.0213390671375611,
+          0.019154316152686347
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.057745+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "Y115N"
+  }
+}

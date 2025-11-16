@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "F311H",
+  "protein_change": "p.F311H",
+  "transcript_id": "UNKNOWN",
+  "position": 311,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0308940051824012,
+          0.0235854936131275,
+          0.0235805373191911
+        ],
+        "responses_rep2": [
+          0.0290821631464009,
+          0.0248694434924634,
+          0.0217236506198634
+        ],
+        "avg_responses": [
+          0.02998808416440105,
+          0.02422746855279545,
+          0.02265209396952725
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.975744+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F311H"
+  }
+}

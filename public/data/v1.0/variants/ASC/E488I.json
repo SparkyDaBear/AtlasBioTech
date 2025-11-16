@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "E488I",
+  "protein_change": "p.E488I",
+  "transcript_id": "UNKNOWN",
+  "position": 488,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 26.329866973110565,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0279929098833203,
+          0.0117796838660069,
+          -0.0012110084158949
+        ],
+        "responses_rep2": [
+          0.0297827129143849,
+          0.0121375334441372,
+          -0.0010740137945241
+        ],
+        "avg_responses": [
+          0.0288878113988526,
+          0.011958608655072051,
+          -0.0011425111052095
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.972555+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "E488I"
+  }
+}

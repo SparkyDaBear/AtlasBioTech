@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L266V",
+  "protein_change": "p.L266V",
+  "transcript_id": "UNKNOWN",
+  "position": 266,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 40.231037891062286,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0273788054930552,
+          0.0154356513186316,
+          0.0075046823012497
+        ],
+        "responses_rep2": [
+          0.0294371821376356,
+          0.0152506040978269,
+          0.0075938767567352
+        ],
+        "avg_responses": [
+          0.028407993815345402,
+          0.015343127708229251,
+          0.0075492795289924496
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.005596+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "L266V"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "D77V",
+  "protein_change": "p.D77V",
+  "transcript_id": "UNKNOWN",
+  "position": 77,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0289447649973986,
+          0.0276152189795668,
+          0.0211909799043991
+        ],
+        "responses_rep2": [
+          0.0306034040230692,
+          0.026080276676963,
+          0.0209217950464368
+        ],
+        "avg_responses": [
+          0.0297740845102339,
+          0.0268477478282649,
+          0.02105638747541795
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.964179+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "D77V"
+  }
+}

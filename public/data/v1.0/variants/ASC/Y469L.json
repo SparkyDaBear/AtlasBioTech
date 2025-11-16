@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Y469L",
+  "protein_change": "p.Y469L",
+  "transcript_id": "UNKNOWN",
+  "position": 469,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 49.851114239383094,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0270521678678823,
+          0.0162778984664562,
+          0.0107674055063188
+        ],
+        "responses_rep2": [
+          0.0287631918075851,
+          0.0151080930865248,
+          0.00835318788658
+        ],
+        "avg_responses": [
+          0.0279076798377337,
+          0.015692995776490498,
+          0.009560296696449401
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.063183+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "Y469L"
+  }
+}

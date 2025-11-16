@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Y115E",
+  "protein_change": "p.Y115E",
+  "transcript_id": "UNKNOWN",
+  "position": 115,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 99.60004436204812,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0266190298683506,
+          0.0173640703542895,
+          0.0124000155949646
+        ],
+        "responses_rep2": [
+          0.0248549792232319,
+          0.0160199542006681,
+          0.0132930454620799
+        ],
+        "avg_responses": [
+          0.02573700454579125,
+          0.0166920122774788,
+          0.01284653052852225
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.057514+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Y115E"
+  }
+}
