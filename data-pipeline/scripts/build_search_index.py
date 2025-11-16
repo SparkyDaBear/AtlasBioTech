@@ -44,11 +44,11 @@ def collect_genes_from_variants(variants_dir):
                 # Create search-optimized variant entry
                 variants.append({
                     'gene': gene_symbol,
-                    'variant': variant_data.get('variant_id', ''),
+                    'variant_string': variant_data.get('variant_string', ''),
                     'protein_change': variant_data.get('protein_change', ''),
                     'ic50': variant_data.get('ic50_estimate', 'N/A'),
                     'qc_pass': variant_data.get('qc_pass', False),
-                    'searchable_text': f"{gene_symbol} {variant_data.get('variant_id', '')} {variant_data.get('protein_change', '')}"
+                    'searchable_text': f"{gene_symbol} {variant_data.get('variant_string', '')} {variant_data.get('protein_change', '')}"
                 })
             except Exception as e:
                 logger.warning(f"Failed to process variant file {variant_file}: {e}")
