@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "C464Y",
+  "protein_change": "p.C464Y",
+  "transcript_id": "UNKNOWN",
+  "position": 464,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0205364457600377,
+          0.0179298974838029,
+          0.0151160625412287
+        ],
+        "responses_rep2": [
+          0.0250615750693149,
+          0.0199990719919809,
+          0.0134015704692815
+        ],
+        "avg_responses": [
+          0.022799010414676302,
+          0.0189644847378919,
+          0.0142588165052551
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.951719+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "C464Y"
+  }
+}

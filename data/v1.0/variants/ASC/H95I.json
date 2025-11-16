@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "H95I",
+  "protein_change": "p.H95I",
+  "transcript_id": "UNKNOWN",
+  "position": 95,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 92.92265064380149,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0248647116602563,
+          0.0175160917576164,
+          0.0125523952116291
+        ],
+        "responses_rep2": [
+          0.0234105818405985,
+          0.0224977384318604,
+          0.0097995464629376
+        ],
+        "avg_responses": [
+          0.0241376467504274,
+          0.0200069150947384,
+          0.01117597083728335
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.991245+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "H95I"
+  }
+}

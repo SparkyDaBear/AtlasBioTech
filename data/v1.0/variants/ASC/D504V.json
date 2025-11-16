@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "D504V",
+  "protein_change": "p.D504V",
+  "transcript_id": "UNKNOWN",
+  "position": 504,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 35.286718832349344,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0297251312654022,
+          0.018567831072999,
+          0.006515675064345
+        ],
+        "responses_rep2": [
+          0.0332938464779058,
+          0.0141130279720321,
+          0.0106553914729656
+        ],
+        "avg_responses": [
+          0.031509488871654,
+          0.016340429522515548,
+          0.008585533268655299
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.962988+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "D504V"
+  }
+}

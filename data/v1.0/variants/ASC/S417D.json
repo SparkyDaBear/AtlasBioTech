@@ -1,0 +1,55 @@
+{
+  "gene": "ASC",
+  "variant_string": "S417D",
+  "protein_change": "p.S417D",
+  "transcript_id": "UNKNOWN",
+  "position": 417,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 79.35200864178722,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0358066189863207,
+          0.0210049106610798,
+          0.0108669741485926
+        ],
+        "responses_rep2": [
+          0.0358377478473786,
+          0.0229902520198878,
+          0.0215357819772375
+        ],
+        "avg_responses": [
+          0.035822183416849646,
+          0.0219975813404838,
+          0.01620137806291505
+        ]
+      },
+      "qc_flags": [
+        "high_variability"
+      ]
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.038324+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S417D"
+  }
+}

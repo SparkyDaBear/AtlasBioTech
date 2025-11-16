@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L284V",
+  "protein_change": "p.L284V",
+  "transcript_id": "UNKNOWN",
+  "position": 284,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 54.98556157960037,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0279694300771405,
+          0.0155618954428211,
+          0.0078984874089234
+        ],
+        "responses_rep2": [
+          0.0248064810307842,
+          0.0168850647810944,
+          0.0075734560419849
+        ],
+        "avg_responses": [
+          0.02638795555396235,
+          0.01622348011195775,
+          0.007735971725454149
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.006576+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "L284V"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "H125D",
+  "protein_change": "p.H125D",
+  "transcript_id": "UNKNOWN",
+  "position": 125,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0304743465768384,
+          0.0223881139597443,
+          0.0180776675014907
+        ],
+        "responses_rep2": [
+          0.0286627865227951,
+          0.0207113688002165,
+          0.0175730450887295
+        ],
+        "avg_responses": [
+          0.029568566549816752,
+          0.0215497413799804,
+          0.017825356295110097
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.988241+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "H125D"
+  }
+}

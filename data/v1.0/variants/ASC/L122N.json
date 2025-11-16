@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L122N",
+  "protein_change": "p.L122N",
+  "transcript_id": "UNKNOWN",
+  "position": 122,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0230519628216079,
+          0.0189793275258596,
+          0.0121861080911976
+        ],
+        "responses_rep2": [
+          0.0265187078361096,
+          0.0157855406467179,
+          0.0162487947738663
+        ],
+        "avg_responses": [
+          0.02478533532885875,
+          0.01738243408628875,
+          0.01421745143253195
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.001719+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L122N"
+  }
+}

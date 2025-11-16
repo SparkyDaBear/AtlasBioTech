@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "E98D",
+  "protein_change": "p.E98D",
+  "transcript_id": "UNKNOWN",
+  "position": 98,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 72.28591623683107,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0290641905382075,
+          0.0219887101275568,
+          0.0115540246699663
+        ],
+        "responses_rep2": [
+          0.0273963904256653,
+          0.0184921651600645,
+          0.0086472631636406
+        ],
+        "avg_responses": [
+          0.0282302904819364,
+          0.02024043764381065,
+          0.01010064391680345
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.974776+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "E98D"
+  }
+}

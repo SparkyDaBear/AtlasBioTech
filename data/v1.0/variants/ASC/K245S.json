@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "K245S",
+  "protein_change": "p.K245S",
+  "transcript_id": "UNKNOWN",
+  "position": 245,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.029763165765631,
+          0.0226408100063202,
+          0.0151976257487214
+        ],
+        "responses_rep2": [
+          0.030988743953118,
+          0.0236291418796612,
+          0.0154811124878747
+        ],
+        "avg_responses": [
+          0.0303759548593745,
+          0.0231349759429907,
+          0.01533936911829805
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.997209+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "K245S"
+  }
+}

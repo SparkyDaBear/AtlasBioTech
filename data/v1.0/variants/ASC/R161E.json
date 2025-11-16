@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "R161E",
+  "protein_change": "p.R161E",
+  "transcript_id": "UNKNOWN",
+  "position": 161,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 69.56637670012617,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0208363492583726,
+          0.0132199869583182,
+          0.0100597088078555
+        ],
+        "responses_rep2": [
+          0.0239436977229317,
+          0.0126223887569693,
+          0.0096748380921717
+        ],
+        "avg_responses": [
+          0.022390023490652153,
+          0.01292118785764375,
+          0.0098672734500136
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.027435+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "R161E"
+  }
+}

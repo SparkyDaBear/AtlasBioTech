@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "D276L",
+  "protein_change": "p.D276L",
+  "transcript_id": "UNKNOWN",
+  "position": 276,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 44.875034312099146,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0309074220306093,
+          0.0158528520401626,
+          0.0133966433997611
+        ],
+        "responses_rep2": [
+          0.0317500250432649,
+          0.0171645845221992,
+          0.0116739266680758
+        ],
+        "avg_responses": [
+          0.0313287235369371,
+          0.0165087182811809,
+          0.012535285033918452
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.953137+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "D276L"
+  }
+}

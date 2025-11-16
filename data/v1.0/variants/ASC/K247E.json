@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "K247E",
+  "protein_change": "p.K247E",
+  "transcript_id": "UNKNOWN",
+  "position": 247,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 28.868813923332567,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.026912125564915,
+          0.0148368335836979,
+          0.0077803954991691
+        ],
+        "responses_rep2": [
+          0.030049570964331,
+          0.0122942559911091,
+          0.0087491199064251
+        ],
+        "avg_responses": [
+          0.028480848264623,
+          0.013565544787403499,
+          0.0082647577027971
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.997338+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "K247E"
+  }
+}

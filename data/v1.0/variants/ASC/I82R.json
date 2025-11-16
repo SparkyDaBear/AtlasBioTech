@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "I82R",
+  "protein_change": "p.I82R",
+  "transcript_id": "UNKNOWN",
+  "position": 82,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 95.18004818685947,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0272644207808941,
+          0.0248248148322008,
+          0.0125390411601843
+        ],
+        "responses_rep2": [
+          0.023479538196361,
+          0.019096597303973,
+          0.0114612398714867
+        ],
+        "avg_responses": [
+          0.02537197948862755,
+          0.0219607060680869,
+          0.0120001405158355
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.995579+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "I82R"
+  }
+}

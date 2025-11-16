@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "A74L",
+  "protein_change": "p.A74L",
+  "transcript_id": "UNKNOWN",
+  "position": 74,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 85.34394148234074,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0172765799765427,
+          0.0188372228053894,
+          0.0073373450165286
+        ],
+        "responses_rep2": [
+          0.0227143373549834,
+          0.0177897011873586,
+          0.0082538062844529
+        ],
+        "avg_responses": [
+          0.01999545866576305,
+          0.018313461996374,
+          0.00779557565049075
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.950215+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "A74L"
+  }
+}

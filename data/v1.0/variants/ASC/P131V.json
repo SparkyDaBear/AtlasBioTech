@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "P131V",
+  "protein_change": "p.P131V",
+  "transcript_id": "UNKNOWN",
+  "position": 131,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0172082401477273,
+          0.0146887821449242,
+          0.0141234543016887
+        ],
+        "responses_rep2": [
+          0.0220542040111717,
+          0.0160735594278404,
+          0.0076954567979339
+        ],
+        "avg_responses": [
+          0.0196312220794495,
+          0.015381170786382299,
+          0.0109094555498113
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.020477+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "P131V"
+  }
+}

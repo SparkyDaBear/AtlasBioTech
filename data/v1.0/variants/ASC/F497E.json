@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "F497E",
+  "protein_change": "p.F497E",
+  "transcript_id": "UNKNOWN",
+  "position": 497,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0287007599508239,
+          0.0207899679124736,
+          0.0157188677405823
+        ],
+        "responses_rep2": [
+          0.0315652300686383,
+          0.0194209569599731,
+          0.015526103208648
+        ],
+        "avg_responses": [
+          0.0301329950097311,
+          0.02010546243622335,
+          0.015622485474615151
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.977742+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F497E"
+  }
+}

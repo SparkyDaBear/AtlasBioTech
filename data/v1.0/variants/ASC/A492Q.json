@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "A492Q",
+  "protein_change": "p.A492Q",
+  "transcript_id": "UNKNOWN",
+  "position": 492,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 39.25741057207265,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0282724262826032,
+          0.0153395771678381,
+          0.0104096702681498
+        ],
+        "responses_rep2": [
+          0.0305513534976353,
+          0.0155142725419057,
+          0.0095407862531984
+        ],
+        "avg_responses": [
+          0.029411889890119253,
+          0.0154269248548719,
+          0.0099752282606741
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.949268+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "A492Q"
+  }
+}

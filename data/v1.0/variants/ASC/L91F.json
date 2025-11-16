@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L91F",
+  "protein_change": "p.L91F",
+  "transcript_id": "UNKNOWN",
+  "position": 91,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 55.69198170347763,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0293095430477452,
+          0.017656075621397,
+          0.0083702659844308
+        ],
+        "responses_rep2": [
+          0.0296162676252594,
+          0.0193702175635273,
+          0.0080489305778972
+        ],
+        "avg_responses": [
+          0.029462905336502303,
+          0.01851314659246215,
+          0.008209598281164
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.011118+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "L91F"
+  }
+}

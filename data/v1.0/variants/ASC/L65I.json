@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L65I",
+  "protein_change": "p.L65I",
+  "transcript_id": "UNKNOWN",
+  "position": 65,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 88.06393075247072,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0242898667100476,
+          0.0206776424223538,
+          0.0106105461965398
+        ],
+        "responses_rep2": [
+          0.0262320959377622,
+          0.0160064311076755,
+          0.0123022162275034
+        ],
+        "avg_responses": [
+          0.0252609813239049,
+          0.018342036765014648,
+          0.0114563812120216
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.009624+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L65I"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "S485M",
+  "protein_change": "p.S485M",
+  "transcript_id": "UNKNOWN",
+  "position": 485,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 27.294018975565784,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.032455183142827,
+          0.015976194292442,
+          0.0111751914392933
+        ],
+        "responses_rep2": [
+          0.0340293808774146,
+          0.01323123942824,
+          0.010420152332926
+        ],
+        "avg_responses": [
+          0.0332422820101208,
+          0.014603716860340999,
+          0.01079767188610965
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.039540+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S485M"
+  }
+}

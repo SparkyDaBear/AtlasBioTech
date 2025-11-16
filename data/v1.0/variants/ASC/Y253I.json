@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Y253I",
+  "protein_change": "p.Y253I",
+  "transcript_id": "UNKNOWN",
+  "position": 253,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 45.226436262133426,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0258780687991127,
+          0.0160317268065468,
+          0.00848017687517
+        ],
+        "responses_rep2": [
+          0.0288530236543438,
+          0.0134082417255177,
+          0.0114231174887795
+        ],
+        "avg_responses": [
+          0.027365546226728252,
+          0.01471998426603225,
+          0.009951647181974749
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.060994+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Y253I"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "T83E",
+  "protein_change": "p.T83E",
+  "transcript_id": "UNKNOWN",
+  "position": 83,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 93.17630730560161,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0260967699621081,
+          0.0166989068233212,
+          0.0114306717672203
+        ],
+        "responses_rep2": [
+          0.0207007018697822,
+          0.0173566961811499,
+          0.0108170126042687
+        ],
+        "avg_responses": [
+          0.02339873591594515,
+          0.017027801502235547,
+          0.0111238421857445
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.046628+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "T83E"
+  }
+}

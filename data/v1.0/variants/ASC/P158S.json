@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "P158S",
+  "protein_change": "p.P158S",
+  "transcript_id": "UNKNOWN",
+  "position": 158,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0249427869500874,
+          0.0154914511460593,
+          0.0138995993393692
+        ],
+        "responses_rep2": [
+          0.0223109448304088,
+          0.0160462920210615,
+          0.0110991619332382
+        ],
+        "avg_responses": [
+          0.0236268658902481,
+          0.015768871583560398,
+          0.0124993806363037
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.020959+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "P158S"
+  }
+}

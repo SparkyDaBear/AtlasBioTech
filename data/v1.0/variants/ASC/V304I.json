@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "V304I",
+  "protein_change": "p.V304I",
+  "transcript_id": "UNKNOWN",
+  "position": 304,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 65.88379610544312,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0281111148406198,
+          0.0173631871234258,
+          0.0077825344875428
+        ],
+        "responses_rep2": [
+          0.0267822293034591,
+          0.0172035005412585,
+          0.012894845311814
+        ],
+        "avg_responses": [
+          0.02744667207203945,
+          0.01728334383234215,
+          0.0103386898996784
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.051379+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "V304I"
+  }
+}

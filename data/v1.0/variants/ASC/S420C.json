@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "S420C",
+  "protein_change": "p.S420C",
+  "transcript_id": "UNKNOWN",
+  "position": 420,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 40.97956486553012,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0272963296328233,
+          0.0136894643862501,
+          0.006591217994653
+        ],
+        "responses_rep2": [
+          0.0256435943919192,
+          0.0154737385276856,
+          0.0054012804862333
+        ],
+        "avg_responses": [
+          0.02646996201237125,
+          0.01458160145696785,
+          0.00599624924044315
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.038487+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "S420C"
+  }
+}

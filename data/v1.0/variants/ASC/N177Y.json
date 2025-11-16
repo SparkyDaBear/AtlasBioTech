@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "N177Y",
+  "protein_change": "p.N177Y",
+  "transcript_id": "UNKNOWN",
+  "position": 177,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 92.54186892818737,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0234018309087894,
+          0.0190662148401834,
+          0.0129036318851049
+        ],
+        "responses_rep2": [
+          0.0289669508112914,
+          0.015246514686755,
+          0.0123114528730757
+        ],
+        "avg_responses": [
+          0.026184390860040402,
+          0.017156364763469198,
+          0.0126075423790903
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.016214+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "N177Y"
+  }
+}

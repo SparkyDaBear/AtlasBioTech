@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "T178K",
+  "protein_change": "p.T178K",
+  "transcript_id": "UNKNOWN",
+  "position": 178,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0291735463685792,
+          0.0155947463511236,
+          0.0164516466279594
+        ],
+        "responses_rep2": [
+          0.0288288639133583,
+          0.0180271113387873,
+          0.017398197487247
+        ],
+        "avg_responses": [
+          0.02900120514096875,
+          0.01681092884495545,
+          0.016924922057603202
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.043448+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "T178K"
+  }
+}

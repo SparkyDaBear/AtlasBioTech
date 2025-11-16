@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L69N",
+  "protein_change": "p.L69N",
+  "transcript_id": "UNKNOWN",
+  "position": 69,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 84.49678705923188,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0250063933713408,
+          0.0164447679427616,
+          0.0139306727347517
+        ],
+        "responses_rep2": [
+          0.0246864820305184,
+          0.0171275052550811,
+          0.0084334445745606
+        ],
+        "avg_responses": [
+          0.024846437700929598,
+          0.01678613659892135,
+          0.01118205865465615
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.010241+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L69N"
+  }
+}

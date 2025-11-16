@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "N414T",
+  "protein_change": "p.N414T",
+  "transcript_id": "UNKNOWN",
+  "position": 414,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 27.286526805726382,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0308001479963974,
+          0.008480375428522,
+          0.0076744819054681
+        ],
+        "responses_rep2": [
+          0.023080336268305,
+          0.0151797851769673,
+          0.0037018865824302
+        ],
+        "avg_responses": [
+          0.0269402421323512,
+          0.011830080302744649,
+          0.00568818424394915
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.016404+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "N414T"
+  }
+}

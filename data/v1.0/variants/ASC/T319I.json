@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "T319I",
+  "protein_change": "p.T319I",
+  "transcript_id": "UNKNOWN",
+  "position": 319,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0330274869252385,
+          0.0236270790231485,
+          0.016595459786641
+        ],
+        "responses_rep2": [
+          0.0267443131262885,
+          0.0247587854104232,
+          0.0165624900112805
+        ],
+        "avg_responses": [
+          0.0298859000257635,
+          0.02419293221678585,
+          0.01657897489896075
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.045566+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "T319I"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "E470A",
+  "protein_change": "p.E470A",
+  "transcript_id": "UNKNOWN",
+  "position": 470,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 73.72435296038107,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0289233153145382,
+          0.0194711468024922,
+          0.0089916712130735
+        ],
+        "responses_rep2": [
+          0.0291621579303864,
+          0.0198187025847635,
+          0.0138931808449939
+        ],
+        "avg_responses": [
+          0.0290427366224623,
+          0.01964492469362785,
+          0.0114424260290337
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.971906+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "E470A"
+  }
+}

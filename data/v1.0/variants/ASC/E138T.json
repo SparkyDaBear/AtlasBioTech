@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "E138T",
+  "protein_change": "p.E138T",
+  "transcript_id": "UNKNOWN",
+  "position": 138,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0200182729339685,
+          0.016236741761823,
+          0.0122550537549649
+        ],
+        "responses_rep2": [
+          0.0256031974470788,
+          0.012484846698319,
+          0.0112790494074586
+        ],
+        "avg_responses": [
+          0.02281073519052365,
+          0.014360794230071,
+          0.01176705158121175
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.965675+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "E138T"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Y128C",
+  "protein_change": "p.Y128C",
+  "transcript_id": "UNKNOWN",
+  "position": 128,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0281473618658684,
+          0.0182024619471945,
+          0.0152742549647337
+        ],
+        "responses_rep2": [
+          0.0278509367097216,
+          0.0198256136082426,
+          0.0146864409923996
+        ],
+        "avg_responses": [
+          0.027999149287795,
+          0.01901403777771855,
+          0.01498034797856665
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.058009+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "Y128C"
+  }
+}

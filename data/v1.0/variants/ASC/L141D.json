@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L141D",
+  "protein_change": "p.L141D",
+  "transcript_id": "UNKNOWN",
+  "position": 141,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0220118853492345,
+          0.017170622511112,
+          0.0121220900158491
+        ],
+        "responses_rep2": [
+          0.0235649500234415,
+          0.0160952206795644,
+          0.0138871815083213
+        ],
+        "avg_responses": [
+          0.022788417686338,
+          0.0166329215953382,
+          0.013004635762085201
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.002601+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L141D"
+  }
+}

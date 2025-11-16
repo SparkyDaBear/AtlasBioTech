@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "P480R",
+  "protein_change": "p.P480R",
+  "transcript_id": "UNKNOWN",
+  "position": 480,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0291639912570124,
+          0.0201813414814283,
+          0.0145528439940826
+        ],
+        "responses_rep2": [
+          0.0304712961551202,
+          0.0216372505593132,
+          0.0162894502802197
+        ],
+        "avg_responses": [
+          0.0298176437060663,
+          0.020909296020370748,
+          0.01542114713715115
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.022004+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "P480R"
+  }
+}

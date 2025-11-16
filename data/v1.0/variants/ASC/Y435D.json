@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Y435D",
+  "protein_change": "p.Y435D",
+  "transcript_id": "UNKNOWN",
+  "position": 435,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 33.65735867325911,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0203069880217339,
+          0.0086657364580098,
+          0.0061107005295654
+        ],
+        "responses_rep2": [
+          0.0191215275222739,
+          0.0116860691104872,
+          0.0020387618340339
+        ],
+        "avg_responses": [
+          0.0197142577720039,
+          0.0101759027842485,
+          0.00407473118179965
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.062705+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "Y435D"
+  }
+}

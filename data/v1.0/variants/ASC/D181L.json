@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "D181L",
+  "protein_change": "p.D181L",
+  "transcript_id": "UNKNOWN",
+  "position": 181,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 93.03679865876238,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0218084742369891,
+          0.0162632647565893,
+          0.0097832465613628
+        ],
+        "responses_rep2": [
+          0.0251090907410357,
+          0.012951299013642,
+          0.0130397380319758
+        ],
+        "avg_responses": [
+          0.023458782489012397,
+          0.01460728188511565,
+          0.0114114922966693
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.952795+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "D181L"
+  }
+}

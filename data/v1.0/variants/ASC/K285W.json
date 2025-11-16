@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "K285W",
+  "protein_change": "p.K285W",
+  "transcript_id": "UNKNOWN",
+  "position": 285,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0288145230614271,
+          0.0231388286527098,
+          0.0217743334318839
+        ],
+        "responses_rep2": [
+          0.0284216473117653,
+          0.0259849472775014,
+          0.0200581802862691
+        ],
+        "avg_responses": [
+          0.0286180851865962,
+          0.0245618879651056,
+          0.0209162568590765
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.999367+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "K285W"
+  }
+}

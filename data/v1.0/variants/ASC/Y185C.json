@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Y185C",
+  "protein_change": "p.Y185C",
+  "transcript_id": "UNKNOWN",
+  "position": 185,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 84.76277127878757,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.022521427372803,
+          0.015839603188265,
+          0.0107464001262255
+        ],
+        "responses_rep2": [
+          0.0264873969725508,
+          0.016955196372774,
+          0.0114512893245343
+        ],
+        "avg_responses": [
+          0.0245044121726769,
+          0.016397399780519503,
+          0.0110988447253799
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.060467+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "Y185C"
+  }
+}

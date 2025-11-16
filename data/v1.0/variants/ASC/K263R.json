@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "K263R",
+  "protein_change": "p.K263R",
+  "transcript_id": "UNKNOWN",
+  "position": 263,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 34.57150984977406,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0233316447939347,
+          0.0129378280151031,
+          0.00866906138444
+        ],
+        "responses_rep2": [
+          0.0269997792810715,
+          0.012838562810874,
+          0.0077564767478056
+        ],
+        "avg_responses": [
+          0.0251657120375031,
+          0.01288819541298855,
+          0.0082127690661228
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.998354+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "K263R"
+  }
+}

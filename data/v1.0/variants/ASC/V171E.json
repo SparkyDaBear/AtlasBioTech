@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "V171E",
+  "protein_change": "p.V171E",
+  "transcript_id": "UNKNOWN",
+  "position": 171,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.027267159617295,
+          0.0194501275381847,
+          0.0141147604930662
+        ],
+        "responses_rep2": [
+          0.0275152399465461,
+          0.017892634063902,
+          0.0154847183461596
+        ],
+        "avg_responses": [
+          0.027391199781920547,
+          0.01867138080104335,
+          0.0147997394196129
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.048763+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "V171E"
+  }
+}

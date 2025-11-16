@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Y174M",
+  "protein_change": "p.Y174M",
+  "transcript_id": "UNKNOWN",
+  "position": 174,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0320444655083692,
+          0.0188479096382251,
+          0.0171948049539351
+        ],
+        "responses_rep2": [
+          0.0263059573012211,
+          0.0227234714439111,
+          0.0154700668046499
+        ],
+        "avg_responses": [
+          0.029175211404795152,
+          0.020785690541068103,
+          0.0163324358792925
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.060199+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Y174M"
+  }
+}

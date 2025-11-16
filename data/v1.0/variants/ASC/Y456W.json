@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Y456W",
+  "protein_change": "p.Y456W",
+  "transcript_id": "UNKNOWN",
+  "position": 456,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0419887812330543,
+          0.0356817439237605,
+          0.0234719888358176
+        ],
+        "responses_rep2": [
+          0.0448852979650211,
+          0.0359377055963635,
+          0.0219465816109853
+        ],
+        "avg_responses": [
+          0.043437039599037705,
+          0.035809724760062,
+          0.02270928522340145
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.062835+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "Y456W"
+  }
+}

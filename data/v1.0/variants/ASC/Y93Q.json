@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Y93Q",
+  "protein_change": "p.Y93Q",
+  "transcript_id": "UNKNOWN",
+  "position": 93,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 72.75050960201561,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0255361730488314,
+          0.0138318145230414,
+          0.0079703596908003
+        ],
+        "responses_rep2": [
+          0.0257930125330227,
+          0.017378829588629,
+          0.0141591390481906
+        ],
+        "avg_responses": [
+          0.02566459279092705,
+          0.0156053220558352,
+          0.01106474936949545
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.064444+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Y93Q"
+  }
+}

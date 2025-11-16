@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "S500Q",
+  "protein_change": "p.S500Q",
+  "transcript_id": "UNKNOWN",
+  "position": 500,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0323134761881955,
+          0.0264003193856861,
+          0.0220197437506431
+        ],
+        "responses_rep2": [
+          0.038169643476563,
+          0.0243709417123138,
+          0.0190573373207329
+        ],
+        "avg_responses": [
+          0.035241559832379254,
+          0.02538563054899995,
+          0.020538540535688002
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.040123+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S500Q"
+  }
+}

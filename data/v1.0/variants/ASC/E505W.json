@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "E505W",
+  "protein_change": "p.E505W",
+  "transcript_id": "UNKNOWN",
+  "position": 505,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0294832273852422,
+          0.0280405661644995,
+          0.0249749660457196
+        ],
+        "responses_rep2": [
+          0.0310188921557819,
+          0.0267853552850822,
+          0.0227157280033055
+        ],
+        "avg_responses": [
+          0.03025105977051205,
+          0.027412960724790852,
+          0.023845347024512548
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.973651+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "E505W"
+  }
+}

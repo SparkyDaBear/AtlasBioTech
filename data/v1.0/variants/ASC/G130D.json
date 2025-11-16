@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "G130D",
+  "protein_change": "p.G130D",
+  "transcript_id": "UNKNOWN",
+  "position": 130,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0241881476539517,
+          0.0226490257281051,
+          0.0160043782204316
+        ],
+        "responses_rep2": [
+          0.0254460653076029,
+          0.0206737522264866,
+          0.0156446047385341
+        ],
+        "avg_responses": [
+          0.0248171064807773,
+          0.021661388977295852,
+          0.015824491479482852
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.980187+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "G130D"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "F425L",
+  "protein_change": "p.F425L",
+  "transcript_id": "UNKNOWN",
+  "position": 425,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 96.55136527478969,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0476919489552682,
+          0.0358608627514298,
+          0.0211578268029456
+        ],
+        "responses_rep2": [
+          0.0456096280257224,
+          0.0345628249291629,
+          0.024261070420896
+        ],
+        "avg_responses": [
+          0.0466507884904953,
+          0.03521184384029635,
+          0.0227094486119208
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.976319+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F425L"
+  }
+}

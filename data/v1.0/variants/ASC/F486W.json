@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "F486W",
+  "protein_change": "p.F486W",
+  "transcript_id": "UNKNOWN",
+  "position": 486,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0290371801656189,
+          0.0222983572965896,
+          0.0191167223416423
+        ],
+        "responses_rep2": [
+          0.0318421658426292,
+          0.023164705512056,
+          0.0183386921598942
+        ],
+        "avg_responses": [
+          0.03043967300412405,
+          0.0227315314043228,
+          0.01872770725076825
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.976966+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F486W"
+  }
+}

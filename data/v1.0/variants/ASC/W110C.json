@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "W110C",
+  "protein_change": "p.W110C",
+  "transcript_id": "UNKNOWN",
+  "position": 110,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 70.55077633683537,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0252517045766848,
+          0.0202292645974197,
+          0.0075989723331153
+        ],
+        "responses_rep2": [
+          0.0268959654218603,
+          0.0170772953928015,
+          0.0103173115540031
+        ],
+        "avg_responses": [
+          0.02607383499927255,
+          0.0186532799951106,
+          0.008958141943559199
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.054880+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "W110C"
+  }
+}

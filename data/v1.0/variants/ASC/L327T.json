@@ -1,0 +1,55 @@
+{
+  "gene": "ASC",
+  "variant_string": "L327T",
+  "protein_change": "p.L327T",
+  "transcript_id": "UNKNOWN",
+  "position": 327,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0322289850640512,
+          0.0260438835883531,
+          0.0211925706232678
+        ],
+        "responses_rep2": [
+          0.0307242539727623,
+          0.0155326264644696,
+          0.0223135573741713
+        ],
+        "avg_responses": [
+          0.031476619518406745,
+          0.02078825502641135,
+          0.021753063998719548
+        ]
+      },
+      "qc_flags": [
+        "high_variability"
+      ]
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.007255+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L327T"
+  }
+}

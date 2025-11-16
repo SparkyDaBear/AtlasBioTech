@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "D455N",
+  "protein_change": "p.D455N",
+  "transcript_id": "UNKNOWN",
+  "position": 455,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 88.72429937518626,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0285085575700076,
+          0.018084137586099,
+          0.014046862810343
+        ],
+        "responses_rep2": [
+          0.0315812309764615,
+          0.0212478973084762,
+          0.0142148000166083
+        ],
+        "avg_responses": [
+          0.03004489427323455,
+          0.0196660174472876,
+          0.01413083141347565
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.962064+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "D455N"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "T117A",
+  "protein_change": "p.T117A",
+  "transcript_id": "UNKNOWN",
+  "position": 117,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 52.95078100683192,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0258849929228381,
+          0.0146965873166944,
+          0.00867102115484
+        ],
+        "responses_rep2": [
+          0.025189813075284,
+          0.0136490701709989,
+          0.0111094457127284
+        ],
+        "avg_responses": [
+          0.02553740299906105,
+          0.01417282874384665,
+          0.0098902334337842
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.042744+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "T117A"
+  }
+}

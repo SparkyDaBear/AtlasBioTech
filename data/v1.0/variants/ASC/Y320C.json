@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "Y320C",
+  "protein_change": "p.Y320C",
+  "transcript_id": "UNKNOWN",
+  "position": 320,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 44.587903644958885,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0261833615087215,
+          0.0166077408793337,
+          0.0117077836054896
+        ],
+        "responses_rep2": [
+          0.0263127195725615,
+          0.0109088373303056,
+          0.0097217214378465
+        ],
+        "avg_responses": [
+          0.0262480405406415,
+          0.01375828910481965,
+          0.01071475252166805
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.061973+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "Y320C"
+  }
+}

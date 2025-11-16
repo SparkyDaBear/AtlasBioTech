@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "K124R",
+  "protein_change": "p.K124R",
+  "transcript_id": "UNKNOWN",
+  "position": 124,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 64.08467412385292,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0275553724978601,
+          0.0170018800429814,
+          0.0095320476424896
+        ],
+        "responses_rep2": [
+          0.0275456252482419,
+          0.0180866558698518,
+          0.010075554203983
+        ],
+        "avg_responses": [
+          0.027550498873051,
+          0.0175442679564166,
+          0.0098038009232363
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.996406+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "K124R"
+  }
+}

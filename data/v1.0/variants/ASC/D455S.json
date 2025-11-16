@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "D455S",
+  "protein_change": "p.D455S",
+  "transcript_id": "UNKNOWN",
+  "position": 455,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 89.38303708362832,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0263278346354709,
+          0.023377606567975,
+          0.0116370655366241
+        ],
+        "responses_rep2": [
+          0.0267161631564945,
+          0.0230815284835848,
+          0.0113204165273158
+        ],
+        "avg_responses": [
+          0.0265219988959827,
+          0.0232295675257799,
+          0.01147874103196995
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.962096+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "D455S"
+  }
+}

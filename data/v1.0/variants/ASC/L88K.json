@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L88K",
+  "protein_change": "p.L88K",
+  "transcript_id": "UNKNOWN",
+  "position": 88,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0301991862476575,
+          0.0270972771765251,
+          0.0189809720030273
+        ],
+        "responses_rep2": [
+          0.0282291034781329,
+          0.0224048485137077,
+          0.0199478188111178
+        ],
+        "avg_responses": [
+          0.0292141448628952,
+          0.024751062845116398,
+          0.01946439540707255
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.010795+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L88K"
+  }
+}

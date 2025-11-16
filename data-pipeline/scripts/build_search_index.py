@@ -18,10 +18,11 @@ logger = logging.getLogger(__name__)
 def collect_genes_from_variants(variants_dir):
     """Extract gene information from variant files."""
     genes = {}
+    variants = []
     
     if not variants_dir.exists():
         logger.warning(f"Variants directory not found: {variants_dir}")
-        return {}
+        return {}, []
     
     # Walk through gene directories
     for gene_dir in variants_dir.iterdir():
@@ -31,9 +32,26 @@ def collect_genes_from_variants(variants_dir):
         gene_symbol = gene_dir.name
         variant_count = 0
         
-        # Count variants for this gene
+        # Process variants for this gene
         for variant_file in gene_dir.glob("*.json"):
             variant_count += 1
+            
+            # Load variant data for search index
+            try:
+                with open(variant_file, 'r') as f:
+                    variant_data = json.load(f)
+                
+                # Create search-optimized variant entry
+                variants.append({
+                    'gene': gene_symbol,
+                    'variant': variant_data.get('variant_id', ''),
+                    'protein_change': variant_data.get('protein_change', ''),
+                    'ic50': variant_data.get('ic50_estimate', 'N/A'),
+                    'qc_pass': variant_data.get('qc_pass', False),
+                    'searchable_text': f"{gene_symbol} {variant_data.get('variant_id', '')} {variant_data.get('protein_change', '')}"
+                })
+            except Exception as e:
+                logger.warning(f"Failed to process variant file {variant_file}: {e}")
         
         if variant_count > 0:
             genes[gene_symbol] = {
@@ -44,7 +62,7 @@ def collect_genes_from_variants(variants_dir):
                 'variant_count': variant_count
             }
     
-    return genes
+    return genes, variants
 
 def main():
     """Main search index building routine."""
@@ -83,18 +101,18 @@ def main():
     ]
     
     # Collect genes if variants exist
-    genes_data = collect_genes_from_variants(variants_dir)
+    genes_data, variants_data = collect_genes_from_variants(variants_dir)
     
     # Build final search index
     search_index = {
         'genes': list(genes_data.values()),
         'drugs': default_drugs,
-        'variants': [],
+        'variants': variants_data,
         'lastUpdate': datetime.now(timezone.utc).isoformat(),
         'stats': {
             'total_genes': len(genes_data),
             'total_drugs': len(default_drugs),
-            'total_variants': 0
+            'total_variants': len(variants_data)
         }
     }
     
@@ -106,7 +124,7 @@ def main():
         json.dump(search_index, f, indent=2, ensure_ascii=False)
     
     logger.info(f"Search index saved: {output_file}")
-    logger.info(f"Index contains: {len(genes_data)} genes, {len(default_drugs)} drugs, 0 variants")
+    logger.info(f"Index contains: {len(genes_data)} genes, {len(default_drugs)} drugs, {len(variants_data)} variants")
 
 if __name__ == "__main__":
     main()

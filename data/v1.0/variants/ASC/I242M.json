@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "I242M",
+  "protein_change": "p.I242M",
+  "transcript_id": "UNKNOWN",
+  "position": 242,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 38.805756710385594,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0251349428891286,
+          0.0144005011621689,
+          0.0033725614888147
+        ],
+        "responses_rep2": [
+          0.0281095906771638,
+          0.0145526727635857,
+          0.0070514268883372
+        ],
+        "avg_responses": [
+          0.0266222667831462,
+          0.0144765869628773,
+          0.00521199418857595
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.993629+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "I242M"
+  }
+}

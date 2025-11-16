@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "H129Q",
+  "protein_change": "p.H129Q",
+  "transcript_id": "UNKNOWN",
+  "position": 129,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0240819854302385,
+          0.0205477350654989,
+          0.0142163904822876
+        ],
+        "responses_rep2": [
+          0.0264251259925485,
+          0.0186907847288332,
+          0.0152323897665284
+        ],
+        "avg_responses": [
+          0.0252535557113935,
+          0.01961925989716605,
+          0.014724390124408
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.988906+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "H129Q"
+  }
+}

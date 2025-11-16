@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "V151A",
+  "protein_change": "p.V151A",
+  "transcript_id": "UNKNOWN",
+  "position": 151,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0251299091079786,
+          0.0154853882385908,
+          0.0147861382550615
+        ],
+        "responses_rep2": [
+          0.024647977976262,
+          0.0124178678341384,
+          0.0137120390902175
+        ],
+        "avg_responses": [
+          0.0248889435421203,
+          0.0139516280363646,
+          0.0142490886726395
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.048243+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "V151A"
+  }
+}

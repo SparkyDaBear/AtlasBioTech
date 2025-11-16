@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "G250V",
+  "protein_change": "p.G250V",
+  "transcript_id": "UNKNOWN",
+  "position": 250,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 53.99410680417601,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0274488251909014,
+          0.0145025708204022,
+          0.0095823194518961
+        ],
+        "responses_rep2": [
+          0.0242952698415329,
+          0.0162243428977379,
+          0.0069810899979601
+        ],
+        "avg_responses": [
+          0.025872047516217148,
+          0.01536345685907005,
+          0.0082817047249281
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.984026+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "G250V"
+  }
+}

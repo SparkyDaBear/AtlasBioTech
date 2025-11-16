@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "E153F",
+  "protein_change": "p.E153F",
+  "transcript_id": "UNKNOWN",
+  "position": 153,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0182823632707623,
+          0.0192066384728999,
+          0.0121776319297322
+        ],
+        "responses_rep2": [
+          0.0249400194168704,
+          0.0183015678138878,
+          0.0101863111787626
+        ],
+        "avg_responses": [
+          0.021611191343816352,
+          0.01875410314339385,
+          0.0111819715542474
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.965900+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "E153F"
+  }
+}

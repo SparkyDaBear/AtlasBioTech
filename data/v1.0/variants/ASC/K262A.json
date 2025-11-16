@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "K262A",
+  "protein_change": "p.K262A",
+  "transcript_id": "UNKNOWN",
+  "position": 262,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0340926516526196,
+          0.0226442528951367,
+          0.0195705043422033
+        ],
+        "responses_rep2": [
+          0.0353201310836199,
+          0.0177989563345747,
+          0.0183751377113091
+        ],
+        "avg_responses": [
+          0.034706391368119746,
+          0.0202216046148557,
+          0.018972821026756202
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:13.997711+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "K262A"
+  }
+}

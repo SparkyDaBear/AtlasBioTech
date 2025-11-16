@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "L248F",
+  "protein_change": "p.L248F",
+  "transcript_id": "UNKNOWN",
+  "position": 248,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 59.713032783378054,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0324843475439471,
+          0.0197171195558829,
+          0.0108093344596228
+        ],
+        "responses_rep2": [
+          0.0343548492273709,
+          0.0205853573319591,
+          0.0132779853062462
+        ],
+        "avg_responses": [
+          0.033419598385659,
+          0.020151238443921,
+          0.0120436598829345
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.005025+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "L248F"
+  }
+}

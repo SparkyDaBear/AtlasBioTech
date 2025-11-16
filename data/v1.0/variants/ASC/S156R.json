@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "S156R",
+  "protein_change": "p.S156R",
+  "transcript_id": "UNKNOWN",
+  "position": 156,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0260813546306378,
+          0.0244116934443413,
+          0.0193963501713115
+        ],
+        "responses_rep2": [
+          0.0278672381259014,
+          0.0235473673983479,
+          0.0192824256024204
+        ],
+        "avg_responses": [
+          0.026974296378269598,
+          0.0239795304213446,
+          0.01933938788686595
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.035882+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "S156R"
+  }
+}

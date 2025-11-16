@@ -1,0 +1,53 @@
+{
+  "gene": "ASC",
+  "variant_string": "S265V",
+  "protein_change": "p.S265V",
+  "transcript_id": "UNKNOWN",
+  "position": 265,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Compound_Screen"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Compound_Screen",
+      "ic50": 26.448860854076884,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.031912965593503,
+          0.0147471527865837,
+          0.0130370887862395
+        ],
+        "responses_rep2": [
+          0.0289246544149298,
+          0.0106354257966135,
+          0.006751527630226
+        ],
+        "avg_responses": [
+          0.0304188100042164,
+          0.0126912892915986,
+          0.00989430820823275
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T17:58:14.038228+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S265V"
+  }
+}
