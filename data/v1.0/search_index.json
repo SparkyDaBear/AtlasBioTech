@@ -1,0 +1,45 @@
+{
+  "genes": [],
+  "drugs": [
+    {
+      "name": "Imatinib",
+      "synonyms": [
+        "Gleevec",
+        "STI571"
+      ],
+      "fda_status": "Approved",
+      "target_class": "Tyrosine kinase inhibitor",
+      "mechanism": "BCR-ABL, KIT, PDGFR inhibitor",
+      "variant_count": 0
+    },
+    {
+      "name": "Dasatinib",
+      "synonyms": [
+        "Sprycel",
+        "BMS-354825"
+      ],
+      "fda_status": "Approved",
+      "target_class": "Tyrosine kinase inhibitor",
+      "mechanism": "BCR-ABL, SRC family inhibitor",
+      "variant_count": 0
+    },
+    {
+      "name": "Nilotinib",
+      "synonyms": [
+        "Tasigna",
+        "AMN107"
+      ],
+      "fda_status": "Approved",
+      "target_class": "Tyrosine kinase inhibitor",
+      "mechanism": "BCR-ABL inhibitor",
+      "variant_count": 0
+    }
+  ],
+  "variants": [],
+  "lastUpdate": "2025-11-16T17:50:53.263699+00:00",
+  "stats": {
+    "total_genes": 0,
+    "total_drugs": 3,
+    "total_variants": 0
+  }
+}

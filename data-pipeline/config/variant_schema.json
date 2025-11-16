@@ -1,0 +1,194 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Variant Datacard Schema",
+  "type": "object",
+  "required": [
+    "gene",
+    "variant_string",
+    "protein_change",
+    "transcript_id",
+    "position",
+    "consequence",
+    "ic50_values"
+  ],
+  "properties": {
+    "gene": {
+      "type": "string",
+      "pattern": "^[A-Z0-9-]+$",
+      "description": "Gene symbol (e.g., EGFR, ABL1)"
+    },
+    "variant_string": {
+      "type": "string",
+      "description": "Variant notation (e.g., L858R, T315I)"
+    },
+    "protein_change": {
+      "type": "string",
+      "pattern": "^p\\.[A-Z][0-9]+[A-Z]$",
+      "description": "Protein change notation (e.g., p.L858R)"
+    },
+    "transcript_id": {
+      "type": "string",
+      "pattern": "^ENST[0-9]{11}$",
+      "description": "Ensembl transcript ID"
+    },
+    "position": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Amino acid position in protein"
+    },
+    "consequence": {
+      "type": "string",
+      "enum": [
+        "missense_variant",
+        "nonsense_variant",
+        "frameshift_variant",
+        "in_frame_deletion",
+        "in_frame_insertion",
+        "synonymous_variant"
+      ],
+      "description": "Variant consequence type"
+    },
+    "drugs_tested": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "List of drugs tested against this variant"
+    },
+    "model_system": {
+      "type": "string",
+      "description": "Cell line or model system used for testing"
+    },
+    "ic50_values": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["drug", "ic50"],
+        "properties": {
+          "drug": {
+            "type": "string",
+            "description": "Drug name"
+          },
+          "ic50": {
+            "type": "number",
+            "minimum": 0,
+            "description": "IC50 value in nM"
+          },
+          "ic50_wt": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Wild-type IC50 value in nM"
+          },
+          "fold_change": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Fold change vs wild-type"
+          },
+          "confidence_interval": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "95% confidence interval [lower, upper]"
+          },
+          "replicate_count": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Number of experimental replicates"
+          },
+          "qc_flags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "high_variability",
+                "low_replicate_count",
+                "outlier_detected",
+                "curve_fit_poor",
+                "incomplete_curve"
+              ]
+            },
+            "description": "Quality control flags"
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "publication_doi": {
+      "type": "string",
+      "pattern": "^10\\.[0-9]+/.*$",
+      "description": "DOI of associated publication"
+    },
+    "plots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["drug", "plot_url"],
+        "properties": {
+          "drug": {
+            "type": "string"
+          },
+          "plot_url": {
+            "type": "string",
+            "format": "uri-reference",
+            "description": "URL to dose-response plot (SVG/PNG)"
+          },
+          "plot_type": {
+            "type": "string",
+            "enum": ["dose_response", "time_course", "heat_map"],
+            "default": "dose_response"
+          }
+        }
+      }
+    },
+    "pdb_structure": {
+      "type": "object",
+      "properties": {
+        "pdb_id": {
+          "type": "string",
+          "pattern": "^[0-9A-Z]{4}$",
+          "description": "PDB structure identifier"
+        },
+        "chain": {
+          "type": "string",
+          "pattern": "^[A-Z]$",
+          "description": "Protein chain identifier"
+        },
+        "residue_number": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Residue number in PDB structure"
+        },
+        "pocket_residues": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Residue numbers defining binding pocket"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "date_created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "date_modified": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

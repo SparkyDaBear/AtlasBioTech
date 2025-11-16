@@ -1,0 +1,40 @@
+{
+  "name": "atlas-biotech-mutations",
+  "version": "1.0.0",
+  "description": "Interactive web platform for querying mutational data, IC50 summaries, and 3D protein structure visualization",
+  "homepage": "https://username.github.io/AtlasBioTech",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.0",
+    "flexsearch": "^0.7.31",
+    "molstar": "^4.0.0",
+    "ag-grid-react": "^31.0.0",
+    "ag-grid-community": "^31.0.0",
+    "lucide-react": "^0.294.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.8",
+    "gh-pages": "^6.1.1"
+  },
+  "keywords": [
+    "bioinformatics",
+    "mutations",
+    "protein-structures",
+    "drug-resistance",
+    "ic50",
+    "pdb"
+  ],
+  "author": "Ian Sitarik - Mesolyte LLC",
+  "license": "MIT"
+}
