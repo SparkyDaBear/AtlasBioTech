@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "K124D",
+  "protein_change": "p.K124D",
+  "transcript_id": "UNKNOWN",
+  "position": 124,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 80.02377883568124,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0272298537303353,
+          0.0192120459231827,
+          0.0118912712786096
+        ],
+        "responses_rep2": [
+          0.0285277148644145,
+          0.0159443210200178,
+          0.0130813231255115
+        ],
+        "avg_responses": [
+          0.0278787842973749,
+          0.01757818347160025,
+          0.01248629720206055
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.670035+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "K124D"
+  }
+}

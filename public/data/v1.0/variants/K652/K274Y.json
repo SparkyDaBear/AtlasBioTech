@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "K274Y",
+  "protein_change": "p.K274Y",
+  "transcript_id": "UNKNOWN",
+  "position": 274,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 66.10957272278478,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0298981101151476,
+          0.0241240390984302,
+          0.0089208663163705
+        ],
+        "responses_rep2": [
+          0.0297801539427788,
+          0.0155222835075429,
+          0.0117137846295412
+        ],
+        "avg_responses": [
+          0.029839132028963197,
+          0.01982316130298655,
+          0.01031732547295585
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.672813+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "K274Y"
+  }
+}

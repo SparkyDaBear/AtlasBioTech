@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "Y174P",
+  "protein_change": "p.Y174P",
+  "transcript_id": "UNKNOWN",
+  "position": 174,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0189599387718898,
+          0.0139552982337538,
+          0.0167531711751797
+        ],
+        "responses_rep2": [
+          0.0242622786722927,
+          0.0162129922980138,
+          0.010062521904298
+        ],
+        "avg_responses": [
+          0.021611108722091252,
+          0.015084145265883801,
+          0.013407846539738852
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.736855+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Y174P"
+  }
+}

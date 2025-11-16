@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "E466R",
+  "protein_change": "p.E466R",
+  "transcript_id": "UNKNOWN",
+  "position": 466,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 59.00611420497796,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0278538606796001,
+          0.0161822701390671,
+          0.012597269098808
+        ],
+        "responses_rep2": [
+          0.0267927403108925,
+          0.0133087095961688,
+          0.0116624843602371
+        ],
+        "avg_responses": [
+          0.0273233004952463,
+          0.01474548986761795,
+          0.01212987672952255
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.645049+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "E466R"
+  }
+}

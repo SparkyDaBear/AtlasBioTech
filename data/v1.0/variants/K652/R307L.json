@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "R307L",
+  "protein_change": "p.R307L",
+  "transcript_id": "UNKNOWN",
+  "position": 307,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 73.33748440185428,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0294600103628098,
+          0.0184827102553118,
+          0.0084277468874747
+        ],
+        "responses_rep2": [
+          0.0288271563078611,
+          0.0198004095657281,
+          0.0150929204555451
+        ],
+        "avg_responses": [
+          0.02914358333533545,
+          0.01914155991051995,
+          0.0117603336715099
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.705106+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "R307L"
+  }
+}

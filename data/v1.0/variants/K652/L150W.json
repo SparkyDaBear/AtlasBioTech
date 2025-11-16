@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "L150W",
+  "protein_change": "p.L150W",
+  "transcript_id": "UNKNOWN",
+  "position": 150,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0244421763063953,
+          0.0167885247148796,
+          0.0119378920383505
+        ],
+        "responses_rep2": [
+          0.0214056687276887,
+          0.0128992577099847,
+          0.0110219370370605
+        ],
+        "avg_responses": [
+          0.022923922517042,
+          0.01484389121243215,
+          0.011479914537705499
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.677402+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "L150W"
+  }
+}

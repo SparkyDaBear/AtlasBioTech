@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "S503K",
+  "protein_change": "p.S503K",
+  "transcript_id": "UNKNOWN",
+  "position": 503,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 42.92736870748386,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0299845123562137,
+          0.0158850661851506,
+          0.012305571596201
+        ],
+        "responses_rep2": [
+          0.0307845690297344,
+          0.0162825178588809,
+          0.0102070673930209
+        ],
+        "avg_responses": [
+          0.030384540692974048,
+          0.01608379202201575,
+          0.01125631949461095
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.716974+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S503K"
+  }
+}

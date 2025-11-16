@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "R89G",
+  "protein_change": "p.R89G",
+  "transcript_id": "UNKNOWN",
+  "position": 89,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0335192257131408,
+          0.0242782656816901,
+          0.0209421124416513
+        ],
+        "responses_rep2": [
+          0.0305338295826921,
+          0.0205885925484563,
+          0.0208159997875259
+        ],
+        "avg_responses": [
+          0.032026527647916456,
+          0.0224334291150732,
+          0.020879056114588602
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.706825+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "R89G"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "N94L",
+  "protein_change": "p.N94L",
+  "transcript_id": "UNKNOWN",
+  "position": 94,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0303657249369678,
+          0.0231455001393122,
+          0.018278280946318
+        ],
+        "responses_rep2": [
+          0.03511014848758,
+          0.0271082944667626,
+          0.0183203313071889
+        ],
+        "avg_responses": [
+          0.0327379367122739,
+          0.0251268973030374,
+          0.01829930612675345
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.693745+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "N94L"
+  }
+}

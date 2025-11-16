@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "S143I",
+  "protein_change": "p.S143I",
+  "transcript_id": "UNKNOWN",
+  "position": 143,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 66.34943966407565,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0207408813609694,
+          0.0138106400330041,
+          0.0074369713260804
+        ],
+        "responses_rep2": [
+          0.0221017636095587,
+          0.0128489372618479,
+          0.009135027176366
+        ],
+        "avg_responses": [
+          0.02142132248526405,
+          0.013329788647426,
+          0.0082859992512232
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.709780+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "S143I"
+  }
+}

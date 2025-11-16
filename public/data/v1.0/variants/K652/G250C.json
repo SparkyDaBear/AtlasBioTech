@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "G250C",
+  "protein_change": "p.G250C",
+  "transcript_id": "UNKNOWN",
+  "position": 250,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0304247200724493,
+          0.0252695091324543,
+          0.0204550899440285
+        ],
+        "responses_rep2": [
+          0.0290058566186428,
+          0.0213186688406152,
+          0.0163249637916176
+        ],
+        "avg_responses": [
+          0.02971528834554605,
+          0.02329408898653475,
+          0.01839002686782305
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.657806+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "G250C"
+  }
+}

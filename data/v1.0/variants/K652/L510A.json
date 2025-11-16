@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "L510A",
+  "protein_change": "p.L510A",
+  "transcript_id": "UNKNOWN",
+  "position": 510,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0317119995644486,
+          0.0244964181342089,
+          0.0200722666335986
+        ],
+        "responses_rep2": [
+          0.033848570547522,
+          0.0273730782537309,
+          0.0202940171730167
+        ],
+        "avg_responses": [
+          0.0327802850559853,
+          0.0259347481939699,
+          0.02018314190330765
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.683837+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L510A"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "S126Y",
+  "protein_change": "p.S126Y",
+  "transcript_id": "UNKNOWN",
+  "position": 126,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0270058690630362,
+          0.0189405894811251,
+          0.0131321788915858
+        ],
+        "responses_rep2": [
+          0.0271038266098212,
+          0.0196111214279676,
+          0.0145848620746245
+        ],
+        "avg_responses": [
+          0.0270548478364287,
+          0.01927585545454635,
+          0.013858520483105149
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.708457+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "S126Y"
+  }
+}

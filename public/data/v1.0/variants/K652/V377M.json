@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "V377M",
+  "protein_change": "p.V377M",
+  "transcript_id": "UNKNOWN",
+  "position": 377,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0303854697806612,
+          0.0224490691438573,
+          0.0199665149559165
+        ],
+        "responses_rep2": [
+          0.0276984887746668,
+          0.0182677497474462,
+          0.0197187996353662
+        ],
+        "avg_responses": [
+          0.029041979277664,
+          0.02035840944565175,
+          0.01984265729564135
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.727338+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "V377M"
+  }
+}

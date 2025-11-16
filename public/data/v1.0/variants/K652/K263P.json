@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "K263P",
+  "protein_change": "p.K263P",
+  "transcript_id": "UNKNOWN",
+  "position": 263,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0256229907935467,
+          0.0268800048001535,
+          0.021698334288267
+        ],
+        "responses_rep2": [
+          0.0245037467273014,
+          0.0292978291562803,
+          0.0191501970824771
+        ],
+        "avg_responses": [
+          0.02506336876042405,
+          0.028088916978216902,
+          0.020424265685372048
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.672144+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "K263P"
+  }
+}

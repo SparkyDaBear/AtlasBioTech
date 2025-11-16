@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "V338P",
+  "protein_change": "p.V338P",
+  "transcript_id": "UNKNOWN",
+  "position": 338,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0254113933621592,
+          0.0238463312412554,
+          0.0205915109182592
+        ],
+        "responses_rep2": [
+          0.028512540226932,
+          0.0170749040113419,
+          0.0210781602277347
+        ],
+        "avg_responses": [
+          0.0269619667945456,
+          0.020460617626298652,
+          0.02083483557299695
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.727200+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "V338P"
+  }
+}

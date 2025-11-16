@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "E470I",
+  "protein_change": "p.E470I",
+  "transcript_id": "UNKNOWN",
+  "position": 470,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 72.20979609003354,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.022872664541779,
+          0.0165672029943343,
+          0.010028101821087
+        ],
+        "responses_rep2": [
+          0.0226663673796125,
+          0.0111005487535147,
+          0.0095164999269522
+        ],
+        "avg_responses": [
+          0.02276951596069575,
+          0.0138338758739245,
+          0.009772300874019601
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.645371+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "E470I"
+  }
+}

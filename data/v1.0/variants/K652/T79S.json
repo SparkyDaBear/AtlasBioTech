@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "T79S",
+  "protein_change": "p.T79S",
+  "transcript_id": "UNKNOWN",
+  "position": 79,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0298970993401282,
+          0.0232968225874147,
+          0.0178163717049673
+        ],
+        "responses_rep2": [
+          0.0326249766996618,
+          0.0230203632417869,
+          0.0172325809179844
+        ],
+        "avg_responses": [
+          0.031261038019895,
+          0.0231585929146008,
+          0.01752447631147585
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.722138+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "T79S"
+  }
+}

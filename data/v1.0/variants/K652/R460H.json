@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "R460H",
+  "protein_change": "p.R460H",
+  "transcript_id": "UNKNOWN",
+  "position": 460,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 75.13566938587053,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0236090012708082,
+          0.0174420270347779,
+          0.0093438642336136
+        ],
+        "responses_rep2": [
+          0.0237632299596875,
+          0.0131519773551469,
+          0.0105368346751531
+        ],
+        "avg_responses": [
+          0.02368611561524785,
+          0.015297002194962401,
+          0.00994034945438335
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.705556+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "R460H"
+  }
+}

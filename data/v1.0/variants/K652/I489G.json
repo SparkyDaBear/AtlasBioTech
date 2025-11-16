@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "I489G",
+  "protein_change": "p.I489G",
+  "transcript_id": "UNKNOWN",
+  "position": 489,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 41.36316212264529,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.02587444693759,
+          0.0134013739065948,
+          0.0045013812977185
+        ],
+        "responses_rep2": [
+          0.026758310904372,
+          0.0170325693587742,
+          0.0005673070327802
+        ],
+        "avg_responses": [
+          0.026316378920981,
+          0.0152169716326845,
+          0.00253434416524935
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.668179+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "I489G"
+  }
+}

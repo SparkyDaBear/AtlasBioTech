@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "I145D",
+  "protein_change": "p.I145D",
+  "transcript_id": "UNKNOWN",
+  "position": 145,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 87.15721225759768,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0233269197545658,
+          0.0127292883762616,
+          0.0108660563904913
+        ],
+        "responses_rep2": [
+          0.0213606579811304,
+          0.0167376329265589,
+          0.0098772191858568
+        ],
+        "avg_responses": [
+          0.022343788867848102,
+          0.01473346065141025,
+          0.01037163778817405
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.666025+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "I145D"
+  }
+}

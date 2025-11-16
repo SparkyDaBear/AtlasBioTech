@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "F493M",
+  "protein_change": "p.F493M",
+  "transcript_id": "UNKNOWN",
+  "position": 493,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0292649613048712,
+          0.0235645595359054,
+          0.0180585695461481
+        ],
+        "responses_rep2": [
+          0.0330715163803099,
+          0.0215042400463464,
+          0.0190868726352346
+        ],
+        "avg_responses": [
+          0.031168238842590547,
+          0.022534399791125898,
+          0.01857272109069135
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.651214+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F493M"
+  }
+}

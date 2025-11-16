@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "E258R",
+  "protein_change": "p.E258R",
+  "transcript_id": "UNKNOWN",
+  "position": 258,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 52.20851433914509,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0256237578948371,
+          0.015071680243047,
+          0.0093095177236024
+        ],
+        "responses_rep2": [
+          0.028748718911432,
+          0.0162745599471304,
+          0.0089246285801449
+        ],
+        "avg_responses": [
+          0.027186238403134548,
+          0.0156731200950887,
+          0.009117073151873649
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.642102+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "E258R"
+  }
+}

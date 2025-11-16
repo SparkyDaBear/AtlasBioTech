@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "S121C",
+  "protein_change": "p.S121C",
+  "transcript_id": "UNKNOWN",
+  "position": 121,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0261000946370046,
+          0.0196483276115017,
+          0.0127152721814442
+        ],
+        "responses_rep2": [
+          0.024270632097545,
+          0.0200017182847958,
+          0.0135891063782776
+        ],
+        "avg_responses": [
+          0.0251853633672748,
+          0.01982502294814875,
+          0.0131521892798609
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.707718+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "S121C"
+  }
+}

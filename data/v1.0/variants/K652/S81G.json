@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "S81G",
+  "protein_change": "p.S81G",
+  "transcript_id": "UNKNOWN",
+  "position": 81,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0278528184203617,
+          0.0255372079578867,
+          0.0153082360742352
+        ],
+        "responses_rep2": [
+          0.0272789963245583,
+          0.0233083230716594,
+          0.0158017149138946
+        ],
+        "avg_responses": [
+          0.02756590737246,
+          0.02442276551477305,
+          0.0155549754940649
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.717805+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "S81G"
+  }
+}

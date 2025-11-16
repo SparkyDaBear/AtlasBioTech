@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "G372R",
+  "protein_change": "p.G372R",
+  "transcript_id": "UNKNOWN",
+  "position": 372,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0454399210679182,
+          0.028985288738591,
+          0.0277389023382756
+        ],
+        "responses_rep2": [
+          0.0450482633884162,
+          0.0249931863166324,
+          0.023836457871911
+        ],
+        "avg_responses": [
+          0.0452440922281672,
+          0.0269892375276117,
+          0.025787680105093302
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.658966+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "G372R"
+  }
+}

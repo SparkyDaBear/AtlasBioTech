@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "P158D",
+  "protein_change": "p.P158D",
+  "transcript_id": "UNKNOWN",
+  "position": 158,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 69.0170417856466,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0245684789528091,
+          0.0159435781211451,
+          0.0103653380233682
+        ],
+        "responses_rep2": [
+          0.0226054573695656,
+          0.0144374491016657,
+          0.0078265504911206
+        ],
+        "avg_responses": [
+          0.023586968161187348,
+          0.015190513611405401,
+          0.009095944257244401
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.696068+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "P158D"
+  }
+}

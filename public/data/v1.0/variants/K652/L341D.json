@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "L341D",
+  "protein_change": "p.L341D",
+  "transcript_id": "UNKNOWN",
+  "position": 341,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0232764363006102,
+          0.0161001475617583,
+          0.0196583906500391
+        ],
+        "responses_rep2": [
+          0.0258490151635767,
+          0.0122221657807998,
+          0.0189359456203474
+        ],
+        "avg_responses": [
+          0.02456272573209345,
+          0.014161156671279049,
+          0.01929716813519325
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.682449+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L341D"
+  }
+}

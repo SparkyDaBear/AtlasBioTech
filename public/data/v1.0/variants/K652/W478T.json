@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "W478T",
+  "protein_change": "p.W478T",
+  "transcript_id": "UNKNOWN",
+  "position": 478,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 86.98654315920388,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0287450382868972,
+          0.019944931937035,
+          0.0139345411654202
+        ],
+        "responses_rep2": [
+          0.0312214391384112,
+          0.0192053706971407,
+          0.013955305246419
+        ],
+        "avg_responses": [
+          0.029983238712654202,
+          0.019575151317087848,
+          0.013944923205919599
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.733502+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "W478T"
+  }
+}

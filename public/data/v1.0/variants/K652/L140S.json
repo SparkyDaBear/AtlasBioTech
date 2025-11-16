@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "L140S",
+  "protein_change": "p.L140S",
+  "transcript_id": "UNKNOWN",
+  "position": 140,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0258677960258355,
+          0.0160264128109927,
+          0.0127198976672725
+        ],
+        "responses_rep2": [
+          0.0232314340690579,
+          0.0160300364170047,
+          0.0120749852124551
+        ],
+        "avg_responses": [
+          0.0245496150474467,
+          0.0160282246139987,
+          0.0123974414398638
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.676278+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L140S"
+  }
+}

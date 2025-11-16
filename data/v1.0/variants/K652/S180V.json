@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "S180V",
+  "protein_change": "p.S180V",
+  "transcript_id": "UNKNOWN",
+  "position": 180,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 66.96532221780956,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.025614472412711,
+          0.0124094465629017,
+          0.0114605190124761
+        ],
+        "responses_rep2": [
+          0.027770530584131,
+          0.0176540783712076,
+          0.0122194110727158
+        ],
+        "avg_responses": [
+          0.026692501498421,
+          0.015031762467054649,
+          0.01183996504259595
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.713730+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S180V"
+  }
+}

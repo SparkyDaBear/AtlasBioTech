@@ -59,12 +59,18 @@ def process_k562_data(csv_path):
     df = pd.read_csv(csv_path)
     variants = {}
     
-    # You need to specify the actual gene name here
-    # Based on the filename "k562_asc_screen", this might be related to ASC/PYCARD
-    # Please update this with the correct gene symbol
-    GENE_NAME = "ASC"  # TODO: Update this with your actual gene name (e.g., PYCARD, CASP1, etc.)
+    # Extract unique genes and drugs from the CSV
+    unique_genes = df['Gene'].dropna().unique()
+    unique_drugs = df['Drug'].dropna().unique()
+    
+    logger.info(f"Found {len(unique_genes)} unique genes: {list(unique_genes)}")
+    logger.info(f"Found {len(unique_drugs)} unique drugs: {list(unique_drugs)}")
     
     for _, row in df.iterrows():
+        # Extract gene and drug from CSV
+        gene_name = row['Gene']
+        drug_name = row['Drug']
+        
         # Extract variant information
         ref_aa = row['ref_aa']
         position = int(row['protein_start'])
@@ -73,7 +79,7 @@ def process_k562_data(csv_path):
         # Create variant identifiers
         variant_string = f"{ref_aa}{position}{alt_aa}"
         protein_change = f"p.{ref_aa}{position}{alt_aa}"
-        variant_key = f"{GENE_NAME}_{variant_string}"
+        variant_key = f"{gene_name}_{variant_string}"
         
         # Extract dose-response data
         doses = []
@@ -103,16 +109,16 @@ def process_k562_data(csv_path):
         
         # Create variant entry
         variants[variant_key] = {
-            'gene': GENE_NAME,
+            'gene': gene_name,
             'variant_string': variant_string,
             'protein_change': protein_change,
             'transcript_id': 'UNKNOWN',  # Not provided in K562 data
             'position': position,
             'consequence': 'missense_variant',  # Assuming all are missense
-            'drugs_tested': ['Compound_Screen'],
+            'drugs_tested': [drug_name],
             'model_system': 'K562 cells',
             'ic50_values': [{
-                'drug': 'Compound_Screen',
+                'drug': drug_name,
                 'ic50': ic50_estimated if ic50_estimated else 0,
                 'replicate_count': 2,
                 'dose_response_data': {

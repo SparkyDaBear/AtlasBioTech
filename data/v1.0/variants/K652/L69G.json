@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "L69G",
+  "protein_change": "p.L69G",
+  "transcript_id": "UNKNOWN",
+  "position": 69,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 93.11936427446446,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0272112824875898,
+          0.0195256901429037,
+          0.0141533376252228
+        ],
+        "responses_rep2": [
+          0.0272548002547383,
+          0.0176081962469633,
+          0.0120004135989041
+        ],
+        "avg_responses": [
+          0.02723304137116405,
+          0.018566943194933502,
+          0.01307687561206345
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.685017+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L69G"
+  }
+}

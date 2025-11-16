@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "L88F",
+  "protein_change": "p.L88F",
+  "transcript_id": "UNKNOWN",
+  "position": 88,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0238000196532877,
+          0.0197891130988947,
+          0.0140415370479697
+        ],
+        "responses_rep2": [
+          0.0255610490633326,
+          0.0171176628110927,
+          0.0114268777652203
+        ],
+        "avg_responses": [
+          0.02468053435831015,
+          0.018453387954993697,
+          0.012734207406595
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.685575+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "L88F"
+  }
+}

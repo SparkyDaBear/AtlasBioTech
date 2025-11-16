@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "H125G",
+  "protein_change": "p.H125G",
+  "transcript_id": "UNKNOWN",
+  "position": 125,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0240864384412035,
+          0.0145469747380784,
+          0.0131884723701843
+        ],
+        "responses_rep2": [
+          0.0241962741965508,
+          0.0173532415367077,
+          0.0127496920791717
+        ],
+        "avg_responses": [
+          0.02414135631887715,
+          0.01595010813739305,
+          0.012969082224678
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.661987+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "H125G"
+  }
+}

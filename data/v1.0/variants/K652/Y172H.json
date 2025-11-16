@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "Y172H",
+  "protein_change": "p.Y172H",
+  "transcript_id": "UNKNOWN",
+  "position": 172,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.028323554229835,
+          0.0194639350265774,
+          0.0142831148441049
+        ],
+        "responses_rep2": [
+          0.0297952131378621,
+          0.0190034005403081,
+          0.0154094559186413
+        ],
+        "avg_responses": [
+          0.02905938368384855,
+          0.01923366778344275,
+          0.0148462853813731
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.736175+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "Y172H"
+  }
+}

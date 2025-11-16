@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "S265P",
+  "protein_change": "p.S265P",
+  "transcript_id": "UNKNOWN",
+  "position": 265,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 86.60378657844794,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0285449271892944,
+          0.0189322369794415,
+          0.0119629432676629
+        ],
+        "responses_rep2": [
+          0.0262695795945115,
+          0.0208802678482883,
+          0.0125084041393633
+        ],
+        "avg_responses": [
+          0.02740725339190295,
+          0.0199062524138649,
+          0.012235673703513101
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.714232+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S265P"
+  }
+}

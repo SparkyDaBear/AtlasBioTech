@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "N114S",
+  "protein_change": "p.N114S",
+  "transcript_id": "UNKNOWN",
+  "position": 114,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 47.53935669177729,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0258886497977059,
+          0.0138245699634416,
+          0.0088530037647405
+        ],
+        "responses_rep2": [
+          0.0269098883742752,
+          0.0145854290471677,
+          0.011532123114196
+        ],
+        "avg_responses": [
+          0.02639926908599055,
+          0.01420499950530465,
+          0.01019256343946825
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.688915+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "N114S"
+  }
+}

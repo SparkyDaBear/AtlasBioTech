@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "G159V",
+  "protein_change": "p.G159V",
+  "transcript_id": "UNKNOWN",
+  "position": 159,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 86.1111673781787,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0188548253744454,
+          0.0154160226979713,
+          0.0085394653254695
+        ],
+        "responses_rep2": [
+          0.02384403030068,
+          0.0153969021248342,
+          0.0104675246020193
+        ],
+        "avg_responses": [
+          0.0213494278375627,
+          0.015406462411402751,
+          0.0095034949637444
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.656187+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "G159V"
+  }
+}

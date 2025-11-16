@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "I313R",
+  "protein_change": "p.I313R",
+  "transcript_id": "UNKNOWN",
+  "position": 313,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 60.20089919299794,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0280368633070978,
+          0.0138048384126731,
+          0.0076044377728144
+        ],
+        "responses_rep2": [
+          0.024422293286807,
+          0.0184778838591166,
+          0.01064823607125
+        ],
+        "avg_responses": [
+          0.0262295782969524,
+          0.01614136113589485,
+          0.0091263369220322
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.667747+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "I313R"
+  }
+}

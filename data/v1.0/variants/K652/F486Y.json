@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "F486Y",
+  "protein_change": "p.F486Y",
+  "transcript_id": "UNKNOWN",
+  "position": 486,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 32.944709653211454,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0261441881647442,
+          0.0124819075590954,
+          0.007474677823781
+        ],
+        "responses_rep2": [
+          0.0254236054434658,
+          0.013843307599316,
+          0.0059826185025909
+        ],
+        "avg_responses": [
+          0.025783896804105,
+          0.0131626075792057,
+          0.006728648163185949
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.650844+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F486Y"
+  }
+}

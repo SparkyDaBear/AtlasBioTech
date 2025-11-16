@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "G76Y",
+  "protein_change": "p.G76Y",
+  "transcript_id": "UNKNOWN",
+  "position": 76,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 94.88781420622932,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.026831052616577,
+          0.0183302316793389,
+          0.0152003298126813
+        ],
+        "responses_rep2": [
+          0.0293961743070863,
+          0.0186470603927725,
+          0.0122149588184201
+        ],
+        "avg_responses": [
+          0.028113613461831652,
+          0.018488646036055698,
+          0.0137076443155507
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.660604+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "G76Y"
+  }
+}

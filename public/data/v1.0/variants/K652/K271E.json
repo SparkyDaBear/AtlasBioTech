@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "K271E",
+  "protein_change": "p.K271E",
+  "transcript_id": "UNKNOWN",
+  "position": 271,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 25.12117801553405,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0265564068672748,
+          0.0111702092784915,
+          0.0053676311209472
+        ],
+        "responses_rep2": [
+          0.0279285050359249,
+          0.0094667142880313,
+          0.0054170165140894
+        ],
+        "avg_responses": [
+          0.02724245595159985,
+          0.0103184617832614,
+          0.0053923238175183
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.672333+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "K271E"
+  }
+}

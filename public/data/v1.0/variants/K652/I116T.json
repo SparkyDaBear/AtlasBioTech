@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "I116T",
+  "protein_change": "p.I116T",
+  "transcript_id": "UNKNOWN",
+  "position": 116,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 86.83142815624922,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0255987754347899,
+          0.0162020148500384,
+          0.0103374459431612
+        ],
+        "responses_rep2": [
+          0.0247558961741277,
+          0.0161571322607113,
+          0.013175771938814
+        ],
+        "avg_responses": [
+          0.0251773358044588,
+          0.016179573555374853,
+          0.0117566089409876
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.665859+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "I116T"
+  }
+}

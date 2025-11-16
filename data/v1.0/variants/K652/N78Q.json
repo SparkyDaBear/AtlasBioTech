@@ -1,0 +1,55 @@
+{
+  "gene": "K652",
+  "variant_string": "N78Q",
+  "protein_change": "p.N78Q",
+  "transcript_id": "UNKNOWN",
+  "position": 78,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 88.0831336402488,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0223527071066774,
+          0.0225717129190154,
+          0.0066032688526999
+        ],
+        "responses_rep2": [
+          0.0326618104356402,
+          0.0179454786829825,
+          0.0182347532368654
+        ],
+        "avg_responses": [
+          0.027507258771158796,
+          0.020258595800998952,
+          0.01241901104478265
+        ]
+      },
+      "qc_flags": [
+        "high_variability"
+      ]
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.693329+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "N78Q"
+  }
+}

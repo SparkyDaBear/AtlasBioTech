@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "V73W",
+  "protein_change": "p.V73W",
+  "transcript_id": "UNKNOWN",
+  "position": 73,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 72.68709953607939,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0306240231490807,
+          0.0191135048803443,
+          0.0145852994897154
+        ],
+        "responses_rep2": [
+          0.026779122910091,
+          0.0184343446063713,
+          0.0084560747684432
+        ],
+        "avg_responses": [
+          0.02870157302958585,
+          0.0187739247433578,
+          0.011520687129079301
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.730932+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "V73W"
+  }
+}

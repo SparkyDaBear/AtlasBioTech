@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "V132E",
+  "protein_change": "p.V132E",
+  "transcript_id": "UNKNOWN",
+  "position": 132,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0301086783587598,
+          0.0275696236662587,
+          0.0218125774104098
+        ],
+        "responses_rep2": [
+          0.0266209562580777,
+          0.0257590874020027,
+          0.0234961053830534
+        ],
+        "avg_responses": [
+          0.02836481730841875,
+          0.0266643555341307,
+          0.0226543413967316
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.723554+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "V132E"
+  }
+}

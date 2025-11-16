@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "Y93T",
+  "protein_change": "p.Y93T",
+  "transcript_id": "UNKNOWN",
+  "position": 93,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 28.044961453982076,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0254631987832017,
+          0.0094619643799989,
+          0.0108635132539865
+        ],
+        "responses_rep2": [
+          0.0269897561012803,
+          0.0145395679509978,
+          0.0033036724211618
+        ],
+        "avg_responses": [
+          0.026226477442241,
+          0.01200076616549835,
+          0.00708359283757415
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.741157+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Y93T"
+  }
+}

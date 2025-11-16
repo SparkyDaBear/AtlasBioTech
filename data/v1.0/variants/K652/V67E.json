@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "V67E",
+  "protein_change": "p.V67E",
+  "transcript_id": "UNKNOWN",
+  "position": 67,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0248809206041734,
+          0.0205739625404026,
+          0.0165794761229552
+        ],
+        "responses_rep2": [
+          0.0273756664181128,
+          0.0234077573203078,
+          0.0163894754922323
+        ],
+        "avg_responses": [
+          0.0261282935111431,
+          0.021990859930355197,
+          0.01648447580759375
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.729971+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "V67E"
+  }
+}

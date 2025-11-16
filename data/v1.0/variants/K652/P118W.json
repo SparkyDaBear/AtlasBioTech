@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "P118W",
+  "protein_change": "p.P118W",
+  "transcript_id": "UNKNOWN",
+  "position": 118,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 52.47982841397544,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0241431350931455,
+          0.0123182285764956,
+          0.0058253814303409
+        ],
+        "responses_rep2": [
+          0.0288523441247161,
+          0.0207363270927225,
+          0.0068118865368603
+        ],
+        "avg_responses": [
+          0.0264977396089308,
+          0.01652727783460905,
+          0.0063186339836006
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.695348+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "P118W"
+  }
+}

@@ -18,11 +18,12 @@ logger = logging.getLogger(__name__)
 def collect_genes_from_variants(variants_dir):
     """Extract gene information from variant files."""
     genes = {}
+    drugs = {}
     variants = []
     
     if not variants_dir.exists():
         logger.warning(f"Variants directory not found: {variants_dir}")
-        return {}, []
+        return {}, {}, []
     
     # Walk through gene directories
     for gene_dir in variants_dir.iterdir():
@@ -40,6 +41,19 @@ def collect_genes_from_variants(variants_dir):
             try:
                 with open(variant_file, 'r') as f:
                     variant_data = json.load(f)
+                
+                # Collect drugs from variant data
+                for drug in variant_data.get('drugs_tested', []):
+                    if drug not in drugs:
+                        drugs[drug] = {
+                            'name': drug,
+                            'synonyms': [],
+                            'fda_status': 'Experimental',
+                            'target_class': 'Unknown',
+                            'mechanism': 'Unknown',
+                            'variant_count': 0
+                        }
+                    drugs[drug]['variant_count'] += 1
                 
                 # Create search-optimized variant entry
                 variants.append({
@@ -62,7 +76,7 @@ def collect_genes_from_variants(variants_dir):
                 'variant_count': variant_count
             }
     
-    return genes, variants
+    return genes, drugs, variants
 
 def main():
     """Main search index building routine."""
@@ -100,18 +114,35 @@ def main():
         }
     ]
     
-    # Collect genes if variants exist
-    genes_data, variants_data = collect_genes_from_variants(variants_dir)
+    # Collect genes and drugs if variants exist
+    genes_data, drugs_data, variants_data = collect_genes_from_variants(variants_dir)
+    
+    # Merge with default FDA approved drugs, keeping higher variant counts
+    all_drugs = list(default_drugs)
+    for drug_name, drug_info in drugs_data.items():
+        # Check if this drug already exists in default_drugs
+        existing_drug = None
+        for i, default_drug in enumerate(all_drugs):
+            if default_drug['name'] == drug_name:
+                existing_drug = i
+                break
+        
+        if existing_drug is not None:
+            # Update variant count for existing drug
+            all_drugs[existing_drug]['variant_count'] = drug_info['variant_count']
+        else:
+            # Add new drug from data
+            all_drugs.append(drug_info)
     
     # Build final search index
     search_index = {
         'genes': list(genes_data.values()),
-        'drugs': default_drugs,
+        'drugs': all_drugs,
         'variants': variants_data,
         'lastUpdate': datetime.now(timezone.utc).isoformat(),
         'stats': {
             'total_genes': len(genes_data),
-            'total_drugs': len(default_drugs),
+            'total_drugs': len(all_drugs),
             'total_variants': len(variants_data)
         }
     }

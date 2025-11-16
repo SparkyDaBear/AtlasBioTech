@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "R166N",
+  "protein_change": "p.R166N",
+  "transcript_id": "UNKNOWN",
+  "position": 166,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 97.78551718524852,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0262644495778891,
+          0.014651107985208,
+          0.0121899195046269
+        ],
+        "responses_rep2": [
+          0.0184502595677629,
+          0.0109680107312918,
+          0.0100608766034728
+        ],
+        "avg_responses": [
+          0.022357354572825998,
+          0.0128095593582499,
+          0.01112539805404985
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.703867+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "R166N"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "S157L",
+  "protein_change": "p.S157L",
+  "transcript_id": "UNKNOWN",
+  "position": 157,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0243383910894556,
+          0.0213125867398322,
+          0.0151414499180776
+        ],
+        "responses_rep2": [
+          0.0200607709090134,
+          0.0168509602768977,
+          0.0163713407478353
+        ],
+        "avg_responses": [
+          0.0221995809992345,
+          0.01908177350836495,
+          0.01575639533295645
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.712243+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S157L"
+  }
+}

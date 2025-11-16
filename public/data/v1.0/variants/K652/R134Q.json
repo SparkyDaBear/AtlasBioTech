@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "R134Q",
+  "protein_change": "p.R134Q",
+  "transcript_id": "UNKNOWN",
+  "position": 134,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 77.00111144869268,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0232506326422577,
+          0.0151055443496143,
+          0.0125511035049523
+        ],
+        "responses_rep2": [
+          0.0280946825355498,
+          0.0162189652643142,
+          0.0103559532114291
+        ],
+        "avg_responses": [
+          0.02567265758890375,
+          0.01566225480696425,
+          0.0114535283581907
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.702275+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "R134Q"
+  }
+}

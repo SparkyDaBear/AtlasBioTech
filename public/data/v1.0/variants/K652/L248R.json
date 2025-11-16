@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "L248R",
+  "protein_change": "p.L248R",
+  "transcript_id": "UNKNOWN",
+  "position": 248,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 68.74496839723822,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.027842457264288,
+          0.0155840671430085,
+          0.0113307744630809
+        ],
+        "responses_rep2": [
+          0.0273545050430286,
+          0.0213792070577457,
+          0.0087132573066112
+        ],
+        "avg_responses": [
+          0.0275984811536583,
+          0.0184816371003771,
+          0.01002201588484605
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.679405+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "L248R"
+  }
+}

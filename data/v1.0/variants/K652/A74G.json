@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "A74G",
+  "protein_change": "p.A74G",
+  "transcript_id": "UNKNOWN",
+  "position": 74,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 80.63628252953362,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0338944210597646,
+          0.0218456064492458,
+          0.0170424623671391
+        ],
+        "responses_rep2": [
+          0.0322040842628397,
+          0.0170760406326027,
+          0.0137611399273874
+        ],
+        "avg_responses": [
+          0.03304925266130215,
+          0.019460823540924252,
+          0.01540180114726325
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.625347+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "A74G"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "N114V",
+  "protein_change": "p.N114V",
+  "transcript_id": "UNKNOWN",
+  "position": 114,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0260148180525138,
+          0.0189129699201176,
+          0.0164477108863521
+        ],
+        "responses_rep2": [
+          0.0279451923246831,
+          0.0165448675063906,
+          0.0160023221790918
+        ],
+        "avg_responses": [
+          0.02698000518859845,
+          0.017728918713254098,
+          0.01622501653272195
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.688982+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "N114V"
+  }
+}

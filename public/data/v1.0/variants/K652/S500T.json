@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "S500T",
+  "protein_change": "p.S500T",
+  "transcript_id": "UNKNOWN",
+  "position": 500,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 19.659528126670068,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0261008557920907,
+          0.0053106806823999,
+          -0.0059173043829915
+        ],
+        "responses_rep2": [
+          0.0291183114800841,
+          0.0028237792964731,
+          -0.0057453691525773
+        ],
+        "avg_responses": [
+          0.027609583636087398,
+          0.0040672299894365,
+          -0.0058313367677844
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.716142+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "S500T"
+  }
+}

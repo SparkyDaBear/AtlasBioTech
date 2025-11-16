@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "L65C",
+  "protein_change": "p.L65C",
+  "transcript_id": "UNKNOWN",
+  "position": 65,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0286705871973736,
+          0.0177975157921335,
+          0.0145948826132499
+        ],
+        "responses_rep2": [
+          0.0259653117963687,
+          0.0180307530168384,
+          0.0133899323534523
+        ],
+        "avg_responses": [
+          0.02731794949687115,
+          0.01791413440448595,
+          0.0139924074833511
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.684334+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L65C"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "A68P",
+  "protein_change": "p.A68P",
+  "transcript_id": "UNKNOWN",
+  "position": 68,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 82.29447709436641,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0240951201594944,
+          0.0205934759322503,
+          0.0072034144202526
+        ],
+        "responses_rep2": [
+          0.0281523452379985,
+          0.0199876524759875,
+          0.0140254275536417
+        ],
+        "avg_responses": [
+          0.026123732698746453,
+          0.0202905642041189,
+          0.01061442098694715
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.624904+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "A68P"
+  }
+}

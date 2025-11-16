@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "F149A",
+  "protein_change": "p.F149A",
+  "transcript_id": "UNKNOWN",
+  "position": 149,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 77.31488208802584,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0218822839264943,
+          0.0153543664235847,
+          0.0126771074169416
+        ],
+        "responses_rep2": [
+          0.0275687950508067,
+          0.0182771431051989,
+          0.0077784651698563
+        ],
+        "avg_responses": [
+          0.0247255394886505,
+          0.016815754764391802,
+          0.01022778629339895
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.648932+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F149A"
+  }
+}

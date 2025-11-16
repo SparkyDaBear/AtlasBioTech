@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "H129I",
+  "protein_change": "p.H129I",
+  "transcript_id": "UNKNOWN",
+  "position": 129,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 95.4169090041622,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.022992494910815,
+          0.0173025680288194,
+          0.0118284069857655
+        ],
+        "responses_rep2": [
+          0.0242868651060768,
+          0.0152329263225457,
+          0.0111880346698398
+        ],
+        "avg_responses": [
+          0.0236396800084459,
+          0.01626774717568255,
+          0.011508220827802649
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.662505+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "H129I"
+  }
+}

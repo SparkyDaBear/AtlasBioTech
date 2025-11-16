@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "G169D",
+  "protein_change": "p.G169D",
+  "transcript_id": "UNKNOWN",
+  "position": 169,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 99.95212157560442,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0247876673680495,
+          0.0193963875698256,
+          0.01303339289541
+        ],
+        "responses_rep2": [
+          0.0272846243226682,
+          0.019094893699021,
+          0.0129942280868528
+        ],
+        "avg_responses": [
+          0.02603614584535885,
+          0.0192456406344233,
+          0.0130138104911314
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.656355+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "G169D"
+  }
+}

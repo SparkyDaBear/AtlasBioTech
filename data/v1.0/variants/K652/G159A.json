@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "G159A",
+  "protein_change": "p.G159A",
+  "transcript_id": "UNKNOWN",
+  "position": 159,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0227812117801702,
+          0.0170095147475783,
+          0.0119771594136845
+        ],
+        "responses_rep2": [
+          0.0242490045408064,
+          0.0189090690730103,
+          0.0115460831557456
+        ],
+        "avg_responses": [
+          0.0235151081604883,
+          0.0179592919102943,
+          0.01176162128471505
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.655858+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "G159A"
+  }
+}

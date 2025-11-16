@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "N64I",
+  "protein_change": "p.N64I",
+  "transcript_id": "UNKNOWN",
+  "position": 64,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0236696666111754,
+          0.0155972725317541,
+          0.0139084289953168
+        ],
+        "responses_rep2": [
+          0.0251823352006213,
+          0.0166005724475393,
+          0.0106181060481172
+        ],
+        "avg_responses": [
+          0.024426000905898353,
+          0.0160989224896467,
+          0.012263267521717
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.692643+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "N64I"
+  }
+}

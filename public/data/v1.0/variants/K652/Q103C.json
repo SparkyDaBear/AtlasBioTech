@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "Q103C",
+  "protein_change": "p.Q103C",
+  "transcript_id": "UNKNOWN",
+  "position": 103,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0275704179262722,
+          0.0186222290316456,
+          0.0212022007037476
+        ],
+        "responses_rep2": [
+          0.0241928050688258,
+          0.0192243973640295,
+          0.0147955726185287
+        ],
+        "avg_responses": [
+          0.025881611497549,
+          0.01892331319783755,
+          0.01799888666113815
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.698358+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Q103C"
+  }
+}

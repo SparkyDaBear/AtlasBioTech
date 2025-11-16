@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "L451E",
+  "protein_change": "p.L451E",
+  "transcript_id": "UNKNOWN",
+  "position": 451,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 70.3186391015497,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0497352324268546,
+          0.031375563197674,
+          0.0167686195882207
+        ],
+        "responses_rep2": [
+          0.0455183927227075,
+          0.0320657755356757,
+          0.0192160178335697
+        ],
+        "avg_responses": [
+          0.04762681257478105,
+          0.03172066936667485,
+          0.0179923187108952
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.683059+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L451E"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "Q498T",
+  "protein_change": "p.Q498T",
+  "transcript_id": "UNKNOWN",
+  "position": 498,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 57.32214618107105,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0277351649921705,
+          0.0143821208561264,
+          0.0102633174467375
+        ],
+        "responses_rep2": [
+          0.0271100150426287,
+          0.0195698339994673,
+          0.0069602466139106
+        ],
+        "avg_responses": [
+          0.0274225900173996,
+          0.01697597742779685,
+          0.00861178203032405
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.701772+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Q498T"
+  }
+}

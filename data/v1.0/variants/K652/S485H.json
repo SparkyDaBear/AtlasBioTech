@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "S485H",
+  "protein_change": "p.S485H",
+  "transcript_id": "UNKNOWN",
+  "position": 485,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0276611982334789,
+          0.0218774597018506,
+          0.0149034257543195
+        ],
+        "responses_rep2": [
+          0.0301469584754389,
+          0.0209368036921355,
+          0.0171826776321053
+        ],
+        "avg_responses": [
+          0.0289040783544589,
+          0.02140713169699305,
+          0.0160430516932124
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.715349+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S485H"
+  }
+}

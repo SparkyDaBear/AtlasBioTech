@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "T406I",
+  "protein_change": "p.T406I",
+  "transcript_id": "UNKNOWN",
+  "position": 406,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 50.03150899306914,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0320072968485001,
+          0.02044105186387,
+          0.0067682322135643
+        ],
+        "responses_rep2": [
+          0.0262728796380634,
+          0.0134011937122796,
+          0.0106423499559675
+        ],
+        "avg_responses": [
+          0.02914008824328175,
+          0.0169211227880748,
+          0.0087052910847659
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.721667+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "T406I"
+  }
+}

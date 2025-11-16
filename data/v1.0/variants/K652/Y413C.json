@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "Y413C",
+  "protein_change": "p.Y413C",
+  "transcript_id": "UNKNOWN",
+  "position": 413,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 48.34210362647047,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0358612115308629,
+          0.015821022395187,
+          0.0128579879349394
+        ],
+        "responses_rep2": [
+          0.0260688264083872,
+          0.0177317705948632,
+          0.0108189377544626
+        ],
+        "avg_responses": [
+          0.03096501896962505,
+          0.0167763964950251,
+          0.011838462844701001
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.739203+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "Y413C"
+  }
+}

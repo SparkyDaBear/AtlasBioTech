@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "E279N",
+  "protein_change": "p.E279N",
+  "transcript_id": "UNKNOWN",
+  "position": 279,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0233609971805871,
+          0.0210979686271103,
+          0.0125797579082538
+        ],
+        "responses_rep2": [
+          0.0226613589056344,
+          0.0265851903100493,
+          0.0122950417000129
+        ],
+        "avg_responses": [
+          0.02301117804311075,
+          0.0238415794685798,
+          0.01243739980413335
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.643018+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "E279N"
+  }
+}

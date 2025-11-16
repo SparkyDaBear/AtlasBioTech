@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "R161Q",
+  "protein_change": "p.R161Q",
+  "transcript_id": "UNKNOWN",
+  "position": 161,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0264539869839562,
+          0.0210708354785219,
+          0.014997573623508
+        ],
+        "responses_rep2": [
+          0.0262042110527158,
+          0.016205473120716,
+          0.0140487054763734
+        ],
+        "avg_responses": [
+          0.026329099018336,
+          0.01863815429961895,
+          0.014523139549940701
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.703412+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "R161Q"
+  }
+}

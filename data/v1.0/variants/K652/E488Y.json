@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "E488Y",
+  "protein_change": "p.E488Y",
+  "transcript_id": "UNKNOWN",
+  "position": 488,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 27.836151620747895,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0285251060873007,
+          0.0137506715203812,
+          0.0096053502868246
+        ],
+        "responses_rep2": [
+          0.031020329754926,
+          0.0132009209988059,
+          0.0044517797541165
+        ],
+        "avg_responses": [
+          0.02977271792111335,
+          0.01347579625959355,
+          0.007028565020470549
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.646334+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "E488Y"
+  }
+}

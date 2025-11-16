@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "F72M",
+  "protein_change": "p.F72M",
+  "transcript_id": "UNKNOWN",
+  "position": 72,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0282807559876963,
+          0.0190727177593387,
+          0.0170553380629432
+        ],
+        "responses_rep2": [
+          0.0285962567973653,
+          0.0183866461987675,
+          0.0167847213114033
+        ],
+        "avg_responses": [
+          0.028438506392530802,
+          0.0187296819790531,
+          0.016920029687173252
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.652785+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F72M"
+  }
+}

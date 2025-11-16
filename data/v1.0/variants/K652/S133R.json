@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "S133R",
+  "protein_change": "p.S133R",
+  "transcript_id": "UNKNOWN",
+  "position": 133,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0286155582101841,
+          0.0221061189149301,
+          0.019439073118669
+        ],
+        "responses_rep2": [
+          0.020993092208027,
+          0.0227882630478523,
+          0.0167989374833995
+        ],
+        "avg_responses": [
+          0.024804325209105547,
+          0.022447190981391203,
+          0.01811900530103425
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.708922+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S133R"
+  }
+}

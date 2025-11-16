@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "N177D",
+  "protein_change": "p.N177D",
+  "transcript_id": "UNKNOWN",
+  "position": 177,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 98.86129846928966,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.029495396063007,
+          0.021378478436405,
+          0.0158239325279056
+        ],
+        "responses_rep2": [
+          0.02816231283236,
+          0.0158018818861947,
+          0.0128668200725154
+        ],
+        "avg_responses": [
+          0.0288288544476835,
+          0.01859018016129985,
+          0.014345376300210499
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.690818+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "N177D"
+  }
+}

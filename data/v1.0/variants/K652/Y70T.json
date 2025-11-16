@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "Y70T",
+  "protein_change": "p.Y70T",
+  "transcript_id": "UNKNOWN",
+  "position": 70,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 49.9482715935905,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0284959005798986,
+          0.0187322007622549,
+          0.0124373442775234
+        ],
+        "responses_rep2": [
+          0.0272015558229018,
+          0.0118336359543604,
+          0.0085939523074963
+        ],
+        "avg_responses": [
+          0.0278487282014002,
+          0.01528291835830765,
+          0.010515648292509849
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.740660+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Y70T"
+  }
+}

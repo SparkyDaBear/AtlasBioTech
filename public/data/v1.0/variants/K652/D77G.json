@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "D77G",
+  "protein_change": "p.D77G",
+  "transcript_id": "UNKNOWN",
+  "position": 77,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 64.64483689554444,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0270920322295332,
+          0.0188016996304367,
+          0.0142649714548593
+        ],
+        "responses_rep2": [
+          0.0257545841116165,
+          0.0123727767965189,
+          0.0073097548289682
+        ],
+        "avg_responses": [
+          0.026423308170574852,
+          0.015587238213477801,
+          0.010787363141913751
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.637427+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "D77G"
+  }
+}

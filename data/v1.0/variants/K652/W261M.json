@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "W261M",
+  "protein_change": "p.W261M",
+  "transcript_id": "UNKNOWN",
+  "position": 261,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 35.89632724977003,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0288189309467162,
+          0.016647203944252,
+          0.0093778500901175
+        ],
+        "responses_rep2": [
+          0.0267527812864135,
+          0.0122966012122533,
+          0.0058190191582778
+        ],
+        "avg_responses": [
+          0.027785856116564853,
+          0.014471902578252649,
+          0.0075984346241976496
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.732091+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "W261M"
+  }
+}

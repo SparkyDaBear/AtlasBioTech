@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "Y115C",
+  "protein_change": "p.Y115C",
+  "transcript_id": "UNKNOWN",
+  "position": 115,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 56.10304273655096,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0293557576988985,
+          0.0156960525154093,
+          0.0133294199722864
+        ],
+        "responses_rep2": [
+          0.0261212708593964,
+          0.0151489847822497,
+          0.0091849175870117
+        ],
+        "avg_responses": [
+          0.02773851427914745,
+          0.0154225186488295,
+          0.01125716877964905
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.733902+00:00",
+    "version": "1.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "Y115C"
+  }
+}

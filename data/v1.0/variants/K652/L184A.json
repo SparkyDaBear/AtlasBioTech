@@ -1,0 +1,53 @@
+{
+  "gene": "K652",
+  "variant_string": "L184A",
+  "protein_change": "p.L184A",
+  "transcript_id": "UNKNOWN",
+  "position": 184,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "TestDrug"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "TestDrug",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.0276670396346536,
+          0.0191506554724211,
+          0.0125293978654679
+        ],
+        "responses_rep2": [
+          0.029332460367722,
+          0.0201370867702827,
+          0.0181791697553676
+        ],
+        "avg_responses": [
+          0.0284997500011878,
+          0.0196438711213519,
+          0.01535428381041775
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-11-16T19:32:18.678279+00:00",
+    "version": "1.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L184A"
+  }
+}
