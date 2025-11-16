@@ -15,7 +15,7 @@ const VariantCard = () => {
       try {
         setLoading(true)
         // In a real implementation, this would load from /data/v1.0/variants/{gene}/{variant}.json
-        const response = await fetch(`/data/v1.0/variants/${gene}/${variant}.json`)
+        const response = await fetch(`${import.meta.env.BASE_URL}data/v1.0/variants/${gene}/${variant}.json`)
         if (!response.ok) {
           throw new Error('Variant not found')
         }

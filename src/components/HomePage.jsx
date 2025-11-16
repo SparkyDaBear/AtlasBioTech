@@ -12,7 +12,7 @@ const HomePage = () => {
 
   useEffect(() => {
     // Load search index to get stats
-    fetch('/data/v1.0/search_index.json')
+    fetch(`${import.meta.env.BASE_URL}data/v1.0/search_index.json`)
       .then(res => res.json())
       .then(data => setStats(data.stats))
       .catch(err => console.error('Error loading stats:', err))

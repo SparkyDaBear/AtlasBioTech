@@ -11,10 +11,10 @@ const DrugTable = () => {
 
   useEffect(() => {
     // Load drug data from search index
-    fetch('/data/v1.0/search_index.json')
+    fetch(`${import.meta.env.BASE_URL}data/v1.0/search_index.json`)
       .then(res => res.json())
       .then(data => {
-        setRowData(data.drugs || [])
+        setDrugs(data.drugs)
         setLoading(false)
       })
       .catch(err => {
