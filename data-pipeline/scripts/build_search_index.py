@@ -7,6 +7,7 @@ Creates searchable index from processed variant and drug data.
 import os
 import sys
 import json
+import pandas as pd
 from pathlib import Path
 from datetime import datetime, timezone
 import logging
@@ -15,8 +16,98 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+def process_csv_data(csv_path):
+    """Extract genes, drugs, and variant info from CSV data."""
+    if not csv_path.exists():
+        logger.warning(f"CSV file not found: {csv_path}")
+        return {}, {}, []
+    
+    logger.info(f"Processing CSV data from: {csv_path}")
+    
+    try:
+        # Load CSV data
+        df = pd.read_csv(csv_path)
+        
+        # Extract unique drugs
+        drugs = {}
+        unique_drugs = df['Drug'].unique() if 'Drug' in df.columns else []
+        
+        for drug in unique_drugs:
+            drug_variants = df[df['Drug'] == drug]
+            variant_count = len(drug_variants)
+            
+            # Create drug entry with basic information
+            drugs[drug] = {
+                'name': drug,
+                'synonyms': [],
+                'fda_status': 'Investigational',  # Default status
+                'target_class': 'Unknown',
+                'mechanism': 'Unknown',
+                'variant_count': variant_count
+            }
+            
+            # Add known drug information
+            if drug == 'Imatinib':
+                drugs[drug].update({
+                    'synonyms': ['Gleevec', 'STI571'],
+                    'fda_status': 'Approved',
+                    'target_class': 'Tyrosine kinase inhibitor',
+                    'mechanism': 'BCR-ABL, KIT, PDGFR inhibitor'
+                })
+            elif drug == 'Dasatinib':
+                drugs[drug].update({
+                    'synonyms': ['Sprycel', 'BMS-354825'],
+                    'fda_status': 'Approved',
+                    'target_class': 'Tyrosine kinase inhibitor',
+                    'mechanism': 'BCR-ABL, SRC, KIT inhibitor'
+                })
+            elif drug == 'Nilotinib':
+                drugs[drug].update({
+                    'synonyms': ['Tasigna', 'AMN107'],
+                    'fda_status': 'Approved',
+                    'target_class': 'Tyrosine kinase inhibitor',
+                    'mechanism': 'BCR-ABL inhibitor'
+                })
+        
+        # Extract unique genes
+        genes = {}
+        unique_genes = df['Gene'].unique() if 'Gene' in df.columns else []
+        
+        for gene in unique_genes:
+            gene_variants = df[df['Gene'] == gene]
+            variant_count = len(gene_variants)
+            
+            genes[gene] = {
+                'symbol': gene,
+                'name': f'{gene} gene',
+                'synonyms': [],
+                'chromosome': '',
+                'variant_count': variant_count
+            }
+        
+        # Create variant entries for search
+        variants = []
+        for _, row in df.iterrows():
+            if pd.notna(row.get('ref_aa')) and pd.notna(row.get('alt_aa')) and pd.notna(row.get('protein_start')):
+                variant_id = f"{row.get('ref_aa', '')}{row.get('protein_start', '')}{row.get('alt_aa', '')}"
+                variants.append({
+                    'id': variant_id,
+                    'gene': row.get('Gene', ''),
+                    'drug': row.get('Drug', ''),
+                    'ref_aa': row.get('ref_aa', ''),
+                    'alt_aa': row.get('alt_aa', ''),
+                    'position': int(row.get('protein_start', 0))
+                })
+        
+        logger.info(f"Processed {len(genes)} genes, {len(drugs)} drugs, {len(variants)} variants from CSV")
+        return genes, drugs, variants
+        
+    except Exception as e:
+        logger.error(f"Error processing CSV: {str(e)}")
+        return {}, {}, []
+
 def collect_genes_from_variants(variants_dir):
-    """Extract gene information from variant files."""
+    """Extract gene information from variant files (legacy)."""
     genes = {}
     drugs = {}
     variants = []
@@ -82,68 +173,59 @@ def main():
     """Main search index building routine."""
     project_root = Path(__file__).parent.parent.parent
     variants_dir = project_root / "public" / "data" / "v1.0" / "variants"
+    csv_path = project_root / "data" / "raw" / "k562_asc_screen_ngr_051024.csv"
     output_file = project_root / "public" / "data" / "v1.0" / "search_index.json"
     
     logger.info("Building search index...")
     
-    # For now, create a basic search index with default drugs
-    default_drugs = [
-        {
-            'name': 'Imatinib',
-            'synonyms': ['Gleevec', 'STI571'],
-            'fda_status': 'Approved',
-            'target_class': 'Tyrosine kinase inhibitor',
-            'mechanism': 'BCR-ABL, KIT, PDGFR inhibitor',
-            'variant_count': 0
-        },
-        {
-            'name': 'Dasatinib',
-            'synonyms': ['Sprycel', 'BMS-354825'],
-            'fda_status': 'Approved',
-            'target_class': 'Tyrosine kinase inhibitor',
-            'mechanism': 'BCR-ABL, SRC family inhibitor',
-            'variant_count': 0
-        },
-        {
-            'name': 'Nilotinib',
-            'synonyms': ['Tasigna', 'AMN107'],
-            'fda_status': 'Approved',
-            'target_class': 'Tyrosine kinase inhibitor',
-            'mechanism': 'BCR-ABL inhibitor',
-            'variant_count': 0
+    # First try to process CSV data
+    genes, drugs, variants = process_csv_data(csv_path)
+    
+    # If CSV processing didn't yield results, fall back to variant files
+    if not genes and not drugs:
+        logger.info("No CSV data found, falling back to variant files...")
+        genes, drugs, variants = collect_genes_from_variants(variants_dir)
+    
+    # Add default drugs if none found
+    if not drugs:
+        logger.info("No drugs found, adding defaults...")
+        drugs = {
+            'Imatinib': {
+                'name': 'Imatinib',
+                'synonyms': ['Gleevec', 'STI571'],
+                'fda_status': 'Approved',
+                'target_class': 'Tyrosine kinase inhibitor',
+                'mechanism': 'BCR-ABL, KIT, PDGFR inhibitor',
+                'variant_count': 0
+            },
+            'Dasatinib': {
+                'name': 'Dasatinib',
+                'synonyms': ['Sprycel', 'BMS-354825'],
+                'fda_status': 'Approved',
+                'target_class': 'Tyrosine kinase inhibitor',
+                'mechanism': 'BCR-ABL, SRC, KIT inhibitor',
+                'variant_count': 0
+            },
+            'Nilotinib': {
+                'name': 'Nilotinib',
+                'synonyms': ['Tasigna', 'AMN107'],
+                'fda_status': 'Approved',
+                'target_class': 'Tyrosine kinase inhibitor',
+                'mechanism': 'BCR-ABL inhibitor',
+                'variant_count': 0
+            }
         }
-    ]
-    
-    # Collect genes and drugs if variants exist
-    genes_data, drugs_data, variants_data = collect_genes_from_variants(variants_dir)
-    
-    # Merge with default FDA approved drugs, keeping higher variant counts
-    all_drugs = list(default_drugs)
-    for drug_name, drug_info in drugs_data.items():
-        # Check if this drug already exists in default_drugs
-        existing_drug = None
-        for i, default_drug in enumerate(all_drugs):
-            if default_drug['name'] == drug_name:
-                existing_drug = i
-                break
-        
-        if existing_drug is not None:
-            # Update variant count for existing drug
-            all_drugs[existing_drug]['variant_count'] = drug_info['variant_count']
-        else:
-            # Add new drug from data
-            all_drugs.append(drug_info)
     
     # Build final search index
     search_index = {
-        'genes': list(genes_data.values()),
-        'drugs': all_drugs,
-        'variants': variants_data,
+        'genes': list(genes.values()),
+        'drugs': list(drugs.values()),
+        'variants': variants,
         'lastUpdate': datetime.now(timezone.utc).isoformat(),
         'stats': {
-            'total_genes': len(genes_data),
-            'total_drugs': len(all_drugs),
-            'total_variants': len(variants_data)
+            'total_genes': len(genes),
+            'total_drugs': len(drugs),
+            'total_variants': len(variants)
         }
     }
     
@@ -155,7 +237,7 @@ def main():
         json.dump(search_index, f, indent=2, ensure_ascii=False)
     
     logger.info(f"Search index saved: {output_file}")
-    logger.info(f"Index contains: {len(genes_data)} genes, {len(default_drugs)} drugs, {len(variants_data)} variants")
+    logger.info(f"Index contains: {len(genes)} genes, {len(drugs)} drugs, {len(variants)} variants")
 
 if __name__ == "__main__":
     main()
