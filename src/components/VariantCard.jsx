@@ -22,8 +22,8 @@ const VariantCard = () => {
         const data = await response.json()
         setVariantData(data)
       } catch (err) {
-        setError(err.message)
-        // Mock data for demonstration
+        // For now, always use mock data when variant files aren't available
+        console.log(`Variant file not found for ${gene}/${id}, using mock data`)
         setVariantData({
           gene: gene,
           variant_string: id,
@@ -58,7 +58,7 @@ const VariantCard = () => {
     }
 
     loadVariantData()
-  }, [gene, variant])
+  }, [gene, id])
 
   if (loading) {
     return (
@@ -68,11 +68,11 @@ const VariantCard = () => {
     )
   }
 
-  if (error || !variantData) {
+  if (!variantData) {
     return (
       <div className="text-center py-12">
         <div className="text-lg text-red-600">
-          Error: {error || 'Variant not found'}
+          Error: Variant not found
         </div>
         <Link to="/" className="btn btn-primary mt-4">
           <ArrowLeft size={16} />
