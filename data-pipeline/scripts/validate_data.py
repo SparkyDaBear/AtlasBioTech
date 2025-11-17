@@ -136,7 +136,7 @@ def main():
     validation_passed = True
     
     # Validate existing search index if it exists
-    search_index_path = project_root / "data" / "v1.0" / "search_index.json"
+    search_index_path = project_root / "public" / "data" / "v1.0" / "search_index.json"
     if search_index_path.exists():
         logger.info("Validating existing search index...")
         with open(search_index_path, 'r') as f:

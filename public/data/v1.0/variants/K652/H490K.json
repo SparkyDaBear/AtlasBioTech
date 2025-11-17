@@ -6,12 +6,12 @@
   "position": 490,
   "consequence": "missense_variant",
   "drugs_tested": [
-    "TestDrug"
+    "Imatinib"
   ],
   "model_system": "K562 cells",
   "ic50_values": [
     {
-      "drug": "TestDrug",
+      "drug": "Imatinib",
       "ic50": 25.048240139478985,
       "replicate_count": 2,
       "dose_response_data": {
@@ -44,7 +44,7 @@
   "publication_doi": "",
   "plots": [],
   "metadata": {
-    "date_created": "2025-11-16T19:32:18.664569+00:00",
+    "date_created": "2025-11-17T01:19:21.281235+00:00",
     "version": "1.0",
     "is_synonymous": true,
     "variant_type": "mnv",

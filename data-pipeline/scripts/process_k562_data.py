@@ -185,7 +185,7 @@ def main():
     """Main K562 data processing routine."""
     project_root = Path(__file__).parent.parent.parent
     data_raw_dir = project_root / "data" / "raw"
-    data_output_dir = project_root / "data" / "v1.0"
+    data_output_dir = project_root / "public" / "data" / "v1.0"
     
     logger.info("Starting K562 data processing...")
     

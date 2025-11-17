@@ -54,9 +54,9 @@ jobs:
       with:
         name: processed-data
         path: |
-          data/v1.0/search_index.json
-          data/v1.0/variants/
-          data/v1.0/assets/
+          public/data/v1.0/search_index.json
+          public/data/v1.0/variants/
+          public/data/v1.0/assets/
         retention-days: 1
 
   # Build and deploy job
@@ -76,11 +76,6 @@ jobs:
       with:
         name: processed-data
         path: ./
-    
-    - name: Copy data to public directory
-      run: |
-        mkdir -p public/data
-        cp -r data/v1.0 public/data/
     
     - name: Setup Node.js
       uses: actions/setup-node@v4

@@ -81,8 +81,8 @@ def collect_genes_from_variants(variants_dir):
 def main():
     """Main search index building routine."""
     project_root = Path(__file__).parent.parent.parent
-    variants_dir = project_root / "data" / "v1.0" / "variants"
-    output_file = project_root / "data" / "v1.0" / "search_index.json"
+    variants_dir = project_root / "public" / "data" / "v1.0" / "variants"
+    output_file = project_root / "public" / "data" / "v1.0" / "search_index.json"
     
     logger.info("Building search index...")
     
