@@ -18,7 +18,7 @@
       "fda_status": "Approved",
       "target_class": "Tyrosine kinase inhibitor",
       "mechanism": "BCR-ABL, KIT, PDGFR inhibitor",
-      "variant_count": 0
+      "variant_count": 3136
     },
     {
       "name": "Dasatinib",
@@ -41,14 +41,6 @@
       "target_class": "Tyrosine kinase inhibitor",
       "mechanism": "BCR-ABL inhibitor",
       "variant_count": 0
-    },
-    {
-      "name": "TestDrug",
-      "synonyms": [],
-      "fda_status": "Investigational",
-      "target_class": "Unknown",
-      "mechanism": "Unknown",
-      "variant_count": 3136
     }
   ],
   "variants": [
@@ -25141,10 +25133,10 @@
       "searchable_text": "K652 R483Q p.R483Q"
     }
   ],
-  "lastUpdate": "2025-11-16T19:41:30.537942+00:00",
+  "lastUpdate": "2025-11-17T00:37:09.292574+00:00",
   "stats": {
     "total_genes": 1,
-    "total_drugs": 4,
+    "total_drugs": 3,
     "total_variants": 3136
   }
 }
