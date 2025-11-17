@@ -47,9 +47,17 @@ def process_heatmap_data(csv_path: str) -> Dict[str, Any]:
     df_canonical = df[df['alt_aa'].isin(canonical_aa)].copy()
     logger.info(f"Filtered to {len(df_canonical)} variants with canonical amino acids")
     
-    # Calculate mean netgr values for low dose
+    # Calculate mean netgr values for all dose levels
     df_canonical['mean_netgr_low'] = (
         df_canonical['netgr_obs_rep1.low'] + df_canonical['netgr_obs_rep2.low']
+    ) / 2
+    
+    df_canonical['mean_netgr_medium'] = (
+        df_canonical['netgr_obs_rep1.medium'] + df_canonical['netgr_obs_rep2.medium']
+    ) / 2
+    
+    df_canonical['mean_netgr_high'] = (
+        df_canonical['netgr_obs_rep1.high'] + df_canonical['netgr_obs_rep2.high']
     ) / 2
     
     # Get position range
@@ -64,9 +72,11 @@ def process_heatmap_data(csv_path: str) -> Dict[str, Any]:
     position_aa_matrix = {}
     variant_lookup = {}
     
-    # Group by position and amino acid
+    # Group by position and amino acid for all dose levels
     grouped = df_canonical.groupby(['protein_start', 'alt_aa']).agg({
         'mean_netgr_low': ['mean', 'std', 'count'],
+        'mean_netgr_medium': ['mean', 'std', 'count'],
+        'mean_netgr_high': ['mean', 'std', 'count'],
         'ref_aa': 'first',
         'Gene': 'first',
         'Drug': 'first'
@@ -85,28 +95,51 @@ def process_heatmap_data(csv_path: str) -> Dict[str, Any]:
         if position_str not in position_aa_matrix:
             position_aa_matrix[position_str] = {}
         
-        # Store the mean value for this position-AA combination
-        mean_value = float(row['mean_netgr_low_mean'])
-        std_value = float(row['mean_netgr_low_std']) if not pd.isna(row['mean_netgr_low_std']) else 0
-        count = int(row['mean_netgr_low_count'])
+        # Store the mean values for this position-AA combination across all doses
+        low_value = float(row['mean_netgr_low_mean'])
+        low_std = float(row['mean_netgr_low_std']) if not pd.isna(row['mean_netgr_low_std']) else 0
+        low_count = int(row['mean_netgr_low_count'])
+        
+        medium_value = float(row['mean_netgr_medium_mean'])
+        medium_std = float(row['mean_netgr_medium_std']) if not pd.isna(row['mean_netgr_medium_std']) else 0
+        medium_count = int(row['mean_netgr_medium_count'])
+        
+        high_value = float(row['mean_netgr_high_mean'])
+        high_std = float(row['mean_netgr_high_std']) if not pd.isna(row['mean_netgr_high_std']) else 0
+        high_count = int(row['mean_netgr_high_count'])
+        
         ref_aa = row['ref_aa_first']
 
         position_aa_matrix[position_str][aa] = {
-            'value': mean_value,
-            'std': std_value,
-            'count': count,
+            'low': {
+                'value': low_value,
+                'std': low_std,
+                'count': low_count
+            },
+            'medium': {
+                'value': medium_value,
+                'std': medium_std,
+                'count': medium_count
+            },
+            'high': {
+                'value': high_value,
+                'std': high_std,
+                'count': high_count
+            },
             'ref_aa': ref_aa
         }
         
-        # Create variant lookup for navigation
+        # Create variant lookup for navigation (using low dose as default)
         variant_id = f"{ref_aa}{position}{aa}"
         variant_lookup[f"{position}_{aa}"] = {
             'id': variant_id,
             'position': int(position),  # Convert to Python int
             'ref_aa': ref_aa,
             'alt_aa': aa,
-            'value': mean_value,
-            'count': int(count)  # Convert to Python int
+            'low_value': low_value,
+            'medium_value': medium_value,
+            'high_value': high_value,
+            'count': int(low_count)  # Convert to Python int
         }
     
     # Fill in missing combinations with null values
@@ -117,19 +150,28 @@ def process_heatmap_data(csv_path: str) -> Dict[str, Any]:
         for aa in canonical_aa:
             if aa not in position_aa_matrix[position_str]:
                 position_aa_matrix[position_str][aa] = {
-                    'value': None,
-                    'std': None,
-                    'count': 0,
+                    'low': {'value': None, 'std': None, 'count': 0},
+                    'medium': {'value': None, 'std': None, 'count': 0},
+                    'high': {'value': None, 'std': None, 'count': 0},
                     'ref_aa': None
-                }    # Calculate global statistics for color scaling
-    all_values = []
+                }    # Calculate global statistics for color scaling across all doses
+    all_values_low = []
+    all_values_medium = []
+    all_values_high = []
+    
     for pos_data in position_aa_matrix.values():
         for aa_data in pos_data.values():
-            if aa_data['value'] is not None:
-                all_values.append(aa_data['value'])
+            if aa_data['low']['value'] is not None:
+                all_values_low.append(aa_data['low']['value'])
+            if aa_data['medium']['value'] is not None:
+                all_values_medium.append(aa_data['medium']['value'])
+            if aa_data['high']['value'] is not None:
+                all_values_high.append(aa_data['high']['value'])
     
-    global_min = min(all_values) if all_values else 0
-    global_max = max(all_values) if all_values else 1
+    # Global min/max across all doses for consistent color scaling
+    all_values_combined = all_values_low + all_values_medium + all_values_high
+    global_min = min(all_values_combined) if all_values_combined else 0
+    global_max = max(all_values_combined) if all_values_combined else 1
     
     # Create heat map data structure
     heatmap_data = {
@@ -147,13 +189,28 @@ def process_heatmap_data(csv_path: str) -> Dict[str, Any]:
             'drug': df_canonical['Drug'].iloc[0] if len(df_canonical) > 0 else None,
             'value_range': {
                 'min': float(global_min),
-                'max': float(global_max)
+                'max': float(global_max),
+                'low': {
+                    'min': float(min(all_values_low)) if all_values_low else 0,
+                    'max': float(max(all_values_low)) if all_values_low else 1
+                },
+                'medium': {
+                    'min': float(min(all_values_medium)) if all_values_medium else 0,
+                    'max': float(max(all_values_medium)) if all_values_medium else 1
+                },
+                'high': {
+                    'min': float(min(all_values_high)) if all_values_high else 0,
+                    'max': float(max(all_values_high)) if all_values_high else 1
+                }
             },
-            'description': 'Mean netgr_obs values (low dose) by protein position and amino acid substitution',
+            'description': 'Mean netgr_obs values by protein position and amino acid substitution across all dose levels',
+            'dose_levels': ['low', 'medium', 'high'],
             'data_columns': {
-                'value': 'Mean of netgr_obs_rep1.low and netgr_obs_rep2.low',
-                'std': 'Standard deviation',
-                'count': 'Number of replicates/measurements',
+                'low': 'Mean of netgr_obs_rep1.low and netgr_obs_rep2.low',
+                'medium': 'Mean of netgr_obs_rep1.medium and netgr_obs_rep2.medium',
+                'high': 'Mean of netgr_obs_rep1.high and netgr_obs_rep2.high',
+                'std': 'Standard deviation for each dose level',
+                'count': 'Number of replicates/measurements for each dose level',
                 'ref_aa': 'Reference (wild-type) amino acid at this position'
             }
         },
@@ -162,15 +219,25 @@ def process_heatmap_data(csv_path: str) -> Dict[str, Any]:
         'variant_lookup': variant_lookup
     }
     
-    # Count total data points
-    data_points = sum(
+    # Count total data points across all doses
+    data_points_low = sum(
         1 for pos_data in position_aa_matrix.values() 
         for aa_data in pos_data.values() 
-        if aa_data['value'] is not None
+        if aa_data['low']['value'] is not None
+    )
+    data_points_medium = sum(
+        1 for pos_data in position_aa_matrix.values() 
+        for aa_data in pos_data.values() 
+        if aa_data['medium']['value'] is not None
+    )
+    data_points_high = sum(
+        1 for pos_data in position_aa_matrix.values() 
+        for aa_data in pos_data.values() 
+        if aa_data['high']['value'] is not None
     )
     
-    logger.info(f"Generated heat map matrix: {len(all_positions)} positions × {len(canonical_aa)} amino acids")
-    logger.info(f"Total data points with values: {data_points}")
+    logger.info(f"Generated heat map matrix: {len(all_positions)} positions × {len(canonical_aa)} amino acids × 3 dose levels")
+    logger.info(f"Total data points - Low: {data_points_low}, Medium: {data_points_medium}, High: {data_points_high}")
     
     return heatmap_data
 

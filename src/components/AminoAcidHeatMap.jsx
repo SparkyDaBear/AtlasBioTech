@@ -9,6 +9,7 @@ const AminoAcidHeatMap = () => {
   const [heatmapData, setHeatmapData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedDose, setSelectedDose] = useState('low'); // Default to low dose
 
   // Load heat map data
   useEffect(() => {
@@ -76,12 +77,12 @@ const AminoAcidHeatMap = () => {
       .range([0, height])
       .padding(0.05);
 
-    // Get all non-null values for color scale
+    // Get all non-null values for color scale (for the selected dose)
     const allValues = [];
     Object.values(heatmapData.matrix).forEach(posData => {
       Object.values(posData).forEach(aaData => {
-        if (aaData.value !== null && aaData.value !== undefined) {
-          allValues.push(aaData.value);
+        if (aaData[selectedDose] && aaData[selectedDose].value !== null && aaData[selectedDose].value !== undefined) {
+          allValues.push(aaData[selectedDose].value);
         }
       });
     });
@@ -110,7 +111,8 @@ const AminoAcidHeatMap = () => {
       aminoAcids.forEach(aa => {
         const positionStr = position.toString(); // Convert to string for matrix lookup
         const cellData = heatmapData.matrix[positionStr] && heatmapData.matrix[positionStr][aa];
-        const value = cellData ? cellData.value : null;
+        const doseData = cellData ? cellData[selectedDose] : null;
+        const value = doseData ? doseData.value : null;
 
         const cell = g.append("rect")
           .attr("x", xScale(position))
@@ -129,14 +131,16 @@ const AminoAcidHeatMap = () => {
 
               const refAa = cellData.ref_aa || '?';
               const variant = `${refAa}${position}${aa}`;
+              const doseLabel = selectedDose.charAt(0).toUpperCase() + selectedDose.slice(1);
               
               const tooltipContent = `
                 <div style="max-width: 200px;">
                   <strong>Position ${position}</strong><br/>
                   <strong>Variant:</strong> ${variant}<br/>
+                  <strong>Dose:</strong> ${doseLabel}<br/>
                   <strong>Mean netGR:</strong> ${value.toFixed(3)}<br/>
-                  <strong>Count:</strong> ${cellData.count}<br/>
-                  ${cellData.std ? `<strong>Std Dev:</strong> ${cellData.std.toFixed(3)}<br/>` : ''}
+                  <strong>Count:</strong> ${doseData.count}<br/>
+                  ${doseData.std ? `<strong>Std Dev:</strong> ${doseData.std.toFixed(3)}<br/>` : ''}
                   <em style="color: #ccc;">Click to view variant</em>
                 </div>
               `;
@@ -228,7 +232,7 @@ const AminoAcidHeatMap = () => {
       .attr("text-anchor", "middle")
       .style("font-size", "13px")
       .style("fill", "#666")
-      .text(`Mean netGR (Low Dose) - ${heatmapData.metadata.drug} Response`);
+      .text(`Mean netGR (${selectedDose.charAt(0).toUpperCase() + selectedDose.slice(1)} Dose) - ${heatmapData.metadata.drug} Response`);
 
     // Add data summary
     svg.append("text")
@@ -310,7 +314,7 @@ const AminoAcidHeatMap = () => {
       d3.select('body').selectAll('.heatmap-tooltip').remove();
     };
     
-  }, [heatmapData, loading, error, navigate]);
+  }, [heatmapData, loading, error, navigate, selectedDose]);
 
   // Cleanup effect for tooltips
   useEffect(() => {
@@ -364,6 +368,42 @@ const AminoAcidHeatMap = () => {
           across protein positions and amino acid substitutions. Each cell represents the mean 
           netGR value for a specific position-substitution combination.
         </p>
+        
+        {/* Dosage Toggle Controls */}
+        <div className="dose-controls" style={{ marginBottom: '1rem' }}>
+          <span style={{ marginRight: '1rem', fontWeight: 'bold' }}>Dosage Level:</span>
+          {['low', 'medium', 'high'].map((dose) => (
+            <button
+              key={dose}
+              onClick={() => setSelectedDose(dose)}
+              style={{
+                padding: '0.5rem 1rem',
+                margin: '0 0.25rem',
+                border: '2px solid #007bff',
+                borderRadius: '0.25rem',
+                backgroundColor: selectedDose === dose ? '#007bff' : 'white',
+                color: selectedDose === dose ? 'white' : '#007bff',
+                cursor: 'pointer',
+                fontWeight: 'bold',
+                textTransform: 'capitalize',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                if (selectedDose !== dose) {
+                  e.target.style.backgroundColor = '#f8f9fa';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (selectedDose !== dose) {
+                  e.target.style.backgroundColor = 'white';
+                }
+              }}
+            >
+              {dose}
+            </button>
+          ))}
+        </div>
+        
         <div className="heatmap-stats">
           <span className="stat">
             <strong>{heatmapData?.metadata.total_variants}</strong> variants analyzed
@@ -377,6 +417,9 @@ const AminoAcidHeatMap = () => {
           <span className="stat">
             Gene: <strong>{heatmapData?.metadata.gene}</strong>
           </span>
+          <span className="stat">
+            Dose: <strong style={{ color: '#007bff' }}>{selectedDose.charAt(0).toUpperCase() + selectedDose.slice(1)}</strong>
+          </span>
         </div>
       </div>
       <div className="heatmap-visualization">
@@ -384,8 +427,9 @@ const AminoAcidHeatMap = () => {
       </div>
       <div className="heatmap-footer">
         <p className="heatmap-note">
-          Heat map shows mean network growth rate (netGR) values at low dose across protein positions 
-          (N-terminus to C-terminus) and amino acid substitutions. Click on colored cells to view specific variant details.
+          Heat map shows mean network growth rate (netGR) values at {selectedDose} dose across protein positions 
+          (N-terminus to C-terminus) and amino acid substitutions. Use the dosage buttons above to switch between 
+          low, medium, and high dose levels. Click on colored cells to view specific variant details.
         </p>
       </div>
     </div>
