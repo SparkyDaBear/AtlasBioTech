@@ -4,7 +4,7 @@ import { ArrowLeft, ExternalLink, Download } from 'lucide-react'
 import StructureViewer from './StructureViewer'
 
 const VariantCard = () => {
-  const { gene, variant } = useParams()
+  const { gene, id } = useParams()
   const [variantData, setVariantData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -14,8 +14,8 @@ const VariantCard = () => {
     const loadVariantData = async () => {
       try {
         setLoading(true)
-        // In a real implementation, this would load from /data/v1.0/variants/{gene}/{variant}.json
-        const response = await fetch(`${import.meta.env.BASE_URL}data/v1.0/variants/${gene}/${variant}.json`)
+        // In a real implementation, this would load from /data/v1.0/variants/{gene}/{id}.json
+        const response = await fetch(`${import.meta.env.BASE_URL}data/v1.0/variants/${gene}/${id}.json`)
         if (!response.ok) {
           throw new Error('Variant not found')
         }
@@ -26,8 +26,8 @@ const VariantCard = () => {
         // Mock data for demonstration
         setVariantData({
           gene: gene,
-          variant_string: variant,
-          protein_change: `p.${variant}`,
+          variant_string: id,
+          protein_change: `p.${id}`,
           transcript_id: 'ENST00000275493',
           position: 858,
           consequence: 'missense_variant',
