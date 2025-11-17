@@ -116,9 +116,7 @@ const HomePage = () => {
           <Link to="/drugs" className="btn btn-primary">
             Browse FDA Approved Drugs
           </Link>
-          <Link to="/compare" className="btn btn-secondary">
-            Compare Variants
-          </Link>
+
         </div>
       </div>
 

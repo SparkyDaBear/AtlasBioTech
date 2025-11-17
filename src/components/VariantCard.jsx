@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, ExternalLink, Download, GitCompare } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Download } from 'lucide-react'
 import StructureViewer from './StructureViewer'
 
 const VariantCard = () => {
@@ -94,10 +94,7 @@ const VariantCard = () => {
           </p>
         </div>
         <div className="flex gap-2">
-          <Link to="/compare" className="btn btn-secondary">
-            <GitCompare size={16} />
-            Compare
-          </Link>
+
           <Link to="/" className="btn btn-secondary">
             <ArrowLeft size={16} />
             Back

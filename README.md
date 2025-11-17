@@ -7,7 +7,6 @@
 - **Global Search**: Search by gene symbol, variant notation (e.g., EGFR p.L858R), or drug name
 - **Drug Table**: Browse FDA approved drugs with resistance profiles
 - **Variant Datacards**: Detailed mutation information with IC50 values, plots, and 3D structures
-- **Compare View**: Side-by-side comparison of multiple variants
 - **3D Structure Viewer**: Mol* integration for protein structure visualization
 
 ## Quick Start

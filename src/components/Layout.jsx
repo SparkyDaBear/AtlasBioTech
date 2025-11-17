@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Search, Dna, Database, GitCompare } from 'lucide-react'
+import { Search, Dna, Database } from 'lucide-react'
 
 const Layout = ({ children }) => {
   const location = useLocation()
@@ -8,7 +8,6 @@ const Layout = ({ children }) => {
   const navigation = [
     { name: 'Home', href: '/', icon: Search },
     { name: 'Drug Table', href: '/drugs', icon: Database },
-    { name: 'Compare', href: '/compare', icon: GitCompare },
   ]
 
   return (

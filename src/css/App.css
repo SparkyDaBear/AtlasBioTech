@@ -153,21 +153,6 @@
   color: var(--text-secondary);
 }
 
-/* Compare View */
-.compare-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-}
-
-.variant-comparison {
-  background: white;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .variant-header {
@@ -179,10 +164,6 @@
   }
   
   .plots-gallery {
-    grid-template-columns: 1fr;
-  }
-  
-  .compare-container {
     grid-template-columns: 1fr;
   }
 }

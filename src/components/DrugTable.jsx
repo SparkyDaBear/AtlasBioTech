@@ -14,7 +14,7 @@ const DrugTable = () => {
     fetch(`${import.meta.env.BASE_URL}data/v1.0/search_index.json`)
       .then(res => res.json())
       .then(data => {
-        setDrugs(data.drugs)
+        setRowData(data.drugs || [])
         setLoading(false)
       })
       .catch(err => {
