@@ -90,13 +90,13 @@ def process_csv_data(csv_path):
         for _, row in df.iterrows():
             if pd.notna(row.get('ref_aa')) and pd.notna(row.get('alt_aa')) and pd.notna(row.get('protein_start')):
                 variant_id = f"{row.get('ref_aa', '')}{row.get('protein_start', '')}{row.get('alt_aa', '')}"
+                protein_change = f"p.{row.get('ref_aa', '')}{row.get('protein_start', '')}{row.get('alt_aa', '')}"
                 variants.append({
-                    'id': variant_id,
                     'gene': row.get('Gene', ''),
-                    'drug': row.get('Drug', ''),
-                    'ref_aa': row.get('ref_aa', ''),
-                    'alt_aa': row.get('alt_aa', ''),
-                    'position': int(row.get('protein_start', 0))
+                    'variant_string': variant_id,
+                    'protein_change': protein_change,
+                    'consequence': 'missense_variant',
+                    'drugs_tested': [row.get('Drug', '')]
                 })
         
         logger.info(f"Processed {len(genes)} genes, {len(drugs)} drugs, {len(variants)} variants from CSV")
