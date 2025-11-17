@@ -49,12 +49,18 @@ jobs:
         echo "Generating search index..."
         python data-pipeline/scripts/build_search_index.py
         
+    - name: Generate heat map data
+      run: |
+        echo "Generating amino acid heat map data..."
+        python data-pipeline/scripts/generate_heatmap_data.py
+        
     - name: Upload processed data
       uses: actions/upload-artifact@v4
       with:
         name: processed-data
         path: |
           public/data/v1.0/search_index.json
+          public/data/v1.0/heatmap_data.json
           public/data/v1.0/variants/
           public/data/v1.0/assets/
         retention-days: 1

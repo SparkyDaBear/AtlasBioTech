@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Search, TrendingUp, Database, Microscope } from 'lucide-react'
 import GlobalSearch from './GlobalSearch'
+import AminoAcidHeatMap from './AminoAcidHeatMap'
 
 const HomePage = () => {
   const [stats, setStats] = useState({
@@ -120,6 +121,9 @@ const HomePage = () => {
           </Link>
         </div>
       </div>
+
+      {/* Amino Acid Heat Map */}
+      <AminoAcidHeatMap />
     </div>
   )
 }

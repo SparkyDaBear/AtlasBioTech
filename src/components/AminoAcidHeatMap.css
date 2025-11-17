@@ -1,0 +1,200 @@
+.heatmap-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  padding: 24px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.heatmap-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.heatmap-header h2 {
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.heatmap-description {
+  margin: 0 0 16px 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heatmap-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.heatmap-stats .stat {
+  color: #555;
+  font-size: 14px;
+}
+
+.heatmap-stats .stat strong {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.heatmap-visualization {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  overflow-x: auto;
+}
+
+.heatmap-visualization svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.heatmap-footer {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.heatmap-note {
+  margin: 0;
+  color: #666;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Loading and error states */
+.heatmap-loading,
+.heatmap-error {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.heatmap-loading {
+  color: #666;
+}
+
+.heatmap-error {
+  color: #e74c3c;
+}
+
+.heatmap-error h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+
+.heatmap-error p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* SVG elements styling */
+.heatmap-cell rect {
+  transition: stroke 0.2s ease, stroke-width 0.2s ease;
+}
+
+.heatmap-cell:hover rect {
+  filter: brightness(1.1);
+}
+
+/* Legend styling */
+.legend text {
+  font-size: 11px;
+  fill: #333;
+}
+
+.legend line {
+  stroke: #333;
+}
+
+/* Tooltip styling (additional styles, base styles are inline) */
+.heatmap-tooltip {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.4;
+  max-width: 250px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .heatmap-container {
+    margin: 16px 0;
+    padding: 16px;
+  }
+  
+  .heatmap-header h2 {
+    font-size: 20px;
+  }
+  
+  .heatmap-stats {
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .heatmap-stats .stat {
+    font-size: 13px;
+  }
+  
+  .heatmap-visualization {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 480px) {
+  .heatmap-container {
+    margin: 12px 0;
+    padding: 12px;
+  }
+  
+  .heatmap-header h2 {
+    font-size: 18px;
+  }
+  
+  .heatmap-description {
+    font-size: 13px;
+  }
+  
+  .heatmap-note {
+    font-size: 11px;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .heatmap-visualization svg {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
