@@ -1,0 +1,36 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "P484Q",
+  "protein_change": "p.P484Q",
+  "transcript_id": "",
+  "position": 484,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "netgr_mean": 0.01939599616666667,
+      "netgr_std": 0.007774012857620043,
+      "replicate_count": 6,
+      "measurement_type": "net_growth_rate"
+    }
+  ],
+  "replicate_count": 6,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "netgr_data": {
+    "mean": 0.01939599616666667,
+    "std": 0.007774012857620043,
+    "count": 6,
+    "is_synonymous": true
+  },
+  "metadata": {
+    "date_created": "2025-12-01T23:25:28.591493+00:00",
+    "version": "2.0",
+    "data_type": "qDMS_netgr"
+  }
+}

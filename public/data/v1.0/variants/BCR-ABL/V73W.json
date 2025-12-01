@@ -1,0 +1,36 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "V73W",
+  "protein_change": "p.V73W",
+  "transcript_id": "",
+  "position": 73,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "netgr_mean": 0.018896293166666665,
+      "netgr_std": 0.007820239289504803,
+      "replicate_count": 24,
+      "measurement_type": "net_growth_rate"
+    }
+  ],
+  "replicate_count": 24,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "netgr_data": {
+    "mean": 0.018896293166666665,
+    "std": 0.007820239289504803,
+    "count": 24,
+    "is_synonymous": false
+  },
+  "metadata": {
+    "date_created": "2025-12-01T23:25:28.618103+00:00",
+    "version": "2.0",
+    "data_type": "qDMS_netgr"
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Heatmap Data Schema - qDMS Format",
+  "type": "object",
+  "required": [
+    "metadata",
+    "matrix",
+    "positions",
+    "variant_lookup"
+  ],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": [
+        "type",
+        "total_variants",
+        "position_range", 
+        "amino_acids",
+        "gene",
+        "drug",
+        "dose_levels"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["position_vs_amino_acid"],
+          "description": "Type of heatmap visualization"
+        },
+        "total_variants": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of variants in dataset"
+        },
+        "position_range": {
+          "type": "object",
+          "required": ["min", "max", "positions_with_data"],
+          "properties": {
+            "min": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Minimum protein position"
+            },
+            "max": {
+              "type": "integer", 
+              "minimum": 1,
+              "description": "Maximum protein position"
+            },
+            "positions_with_data": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of positions with variant data"
+            }
+          }
+        },
+        "amino_acids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]$"
+          },
+          "minItems": 20,
+          "maxItems": 20,
+          "description": "Standard 20 amino acid single letter codes"
+        },
+        "amino_acids_count": {
+          "type": "integer",
+          "minimum": 20,
+          "maximum": 20,
+          "description": "Number of amino acids (should be 20)"
+        },
+        "gene": {
+          "type": "string",
+          "description": "Target gene symbol"
+        },
+        "drug": {
+          "type": "string", 
+          "description": "Drug tested"
+        },
+        "value_range": {
+          "type": "object",
+          "required": ["min", "max"],
+          "properties": {
+            "min": {
+              "type": "number",
+              "description": "Minimum netGR value across all doses"
+            },
+            "max": {
+              "type": "number",
+              "description": "Maximum netGR value across all doses"  
+            },
+            "low": {
+              "type": "object",
+              "properties": {
+                "min": {"type": "number"},
+                "max": {"type": "number"}
+              },
+              "description": "Value range for low dose"
+            },
+            "medium": {
+              "type": "object", 
+              "properties": {
+                "min": {"type": "number"},
+                "max": {"type": "number"}
+              },
+              "description": "Value range for medium dose"
+            },
+            "high": {
+              "type": "object",
+              "properties": {
+                "min": {"type": "number"},
+                "max": {"type": "number"}
+              },
+              "description": "Value range for high dose"
+            }
+          }
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the heatmap data"
+        },
+        "dose_levels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["low", "medium", "high"]
+          },
+          "minItems": 3,
+          "maxItems": 3,
+          "description": "Available dose levels"
+        },
+        "data_columns": {
+          "type": "object",
+          "description": "Description of data fields for each dose level",
+          "patternProperties": {
+            "^(low|medium|high)$": {
+              "type": "string",
+              "description": "Description of dose level data"
+            }
+          },
+          "properties": {
+            "std": {
+              "type": "string",
+              "description": "Standard deviation field description"
+            },
+            "count": {
+              "type": "string", 
+              "description": "Replicate count field description"
+            },
+            "ref_aa": {
+              "type": "string",
+              "description": "Reference amino acid field description"
+            }
+          }
+        }
+      }
+    },
+    "matrix": {
+      "type": "object",
+      "description": "Position-amino acid matrix with dose-response data",
+      "patternProperties": {
+        "^[0-9]+$": {
+          "type": "object",
+          "description": "Data for specific protein position",
+          "patternProperties": {
+            "^[A-Z]$": {
+              "type": "object",
+              "description": "Data for specific amino acid substitution",
+              "properties": {
+                "low": {
+                  "$ref": "#/definitions/doseData"
+                },
+                "medium": {
+                  "$ref": "#/definitions/doseData"  
+                },
+                "high": {
+                  "$ref": "#/definitions/doseData"
+                },
+                "ref_aa": {
+                  "type": "string",
+                  "pattern": "^[A-Z]$",
+                  "description": "Reference amino acid at this position"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "positions": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "description": "List of protein positions with data"
+    },
+    "variant_lookup": {
+      "type": "object",
+      "description": "Lookup table for variant navigation",
+      "patternProperties": {
+        "^[0-9]+_[A-Z]$": {
+          "type": "object",
+          "required": ["id"],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Variant identifier for navigation"
+            },
+            "variant_string": {
+              "type": "string",
+              "description": "Human-readable variant notation"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "doseData": {
+      "type": "object",
+      "required": ["value"],
+      "properties": {
+        "value": {
+          "type": ["number", "null"],
+          "description": "Mean netGR value across replicates"
+        },
+        "std": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "description": "Standard deviation across replicates"
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of replicates"
+        }
+      }
+    }
+  }
+}

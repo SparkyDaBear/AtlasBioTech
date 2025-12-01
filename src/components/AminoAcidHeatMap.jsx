@@ -106,6 +106,21 @@ const AminoAcidHeatMap = () => {
       .style('z-index', '1000')
       .style('box-shadow', '0 4px 8px rgba(0,0,0,0.3)');
 
+    // Get all std values to create a scale for uncertainty visualization
+    const allStdValues = [];
+    Object.values(heatmapData.matrix).forEach(posData => {
+      Object.values(posData).forEach(aaData => {
+        if (aaData[selectedDose] && aaData[selectedDose].std !== null && aaData[selectedDose].std !== undefined) {
+          allStdValues.push(aaData[selectedDose].std);
+        }
+      });
+    });
+
+    // Create uncertainty scale for border width (higher std = thicker border)
+    const uncertaintyScale = d3.scaleLinear()
+      .domain([0, d3.max(allStdValues) || 1])
+      .range([0.5, 3]);
+
     // Create matrix cells
     displayPositions.forEach(position => {
       aminoAcids.forEach(aa => {
@@ -113,6 +128,11 @@ const AminoAcidHeatMap = () => {
         const cellData = heatmapData.matrix[positionStr] && heatmapData.matrix[positionStr][aa];
         const doseData = cellData ? cellData[selectedDose] : null;
         const value = doseData ? doseData.value : null;
+        const std = doseData ? doseData.std : null;
+
+        // Calculate border properties based on uncertainty
+        const uncertaintyBorderWidth = std !== null ? uncertaintyScale(std) : 0.5;
+        const uncertaintyBorderColor = std !== null && std > (d3.mean(allStdValues) || 0) ? "#ff6b6b" : "#fff";
 
         const cell = g.append("rect")
           .attr("x", xScale(position))
@@ -120,8 +140,8 @@ const AminoAcidHeatMap = () => {
           .attr("width", xScale.bandwidth())
           .attr("height", yScale.bandwidth())
           .attr("fill", value !== null ? colorScale(value) : "#f5f5f5")
-          .attr("stroke", "#fff")
-          .attr("stroke-width", 0.5)
+          .attr("stroke", uncertaintyBorderColor)
+          .attr("stroke-width", uncertaintyBorderWidth)
           .style("cursor", value !== null ? "pointer" : "default")
           .on("mouseover", function(event) {
             if (value !== null) {
@@ -133,6 +153,12 @@ const AminoAcidHeatMap = () => {
               const variant = `${refAa}${position}${aa}`;
               const doseLabel = selectedDose.charAt(0).toUpperCase() + selectedDose.slice(1);
               
+              // Add uncertainty indication to tooltip
+              const uncertaintyText = std !== null ? 
+                (std > (d3.mean(allStdValues) || 0) ? 
+                  '<br/><span style="color: #ff6b6b;">⚠️ High uncertainty</span>' : 
+                  '<br/><span style="color: #90EE90;">✓ Low uncertainty</span>') : '';
+              
               const tooltipContent = `
                 <div style="max-width: 200px;">
                   <strong>Position ${position}</strong><br/>
@@ -141,6 +167,7 @@ const AminoAcidHeatMap = () => {
                   <strong>Mean netGR:</strong> ${value.toFixed(3)}<br/>
                   <strong>Count:</strong> ${doseData.count}<br/>
                   ${doseData.std ? `<strong>Std Dev:</strong> ${doseData.std.toFixed(3)}<br/>` : ''}
+                  ${uncertaintyText}
                   <em style="color: #ccc;">Click to view variant</em>
                 </div>
               `;
@@ -156,8 +183,8 @@ const AminoAcidHeatMap = () => {
           })
           .on("mouseout", function() {
             d3.select(this)
-              .attr("stroke", "#fff")
-              .attr("stroke-width", 0.5);
+              .attr("stroke", uncertaintyBorderColor)
+              .attr("stroke-width", uncertaintyBorderWidth);
 
             tooltip.transition()
               .duration(300)
@@ -300,10 +327,56 @@ const AminoAcidHeatMap = () => {
       .style("fill", "#333")
       .text("Mean netGR");
 
+    // Add uncertainty legend
+    const uncertaintyLegendY = legendY + legendHeight + 60;
+    
+    svg.append("text")
+      .attr("x", legendX + legendWidth / 2)
+      .attr("y", uncertaintyLegendY)
+      .attr("text-anchor", "middle")
+      .style("font-size", "12px")
+      .style("font-weight", "bold")
+      .style("fill", "#333")
+      .text("Uncertainty Indicators");
+
+    // Low uncertainty example
+    svg.append("rect")
+      .attr("x", legendX)
+      .attr("y", uncertaintyLegendY + 10)
+      .attr("width", 20)
+      .attr("height", 15)
+      .attr("fill", colorScale(d3.mean(allValues) || 0))
+      .attr("stroke", "#fff")
+      .attr("stroke-width", 0.5);
+
+    svg.append("text")
+      .attr("x", legendX + 25)
+      .attr("y", uncertaintyLegendY + 22)
+      .style("font-size", "10px")
+      .style("fill", "#333")
+      .text("Low uncertainty (thin border)");
+
+    // High uncertainty example
+    svg.append("rect")
+      .attr("x", legendX)
+      .attr("y", uncertaintyLegendY + 30)
+      .attr("width", 20)
+      .attr("height", 15)
+      .attr("fill", colorScale(d3.mean(allValues) || 0))
+      .attr("stroke", "#ff6b6b")
+      .attr("stroke-width", 2.5);
+
+    svg.append("text")
+      .attr("x", legendX + 25)
+      .attr("y", uncertaintyLegendY + 42)
+      .style("font-size", "10px")
+      .style("fill", "#333")
+      .text("High uncertainty (thick red border)");
+
     // Add instructions
     svg.append("text")
       .attr("x", legendX + legendWidth / 2)
-      .attr("y", legendY + legendHeight + 40)
+      .attr("y", uncertaintyLegendY + 65)
       .attr("text-anchor", "middle")
       .style("font-size", "10px")
       .style("fill", "#666")
@@ -428,7 +501,8 @@ const AminoAcidHeatMap = () => {
       <div className="heatmap-footer">
         <p className="heatmap-note">
           Heat map shows mean network growth rate (netGR) values at {selectedDose} dose across protein positions 
-          (N-terminus to C-terminus) and amino acid substitutions. Use the dosage buttons above to switch between 
+          (N-terminus to C-terminus) and amino acid substitutions. Border thickness and color indicate measurement 
+          uncertainty (standard deviation across replicates). Use the dosage buttons above to switch between 
           low, medium, and high dose levels. Click on colored cells to view specific variant details.
         </p>
       </div>

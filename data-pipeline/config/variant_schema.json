@@ -1,52 +1,45 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Variant Datacard Schema",
+  "title": "Variant Datacard Schema - qDMS Format",
   "type": "object",
   "required": [
     "gene",
-    "variant_string",
+    "variant_string", 
     "protein_change",
-    "transcript_id",
     "position",
-    "consequence",
-    "ic50_values"
+    "reference_aa",
+    "mutant_aa",
+    "netgr_data"
   ],
   "properties": {
     "gene": {
       "type": "string",
       "pattern": "^[A-Z0-9-]+$",
-      "description": "Gene symbol (e.g., EGFR, ABL1)"
+      "description": "Gene symbol (e.g., BCR-ABL, EGFR)"
     },
     "variant_string": {
       "type": "string",
-      "description": "Variant notation (e.g., L858R, T315I)"
+      "description": "Variant notation (e.g., A102D, T315I)"
     },
     "protein_change": {
       "type": "string",
       "pattern": "^p\\.[A-Z][0-9]+[A-Z]$",
-      "description": "Protein change notation (e.g., p.L858R)"
-    },
-    "transcript_id": {
-      "type": "string",
-      "pattern": "^ENST[0-9]{11}$",
-      "description": "Ensembl transcript ID"
+      "description": "Protein change notation (e.g., p.A102D)"
     },
     "position": {
       "type": "integer",
       "minimum": 1,
       "description": "Amino acid position in protein"
     },
-    "consequence": {
+    "reference_aa": {
       "type": "string",
-      "enum": [
-        "missense_variant",
-        "nonsense_variant",
-        "frameshift_variant",
-        "in_frame_deletion",
-        "in_frame_insertion",
-        "synonymous_variant"
-      ],
-      "description": "Variant consequence type"
+      "pattern": "^[A-Z]$",
+      "description": "Reference (wild-type) amino acid single letter code"
+    },
+    "mutant_aa": {
+      "type": "string", 
+      "pattern": "^[A-Z]$",
+      "description": "Mutant amino acid single letter code"
     },
     "drugs_tested": {
       "type": "array",
@@ -60,30 +53,46 @@
       "type": "string",
       "description": "Cell line or model system used for testing"
     },
-    "ic50_values": {
+    "netgr_data": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["drug", "ic50"],
+        "required": ["drug", "concentration", "netgr_mean"],
         "properties": {
           "drug": {
             "type": "string",
             "description": "Drug name"
           },
-          "ic50": {
+          "concentration": {
             "type": "number",
             "minimum": 0,
-            "description": "IC50 value in nM"
+            "description": "Drug concentration in μM"
           },
-          "ic50_wt": {
-            "type": "number",
-            "minimum": 0,
-            "description": "Wild-type IC50 value in nM"
+          "dose_level": {
+            "type": "string",
+            "enum": ["low", "medium", "high"],
+            "description": "Categorical dose level"
           },
-          "fold_change": {
+          "netgr_mean": {
             "type": "number",
+            "description": "Mean net growth rate across replicates"
+          },
+          "netgr_std": {
+            "type": ["number", "null"],
             "minimum": 0,
-            "description": "Fold change vs wild-type"
+            "description": "Standard deviation of net growth rate across replicates"
+          },
+          "netgr_raw_values": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "Individual replicate net growth rate values"
+          },
+          "replicate_count": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Number of experimental replicates"
           },
           "confidence_interval": {
             "type": "array",
@@ -94,21 +103,16 @@
             "maxItems": 2,
             "description": "95% confidence interval [lower, upper]"
           },
-          "replicate_count": {
-            "type": "integer",
-            "minimum": 1,
-            "description": "Number of experimental replicates"
-          },
           "qc_flags": {
             "type": "array",
             "items": {
               "type": "string",
               "enum": [
                 "high_variability",
-                "low_replicate_count",
+                "low_replicate_count", 
                 "outlier_detected",
-                "curve_fit_poor",
-                "incomplete_curve"
+                "insufficient_data",
+                "negative_growth"
               ]
             },
             "description": "Quality control flags"
@@ -118,7 +122,7 @@
       "minItems": 1
     },
     "publication_doi": {
-      "type": "string",
+      "type": "string", 
       "pattern": "^10\\.[0-9]+/.*$",
       "description": "DOI of associated publication"
     },
@@ -133,12 +137,12 @@
           },
           "plot_url": {
             "type": "string",
-            "format": "uri-reference",
+            "format": "uri-reference", 
             "description": "URL to dose-response plot (SVG/PNG)"
           },
           "plot_type": {
             "type": "string",
-            "enum": ["dose_response", "time_course", "heat_map"],
+            "enum": ["dose_response", "time_course", "heat_map", "growth_curve"],
             "default": "dose_response"
           }
         }
@@ -187,6 +191,11 @@
         },
         "version": {
           "type": "string"
+        },
+        "data_format": {
+          "type": "string",
+          "enum": ["qDMS", "IC50", "other"],
+          "description": "Type of experimental data"
         }
       }
     }
