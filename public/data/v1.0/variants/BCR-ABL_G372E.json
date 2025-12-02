@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "G372E",
+  "protein_change": "p.G372E",
+  "transcript_id": "UNKNOWN",
+  "position": 372,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 29.86446059291457,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.027136347,
+          0.017148054,
+          0.007522369
+        ],
+        "responses_rep2": [
+          0.029228847,
+          0.010880916,
+          0.008721813
+        ],
+        "avg_responses": [
+          0.028182597,
+          0.014014485,
+          0.008122091
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.196546+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "G372E"
+  }
+}

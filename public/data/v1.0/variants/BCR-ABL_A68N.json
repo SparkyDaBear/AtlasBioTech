@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "A68N",
+  "protein_change": "p.A68N",
+  "transcript_id": "UNKNOWN",
+  "position": 68,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.028453317,
+          0.026279725,
+          0.021090815
+        ],
+        "responses_rep2": [
+          0.032236549,
+          0.027384606,
+          0.022066643
+        ],
+        "avg_responses": [
+          0.030344933,
+          0.026832165499999998,
+          0.021578728999999998
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:02.978432+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "A68N"
+  }
+}

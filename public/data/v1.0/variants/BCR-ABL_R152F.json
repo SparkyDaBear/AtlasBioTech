@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "R152F",
+  "protein_change": "p.R152F",
+  "transcript_id": "UNKNOWN",
+  "position": 152,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 95.63950941559531,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.022931983,
+          0.018012898,
+          0.012875757
+        ],
+        "responses_rep2": [
+          0.019421678,
+          0.017690256,
+          0.007336077
+        ],
+        "avg_responses": [
+          0.0211768305,
+          0.017851577,
+          0.010105916999999999
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.468330+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "R152F"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "F66W",
+  "protein_change": "p.F66W",
+  "transcript_id": "UNKNOWN",
+  "position": 66,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 67.79856813980564,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.022317456,
+          0.016804965,
+          0.008854155
+        ],
+        "responses_rep2": [
+          0.026118427,
+          0.014798672,
+          0.00907175
+        ],
+        "avg_responses": [
+          0.0242179415,
+          0.015801818500000002,
+          0.0089629525
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.121669+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F66W"
+  }
+}

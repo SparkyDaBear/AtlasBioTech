@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "K274E",
+  "protein_change": "p.K274E",
+  "transcript_id": "UNKNOWN",
+  "position": 274,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 65.1701045876022,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.027496512,
+          0.019965992,
+          0.007851129
+        ],
+        "responses_rep2": [
+          0.029583524,
+          0.018279762,
+          0.011077039
+        ],
+        "avg_responses": [
+          0.028540018,
+          0.019122877,
+          0.009464084000000001
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.280206+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "K274E"
+  }
+}

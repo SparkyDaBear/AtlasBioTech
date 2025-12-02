@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "G159D",
+  "protein_change": "p.G159D",
+  "transcript_id": "UNKNOWN",
+  "position": 159,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.023170819,
+          0.016582194,
+          0.014220518
+        ],
+        "responses_rep2": [
+          0.02073582,
+          0.018005557,
+          0.011516812
+        ],
+        "avg_responses": [
+          0.0219533195,
+          0.0172938755,
+          0.012868665
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.177639+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "G159D"
+  }
+}

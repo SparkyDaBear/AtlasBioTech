@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "C305Y",
+  "protein_change": "p.C305Y",
+  "transcript_id": "UNKNOWN",
+  "position": 305,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 71.33460372399475,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.028220724,
+          0.018296802,
+          0.007964385
+        ],
+        "responses_rep2": [
+          0.026674377,
+          0.018171688,
+          0.013227177
+        ],
+        "avg_responses": [
+          0.0274475505,
+          0.018234245,
+          0.010595780999999999
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.024514+00:00",
+    "version": "2.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "C305Y"
+  }
+}

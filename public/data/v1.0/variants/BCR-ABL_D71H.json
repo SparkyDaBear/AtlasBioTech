@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "D71H",
+  "protein_change": "p.D71H",
+  "transcript_id": "UNKNOWN",
+  "position": 71,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.029097398,
+          0.022468197,
+          0.014183585
+        ],
+        "responses_rep2": [
+          0.029230419,
+          0.018477576,
+          0.015049054
+        ],
+        "avg_responses": [
+          0.029163908500000002,
+          0.0204728865,
+          0.014616319499999999
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.031829+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "D71H"
+  }
+}

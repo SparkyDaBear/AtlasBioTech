@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "D504K",
+  "protein_change": "p.D504K",
+  "transcript_id": "UNKNOWN",
+  "position": 504,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 58.294756958866245,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.031679649,
+          0.020118232,
+          0.012530874
+        ],
+        "responses_rep2": [
+          0.036064411,
+          0.019163743,
+          0.013367132
+        ],
+        "avg_responses": [
+          0.03387203,
+          0.0196409875,
+          0.012949003
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.049720+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "D504K"
+  }
+}

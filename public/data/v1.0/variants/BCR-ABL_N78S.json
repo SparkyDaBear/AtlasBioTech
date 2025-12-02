@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "N78S",
+  "protein_change": "p.N78S",
+  "transcript_id": "UNKNOWN",
+  "position": 78,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.02791548,
+          0.021300697,
+          0.014637666
+        ],
+        "responses_rep2": [
+          0.024101082,
+          0.019082693,
+          0.014707308
+        ],
+        "avg_responses": [
+          0.026008281,
+          0.020191695000000003,
+          0.014672487000000001
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.376535+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "N78S"
+  }
+}

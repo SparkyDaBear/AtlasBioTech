@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "G249S",
+  "protein_change": "p.G249S",
+  "transcript_id": "UNKNOWN",
+  "position": 249,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 34.10556251911695,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.029512253,
+          0.012720923,
+          0.008376111
+        ],
+        "responses_rep2": [
+          0.026082157,
+          0.015651916,
+          0.010182146
+        ],
+        "avg_responses": [
+          0.027797205,
+          0.014186419499999998,
+          0.0092791285
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.189852+00:00",
+    "version": "2.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "G249S"
+  }
+}

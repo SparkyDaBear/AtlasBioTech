@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "V90S",
+  "protein_change": "p.V90S",
+  "transcript_id": "UNKNOWN",
+  "position": 90,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 96.75868659293562,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.025082938,
+          0.018341418,
+          0.01076419
+        ],
+        "responses_rep2": [
+          0.02640747,
+          0.018971715,
+          0.01441936
+        ],
+        "avg_responses": [
+          0.025745204,
+          0.0186565665,
+          0.012591775
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.602119+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "V90S"
+  }
+}

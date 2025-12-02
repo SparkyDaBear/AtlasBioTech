@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "R460H",
+  "protein_change": "p.R460H",
+  "transcript_id": "UNKNOWN",
+  "position": 460,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 75.1356696182924,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.023609001,
+          0.017442027,
+          0.009343864
+        ],
+        "responses_rep2": [
+          0.02376323,
+          0.013151977,
+          0.010536835
+        ],
+        "avg_responses": [
+          0.0236861155,
+          0.015297002,
+          0.0099403495
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.487602+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "R460H"
+  }
+}

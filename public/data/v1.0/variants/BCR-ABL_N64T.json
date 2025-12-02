@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "N64T",
+  "protein_change": "p.N64T",
+  "transcript_id": "UNKNOWN",
+  "position": 64,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 69.08568882479717,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.026840878,
+          0.017654086,
+          0.008290284
+        ],
+        "responses_rep2": [
+          0.02082112,
+          0.014284879,
+          0.009127826
+        ],
+        "avg_responses": [
+          0.023830999,
+          0.0159694825,
+          0.008709055
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.373131+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "N64T"
+  }
+}

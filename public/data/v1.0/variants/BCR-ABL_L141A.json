@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "L141A",
+  "protein_change": "p.L141A",
+  "transcript_id": "UNKNOWN",
+  "position": 141,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 99.6199521856864,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.024010044,
+          0.018826633,
+          0.015324949
+        ],
+        "responses_rep2": [
+          0.02701334,
+          0.018099646,
+          0.010124432
+        ],
+        "avg_responses": [
+          0.025511692000000002,
+          0.0184631395,
+          0.0127246905
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.317603+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L141A"
+  }
+}

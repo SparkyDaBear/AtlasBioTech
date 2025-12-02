@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "R134I",
+  "protein_change": "p.R134I",
+  "transcript_id": "UNKNOWN",
+  "position": 134,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 95.38245583763673,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.022584686,
+          0.015567714,
+          0.011224633
+        ],
+        "responses_rep2": [
+          0.023080748,
+          0.009386985,
+          0.011458222
+        ],
+        "avg_responses": [
+          0.022832717000000002,
+          0.0124773495,
+          0.011341427500000001
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.464913+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "R134I"
+  }
+}

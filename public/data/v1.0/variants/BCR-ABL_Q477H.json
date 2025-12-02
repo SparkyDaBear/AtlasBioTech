@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "Q477H",
+  "protein_change": "p.Q477H",
+  "transcript_id": "UNKNOWN",
+  "position": 477,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 59.89540490336859,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.02931995,
+          0.019319129,
+          0.011906664
+        ],
+        "responses_rep2": [
+          0.032359546,
+          0.016707523,
+          0.011974868
+        ],
+        "avg_responses": [
+          0.030839748,
+          0.018013326,
+          0.011940766
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.452706+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "Q477H"
+  }
+}

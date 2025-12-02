@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "S265H",
+  "protein_change": "p.S265H",
+  "transcript_id": "UNKNOWN",
+  "position": 265,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.030155846,
+          0.023843608,
+          0.01893892
+        ],
+        "responses_rep2": [
+          0.034795944,
+          0.025452569,
+          0.020105737
+        ],
+        "avg_responses": [
+          0.032475895000000005,
+          0.0246480885,
+          0.019522328499999998
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.542194+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "S265H"
+  }
+}

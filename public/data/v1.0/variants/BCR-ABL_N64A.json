@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "N64A",
+  "protein_change": "p.N64A",
+  "transcript_id": "UNKNOWN",
+  "position": 64,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 84.23003291735435,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.028316975,
+          0.017573147,
+          0.012332196
+        ],
+        "responses_rep2": [
+          0.02565429,
+          0.016177428,
+          0.012686207
+        ],
+        "avg_responses": [
+          0.026985632500000002,
+          0.016875287500000002,
+          0.0125092015
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.370072+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "N64A"
+  }
+}

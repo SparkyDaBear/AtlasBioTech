@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "L451M",
+  "protein_change": "p.L451M",
+  "transcript_id": "UNKNOWN",
+  "position": 451,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 65.54210190017142,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.025778715,
+          0.016943021,
+          0.012874789
+        ],
+        "responses_rep2": [
+          0.032494874,
+          0.017343787,
+          0.011269092
+        ],
+        "avg_responses": [
+          0.0291367945,
+          0.017143404,
+          0.0120719405
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.351586+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "L451M"
+  }
+}

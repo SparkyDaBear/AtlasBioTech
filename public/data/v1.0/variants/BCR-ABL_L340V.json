@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "L340V",
+  "protein_change": "p.L340V",
+  "transcript_id": "UNKNOWN",
+  "position": 340,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.044135251,
+          0.039043296,
+          0.030372033
+        ],
+        "responses_rep2": [
+          0.048211623,
+          0.031544078,
+          0.030726134
+        ],
+        "avg_responses": [
+          0.046173437,
+          0.035293687000000004,
+          0.030549083499999997
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.347495+00:00",
+    "version": "2.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "L340V"
+  }
+}

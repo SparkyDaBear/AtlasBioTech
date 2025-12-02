@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "Y342D",
+  "protein_change": "p.Y342D",
+  "transcript_id": "UNKNOWN",
+  "position": 342,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.027177036,
+          0.022513776,
+          0.021108536
+        ],
+        "responses_rep2": [
+          0.025017617,
+          0.016483265,
+          0.018311548
+        ],
+        "avg_responses": [
+          0.0260973265,
+          0.019498520499999998,
+          0.019710042
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.705309+00:00",
+    "version": "2.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "Y342D"
+  }
+}

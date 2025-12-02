@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "L451E",
+  "protein_change": "p.L451E",
+  "transcript_id": "UNKNOWN",
+  "position": 451,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 70.31864042952574,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.049735232,
+          0.031375563,
+          0.01676862
+        ],
+        "responses_rep2": [
+          0.045518393,
+          0.032065776,
+          0.019216018
+        ],
+        "avg_responses": [
+          0.0476268125,
+          0.0317206695,
+          0.017992319
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.351015+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L451E"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "F72K",
+  "protein_change": "p.F72K",
+  "transcript_id": "UNKNOWN",
+  "position": 72,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 96.79639084270977,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.027072006,
+          0.017515281,
+          0.012888119
+        ],
+        "responses_rep2": [
+          0.027435465,
+          0.017958259,
+          0.013971388
+        ],
+        "avg_responses": [
+          0.0272537355,
+          0.01773677,
+          0.013429753499999999
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.122507+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F72K"
+  }
+}

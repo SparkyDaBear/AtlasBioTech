@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "R170W",
+  "protein_change": "p.R170W",
+  "transcript_id": "UNKNOWN",
+  "position": 170,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 87.06608679436331,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.023177363,
+          0.01898086,
+          0.009109379
+        ],
+        "responses_rep2": [
+          0.03039957,
+          0.018448136,
+          0.015267433
+        ],
+        "avg_responses": [
+          0.0267884665,
+          0.018714498,
+          0.012188406
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.480146+00:00",
+    "version": "2.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "R170W"
+  }
+}

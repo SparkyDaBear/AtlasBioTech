@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "I82M",
+  "protein_change": "p.I82M",
+  "transcript_id": "UNKNOWN",
+  "position": 82,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 59.58219369947193,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.022083245,
+          0.013083148,
+          0.005883543
+        ],
+        "responses_rep2": [
+          0.024037672,
+          0.016683186,
+          0.008014756
+        ],
+        "avg_responses": [
+          0.0230604585,
+          0.014883167,
+          0.0069491495
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.229396+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "I82M"
+  }
+}

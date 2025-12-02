@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "Q103H",
+  "protein_change": "p.Q103H",
+  "transcript_id": "UNKNOWN",
+  "position": 103,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 89.27840240111725,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.024245349,
+          0.015713587,
+          0.009342284
+        ],
+        "responses_rep2": [
+          0.027982862,
+          0.020231076,
+          0.014993783
+        ],
+        "avg_responses": [
+          0.0261141055,
+          0.0179723315,
+          0.0121680335
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.439036+00:00",
+    "version": "2.0",
+    "is_synonymous": true,
+    "variant_type": "snp",
+    "species_context": "Q103H"
+  }
+}

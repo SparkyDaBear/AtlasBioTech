@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "L65V",
+  "protein_change": "p.L65V",
+  "transcript_id": "UNKNOWN",
+  "position": 65,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 36.37749326189735,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.026553706,
+          0.017628569,
+          0.010932291
+        ],
+        "responses_rep2": [
+          0.024629091,
+          0.008852117,
+          0.005787487
+        ],
+        "avg_responses": [
+          0.0255913985,
+          0.013240343,
+          0.008359889
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.300202+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L65V"
+  }
+}

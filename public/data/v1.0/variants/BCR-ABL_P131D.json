@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "P131D",
+  "protein_change": "p.P131D",
+  "transcript_id": "UNKNOWN",
+  "position": 131,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.024971027,
+          0.019333565,
+          0.016119127
+        ],
+        "responses_rep2": [
+          0.024493354,
+          0.019622306,
+          0.012403229
+        ],
+        "avg_responses": [
+          0.0247321905,
+          0.0194779355,
+          0.014261178
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.419814+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "P131D"
+  }
+}

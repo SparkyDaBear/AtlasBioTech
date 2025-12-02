@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "A179L",
+  "protein_change": "p.A179L",
+  "transcript_id": "UNKNOWN",
+  "position": 179,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.026917131,
+          0.021195434,
+          0.015180695
+        ],
+        "responses_rep2": [
+          0.021481405,
+          0.017533289,
+          0.018386542
+        ],
+        "avg_responses": [
+          0.024199268,
+          0.0193643615,
+          0.0167836185
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:02.993049+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "A179L"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "Q108W",
+  "protein_change": "p.Q108W",
+  "transcript_id": "UNKNOWN",
+  "position": 108,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 87.55436265816692,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.028157587,
+          0.018538559,
+          0.01520748
+        ],
+        "responses_rep2": [
+          0.028143901,
+          0.019852457,
+          0.010728893
+        ],
+        "avg_responses": [
+          0.028150744,
+          0.019195508,
+          0.0129681865
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.442999+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "Q108W"
+  }
+}

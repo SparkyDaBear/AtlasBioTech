@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "P484A",
+  "protein_change": "p.P484A",
+  "transcript_id": "UNKNOWN",
+  "position": 484,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 72.39554845907153,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.027100127,
+          0.018700702,
+          0.010229742
+        ],
+        "responses_rep2": [
+          0.028948008,
+          0.016895569,
+          0.012863937
+        ],
+        "avg_responses": [
+          0.0280240675,
+          0.0177981355,
+          0.0115468395
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.434072+00:00",
+    "version": "2.0",
+    "is_synonymous": true,
+    "variant_type": "mnv",
+    "species_context": "P484A"
+  }
+}

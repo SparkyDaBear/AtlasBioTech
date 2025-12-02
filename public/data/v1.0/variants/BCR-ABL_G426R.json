@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "G426R",
+  "protein_change": "p.G426R",
+  "transcript_id": "UNKNOWN",
+  "position": 426,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 71.77549768370952,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.023954255,
+          0.015477143,
+          0.008659089
+        ],
+        "responses_rep2": [
+          0.020630769,
+          0.014973993,
+          0.008121266
+        ],
+        "avg_responses": [
+          0.022292512,
+          0.015225568,
+          0.0083901775
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.198508+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "G426R"
+  }
+}

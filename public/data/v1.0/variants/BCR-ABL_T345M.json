@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "T345M",
+  "protein_change": "p.T345M",
+  "transcript_id": "UNKNOWN",
+  "position": 345,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.025444296,
+          0.023680416,
+          0.018386735
+        ],
+        "responses_rep2": [
+          0.035524207,
+          0.016524384,
+          0.01903175
+        ],
+        "avg_responses": [
+          0.030484251500000004,
+          0.0201024,
+          0.0187092425
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.590363+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "T345M"
+  }
+}

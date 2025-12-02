@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "L88G",
+  "protein_change": "p.L88G",
+  "transcript_id": "UNKNOWN",
+  "position": 88,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 61.920384013231065,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.028863694,
+          0.015120975,
+          0.010305195
+        ],
+        "responses_rep2": [
+          0.026509129,
+          0.015241004,
+          0.014189382
+        ],
+        "avg_responses": [
+          0.0276864115,
+          0.0151809895,
+          0.0122472885
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.305643+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "L88G"
+  }
+}

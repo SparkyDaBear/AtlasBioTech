@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "T306I",
+  "protein_change": "p.T306I",
+  "transcript_id": "UNKNOWN",
+  "position": 306,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 71.71540154136578,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.027826247,
+          0.016910121,
+          0.010616173
+        ],
+        "responses_rep2": [
+          0.026347478,
+          0.014991877,
+          0.013205848
+        ],
+        "avg_responses": [
+          0.0270868625,
+          0.015950999,
+          0.0119110105
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.586592+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "T306I"
+  }
+}

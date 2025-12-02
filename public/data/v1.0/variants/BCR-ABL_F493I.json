@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "F493I",
+  "protein_change": "p.F493I",
+  "transcript_id": "UNKNOWN",
+  "position": 493,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 87.52110021923153,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.028535477,
+          0.021030153,
+          0.013244591
+        ],
+        "responses_rep2": [
+          0.032346382,
+          0.022261955,
+          0.014408343
+        ],
+        "avg_responses": [
+          0.030440929499999998,
+          0.021646053999999998,
+          0.013826467
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.139886+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "F493I"
+  }
+}

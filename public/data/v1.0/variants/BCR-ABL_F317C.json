@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "F317C",
+  "protein_change": "p.F317C",
+  "transcript_id": "UNKNOWN",
+  "position": 317,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.024500862,
+          0.019226765,
+          0.019782656
+        ],
+        "responses_rep2": [
+          0.022808045,
+          0.0177172,
+          0.016414237
+        ],
+        "avg_responses": [
+          0.0236544535,
+          0.018471982499999998,
+          0.0180984465
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.131153+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "snp",
+    "species_context": "F317C"
+  }
+}

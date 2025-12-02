@@ -1,0 +1,53 @@
+{
+  "gene": "BCR-ABL",
+  "variant_string": "P480M",
+  "protein_change": "p.P480M",
+  "transcript_id": "UNKNOWN",
+  "position": 480,
+  "consequence": "missense_variant",
+  "drugs_tested": [
+    "Imatinib"
+  ],
+  "model_system": "K562 cells",
+  "ic50_values": [
+    {
+      "drug": "Imatinib",
+      "ic50": 30.0,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.027163437,
+          0.019087557,
+          0.014993637
+        ],
+        "responses_rep2": [
+          0.027869064,
+          0.018436223,
+          0.015526649
+        ],
+        "avg_responses": [
+          0.0275162505,
+          0.018761890000000003,
+          0.015260143
+        ]
+      },
+      "qc_flags": []
+    }
+  ],
+  "replicate_count": 2,
+  "qc_flags": [],
+  "publication_doi": "",
+  "plots": [],
+  "metadata": {
+    "date_created": "2025-12-02T01:42:03.431971+00:00",
+    "version": "2.0",
+    "is_synonymous": false,
+    "variant_type": "mnv",
+    "species_context": "P480M"
+  }
+}
