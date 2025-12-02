@@ -181,14 +181,6 @@ npm run preview  # Preview production build locally
 - **Styling**: Update CSS files in `src/css/` or component-specific styles
 - **API Extensions**: Add new data processing endpoints in the pipeline
 
-### Troubleshooting
-
-**Common Issues:**
-- **Plot not displaying**: Check browser console for data loading errors
-- **Variant not found**: Ensure proper URL encoding (BCR-ABL → BCR%2DABL)
-- **Build failures**: Verify all dependencies in `package.json` and `requirements.txt`
-- **GitHub Actions**: Check workflow logs for data processing or deployment errors
-
 ## Technology Stack
 
 - **Frontend**: React 18.2.0, Vite 5.4.21, D3.js 7.9.0
