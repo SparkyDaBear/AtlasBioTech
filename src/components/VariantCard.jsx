@@ -190,32 +190,31 @@ const VariantCard = () => {
         </div>
       </div>
 
-      <div className="grid grid-2 gap-6">
-        {/* Metadata */}
-        <div className="card">
-          <h2 className="text-xl font-semibold mb-4">Variant Metadata</h2>
-          <div className="metadata-grid">
-            <div className="metadata-item">
-              <div className="metadata-label">Transcript</div>
-              <div className="metadata-value">{variantData.transcript_id}</div>
-            </div>
-            <div className="metadata-item">
-              <div className="metadata-label">Position</div>
-              <div className="metadata-value">{variantData.position}</div>
-            </div>
-            <div className="metadata-item">
-              <div className="metadata-label">Model System</div>
-              <div className="metadata-value">{variantData.model_system}</div>
-            </div>
-            <div className="metadata-item">
-              <div className="metadata-label">Replicates</div>
-              <div className="metadata-value">{variantData.replicate_count}</div>
-            </div>
+      {/* Metadata */}
+      <div className="card mb-6">
+        <h2 className="text-xl font-semibold mb-4">Variant Metadata</h2>
+        <div className="metadata-grid">
+          <div className="metadata-item">
+            <div className="metadata-label">Transcript</div>
+            <div className="metadata-value">{variantData.transcript_id}</div>
+          </div>
+          <div className="metadata-item">
+            <div className="metadata-label">Position</div>
+            <div className="metadata-value">{variantData.position}</div>
+          </div>
+          <div className="metadata-item">
+            <div className="metadata-label">Model System</div>
+            <div className="metadata-value">{variantData.model_system}</div>
+          </div>
+          <div className="metadata-item">
+            <div className="metadata-label">Replicates</div>
+            <div className="metadata-value">{variantData.replicate_count}</div>
           </div>
         </div>
+      </div>
 
-        {/* IC50 Summary */}
-        <div className="card">
+      {/* IC50 Summary - Full Width */}
+      <div className="card mb-6">
           <h2 className="text-xl font-semibold mb-4">IC50 Summary</h2>
           
           {/* Drug Selection */}
@@ -250,8 +249,6 @@ const VariantCard = () => {
             
             <div className="text-sm text-gray-600 mb-4">
               <p>Plot Data Points: {plotData.length}</p>
-              <p>Selected Drugs: {selectedDrugs.join(', ') || 'None'}</p>
-              <p>Available Drugs: {variantData?.drugs_tested?.join(', ') || 'None'}</p>
             </div>
             
             {plotData.length > 0 && selectedDrugs.length > 0 ? (
@@ -270,26 +267,7 @@ const VariantCard = () => {
               </div>
             )}
           </div>
-          
-          {/* IC50 Values Table */}
-          <div className="space-y-3">
-            {variantData.ic50_values.map((result, index) => (
-              <div key={index} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                <div>
-                  <div className="font-medium">{result.drug}</div>
-                  <div className="text-sm text-gray-500">
-                    IC50: {result.ic50?.toFixed(2) || 'N/A'} nM (WT: {result.ic50_wt?.toFixed(2) || 'N/A'} nM)
-                  </div>
-                </div>
-                <div className="text-right">
-                  <div className="font-bold text-lg">{result.fold_change?.toFixed(1) || 'N/A'}×</div>
-                  <div className="text-xs text-gray-500">fold change</div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
-      </div>
 
       {/* 3D Structure */}
       {variantData.pdb_structure && (

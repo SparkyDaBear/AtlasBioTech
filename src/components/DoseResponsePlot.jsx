@@ -87,10 +87,11 @@ const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], width = 600, hei
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10)
       .domain(selectedDrugs);
 
-    // Create axes
+    // Create axes with better tick spacing
+    const concentrations = [...new Set(processedData.map(d => d.concentration))].sort((a, b) => a - b);
     const xAxis = d3.axisBottom(xScale)
       .tickFormat(d => `${d} nM`)
-      .ticks(5);
+      .tickValues(concentrations); // Use actual concentration values as ticks
     
     const yAxis = d3.axisLeft(yScale)
       .tickFormat(d3.format('.3f'));
