@@ -42,7 +42,7 @@ jobs:
     - name: Process CSV to JSON
       run: |
         echo "Processing CSV data to JSON..."
-        python data-pipeline/scripts/process_k562_data.py
+        python data-pipeline/scripts/process_data.py
         
     - name: Generate search index
       run: |
