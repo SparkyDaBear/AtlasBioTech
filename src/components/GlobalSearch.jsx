@@ -36,7 +36,7 @@ const GlobalSearch = () => {
           id: gene.symbol,
           title: gene.symbol,
           subtitle: gene.name,
-          url: `/variant/${gene.symbol}/WT`
+          url: `/protein/${gene.symbol}`
         })
       }
     })

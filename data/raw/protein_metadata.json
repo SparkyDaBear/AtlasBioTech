@@ -1,0 +1,146 @@
+{
+  "BCR-ABL": {
+    "gene_symbol": "BCR-ABL",
+    "protein_name": "Breakpoint cluster region-Abelson tyrosine kinase",
+    "official_name": "BCR-ABL1 fusion protein",
+    "protein_class": "Tyrosine kinase",
+    "molecular_weight": "210 kDa",
+    "chromosomal_location": "t(9;22)(q34;q11.2)",
+    "description": "BCR-ABL is an oncogenic fusion protein created by the Philadelphia chromosome translocation in chronic myeloid leukemia (CML) and some acute lymphoblastic leukemias (ALL). The fusion combines the BCR (breakpoint cluster region) gene from chromosome 22 with the ABL1 (Abelson murine leukemia viral oncogene homolog 1) gene from chromosome 9, resulting in a constitutively active tyrosine kinase that drives uncontrolled cell proliferation.",
+    "function": "The BCR-ABL fusion protein exhibits enhanced tyrosine kinase activity compared to normal ABL1, leading to activation of multiple signaling pathways including PI3K/AKT, RAS/MAPK, and JAK/STAT pathways. This dysregulation promotes cell survival, proliferation, and genomic instability.",
+    "clinical_significance": "BCR-ABL is the primary oncogenic driver in >95% of chronic myeloid leukemia cases and ~25% of adult acute lymphoblastic leukemia cases. It serves as both a diagnostic marker and therapeutic target.",
+    "drug_resistance": "Drug resistance mechanisms include point mutations in the kinase domain (especially T315I), gene amplification, alternative splicing, and activation of bypass pathways. The T315I 'gatekeeper' mutation confers resistance to most first- and second-generation tyrosine kinase inhibitors.",
+    "external_links": {
+      "uniprot": {
+        "url": "https://www.uniprot.org/uniprotkb/P00519",
+        "description": "UniProt entry for ABL1 protein"
+      },
+      "pdb": {
+        "url": "https://www.rcsb.org/structure/1OPL",
+        "description": "Crystal structure of ABL kinase domain"
+      },
+      "alphafold": {
+        "url": "https://alphafold.ebi.ac.uk/entry/P00519",
+        "description": "AlphaFold structure prediction for ABL1"
+      },
+      "ncbi_gene": {
+        "url": "https://www.ncbi.nlm.nih.gov/gene/25",
+        "description": "NCBI Gene entry for ABL1"
+      },
+      "omim": {
+        "url": "https://omim.org/entry/189980",
+        "description": "OMIM entry for ABL1 gene"
+      },
+      "cosmic": {
+        "url": "https://cancer.sanger.ac.uk/cosmic/gene/analysis?ln=ABL1",
+        "description": "COSMIC database entry for ABL1 mutations"
+      },
+      "chembl": {
+        "url": "https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL1862/",
+        "description": "ChEMBL target profile for ABL1"
+      },
+      "drugbank": {
+        "url": "https://go.drugbank.com/targets/BE0000412",
+        "description": "DrugBank target entry for ABL1"
+      },
+      "pharos": {
+        "url": "https://pharos.nih.gov/targets/ABL1",
+        "description": "Pharos database entry for ABL1"
+      }
+    },
+    "therapeutic_agents": [
+      {
+        "name": "Imatinib",
+        "type": "First-generation TKI",
+        "fda_approval": "2001",
+        "mechanism": "ATP-competitive inhibitor of BCR-ABL kinase",
+        "clinical_use": "First-line treatment for chronic phase CML"
+      },
+      {
+        "name": "Dasatinib", 
+        "type": "Second-generation TKI",
+        "fda_approval": "2006",
+        "mechanism": "Dual SRC/ABL kinase inhibitor",
+        "clinical_use": "Imatinib-resistant CML and Ph+ ALL"
+      },
+      {
+        "name": "Nilotinib",
+        "type": "Second-generation TKI", 
+        "fda_approval": "2007",
+        "mechanism": "Selective ABL kinase inhibitor",
+        "clinical_use": "Imatinib-resistant CML, first-line CML"
+      },
+      {
+        "name": "Bosutinib",
+        "type": "Second-generation TKI",
+        "fda_approval": "2012", 
+        "mechanism": "Dual SRC/ABL kinase inhibitor",
+        "clinical_use": "CML resistant to prior TKI therapy"
+      },
+      {
+        "name": "Ponatinib",
+        "type": "Third-generation TKI",
+        "fda_approval": "2012",
+        "mechanism": "Pan-BCR-ABL inhibitor including T315I",
+        "clinical_use": "T315I-positive CML/ALL, multi-TKI resistant"
+      },
+      {
+        "name": "Asciminib",
+        "type": "Allosteric inhibitor",
+        "fda_approval": "2021",
+        "mechanism": "STAMP (Specifically Targeting the ABL Myristoyl Pocket)",
+        "clinical_use": "CML with T315I or resistance to ≥2 prior TKIs"
+      }
+    ],
+    "structural_domains": [
+      {
+        "name": "SH3 domain",
+        "residues": "59-142",
+        "function": "Protein-protein interactions, autoinhibition"
+      },
+      {
+        "name": "SH2 domain", 
+        "residues": "146-239",
+        "function": "Phosphotyrosine binding, substrate recognition"
+      },
+      {
+        "name": "Kinase domain",
+        "residues": "242-512", 
+        "function": "ATP binding and catalytic activity"
+      },
+      {
+        "name": "Nuclear localization signals",
+        "residues": "509-524",
+        "function": "Nuclear import"
+      }
+    ],
+    "key_residues": [
+      {
+        "position": 315,
+        "residue": "T315",
+        "importance": "Gatekeeper residue; T315I mutation causes broad TKI resistance"
+      },
+      {
+        "position": 253,
+        "residue": "Y253",
+        "importance": "Part of ATP-binding pocket"
+      },
+      {
+        "position": 255,
+        "residue": "E255", 
+        "importance": "Commonly mutated in TKI resistance"
+      },
+      {
+        "position": 351,
+        "residue": "F351",
+        "importance": "Drug binding pocket residue"
+      }
+    ],
+    "mutation_frequency": {
+      "total_variants_tested": 3136,
+      "positions_analyzed": 320,
+      "concentration_range": "5-100 μM",
+      "assay_type": "Net growth rate (qDMS)"
+    }
+  }
+}

@@ -10,10 +10,84 @@ const AminoAcidHeatMap = ({ proteinId }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedDose, setSelectedDose] = useState('low');
-  const [selectedDrug, setSelectedDrug] = useState('Imatinib'); // Default drug
-  const [availableDrugs, setAvailableDrugs] = useState([
-    { name: 'Imatinib', fda_approved: true, approval_date: '2001-05-10' }
-  ]);
+  const [selectedDrug, setSelectedDrug] = useState('');
+  const [availableDrugs, setAvailableDrugs] = useState([]);
+  const [drugMetadata, setDrugMetadata] = useState({});
+
+  // Load available drugs from CSV data
+  useEffect(() => {
+    const loadDrugOptions = async () => {
+      try {
+        // For now, use the FDA approved drugs from protein metadata
+        // In the future, this could dynamically read from CSV
+        const response = await fetch('/public/data/v1.0/protein_metadata.json');
+        if (response.ok) {
+          const data = await response.json();
+          const protein = data.proteins.find(p => p.protein_id === proteinId);
+          if (protein && protein.therapeutic_agents) {
+            const drugs = protein.therapeutic_agents.map(agent => ({
+              name: agent.drug_name,
+              generic_name: agent.generic_name,
+              fda_approved: true,
+              approval_date: agent.fda_approval_date,
+              mechanism: agent.mechanism_of_action
+            }));
+            setAvailableDrugs(drugs);
+            setDrugMetadata(Object.fromEntries(
+              drugs.map(drug => [drug.name, drug])
+            ));
+            
+            // Set default to first available drug
+            if (drugs.length > 0) {
+              setSelectedDrug(drugs[0].name);
+            }
+          }
+        }
+        
+        // Fallback to hardcoded options if metadata not available
+        if (availableDrugs.length === 0) {
+          const fallbackDrugs = [
+            { name: 'Imatinib', fda_approved: true, approval_date: '2001-05-10' },
+            { name: 'Dasatinib', fda_approved: true, approval_date: '2006-06-28' },
+            { name: 'Nilotinib', fda_approved: true, approval_date: '2007-10-29' }
+          ];
+          setAvailableDrugs(fallbackDrugs);
+          setSelectedDrug('Imatinib'); // Default to Imatinib since it's in our data
+        }
+      } catch (err) {
+        console.error('Error loading drug options:', err);
+        // Use fallback
+        setAvailableDrugs([{ name: 'Imatinib', fda_approved: true }]);
+        setSelectedDrug('Imatinib');
+      }
+    };
+
+    loadDrugOptions();
+  }, [proteinId]);
+
+  // Load heat map data
+  useEffect(() => {
+    const loadHeatmapData = async () => {
+      try {
+        const baseUrl = import.meta.env.BASE_URL || '';
+        const response = await fetch(`${baseUrl}data/v1.0/heatmap_data.json`);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to load heat map data: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        setHeatmapData(data);
+        setLoading(false);
+      } catch (err) {
+        console.error('Error loading heat map data:', err);
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    loadHeatmapData();
+  }, []);
 
   // Map concentration to dose labels for better UX
   const getConcentrationForDose = (dose) => {
@@ -22,6 +96,15 @@ const AminoAcidHeatMap = ({ proteinId }) => {
       case 'medium': return '30 µM';
       case 'high': return '100 µM';
       default: return '5 µM';
+    }
+  };
+
+  const getConcentrationValue = (dose) => {
+    switch (dose) {
+      case 'low': return 5;
+      case 'medium': return 30;
+      case 'high': return 100;
+      default: return 5;
     }
   };
 
@@ -165,7 +248,7 @@ const AminoAcidHeatMap = ({ proteinId }) => {
 
               const refAa = cellData.ref_aa || '?';
               const variant = `${refAa}${position}${aa}`;
-              const doseLabel = selectedDose.charAt(0).toUpperCase() + selectedDose.slice(1);
+              const doseLabel = `${selectedDose.charAt(0).toUpperCase() + selectedDose.slice(1)} (${getConcentrationForDose(selectedDose)})`;
               
               // Add uncertainty indication to tooltip
               const uncertaintyText = std !== null ? 
@@ -177,7 +260,8 @@ const AminoAcidHeatMap = ({ proteinId }) => {
                 <div style="max-width: 200px;">
                   <strong>Position ${position}</strong><br/>
                   <strong>Variant:</strong> ${variant}<br/>
-                  <strong>Dose:</strong> ${doseLabel}<br/>
+                  <strong>Drug:</strong> ${selectedDrug || heatmapData?.metadata.drug}<br/>
+                  <strong>Concentration:</strong> ${getConcentrationForDose(selectedDose)}<br/>
                   <strong>Mean netGR:</strong> ${value.toFixed(3)}<br/>
                   <strong>Count:</strong> ${doseData.count}<br/>
                   ${doseData.std ? `<strong>Std Dev:</strong> ${doseData.std.toFixed(3)}<br/>` : ''}
@@ -266,23 +350,23 @@ const AminoAcidHeatMap = ({ proteinId }) => {
       .style("fill", "#333")
       .text(`${heatmapData.metadata.gene} - Position vs Amino Acid Heat Map`);
 
-    // Add subtitle
+    // Add subtitle with concentration and drug info
     svg.append("text")
       .attr("x", containerWidth / 2)
       .attr("y", 50)
       .attr("text-anchor", "middle")
       .style("font-size", "13px")
       .style("fill", "#666")
-      .text(`Mean netGR (${selectedDose.charAt(0).toUpperCase() + selectedDose.slice(1)} Dose) - ${heatmapData.metadata.drug} Response`);
+      .text(`Mean netGR at ${getConcentrationForDose(selectedDose)} - ${selectedDrug || heatmapData.metadata.drug} Response`);
 
-    // Add data summary
+    // Add data summary with concentration
     svg.append("text")
       .attr("x", containerWidth / 2)
       .attr("y", 70)
       .attr("text-anchor", "middle")
       .style("font-size", "11px")
       .style("fill", "#888")
-      .text(`Showing ${displayPositions.length} positions (${displayPositions[0]}-${displayPositions[displayPositions.length-1]}) × ${aminoAcids.length} amino acids`);
+      .text(`Showing ${displayPositions.length} positions (${displayPositions[0]}-${displayPositions[displayPositions.length-1]}) × ${aminoAcids.length} amino acids at ${getConcentrationForDose(selectedDose)}`);
 
     // Add color legend
     const legendWidth = 200;
@@ -331,7 +415,7 @@ const AminoAcidHeatMap = ({ proteinId }) => {
       .selectAll("text")
       .style("font-size", "10px");
 
-    // Add legend title
+    // Add legend title with concentration
     svg.append("text")
       .attr("x", legendX + legendWidth / 2)
       .attr("y", legendY - 8)
@@ -339,7 +423,7 @@ const AminoAcidHeatMap = ({ proteinId }) => {
       .style("font-size", "12px")
       .style("font-weight", "bold")
       .style("fill", "#333")
-      .text("Mean netGR");
+      .text(`netGR @ ${getConcentrationForDose(selectedDose)}`);
 
     // Add uncertainty legend
     const uncertaintyLegendY = legendY + legendHeight + 60;
@@ -451,27 +535,70 @@ const AminoAcidHeatMap = ({ proteinId }) => {
       <div className="heatmap-header">
         <h2>Position vs Amino Acid Heat Map</h2>
         <p className="heatmap-description">
-          Interactive 2D heat map showing {selectedDrug} response patterns 
+          Interactive 2D heat map showing drug response patterns 
           across protein positions and amino acid substitutions. Each cell represents the mean 
           netGR value for a specific position-substitution combination at the selected concentration.
         </p>
         
-        {/* Current Drug Display */}
-        <div className="current-drug" style={{ marginBottom: '1rem' }}>
-          <span style={{ fontWeight: 'bold', marginRight: '1rem' }}>Drug:</span>
-          <span style={{ 
-            color: '#28a745',
-            background: '#f8f9fa',
-            padding: '0.25rem 0.5rem',
-            borderRadius: '0.25rem',
-            border: '1px solid #e9ecef',
-            fontWeight: 'bold'
-          }}>
-            {selectedDrug} ✓ FDA Approved
-          </span>
-        </div>
+        {/* Drug Selection */}
+        {availableDrugs.length > 1 && (
+          <div className="drug-controls" style={{ marginBottom: '1rem' }}>
+            <label htmlFor="drug-select" style={{ marginRight: '1rem', fontWeight: 'bold' }}>
+              FDA Approved Drug:
+            </label>
+            <select
+              id="drug-select"
+              value={selectedDrug}
+              onChange={(e) => setSelectedDrug(e.target.value)}
+              style={{
+                padding: '0.5rem',
+                border: '2px solid #28a745',
+                borderRadius: '0.25rem',
+                backgroundColor: 'white',
+                color: '#333',
+                fontWeight: 'bold',
+                marginRight: '1rem'
+              }}
+            >
+              {availableDrugs.map((drug) => (
+                <option key={drug.name} value={drug.name}>
+                  {drug.name} {drug.fda_approved ? '✓ FDA' : ''}
+                </option>
+              ))}
+            </select>
+            {drugMetadata[selectedDrug] && (
+              <span style={{ 
+                fontSize: '0.9rem', 
+                color: '#28a745',
+                background: '#f8f9fa',
+                padding: '0.25rem 0.5rem',
+                borderRadius: '0.25rem',
+                border: '1px solid #e9ecef'
+              }}>
+                FDA Approved: {drugMetadata[selectedDrug].approval_date}
+              </span>
+            )}
+          </div>
+        )}
+        
+        {/* Current drug display for single drug */}
+        {availableDrugs.length === 1 && (
+          <div className="current-drug" style={{ marginBottom: '1rem' }}>
+            <span style={{ fontWeight: 'bold', marginRight: '1rem' }}>Drug:</span>
+            <span style={{ 
+              color: '#28a745',
+              background: '#f8f9fa',
+              padding: '0.25rem 0.5rem',
+              borderRadius: '0.25rem',
+              border: '1px solid #e9ecef',
+              fontWeight: 'bold'
+            }}>
+              {selectedDrug} ✓ FDA Approved
+            </span>
+          </div>
+        )}
 
-        {/* Concentration Toggle Controls */}
+        {/* Concentration/Dosage Toggle Controls */}
         <div className="dose-controls" style={{ marginBottom: '1rem' }}>
           <span style={{ marginRight: '1rem', fontWeight: 'bold' }}>Concentration:</span>
           {['low', 'medium', 'high'].map((dose) => (

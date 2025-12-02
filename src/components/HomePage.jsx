@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Search, TrendingUp, Database, Microscope } from 'lucide-react'
 import GlobalSearch from './GlobalSearch'
-import AminoAcidHeatMap from './AminoAcidHeatMap'
 
 const HomePage = () => {
   const [stats, setStats] = useState({
@@ -110,18 +109,17 @@ const HomePage = () => {
       {/* Quick Actions */}
       <div className="card text-center">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">
-          Quick Actions
+          Get Started
         </h2>
         <div className="flex flex-wrap justify-center gap-4">
-          <Link to="/drugs" className="btn btn-primary">
+          <Link to="/protein/BCR-ABL" className="btn btn-primary">
+            Explore BCR-ABL
+          </Link>
+          <Link to="/drugs" className="btn btn-secondary">
             Browse FDA Approved Drugs
           </Link>
-
         </div>
       </div>
-
-      {/* Amino Acid Heat Map */}
-      <AminoAcidHeatMap />
     </div>
   )
 }
