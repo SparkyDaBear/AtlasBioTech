@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import { useNavigate } from 'react-router-dom';
 import './AminoAcidHeatMap.css';
 
-const AminoAcidHeatMap = ({ proteinId }) => {
+const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover }) => {
   const svgRef = useRef();
   const navigate = useNavigate();
   const [heatmapData, setHeatmapData] = useState(null);
@@ -167,6 +167,11 @@ const AminoAcidHeatMap = ({ proteinId }) => {
               const variant = `${refAa}${position}${aa}`;
               const doseLabel = selectedDose.charAt(0).toUpperCase() + selectedDose.slice(1);
               
+              // Notify parent component about residue hover
+              if (onResidueHover) {
+                onResidueHover({ position, aminoAcid: aa, variant });
+              }
+              
               // Add uncertainty indication to tooltip
               const uncertaintyText = std !== null ? 
                 (std > (d3.mean(allStdValues) || 0) ? 
@@ -199,6 +204,11 @@ const AminoAcidHeatMap = ({ proteinId }) => {
             d3.select(this)
               .attr("stroke", uncertaintyBorderColor)
               .attr("stroke-width", uncertaintyBorderWidth);
+
+            // Clear residue hover
+            if (onResidueHover) {
+              onResidueHover(null);
+            }
 
             tooltip.transition()
               .duration(300)

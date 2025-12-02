@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const ProteinInteractiveView = ({ proteinData, proteinId }) => {
+const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, onResidueHover }) => {
   const pdbViewerRef = useRef(null);
   const stageRef = useRef(null);
+  const structureComponentRef = useRef(null);
+  const highlightRepresentationRef = useRef(null);
   const [structureLoaded, setStructureLoaded] = useState(false);
   const [loadingStructure, setLoadingStructure] = useState(false);
   const [error, setError] = useState(null);
@@ -35,6 +37,7 @@ const ProteinInteractiveView = ({ proteinData, proteinId }) => {
         console.log('Loading structure from:', structureUrl);
         
         const structureComponent = await stage.loadFile(structureUrl);
+        structureComponentRef.current = structureComponent;
         console.log('Structure loaded:', structureComponent);
         
         // Add cartoon representation
@@ -60,12 +63,50 @@ const ProteinInteractiveView = ({ proteinData, proteinId }) => {
 
     // Cleanup
     return () => {
+      if (highlightRepresentationRef.current && structureComponentRef.current) {
+        structureComponentRef.current.removeRepresentation(highlightRepresentationRef.current);
+      }
       if (stageRef.current) {
         stageRef.current.dispose();
         stageRef.current = null;
+        structureComponentRef.current = null;
+        highlightRepresentationRef.current = null;
       }
     };
   }, []);
+
+  // Handle residue highlighting
+  useEffect(() => {
+    if (!structureComponentRef.current || !structureLoaded) return;
+
+    // Clear previous highlight
+    if (highlightRepresentationRef.current) {
+      structureComponentRef.current.removeRepresentation(highlightRepresentationRef.current);
+      highlightRepresentationRef.current = null;
+    }
+
+    // Add new highlight if residue is hovered
+    if (hoveredResidue) {
+      const { position } = hoveredResidue;
+      
+      try {
+        // Create selection string for the residue position
+        const selectionString = `${position}`;
+        
+        // Add ball+stick representation for the highlighted residue
+        highlightRepresentationRef.current = structureComponentRef.current.addRepresentation('ball+stick', {
+          sele: selectionString,
+          color: '#ff6b6b',
+          scale: 1.5,
+          opacity: 1.0
+        });
+        
+        console.log(`Highlighting residue at position ${position}`);
+      } catch (error) {
+        console.warn('Failed to highlight residue:', error);
+      }
+    }
+  }, [hoveredResidue, structureLoaded]);
 
   return (
     <div className="bg-white rounded-lg shadow-sm p-6">
@@ -116,7 +157,7 @@ const ProteinInteractiveView = ({ proteinData, proteinId }) => {
             className="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded flex items-center justify-center text-xs transition-colors"
             title="Auto View"
           >
-            🏠
+            Home
           </button>
           <button 
             onClick={() => {
@@ -127,7 +168,7 @@ const ProteinInteractiveView = ({ proteinData, proteinId }) => {
             className="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded flex items-center justify-center text-xs transition-colors"
             title="Fullscreen"
           >
-            🎯
+            Full
           </button>
           <button 
             onClick={() => {
@@ -137,7 +178,7 @@ const ProteinInteractiveView = ({ proteinData, proteinId }) => {
             className="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded flex items-center justify-center text-xs transition-colors"
             title="Download PDB"
           >
-            💾
+            DL
           </button>
         </div>
       </div>

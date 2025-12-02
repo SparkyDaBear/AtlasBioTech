@@ -9,6 +9,7 @@ const ProteinPage = () => {
   const [proteinData, setProteinData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [hoveredResidue, setHoveredResidue] = useState(null);
 
   useEffect(() => {
     const loadProteinData = async () => {
@@ -109,14 +110,19 @@ const ProteinPage = () => {
             {/* Interactive 3D Structure */}
             <div>
               <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                  🧬 3D Structure
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                  3D Structure
                 </h2>
                 <p className="text-gray-600 mb-4">
                   Interactive visualization of {proteinData?.protein_name || proteinId} structure.
                 </p>
               </div>
-              <ProteinInteractiveView proteinData={proteinData} proteinId={proteinId} />
+              <ProteinInteractiveView 
+                proteinData={proteinData} 
+                proteinId={proteinId} 
+                hoveredResidue={hoveredResidue}
+                onResidueHover={setHoveredResidue}
+              />
             </div>
           </div>
         </section>
@@ -124,15 +130,19 @@ const ProteinPage = () => {
         {/* Heat Map Section - Full Width Below */}
         <section>
           <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-              🔥 Interactive Heat Map
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              Interactive Heat Map
             </h2>
             <p className="text-gray-600 mb-6">
               Explore mutation effects across {proteinData?.protein_name || proteinId} 
               with concentration-dependent drug response data.
             </p>
           </div>
-          <AminoAcidHeatMap proteinId={proteinId} />
+          <AminoAcidHeatMap 
+            proteinId={proteinId} 
+            hoveredResidue={hoveredResidue}
+            onResidueHover={setHoveredResidue}
+          />
         </section>
       </div>
     </div>
