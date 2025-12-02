@@ -16,8 +16,12 @@ const VariantCard = () => {
     const loadVariantData = async () => {
       try {
         setLoading(true)
-        // In a real implementation, this would load from /data/v1.0/variants/{gene}/{id}.json
-        const response = await fetch(`${import.meta.env.BASE_URL}data/v1.0/variants/${gene}/${id}.json`)
+        // URL decode the gene parameter in case it's encoded
+        const decodedGene = decodeURIComponent(gene)
+        const decodedId = decodeURIComponent(id)
+        // Load variant data from the correct file path  
+        const fileName = `${decodedGene}_${decodedId}.json`
+        const response = await fetch(`/AtlasBioTech/data/v1.0/variants/${fileName}`)
         if (!response.ok) {
           throw new Error('Variant not found')
         }
@@ -124,7 +128,6 @@ const VariantCard = () => {
   // Prepare data for dose-response plot
   const preparePlotData = () => {
     if (!variantData || !variantData.ic50_values) {
-      console.log('No variant data or ic50_values available for plot');
       return [];
     }
     
@@ -141,19 +144,23 @@ const VariantCard = () => {
           const rep2 = responses_rep2[index];
           
           // Add individual data points for statistical calculations
-          plotData.push({
-            conc: concentration,
-            netgr_obs: rep1,
-            Drug: drug,
-            rep: 1
-          });
+          if (rep1 !== undefined) {
+            plotData.push({
+              conc: concentration,
+              netgr_obs: rep1,
+              Drug: drug,
+              rep: 1
+            });
+          }
           
-          plotData.push({
-            conc: concentration,
-            netgr_obs: rep2,
-            Drug: drug,
-            rep: 2
-          });
+          if (rep2 !== undefined) {
+            plotData.push({
+              conc: concentration,
+              netgr_obs: rep2,
+              Drug: drug,
+              rep: 2
+            });
+          }
         });
       }
     });
@@ -271,11 +278,11 @@ const VariantCard = () => {
                 <div>
                   <div className="font-medium">{result.drug}</div>
                   <div className="text-sm text-gray-500">
-                    IC50: {result.ic50} nM (WT: {result.ic50_wt || 'N/A'} nM)
+                    IC50: {result.ic50?.toFixed(2) || 'N/A'} nM (WT: {result.ic50_wt?.toFixed(2) || 'N/A'} nM)
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="font-bold text-lg">{result.fold_change || 'N/A'}×</div>
+                  <div className="font-bold text-lg">{result.fold_change?.toFixed(1) || 'N/A'}×</div>
                   <div className="text-xs text-gray-500">fold change</div>
                 </div>
               </div>

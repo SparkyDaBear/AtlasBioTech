@@ -12,7 +12,7 @@ const GlobalSearch = () => {
 
   useEffect(() => {
     // Load search index
-    fetch(`${import.meta.env.BASE_URL}data/v1.0/search_index.json`)
+    fetch(`/AtlasBioTech/data/v1.0/search_index.json`)
       .then(res => res.json())
       .then(data => setSearchIndex(data))
       .catch(err => console.error('Error loading search index:', err))
