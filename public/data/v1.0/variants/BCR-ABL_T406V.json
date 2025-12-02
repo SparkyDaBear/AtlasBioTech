@@ -6,10 +6,39 @@
   "position": 406,
   "consequence": "missense_variant",
   "drugs_tested": [
+    "Hollyniacine",
     "Imatinib"
   ],
   "model_system": "K562 cells",
   "ic50_values": [
+    {
+      "drug": "Hollyniacine",
+      "ic50": 25.389898027884108,
+      "replicate_count": 2,
+      "dose_response_data": {
+        "doses": [
+          5.0,
+          30.0,
+          100.0
+        ],
+        "responses_rep1": [
+          0.008081015,
+          0.014850251,
+          0.029182033
+        ],
+        "responses_rep2": [
+          0.007961774,
+          0.021365896,
+          0.035810162
+        ],
+        "avg_responses": [
+          0.008021394500000001,
+          0.0181080735,
+          0.0324960975
+        ]
+      },
+      "qc_flags": []
+    },
     {
       "drug": "Imatinib",
       "ic50": 42.9082855219245,
@@ -21,19 +50,19 @@
           100.0
         ],
         "responses_rep1": [
-          0.029182033,
-          0.014850251,
-          0.008081015
+          0.116728132,
+          0.059401004,
+          0.03232406
         ],
         "responses_rep2": [
-          0.035810162,
-          0.021365896,
-          0.007961774
+          0.143240648,
+          0.085463584,
+          0.031847096
         ],
         "avg_responses": [
-          0.0324960975,
-          0.0181080735,
-          0.008021394500000001
+          0.12998439,
+          0.072432294,
+          0.032085578000000003
         ]
       },
       "qc_flags": []
@@ -44,7 +73,7 @@
   "publication_doi": "",
   "plots": [],
   "metadata": {
-    "date_created": "2025-12-02T01:51:44.636584+00:00",
+    "date_created": "2025-12-02T02:57:31.410896+00:00",
     "version": "2.0",
     "is_synonymous": false,
     "variant_type": "mnv",

@@ -9,7 +9,7 @@ const VariantCard = () => {
   const [variantData, setVariantData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [selectedDrugs, setSelectedDrugs] = useState(['Imatinib'])
+  const [selectedDrugs, setSelectedDrugs] = useState([])
 
   useEffect(() => {
     // Load variant data
@@ -123,6 +123,11 @@ const VariantCard = () => {
 
   // Prepare data for dose-response plot
   const preparePlotData = () => {
+    if (!variantData || !variantData.ic50_values) {
+      console.log('No variant data or ic50_values available for plot');
+      return [];
+    }
+    
     const plotData = [];
     
     variantData.ic50_values.forEach(drugResult => {
@@ -233,16 +238,31 @@ const VariantCard = () => {
           </div>
           
           {/* Dose-Response Plot */}
-          {plotData.length > 0 && selectedDrugs.length > 0 && (
-            <div className="mb-6">
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-2">Dose-Response Analysis</h3>
+            
+            <div className="text-sm text-gray-600 mb-4">
+              <p>Plot Data Points: {plotData.length}</p>
+              <p>Selected Drugs: {selectedDrugs.join(', ') || 'None'}</p>
+              <p>Available Drugs: {variantData?.drugs_tested?.join(', ') || 'None'}</p>
+            </div>
+            
+            {plotData.length > 0 && selectedDrugs.length > 0 ? (
               <DoseResponsePlot 
                 data={plotData} 
                 selectedDrugs={selectedDrugs}
                 width={600}
                 height={400}
               />
-            </div>
-          )}
+            ) : (
+              <div className="p-4 bg-yellow-50 border border-yellow-200 rounded">
+                <p className="text-yellow-800">
+                  {plotData.length === 0 && "No dose-response data available"}
+                  {selectedDrugs.length === 0 && "No drugs selected"}
+                </p>
+              </div>
+            )}
+          </div>
           
           {/* IC50 Values Table */}
           <div className="space-y-3">

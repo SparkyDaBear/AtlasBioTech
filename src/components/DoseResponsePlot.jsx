@@ -5,20 +5,30 @@ const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], width = 600, hei
   const svgRef = useRef(null);
 
   useEffect(() => {
-    if (!data || !data.length) return;
-
     // Clear previous plot
     d3.select(svgRef.current).selectAll('*').remove();
+    
+    // Create SVG
+    const svg = d3.select(svgRef.current)
+      .attr('width', width)
+      .attr('height', height);
+    
+    if (!data || !data.length) {
+      // Show "no data" message
+      svg.append('text')
+        .attr('x', width / 2)
+        .attr('y', height / 2)
+        .attr('text-anchor', 'middle')
+        .attr('fill', '#666')
+        .style('font-size', '14px')
+        .text('No dose-response data available');
+      return;
+    }
 
     // Set up dimensions and margins
     const margin = { top: 20, right: 80, bottom: 60, left: 60 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
-
-    // Create SVG
-    const svg = d3.select(svgRef.current)
-      .attr('width', width)
-      .attr('height', height);
 
     const g = svg.append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
