@@ -6,7 +6,6 @@ import AminoAcidHeatMap from './AminoAcidHeatMap';
 
 const ProteinPage = () => {
   const { proteinId } = useParams();
-  const [activeTab, setActiveTab] = useState('overview');
   const [proteinData, setProteinData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -42,12 +41,6 @@ const ProteinPage = () => {
       loadProteinData();
     }
   }, [proteinId]);
-
-  const tabs = [
-    { id: 'overview', label: 'Overview', icon: '📊' },
-    { id: 'interactive', label: 'Interactive View', icon: '🧬' },
-    { id: 'heatmap', label: 'Interactive Heat Map', icon: '🔥' }
-  ];
 
   if (loading) {
     return (
@@ -103,52 +96,44 @@ const ProteinPage = () => {
         </div>
       </div>
 
-      {/* Tab Navigation */}
-      <div className="bg-white border-b">
-        <div className="container mx-auto px-4">
-          <nav className="flex space-x-8">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`py-4 px-2 border-b-2 font-medium text-sm transition-colors duration-200 ${
-                  activeTab === tab.id
-                    ? 'border-blue-500 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
-              >
-                <span className="mr-2">{tab.icon}</span>
-                {tab.label}
-              </button>
-            ))}
-          </nav>
-        </div>
-      </div>
-
-      {/* Tab Content */}
-      <div className="container mx-auto px-4 py-8">
-        {activeTab === 'overview' && (
-          <ProteinOverview proteinData={proteinData} proteinId={proteinId} />
-        )}
-        
-        {activeTab === 'interactive' && (
-          <ProteinInteractiveView proteinData={proteinData} proteinId={proteinId} />
-        )}
-        
-        {activeTab === 'heatmap' && (
-          <div className="space-y-6">
-            <div className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Interactive Heat Map
-              </h2>
-              <p className="text-gray-600 mb-6">
-                Explore mutation effects across {proteinData?.protein_name || proteinId} 
-                with concentration-dependent drug response data.
-              </p>
+      {/* Content Sections */}
+      <div className="container mx-auto px-4 py-8 space-y-12">
+        {/* Overview and 3D Structure Side by Side */}
+        <section>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Overview Section */}
+            <div>
+              <ProteinOverview proteinData={proteinData} proteinId={proteinId} />
             </div>
-            <AminoAcidHeatMap proteinId={proteinId} />
+            
+            {/* Interactive 3D Structure */}
+            <div>
+              <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                  🧬 3D Structure
+                </h2>
+                <p className="text-gray-600 mb-4">
+                  Interactive visualization of {proteinData?.protein_name || proteinId} structure.
+                </p>
+              </div>
+              <ProteinInteractiveView proteinData={proteinData} proteinId={proteinId} />
+            </div>
           </div>
-        )}
+        </section>
+        
+        {/* Heat Map Section - Full Width Below */}
+        <section>
+          <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+              🔥 Interactive Heat Map
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Explore mutation effects across {proteinData?.protein_name || proteinId} 
+              with concentration-dependent drug response data.
+            </p>
+          </div>
+          <AminoAcidHeatMap proteinId={proteinId} />
+        </section>
       </div>
     </div>
   );

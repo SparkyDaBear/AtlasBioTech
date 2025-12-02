@@ -22,65 +22,58 @@ const ProteinOverview = ({ proteinData, proteinId }) => {
   } = proteinData;
 
   return (
-    <div className="space-y-8">
-      {/* Clinical Significance */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">
-          Clinical Significance
-        </h2>
-        <div className="prose max-w-none">
-          <p className="text-gray-700 leading-relaxed">
+    <div className="bg-white rounded-lg shadow-sm p-6">
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">Overview</h2>
+      
+      <div className="space-y-6">
+        {/* Clinical Significance */}
+        <div>
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            Clinical Significance
+          </h3>
+          <p className="text-gray-700 text-sm leading-relaxed">
             {clinical_significance}
           </p>
         </div>
-      </div>
 
-      {/* Description */}
-      {description && (
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Protein Description
-          </h2>
-          <div className="prose max-w-none">
-            <p className="text-gray-700 leading-relaxed">
+        {/* Description */}
+        {description && (
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              Description
+            </h3>
+            <p className="text-gray-700 text-sm leading-relaxed">
               {description}
             </p>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* Functional Description */}
-      {functional_description && (
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Function
-          </h2>
-          <div className="prose max-w-none">
-            <p className="text-gray-700 leading-relaxed">
+        {/* Function */}
+        {functional_description && (
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              Function
+            </h3>
+            <p className="text-gray-700 text-sm leading-relaxed">
               {functional_description}
             </p>
           </div>
-        </div>
-      )}
+        )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Structural Domains */}
         {structural_domains.length > 0 && (
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
-              Structural Domains
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              Key Domains
             </h3>
-            <div className="space-y-4">
-              {structural_domains.map((domain, index) => (
-                <div key={index} className="border-l-4 border-blue-500 pl-4">
-                  <h4 className="font-semibold text-gray-900">
+            <div className="space-y-2">
+              {structural_domains.slice(0, 3).map((domain, index) => (
+                <div key={index} className="border-l-2 border-blue-400 pl-3 py-1">
+                  <h4 className="font-medium text-gray-900 text-sm">
                     {domain.name}
                   </h4>
-                  <p className="text-sm text-gray-600 mb-2">
-                    Residues: {domain.residues}
-                  </p>
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    {domain.function}
+                  <p className="text-xs text-gray-600">
+                    {domain.residues}
                   </p>
                 </div>
               ))}
@@ -88,134 +81,74 @@ const ProteinOverview = ({ proteinData, proteinId }) => {
           </div>
         )}
 
-        {/* Drug Resistance Information */}
+        {/* Drug Resistance */}
         {drug_resistance && (
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
               Drug Resistance
             </h3>
-            <div className="prose max-w-none">
-              <p className="text-gray-700 leading-relaxed">
-                {drug_resistance}
-              </p>
+            <p className="text-gray-700 text-sm leading-relaxed">
+              {drug_resistance}
+            </p>
+          </div>
+        )}
+
+        {/* Top Therapeutic Agents */}
+        {therapeutic_agents.length > 0 && (
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              FDA Approved Agents
+            </h3>
+            <div className="space-y-2">
+              {therapeutic_agents.slice(0, 3).map((agent, index) => (
+                <div key={index} className="border border-gray-200 rounded p-2">
+                  <div className="flex items-center justify-between mb-1">
+                    <h4 className="font-medium text-gray-900 text-sm">{agent.name}</h4>
+                    <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded">
+                      Approved
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-600">{agent.mechanism}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* External Links */}
+        {Object.keys(external_links).length > 0 && (
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              Database Links
+            </h3>
+            <div className="grid grid-cols-2 gap-2">
+              {external_links.uniprot && (
+                <a
+                  href={external_links.uniprot}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center p-2 border border-gray-200 rounded hover:border-blue-300 transition-colors"
+                >
+                  <span className="w-6 h-6 bg-blue-100 rounded text-blue-600 text-xs font-bold flex items-center justify-center mr-2">UP</span>
+                  <span className="text-sm text-gray-700">UniProt</span>
+                </a>
+              )}
+              
+              {external_links.alphafold && (
+                <a
+                  href={external_links.alphafold}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center p-2 border border-gray-200 rounded hover:border-purple-300 transition-colors"
+                >
+                  <span className="w-6 h-6 bg-purple-100 rounded text-purple-600 text-xs font-bold flex items-center justify-center mr-2">AF</span>
+                  <span className="text-sm text-gray-700">AlphaFold</span>
+                </a>
+              )}
             </div>
           </div>
         )}
       </div>
-
-      {/* Therapeutic Agents */}
-      {therapeutic_agents.length > 0 && (
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">
-            FDA Approved Therapeutic Agents
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            {therapeutic_agents.map((agent, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                <div className="flex items-start justify-between mb-2">
-                  <h4 className="font-semibold text-gray-900">{agent.name}</h4>
-                  <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
-                    FDA Approved
-                  </span>
-                </div>
-                
-                {agent.type && (
-                  <p className="text-sm text-gray-600 mb-2">
-                    Type: {agent.type}
-                  </p>
-                )}
-                
-                <p className="text-sm text-gray-700 mb-3">
-                  {agent.mechanism}
-                </p>
-                
-                <div className="space-y-1 text-xs text-gray-500">
-                  <p><strong>Approval:</strong> {agent.fda_approval}</p>
-                  <p><strong>Clinical Use:</strong> {agent.clinical_use}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* External Links */}
-      {Object.keys(external_links).length > 0 && (
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">
-            External Database Links
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {external_links.uniprot && (
-              <a
-                href={external_links.uniprot}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-md transition-all"
-              >
-                <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-                  <span className="text-blue-600 font-bold text-sm">UP</span>
-                </div>
-                <div>
-                  <h4 className="font-medium text-gray-900">UniProt</h4>
-                  <p className="text-xs text-gray-500">Protein sequence & annotation</p>
-                </div>
-              </a>
-            )}
-            
-            {external_links.pdb && (
-              <a
-                href={external_links.pdb}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-md transition-all"
-              >
-                <div className="flex-shrink-0 w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
-                  <span className="text-green-600 font-bold text-sm">PDB</span>
-                </div>
-                <div>
-                  <h4 className="font-medium text-gray-900">Protein Data Bank</h4>
-                  <p className="text-xs text-gray-500">3D structure data</p>
-                </div>
-              </a>
-            )}
-            
-            {external_links.alphafold && (
-              <a
-                href={external_links.alphafold}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-purple-300 hover:shadow-md transition-all"
-              >
-                <div className="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
-                  <span className="text-purple-600 font-bold text-sm">AF</span>
-                </div>
-                <div>
-                  <h4 className="font-medium text-gray-900">AlphaFold</h4>
-                  <p className="text-xs text-gray-500">AI predicted structure</p>
-                </div>
-              </a>
-            )}
-            
-            {external_links.ncbi && (
-              <a
-                href={external_links.ncbi}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-red-300 hover:shadow-md transition-all"
-              >
-                <div className="flex-shrink-0 w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mr-3">
-                  <span className="text-red-600 font-bold text-sm">NCBI</span>
-                </div>
-                <div>
-                  <h4 className="font-medium text-gray-900">NCBI Gene</h4>
-                  <p className="text-xs text-gray-500">Gene information</p>
-                </div>
-              </a>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };
