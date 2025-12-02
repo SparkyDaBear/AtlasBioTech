@@ -194,7 +194,7 @@ def main():
     variants_dir.mkdir(parents=True, exist_ok=True)
     
     # Look for K562 CSV file
-    k562_file = data_raw_dir / "k562_asc_screen_ngr_051024.csv"
+    k562_file = data_raw_dir / "master_qDMS_df.csv"
     
     if not k562_file.exists():
         logger.error(f"K562 data file not found: {k562_file}")
