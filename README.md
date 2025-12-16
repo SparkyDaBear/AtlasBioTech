@@ -5,12 +5,14 @@
 ## Features
 
 - **Global Search**: Search by gene symbol, variant notation (e.g., BCR-ABL p.T267N), or drug name
-- **Drug Table**: Browse FDA approved drugs with resistance profiles  
+- **Drug Database**: Browse drugs with resistance profiles (FDA approved and investigational)
 - **Variant Datacards**: Detailed mutation information with IC50 values, interactive dose-response plots, and 3D structures
-- **Dose-Response Visualization**: Interactive D3.js plots with 95% confidence intervals showing experimental data
+- **Dose-Response Visualization**: Interactive D3.js plots with 95% confidence intervals, 10% axis padding, and error bars
+- **Interactive Data Tables**: Sortable, filterable tables with dose-response values using AG-Grid
 - **Multi-Drug Support**: Compare dose-response curves across multiple drugs (Imatinib, Hollyniacine)
 - **3D Structure Viewer**: Mol* integration for protein structure visualization
-- **Amino Acid Heatmap**: Position-based mutation frequency visualization
+- **Amino Acid Heatmap**: Drug-specific position × amino acid heatmaps with concentration toggles
+- **Drug Navigation**: Click "View Heat Map" in drug table to navigate directly to protein page with drug pre-selected
 
 ## Quick Start
 
@@ -60,28 +62,37 @@ npm run preview
 ### Current Dataset
 
 - **56,700+ experimental measurements** from deep mutational scanning
-- **3,136 BCR-ABL variants** with dose-response data
-- **Multiple drugs**: Imatinib, Hollyniacine  
-- **Cell lines**: K562, K12
-- **Concentration ranges**: 5-100 nM with biological replicates
+- **3,136 unique BCR-ABL variants** with dose-response data
+- **2 drugs**: Imatinib (FDA Approved), Hollyniacine (Investigational)
+- **Cell line**: K562
+- **Concentration ranges**: 5, 30, 100 nM with biological replicates (2 replicates per condition)
 
-### CSV Input Format
+### Raw Data Files (`data/raw/`)
 
-**Master Dataset** (`data/raw/master_qDMS_df.csv`):
+**Master Dataset** (`master_qDMS_df.csv` - 3.9 MB):
 ```csv
-Gene,variant_string,Drug,Cell_line,conc,netgr_obs,replicate
-BCR-ABL,T267N,Imatinib,K562,5,0.127941964,1
-BCR-ABL,T267N,Imatinib,K562,30,0.076598512,1
-BCR-ABL,T267N,Imatinib,K562,100,0.053539936,1
+index,species,type,synSNP,ref_aa,protein_start,alt_aa,conc,netgr_obs,cell_line,rep,Gene,Drug
+0,A102D,snp,False,A,102,D,5,0.02293268,K562,1,BCR-ABL,Imatinib
+1,A102E,mnv,False,A,102,E,5,0.024834553,K562,1,BCR-ABL,Imatinib
 ```
+
+**Protein Metadata** (`protein_metadata.json` - 5.8 KB):
+- Gene information, descriptions, clinical significance
+- External links (UniProt, PDB, AlphaFold, etc.)
+- Drug resistance mechanisms
+
+**Protein Structure** (`BCR-ABL.pdb` - 711 KB):
+- 3D structure file for BCR-ABL kinase domain
+- Used for Mol* structure visualization
 
 ### JSON Output Structure
 
 Processed data is stored in `public/data/v1.0/`:
-- `search_index.json` - Global search index with 3,136 variants
-- `heatmap_data.json` - Amino acid position-based mutation data
-- `variants/` - Individual variant JSON files with dose-response data
-- `assets/plots/` - Generated visualization assets
+- `search_index.json` - Global search index with 3,136 variants and 2 drugs
+- `heatmap_data.json` - Drug-specific position × amino acid matrices for both drugs
+- `protein_metadata.json` - Copy of protein information for web access
+- `variants/` - 3,137 individual variant JSON files with dose-response data
+- `assets/plots/` - Generated visualization assets (if any)
 
 ## Deployment
 
@@ -112,28 +123,56 @@ npm run preview  # Preview production build locally
 ```
 📁 AtlasBioTech/
 ├── 📁 data/
-│   └── 📁 raw/           # Input CSV files (master_qDMS_df.csv)
-├── 📁 public/data/v1.0/  # Processed JSON data & assets
-│   ├── 📄 search_index.json
-│   ├── 📄 heatmap_data.json
-│   ├── 📁 variants/      # Individual variant JSON files (3,136)
-│   └── 📁 assets/        # Generated plots and visualizations
+│   └── 📁 raw/                        # Raw input files (not committed to build)
+│       ├── 📄 master_qDMS_df.csv      # Main dataset (3.9 MB, 56,700 rows)
+│       ├── 📄 protein_metadata.json   # Gene/protein annotations (5.8 KB)
+│       └── 📄 BCR-ABL.pdb             # Protein structure (711 KB)
+├── 📁 public/data/v1.0/               # Processed JSON data & assets
+│   ├── 📄 search_index.json           # Search index (genes, drugs, variants)
+│   ├── 📄 heatmap_data.json           # Drug-specific heatmap matrices
+│   ├── 📄 protein_metadata.json       # Protein info for web access
+│   ├── 📁 variants/                   # Individual variant JSON files (3,137)
+│   └── 📁 assets/                     # Generated plots and visualizations
+│       └── 📁 plots/                  # Static dose-response plots (optional)
 ├── 📁 data-pipeline/
-│   ├── 📁 config/        # JSON schemas (variant_schema.json, etc.)
-│   ├── 📁 scripts/       # Data processing (process_data.py, etc.)
-│   └── 📁 tests/         # Data validation tests
+│   ├── 📁 config/                     # JSON schemas
+│   │   ├── 📄 variant_schema.json
+│   │   ├── 📄 search_index_schema.json
+│   │   └── 📄 heatmap_schema.json
+│   ├── 📁 scripts/                    # Data processing scripts
+│   │   ├── 📄 process_data.py         # CSV → variant JSON files
+│   │   ├── 📄 build_search_index.py   # Build search index
+│   │   ├── 📄 generate_heatmap_data.py # Generate heatmap matrices
+│   │   └── 📄 validate_data.py        # Schema validation
+│   └── 📁 tests/                      # Data validation tests
 ├── 📁 src/
-│   ├── 📁 components/    # React components
-│   │   ├── 📄 VariantCard.jsx        # Variant detail pages
-│   │   ├── 📄 DoseResponsePlot.jsx   # D3.js dose-response plots
-│   │   ├── 📄 AminoAcidHeatMap.jsx   # Position heatmap
-│   │   └── 📄 GlobalSearch.jsx       # Search functionality
-│   ├── 📁 css/          # Stylesheets
-│   └── 📄 App.jsx       # Main app component
-├── 📁 .github/workflows/ # CI/CD (deploy.yml)
-├── 📄 package.json      # Dependencies and scripts
-├── 📄 vite.config.js    # Build configuration (base: '/AtlasBioTech/')
-└── 📄 index.html        # Entry point
+│   ├── 📁 components/                 # React components
+│   │   ├── 📄 HomePage.jsx            # Landing page with search
+│   │   ├── 📄 GlobalSearch.jsx        # Search functionality
+│   │   ├── 📄 DrugTable.jsx           # Drug database table
+│   │   ├── 📄 ProteinPage.jsx         # Protein overview page
+│   │   ├── 📄 ProteinOverview.jsx     # Protein metadata display
+│   │   ├── 📄 ProteinInteractiveView.jsx # 3D structure viewer
+│   │   ├── 📄 VariantCard.jsx         # Variant detail pages
+│   │   ├── 📄 DoseResponsePlot.jsx    # D3.js dose-response plots
+│   │   ├── 📄 DoseResponseTable.jsx   # Interactive data table (AG-Grid)
+│   │   ├── 📄 AminoAcidHeatMap.jsx    # Position × AA heatmap
+│   │   ├── 📄 StructureViewer.jsx     # Mol* structure viewer
+│   │   └── 📄 Layout.jsx              # Site layout/navigation
+│   ├── 📁 css/                        # Stylesheets
+│   │   ├── 📄 App.css
+│   │   ├── 📄 index.css
+│   │   └── 📄 AminoAcidHeatMap.css
+│   ├── 📁 js/                         # JavaScript utilities
+│   ├── 📄 App.jsx                     # Main app component with routing
+│   └── 📄 main.jsx                    # React entry point
+├── 📁 .github/workflows/              # CI/CD
+│   └── 📄 deploy.yml                  # GitHub Actions deployment
+├── 📄 package.json                    # Dependencies and scripts
+├── 📄 vite.config.js                  # Build config (base: '/AtlasBioTech/')
+├── 📄 requirements.txt                # Python dependencies
+├── 📄 index.html                      # HTML entry point
+└── 📄 README.md                       # This file
 ```
 
 ## Key Components
@@ -217,6 +256,17 @@ For questions or support, please contact:
 - **Live Site**: https://sparkydabear.github.io/AtlasBioTech/
 
 ## Recent Updates
+
+**v2.1** (December 2025):
+- ✅ Added interactive data tables with sortable/filterable columns (AG-Grid)
+- ✅ Improved dose-response plots with 10% axis padding and error bar range calculation
+- ✅ Drug-specific heatmap matrices (separate data for Imatinib and Hollyniacine)
+- ✅ Drug selector controls on heatmap with FDA approval status indicators
+- ✅ Clickable "View Heat Map" buttons in drug table with URL parameter navigation
+- ✅ Fixed Back button to use browser history instead of always going home
+- ✅ Updated drug count display (now correctly shows 2 drugs)
+- ✅ Renamed "FDA Approved Drugs" to "Drug Database" for accuracy
+- ✅ Fixed blank page issue when loading protein page with drug parameter
 
 **v2.0** (December 2025):
 - ✅ Interactive dose-response plots with D3.js visualization
