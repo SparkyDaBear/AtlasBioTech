@@ -46,7 +46,7 @@ def main():
     
     # Calculate aggregated statistics
     aggregated_stats = df_canonical.groupby(['species', 'protein_start', 'alt_aa', 'ref_aa', 'dose_level', 'Gene', 'Drug'])['netgr_obs'].agg(['mean', 'std', 'count']).reset_index()
-    logger.info(f"Calculated statistics for {len(aggregated_stats)} species-dose combinations")
+    logger.info(f"Calculated statistics for {len(aggregated_stats)} species-drug-dose combinations")
     
     # Get all positions with data and reference amino acids per position
     all_positions = sorted(aggregated_stats['protein_start'].unique())
@@ -58,46 +58,32 @@ def main():
     logger.info(f"Position range: {min(all_positions)} to {max(all_positions)}")
     logger.info(f"Total positions with data: {len(all_positions)}")
     
-    # Create position vs amino acid matrix
-    position_aa_matrix = {}
+    # Get unique drugs
+    unique_drugs = sorted(aggregated_stats['Drug'].unique())
+    logger.info(f"Drugs found: {unique_drugs}")
     
-    # First populate with actual data
-    for _, row in aggregated_stats.iterrows():
-        position = int(row['protein_start'])
-        aa = row['alt_aa']
-        dose_level = row['dose_level']
-        ref_aa = row['ref_aa']
-        
-        mean_value = float(row['mean'])
-        std_value = float(row['std']) if not pd.isna(row['std']) else None
-        count_value = int(row['count'])
-        
-        position_str = str(position)
-        if position_str not in position_aa_matrix:
-            position_aa_matrix[position_str] = {}
-        
-        if aa not in position_aa_matrix[position_str]:
-            position_aa_matrix[position_str][aa] = {
-                'low': {'value': None, 'std': None, 'count': 0},
-                'medium': {'value': None, 'std': None, 'count': 0},
-                'high': {'value': None, 'std': None, 'count': 0},
-                'ref_aa': ref_aa
-            }
-        
-        # Store values
-        position_aa_matrix[position_str][aa][dose_level] = {
-            'value': mean_value,
-            'std': std_value,
-            'count': count_value
-        }
-        position_aa_matrix[position_str][aa]['ref_aa'] = ref_aa
+    # Create position vs amino acid matrix PER DRUG
+    drug_matrices = {}
     
-    # Fill in missing amino acids for each position
-    for position in all_positions:
-        position_str = str(position)
-        ref_aa = position_ref_aa[position]
+    for drug in unique_drugs:
+        drug_data = aggregated_stats[aggregated_stats['Drug'] == drug]
+        position_aa_matrix = {}
         
-        for aa in AMINO_ACIDS:
+        # First populate with actual data for this drug
+        for _, row in drug_data.iterrows():
+            position = int(row['protein_start'])
+            aa = row['alt_aa']
+            dose_level = row['dose_level']
+            ref_aa = row['ref_aa']
+            
+            mean_value = float(row['mean'])
+            std_value = float(row['std']) if not pd.isna(row['std']) else None
+            count_value = int(row['count'])
+            
+            position_str = str(position)
+            if position_str not in position_aa_matrix:
+                position_aa_matrix[position_str] = {}
+            
             if aa not in position_aa_matrix[position_str]:
                 position_aa_matrix[position_str][aa] = {
                     'low': {'value': None, 'std': None, 'count': 0},
@@ -105,10 +91,39 @@ def main():
                     'high': {'value': None, 'std': None, 'count': 0},
                     'ref_aa': ref_aa
                 }
+            
+            # Store values
+            position_aa_matrix[position_str][aa][dose_level] = {
+                'value': mean_value,
+                'std': std_value,
+                'count': count_value
+            }
+            position_aa_matrix[position_str][aa]['ref_aa'] = ref_aa
+        
+        # Fill in missing amino acids for each position
+        for position in all_positions:
+            position_str = str(position)
+            ref_aa = position_ref_aa[position]
+            
+            if position_str not in position_aa_matrix:
+                position_aa_matrix[position_str] = {}
+            
+            for aa in AMINO_ACIDS:
+                if aa not in position_aa_matrix[position_str]:
+                    position_aa_matrix[position_str][aa] = {
+                        'low': {'value': None, 'std': None, 'count': 0},
+                        'medium': {'value': None, 'std': None, 'count': 0},
+                        'high': {'value': None, 'std': None, 'count': 0},
+                        'ref_aa': ref_aa
+                    }
+        
+        drug_matrices[drug] = position_aa_matrix
     
-    # Create variant lookup
+    # Create variant lookup (shared across drugs)
     variant_lookup = {}
-    for position_str, aa_data in position_aa_matrix.items():
+    # Use first drug's matrix to build variant lookup
+    first_drug_matrix = drug_matrices[unique_drugs[0]]
+    for position_str, aa_data in first_drug_matrix.items():
         position = int(position_str)
         for aa, dose_data in aa_data.items():
             ref_aa = dose_data.get('ref_aa', 'X')
@@ -120,46 +135,44 @@ def main():
                 'variant_string': variant_id
             }
     
-    # Calculate value ranges
-    all_values = []
-    dose_values = {'low': [], 'medium': [], 'high': []}
+    # Calculate value ranges per drug
+    drug_value_ranges = {}
+    drug_data_counts = {}
     
-    for pos_data in position_aa_matrix.values():
-        for aa_data in pos_data.values():
-            for dose in ['low', 'medium', 'high']:
-                value = aa_data[dose]['value']
-                if value is not None:
-                    all_values.append(value)
-                    dose_values[dose].append(value)
-    
-    value_range = {
-        'min': min(all_values) if all_values else 0,
-        'max': max(all_values) if all_values else 0
-    }
-    
-    for dose in ['low', 'medium', 'high']:
-        if dose_values[dose]:
-            value_range[dose] = {
-                'min': min(dose_values[dose]),
-                'max': max(dose_values[dose])
-            }
-    
-    # Count data points
-    data_counts = {'low': 0, 'medium': 0, 'high': 0}
-    for pos_data in position_aa_matrix.values():
-        for aa_data in pos_data.values():
-            for dose in ['low', 'medium', 'high']:
-                if aa_data[dose]['value'] is not None:
-                    data_counts[dose] += 1
+    for drug, position_aa_matrix in drug_matrices.items():
+        all_values = []
+        dose_values = {'low': [], 'medium': [], 'high': []}
+        data_counts = {'low': 0, 'medium': 0, 'high': 0}
+        
+        for pos_data in position_aa_matrix.values():
+            for aa_data in pos_data.values():
+                for dose in ['low', 'medium', 'high']:
+                    value = aa_data[dose]['value']
+                    if value is not None:
+                        all_values.append(value)
+                        dose_values[dose].append(value)
+                        data_counts[dose] += 1
+        
+        value_range = {
+            'min': min(all_values) if all_values else 0,
+            'max': max(all_values) if all_values else 0
+        }
+        
+        for dose in ['low', 'medium', 'high']:
+            if dose_values[dose]:
+                value_range[dose] = {
+                    'min': min(dose_values[dose]),
+                    'max': max(dose_values[dose])
+                }
+        
+        drug_value_ranges[drug] = value_range
+        drug_data_counts[drug] = data_counts
     
     # Get metadata
     gene = aggregated_stats['Gene'].iloc[0]
-    drug = aggregated_stats['Drug'].iloc[0]
-    total_variants = len([
-        aa for pos_data in position_aa_matrix.values() 
-        for aa, aa_data in pos_data.items() 
-        if any(aa_data[dose]['value'] is not None for dose in ['low', 'medium', 'high'])
-    ])
+    
+    # Count total unique variants across all drugs
+    total_variants = len(variant_lookup)
     
     metadata = {
         'type': 'position_vs_amino_acid',
@@ -172,9 +185,10 @@ def main():
         'amino_acids': AMINO_ACIDS,
         'amino_acids_count': len(AMINO_ACIDS),
         'gene': gene,
-        'drug': drug,
-        'value_range': value_range,
-        'description': 'Mean netgr_obs values by protein position and amino acid substitution across all dose levels',
+        'drugs': list(unique_drugs),
+        'value_ranges': drug_value_ranges,
+        'data_counts': drug_data_counts,
+        'description': 'Mean netgr_obs values by protein position, amino acid substitution, drug, and dose level',
         'dose_levels': ['low', 'medium', 'high'],
         'data_columns': {
             'low': 'Mean netgr_obs values at 5 μM concentration across replicates',
@@ -186,13 +200,15 @@ def main():
         }
     }
     
-    logger.info(f"Generated heat map matrix: {len(all_positions)} positions × {len(AMINO_ACIDS)} amino acids × 3 dose levels")
-    logger.info(f"Total data points - Low: {data_counts['low']}, Medium: {data_counts['medium']}, High: {data_counts['high']}")
+    logger.info(f"Generated heat map matrices: {len(all_positions)} positions × {len(AMINO_ACIDS)} amino acids × {len(unique_drugs)} drugs × 3 dose levels")
+    for drug in unique_drugs:
+        counts = drug_data_counts[drug]
+        logger.info(f"{drug} data points - Low: {counts['low']}, Medium: {counts['medium']}, High: {counts['high']}")
     
-    # Assemble final data
+    # Assemble final data with drug-specific matrices
     heatmap_data = {
         'metadata': metadata,
-        'matrix': position_aa_matrix,
+        'matrices': drug_matrices,  # Changed from 'matrix' to 'matrices' with drug keys
         'positions': [int(pos) for pos in all_positions],  # Ensure integers
         'variant_lookup': variant_lookup
     }

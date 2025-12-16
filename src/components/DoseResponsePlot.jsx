@@ -71,12 +71,17 @@ const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], width = 600, hei
 
     if (processedData.length === 0) return;
 
-    // Set up scales
+    // Set up scales with 10% padding on both axes
+    const xExtent = d3.extent(processedData, d => d.concentration);
+    // For log scale, padding is multiplicative (e.g., 10% = factor of 1.1)
+    const xPaddingFactor = 0.9; // Shrinks the range by 10% on each side
     const xScale = d3.scaleLog()
-      .domain(d3.extent(processedData, d => d.concentration))
+      .domain([xExtent[0] / (1 / xPaddingFactor), xExtent[1] / xPaddingFactor])
       .range([0, innerWidth]);
 
-    const yExtent = d3.extent(processedData, d => d.mean);
+    // Calculate y-axis extent including error bars (upper and lower bounds)
+    const allYValues = processedData.flatMap(d => [d.lower, d.upper]);
+    const yExtent = d3.extent(allYValues);
     const yPadding = (yExtent[1] - yExtent[0]) * 0.1;
     const yScale = d3.scaleLinear()
       .domain([yExtent[0] - yPadding, yExtent[1] + yPadding])

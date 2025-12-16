@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { AgGridReact } from 'ag-grid-react'
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-alpine.css'
 import { Download, Filter, TrendingUp } from 'lucide-react'
 
 const DrugTable = () => {
+  const navigate = useNavigate()
   const [rowData, setRowData] = useState([])
   const [loading, setLoading] = useState(true)
   const [filterText, setFilterText] = useState('')
@@ -84,7 +86,10 @@ const DrugTable = () => {
       sortable: false,
       width: 180,
       cellRenderer: (params) => (
-        <button className="btn btn-primary btn-sm">
+        <button 
+          className="btn btn-primary btn-sm"
+          onClick={() => navigate(`/protein/BCR-ABL?drug=${encodeURIComponent(params.data.name)}`)}
+        >
           <TrendingUp size={14} />
           View Heat Map
         </button>
@@ -125,10 +130,10 @@ const DrugTable = () => {
     <div>
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          FDA Approved Drugs
+          Drug Database
         </h1>
         <p className="text-gray-600 mb-6">
-          Comprehensive database of FDA approved drugs with resistance profiles and variant testing data.
+          Comprehensive database of drugs with resistance profiles and variant testing data, including FDA approved and investigational compounds.
         </p>
         
         <div className="flex justify-between items-center gap-4">

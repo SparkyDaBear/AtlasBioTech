@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useSearchParams, Link } from 'react-router-dom';
 import ProteinOverview from './ProteinOverview';
 import ProteinInteractiveView from './ProteinInteractiveView';
 import AminoAcidHeatMap from './AminoAcidHeatMap';
 
 const ProteinPage = () => {
   const { proteinId } = useParams();
+  const [searchParams] = useSearchParams();
   const [proteinData, setProteinData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [hoveredResidue, setHoveredResidue] = useState(null);
+
+  // Get drug from URL parameter
+  const drugFromUrl = searchParams.get('drug');
 
   useEffect(() => {
     const loadProteinData = async () => {
@@ -142,6 +146,7 @@ const ProteinPage = () => {
             proteinId={proteinId} 
             hoveredResidue={hoveredResidue}
             onResidueHover={setHoveredResidue}
+            initialDrug={drugFromUrl}
           />
         </section>
       </div>

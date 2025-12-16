@@ -116,7 +116,7 @@ const HomePage = () => {
             Explore BCR-ABL
           </Link>
           <Link to="/drugs" className="btn btn-secondary">
-            Browse FDA Approved Drugs
+            Browse Drug Database
           </Link>
         </div>
       </div>

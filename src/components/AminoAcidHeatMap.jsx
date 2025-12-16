@@ -3,16 +3,17 @@ import * as d3 from 'd3';
 import { useNavigate } from 'react-router-dom';
 import './AminoAcidHeatMap.css';
 
-const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover }) => {
+const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDrug }) => {
   const svgRef = useRef();
   const navigate = useNavigate();
   const [heatmapData, setHeatmapData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedDose, setSelectedDose] = useState('low');
-  const [selectedDrug, setSelectedDrug] = useState('Imatinib'); // Default drug
+  const [selectedDrug, setSelectedDrug] = useState(initialDrug || 'Imatinib'); // Use initialDrug if provided
   const [availableDrugs, setAvailableDrugs] = useState([
-    { name: 'Imatinib', fda_approved: true, approval_date: '2001-05-10' }
+    { name: 'Imatinib', fda_approved: true, approval_date: '2001-05-10' },
+    { name: 'Hollyniacine', fda_approved: false, approval_date: null }
   ]);
 
   // Map concentration to dose labels for better UX
@@ -49,9 +50,23 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover }) => {
     loadHeatmapData();
   }, []);
 
+  // Update selected drug when initialDrug changes
+  useEffect(() => {
+    if (initialDrug && availableDrugs.some(d => d.name === initialDrug)) {
+      setSelectedDrug(initialDrug);
+    }
+  }, [initialDrug, availableDrugs]);
+
   // Create the 2D matrix heat map visualization
   useEffect(() => {
-    if (!heatmapData || loading || error || !heatmapData.matrix || !heatmapData.positions) return;
+    if (!heatmapData || loading || error || !heatmapData.matrices || !heatmapData.positions) return;
+
+    // Get the matrix for the selected drug
+    const currentMatrix = heatmapData.matrices[selectedDrug];
+    if (!currentMatrix) {
+      console.error(`No matrix data found for drug: ${selectedDrug}`);
+      return;
+    }
 
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove(); // Clear previous render
@@ -91,9 +106,9 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover }) => {
       .range([0, height])
       .padding(0.05);
 
-    // Get all non-null values for color scale (for the selected dose)
+    // Get all non-null values for color scale (for the selected dose and drug)
     const allValues = [];
-    Object.values(heatmapData.matrix).forEach(posData => {
+    Object.values(currentMatrix).forEach(posData => {
       Object.values(posData).forEach(aaData => {
         if (aaData[selectedDose] && aaData[selectedDose].value !== null && aaData[selectedDose].value !== undefined) {
           allValues.push(aaData[selectedDose].value);
@@ -122,7 +137,7 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover }) => {
 
     // Get all std values to create a scale for uncertainty visualization
     const allStdValues = [];
-    Object.values(heatmapData.matrix).forEach(posData => {
+    Object.values(currentMatrix).forEach(posData => {
       Object.values(posData).forEach(aaData => {
         if (aaData[selectedDose] && aaData[selectedDose].std !== null && aaData[selectedDose].std !== undefined) {
           allStdValues.push(aaData[selectedDose].std);
@@ -139,7 +154,7 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover }) => {
     displayPositions.forEach(position => {
       aminoAcids.forEach(aa => {
         const positionStr = position.toString(); // Convert to string for matrix lookup
-        const cellData = heatmapData.matrix[positionStr] && heatmapData.matrix[positionStr][aa];
+        const cellData = currentMatrix[positionStr] && currentMatrix[positionStr][aa];
         const doseData = cellData ? cellData[selectedDose] : null;
         const value = doseData ? doseData.value : null;
         const std = doseData ? doseData.std : null;
@@ -445,7 +460,7 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover }) => {
     );
   }
 
-  if (!heatmapData || !heatmapData.matrix) {
+  if (!heatmapData || !heatmapData.matrices) {
     return (
       <div className="heatmap-container">
         <div className="heatmap-error">
@@ -477,8 +492,42 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover }) => {
             border: '1px solid #e9ecef',
             fontWeight: 'bold'
           }}>
-            {selectedDrug} ✓ FDA Approved
+            {selectedDrug} {availableDrugs.find(d => d.name === selectedDrug)?.fda_approved ? '✓ FDA Approved' : '(Investigational)'}
           </span>
+        </div>
+
+        {/* Drug Selection Controls */}
+        <div className="drug-controls" style={{ marginBottom: '1rem' }}>
+          <span style={{ marginRight: '1rem', fontWeight: 'bold' }}>Select Drug:</span>
+          {availableDrugs.map((drug) => (
+            <button
+              key={drug.name}
+              onClick={() => setSelectedDrug(drug.name)}
+              style={{
+                padding: '0.5rem 1rem',
+                margin: '0 0.25rem',
+                border: '2px solid #28a745',
+                borderRadius: '0.25rem',
+                backgroundColor: selectedDrug === drug.name ? '#28a745' : 'white',
+                color: selectedDrug === drug.name ? 'white' : '#28a745',
+                cursor: 'pointer',
+                fontWeight: 'bold',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                if (selectedDrug !== drug.name) {
+                  e.target.style.backgroundColor = '#f8f9fa';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (selectedDrug !== drug.name) {
+                  e.target.style.backgroundColor = 'white';
+                }
+              }}
+            >
+              {drug.name}
+            </button>
+          ))}
         </div>
 
         {/* Concentration Toggle Controls */}

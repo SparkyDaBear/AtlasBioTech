@@ -34,7 +34,11 @@ def process_csv_data(csv_path):
         
         for drug in unique_drugs:
             drug_variants = df[df['Drug'] == drug]
-            variant_count = len(drug_variants)
+            # Count unique variants (based on gene + ref_aa + position + alt_aa combination)
+            if all(col in df.columns for col in ['Gene', 'ref_aa', 'protein_start', 'alt_aa']):
+                unique_variant_count = drug_variants.groupby(['Gene', 'ref_aa', 'protein_start', 'alt_aa']).ngroups
+            else:
+                unique_variant_count = len(drug_variants)
             
             # Create drug entry with basic information
             drugs[drug] = {
@@ -43,7 +47,7 @@ def process_csv_data(csv_path):
                 'fda_status': 'Investigational',  # Default status
                 'target_class': 'Unknown',
                 'mechanism': 'Unknown',
-                'variant_count': variant_count
+                'variant_count': unique_variant_count
             }
             
             # Add known drug information
@@ -53,6 +57,13 @@ def process_csv_data(csv_path):
                     'fda_status': 'Approved',
                     'target_class': 'Tyrosine kinase inhibitor',
                     'mechanism': 'BCR-ABL, KIT, PDGFR inhibitor'
+                })
+            elif drug == 'Hollyniacine':
+                drugs[drug].update({
+                    'synonyms': ['HLN-01'],
+                    'fda_status': 'Investigational',
+                    'target_class': 'Tyrosine kinase inhibitor',
+                    'mechanism': 'BCR-ABL inhibitor'
                 })
             elif drug == 'Dasatinib':
                 drugs[drug].update({
@@ -85,19 +96,32 @@ def process_csv_data(csv_path):
                 'variant_count': variant_count
             }
         
-        # Create variant entries for search
-        variants = []
+        # Create variant entries for search (deduplicate by gene + variant_string)
+        variants_dict = {}
         for _, row in df.iterrows():
             if pd.notna(row.get('ref_aa')) and pd.notna(row.get('alt_aa')) and pd.notna(row.get('protein_start')):
                 variant_id = f"{row.get('ref_aa', '')}{row.get('protein_start', '')}{row.get('alt_aa', '')}"
                 protein_change = f"p.{row.get('ref_aa', '')}{row.get('protein_start', '')}{row.get('alt_aa', '')}"
-                variants.append({
-                    'gene': row.get('Gene', ''),
-                    'variant_string': variant_id,
-                    'protein_change': protein_change,
-                    'consequence': 'missense_variant',
-                    'drugs_tested': [row.get('Drug', '')]
-                })
+                gene = row.get('Gene', '')
+                drug = row.get('Drug', '')
+                
+                # Create unique key for variant
+                variant_key = f"{gene}_{variant_id}"
+                
+                if variant_key not in variants_dict:
+                    variants_dict[variant_key] = {
+                        'gene': gene,
+                        'variant_string': variant_id,
+                        'protein_change': protein_change,
+                        'consequence': 'missense_variant',
+                        'drugs_tested': [drug]
+                    }
+                else:
+                    # Add drug if not already in list
+                    if drug not in variants_dict[variant_key]['drugs_tested']:
+                        variants_dict[variant_key]['drugs_tested'].append(drug)
+        
+        variants = list(variants_dict.values())
         
         logger.info(f"Processed {len(genes)} genes, {len(drugs)} drugs, {len(variants)} variants from CSV")
         return genes, drugs, variants
@@ -173,7 +197,7 @@ def main():
     """Main search index building routine."""
     project_root = Path(__file__).parent.parent.parent
     variants_dir = project_root / "public" / "data" / "v1.0" / "variants"
-    csv_path = project_root / "data" / "raw" / "k562_asc_screen_ngr_051024.csv"
+    csv_path = project_root / "data" / "raw" / "master_qDMS_df.csv"
     output_file = project_root / "public" / "data" / "v1.0" / "search_index.json"
     
     logger.info("Building search index...")

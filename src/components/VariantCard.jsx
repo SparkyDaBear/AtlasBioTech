@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { ArrowLeft, ExternalLink, Download } from 'lucide-react'
 import StructureViewer from './StructureViewer'
 import DoseResponsePlot from './DoseResponsePlot'
+import DoseResponseTable from './DoseResponseTable'
 
 const VariantCard = () => {
   const { gene, id } = useParams()
+  const navigate = useNavigate()
   const [variantData, setVariantData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -183,10 +185,10 @@ const VariantCard = () => {
         </div>
         <div className="flex gap-2">
 
-          <Link to="/" className="btn btn-secondary">
+          <button onClick={() => navigate(-1)} className="btn btn-secondary">
             <ArrowLeft size={16} />
             Back
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -266,6 +268,15 @@ const VariantCard = () => {
                 </p>
               </div>
             )}
+          </div>
+
+          {/* Dose-Response Data Table */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-3">Data Table</h3>
+            <DoseResponseTable 
+              data={plotData}
+              selectedDrugs={selectedDrugs}
+            />
           </div>
         </div>
 
