@@ -72,9 +72,9 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
     svg.selectAll("*").remove(); // Clear previous render
 
     // Dimensions and margins
-    const margin = { top: 80, right: 150, bottom: 100, left: 100 };
+    const margin = { top: 80, right: 425, bottom: 200, left: 120 };
     const containerWidth = Math.min(1400, window.innerWidth - 40);
-    const containerHeight = 600;
+    const containerHeight = 650;
     const width = containerWidth - margin.left - margin.right;
     const height = containerHeight - margin.top - margin.bottom;
 
@@ -106,17 +106,21 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
       .range([0, height])
       .padding(0.05);
 
-    // Get all non-null values for color scale (for the selected dose and drug)
+    // Get all non-null values for color scale across ALL doses for this drug
+    // This ensures color scale is consistent regardless of selected dose
     const allValues = [];
     Object.values(currentMatrix).forEach(posData => {
       Object.values(posData).forEach(aaData => {
-        if (aaData[selectedDose] && aaData[selectedDose].value !== null && aaData[selectedDose].value !== undefined) {
-          allValues.push(aaData[selectedDose].value);
-        }
+        // Include values from all doses (low, medium, high)
+        ['low', 'medium', 'high'].forEach(dose => {
+          if (aaData[dose] && aaData[dose].value !== null && aaData[dose].value !== undefined) {
+            allValues.push(aaData[dose].value);
+          }
+        });
       });
     });
 
-    // Create color scale
+    // Create color scale - consistent for all doses of this drug
     const colorScale = d3.scaleSequential()
       .interpolator(d3.interpolateViridis)
       .domain(d3.extent(allValues));
@@ -264,7 +268,7 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
 
     // Add axis labels
     g.append("text")
-      .attr("transform", `translate(${width / 2}, ${height + 70})`)
+      .attr("transform", `translate(${width / 2}, ${height + 85})`)
       .style("text-anchor", "middle")
       .style("font-size", "14px")
       .style("font-weight", "bold")
@@ -273,7 +277,7 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
 
     g.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", -60)
+      .attr("y", -80)
       .attr("x", -height / 2)
       .style("text-anchor", "middle")
       .style("font-size", "14px")
@@ -309,18 +313,20 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
       .style("fill", "#888")
       .text(`Showing ${displayPositions.length} positions (${displayPositions[0]}-${displayPositions[displayPositions.length-1]}) × ${aminoAcids.length} amino acids`);
 
-    // Add color legend
-    const legendWidth = 200;
-    const legendHeight = 15;
-    const legendX = containerWidth - margin.right + 20;
+    // Add color legend - VERTICAL
+    const legendWidth = 20;
+    const legendHeight = 200;
+    const legendX = containerWidth - margin.right + 60;
     const legendY = margin.top + 50;
 
-    // Create gradient definition
+    // Create gradient definition for vertical orientation
     const defs = svg.append("defs");
     const gradient = defs.append("linearGradient")
       .attr("id", "heatmap-gradient")
       .attr("x1", "0%")
-      .attr("x2", "100%");
+      .attr("y1", "100%")  // Start at bottom
+      .attr("x2", "0%")
+      .attr("y2", "0%");   // End at top
 
     const numStops = 10;
     for (let i = 0; i <= numStops; i++) {
@@ -341,25 +347,25 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
       .style("stroke", "#ccc")
       .style("stroke-width", 1);
 
-    // Add legend scale
+    // Add legend scale - vertical axis on the right
     const legendScale = d3.scaleLinear()
       .domain(d3.extent(allValues))
-      .range([legendX, legendX + legendWidth]);
+      .range([legendY + legendHeight, legendY]);  // Reversed for bottom-to-top
 
-    const legendAxis = d3.axisBottom(legendScale)
+    const legendAxis = d3.axisRight(legendScale)
       .ticks(5)
       .tickFormat(d3.format(".2f"));
 
     svg.append("g")
-      .attr("transform", `translate(0,${legendY + legendHeight})`)
+      .attr("transform", `translate(${legendX + legendWidth},0)`)
       .call(legendAxis)
       .selectAll("text")
       .style("font-size", "10px");
 
-    // Add legend title
+    // Add legend title - rotated vertically
     svg.append("text")
       .attr("x", legendX + legendWidth / 2)
-      .attr("y", legendY - 8)
+      .attr("y", legendY - 12)
       .attr("text-anchor", "middle")
       .style("font-size", "12px")
       .style("font-weight", "bold")
@@ -367,50 +373,50 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
       .text("Mean netGR");
 
     // Add uncertainty legend
-    const uncertaintyLegendY = legendY + legendHeight + 60;
+    const uncertaintyLegendY = legendY + legendHeight + 30;
     
     svg.append("text")
       .attr("x", legendX + legendWidth / 2)
       .attr("y", uncertaintyLegendY)
       .attr("text-anchor", "middle")
-      .style("font-size", "12px")
+      .style("font-size", "11px")
       .style("font-weight", "bold")
       .style("fill", "#333")
-      .text("Uncertainty Indicators");
+      .text("Uncertainty");
 
     // Low uncertainty example
     svg.append("rect")
       .attr("x", legendX)
-      .attr("y", uncertaintyLegendY + 10)
-      .attr("width", 20)
+      .attr("y", uncertaintyLegendY + 8)
+      .attr("width", legendWidth)
       .attr("height", 15)
       .attr("fill", colorScale(d3.mean(allValues) || 0))
       .attr("stroke", "#fff")
       .attr("stroke-width", 0.5);
 
     svg.append("text")
-      .attr("x", legendX + 25)
-      .attr("y", uncertaintyLegendY + 22)
-      .style("font-size", "10px")
+      .attr("x", legendX + legendWidth + 5)
+      .attr("y", uncertaintyLegendY + 18)
+      .style("font-size", "9px")
       .style("fill", "#333")
-      .text("Low uncertainty (thin border)");
+      .text("Low");
 
     // High uncertainty example
     svg.append("rect")
       .attr("x", legendX)
-      .attr("y", uncertaintyLegendY + 30)
-      .attr("width", 20)
+      .attr("y", uncertaintyLegendY + 28)
+      .attr("width", legendWidth)
       .attr("height", 15)
       .attr("fill", colorScale(d3.mean(allValues) || 0))
       .attr("stroke", "#ff6b6b")
       .attr("stroke-width", 2.5);
 
     svg.append("text")
-      .attr("x", legendX + 25)
-      .attr("y", uncertaintyLegendY + 42)
-      .style("font-size", "10px")
+      .attr("x", legendX + legendWidth + 5)
+      .attr("y", uncertaintyLegendY + 38)
+      .style("font-size", "9px")
       .style("fill", "#333")
-      .text("High uncertainty (thick red border)");
+      .text("High");
 
     // Add instructions
     svg.append("text")

@@ -103,35 +103,30 @@ const ProteinPage = () => {
 
       {/* Content Sections */}
       <div className="container mx-auto px-4 py-8 space-y-12">
-        {/* Overview and 3D Structure Side by Side */}
+        {/* Overview Section */}
         <section>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Overview Section */}
-            <div>
-              <ProteinOverview proteinData={proteinData} proteinId={proteinId} />
-            </div>
-            
-            {/* Interactive 3D Structure */}
-            <div>
-              <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  3D Structure
-                </h2>
-                <p className="text-gray-600 mb-4">
-                  Interactive visualization of {proteinData?.protein_name || proteinId} structure.
-                </p>
-              </div>
-              <ProteinInteractiveView 
-                proteinData={proteinData} 
-                proteinId={proteinId} 
-                hoveredResidue={hoveredResidue}
-                onResidueHover={setHoveredResidue}
-              />
-            </div>
+          <ProteinOverview proteinData={proteinData} proteinId={proteinId} />
+        </section>
+        
+        {/* 3D Structure Section */}
+        <section>
+          <div className="bg-white rounded-lg shadow-sm p-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              3D Structure
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Interactive visualization of {proteinData?.protein_name || proteinId} structure.
+            </p>
+            <ProteinInteractiveView 
+              proteinData={proteinData} 
+              proteinId={proteinId} 
+              hoveredResidue={hoveredResidue}
+              onResidueHover={setHoveredResidue}
+            />
           </div>
         </section>
         
-        {/* Heat Map Section - Full Width Below */}
+        {/* Heat Map Section */}
         <section>
           <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
