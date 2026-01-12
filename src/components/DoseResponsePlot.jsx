@@ -121,7 +121,7 @@ const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], width = 600, hei
       .attr('fill', 'black')
       .style('text-anchor', 'middle')
       .style('font-size', '12px')
-      .text('Net Growth Rate (netGR)');
+      .text('Relative Viability');
 
     // Create line generator
     const line = d3.line()

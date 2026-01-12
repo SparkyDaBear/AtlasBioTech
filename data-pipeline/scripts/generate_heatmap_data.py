@@ -39,13 +39,12 @@ def main():
     df_canonical = df[df['alt_aa'].isin(AMINO_ACIDS)]
     logger.info(f"Filtered to {len(df_canonical)} measurements with canonical amino acids")
     
-    # Create dose level categories
-    dose_mapping = {5: 'low', 30: 'medium', 100: 'high'}
-    df_canonical['dose_level'] = df_canonical['conc'].map(dose_mapping)
-    df_canonical = df_canonical[df_canonical['dose_level'].notna()]
+    # Keep concentration values as-is (no mapping to low/medium/high)
+    df_canonical['dose_level'] = df_canonical['conc'].astype(str)
     
     # Calculate aggregated statistics
     aggregated_stats = df_canonical.groupby(['species', 'protein_start', 'alt_aa', 'ref_aa', 'dose_level', 'Gene', 'Drug'])['netgr_obs'].agg(['mean', 'std', 'count']).reset_index()
+    aggregated_stats['dose_level_num'] = aggregated_stats['dose_level'].astype(float)
     logger.info(f"Calculated statistics for {len(aggregated_stats)} species-drug-dose combinations")
     
     # Get all positions with data and reference amino acids per position
@@ -86,13 +85,12 @@ def main():
             
             if aa not in position_aa_matrix[position_str]:
                 position_aa_matrix[position_str][aa] = {
-                    'low': {'value': None, 'std': None, 'count': 0},
-                    'medium': {'value': None, 'std': None, 'count': 0},
-                    'high': {'value': None, 'std': None, 'count': 0},
                     'ref_aa': ref_aa
                 }
             
-            # Store values
+            # Store values with concentration as key
+            if dose_level not in position_aa_matrix[position_str][aa]:
+                position_aa_matrix[position_str][aa][dose_level] = {}
             position_aa_matrix[position_str][aa][dose_level] = {
                 'value': mean_value,
                 'std': std_value,
@@ -111,9 +109,6 @@ def main():
             for aa in AMINO_ACIDS:
                 if aa not in position_aa_matrix[position_str]:
                     position_aa_matrix[position_str][aa] = {
-                        'low': {'value': None, 'std': None, 'count': 0},
-                        'medium': {'value': None, 'std': None, 'count': 0},
-                        'high': {'value': None, 'std': None, 'count': 0},
                         'ref_aa': ref_aa
                     }
         
@@ -135,34 +130,39 @@ def main():
                 'variant_string': variant_id
             }
     
+    # Get all unique concentrations across drugs
+    all_concentrations = sorted(aggregated_stats['dose_level_num'].unique())
+    concentrations_list = [str(int(c)) if c == int(c) else str(c) for c in all_concentrations]
+    
     # Calculate value ranges per drug
     drug_value_ranges = {}
     drug_data_counts = {}
     
     for drug, position_aa_matrix in drug_matrices.items():
         all_values = []
-        dose_values = {'low': [], 'medium': [], 'high': []}
-        data_counts = {'low': 0, 'medium': 0, 'high': 0}
+        dose_values = {conc: [] for conc in concentrations_list}
+        data_counts = {conc: 0 for conc in concentrations_list}
         
         for pos_data in position_aa_matrix.values():
             for aa_data in pos_data.values():
-                for dose in ['low', 'medium', 'high']:
-                    value = aa_data[dose]['value']
-                    if value is not None:
-                        all_values.append(value)
-                        dose_values[dose].append(value)
-                        data_counts[dose] += 1
+                for conc in concentrations_list:
+                    if conc in aa_data and isinstance(aa_data[conc], dict):
+                        value = aa_data[conc].get('value')
+                        if value is not None:
+                            all_values.append(value)
+                            dose_values[conc].append(value)
+                            data_counts[conc] += 1
         
         value_range = {
             'min': min(all_values) if all_values else 0,
             'max': max(all_values) if all_values else 0
         }
         
-        for dose in ['low', 'medium', 'high']:
-            if dose_values[dose]:
-                value_range[dose] = {
-                    'min': min(dose_values[dose]),
-                    'max': max(dose_values[dose])
+        for conc in concentrations_list:
+            if dose_values[conc]:
+                value_range[conc] = {
+                    'min': min(dose_values[conc]),
+                    'max': max(dose_values[conc])
                 }
         
         drug_value_ranges[drug] = value_range
@@ -188,22 +188,22 @@ def main():
         'drugs': list(unique_drugs),
         'value_ranges': drug_value_ranges,
         'data_counts': drug_data_counts,
-        'description': 'Mean netgr_obs values by protein position, amino acid substitution, drug, and dose level',
-        'dose_levels': ['low', 'medium', 'high'],
+        'description': 'Mean netgr_obs values by protein position, amino acid substitution, drug, and concentration',
+        'concentrations': concentrations_list,
+        'concentration_unit': 'nM',
         'data_columns': {
-            'low': 'Mean netgr_obs values at 5 μM concentration across replicates',
-            'medium': 'Mean netgr_obs values at 30 μM concentration across replicates', 
-            'high': 'Mean netgr_obs values at 100 μM concentration across replicates',
+            'value': 'Mean netgr_obs values at specified concentration (nM) across replicates',
             'std': 'Standard deviation across replicates for each concentration',
             'count': 'Number of replicates/measurements for each concentration',
             'ref_aa': 'Reference (wild-type) amino acid at this position'
         }
     }
     
-    logger.info(f"Generated heat map matrices: {len(all_positions)} positions × {len(AMINO_ACIDS)} amino acids × {len(unique_drugs)} drugs × 3 dose levels")
+    logger.info(f"Generated heat map matrices: {len(all_positions)} positions × {len(AMINO_ACIDS)} amino acids × {len(unique_drugs)} drugs × {len(concentrations_list)} concentrations")
     for drug in unique_drugs:
         counts = drug_data_counts[drug]
-        logger.info(f"{drug} data points - Low: {counts['low']}, Medium: {counts['medium']}, High: {counts['high']}")
+        conc_summary = ', '.join([f"{conc} nM: {counts.get(conc, 0)}" for conc in concentrations_list])
+        logger.info(f"{drug} data points - {conc_summary}")
     
     # Assemble final data with drug-specific matrices
     heatmap_data = {
