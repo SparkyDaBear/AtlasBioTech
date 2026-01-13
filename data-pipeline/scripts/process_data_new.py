@@ -3,6 +3,7 @@
 Data processing pipeline for Atlas BioTech mutation database.
 Converts dose-response screening CSV to JSON format.
 Handles row-per-variant-dose-replicate CSV structure.
+Includes 4-parameter logistic (4PL) curve fitting.
 """
 
 import os
@@ -13,6 +14,9 @@ import numpy as np
 from pathlib import Path
 from datetime import datetime, timezone
 import logging
+
+# Import 4PL curve fitting module
+from fit_4pl_curves import fit_variant_drug_curve
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -162,28 +166,43 @@ def process_k562_data_v2(csv_path):
             # Calculate average responses
             avg_responses = [(r1 + r2) / 2 for r1, r2 in zip(responses_rep1, responses_rep2)]
             
-            # Estimate IC50
+            # Estimate IC50 (simple linear interpolation - legacy method)
             ic50_estimated = estimate_ic50(doses, avg_responses)
+            
+            # Fit 4-parameter logistic curve
+            # Use maximum response as baseline (no drug condition)
+            netgr_nodrug = max(avg_responses) if avg_responses else None
+            curve_fit_result = fit_variant_drug_curve(
+                doses=doses,
+                responses_rep1=responses_rep1,
+                responses_rep2=responses_rep2,
+                use_viability=True,
+                netgr_nodrug=netgr_nodrug
+            )
             
             # Determine number of actual replicates
             actual_reps = len(set(group['rep']))
+            
+            # Prepare drug data entry with 4PL parameters
+            drug_entry = {
+                'drug': drug_name,
+                'ic50': ic50_estimated if ic50_estimated else 0,
+                'replicate_count': actual_reps,
+                'dose_response_data': {
+                    'doses': doses,
+                    'responses_rep1': responses_rep1,
+                    'responses_rep2': responses_rep2,
+                    'avg_responses': avg_responses
+                },
+                'curve_fit': curve_fit_result,  # Add 4PL fit results
+                'qc_flags': get_qc_flags(responses_rep1, responses_rep2, ic50_estimated)
+            }
             
             # Check if variant already exists (multiple drugs for same variant)
             if variant_key in variants:
                 # Add this drug's data to existing variant
                 variants[variant_key]['drugs_tested'].append(drug_name)
-                variants[variant_key]['ic50_values'].append({
-                    'drug': drug_name,
-                    'ic50': ic50_estimated if ic50_estimated else 0,
-                    'replicate_count': actual_reps,
-                    'dose_response_data': {
-                        'doses': doses,
-                        'responses_rep1': responses_rep1,
-                        'responses_rep2': responses_rep2,
-                        'avg_responses': avg_responses
-                    },
-                    'qc_flags': get_qc_flags(responses_rep1, responses_rep2, ic50_estimated)
-                })
+                variants[variant_key]['ic50_values'].append(drug_entry)
             else:
                 # Create new variant entry
                 variants[variant_key] = {
@@ -195,18 +214,7 @@ def process_k562_data_v2(csv_path):
                     'consequence': 'missense_variant',  # Assuming all are missense
                     'drugs_tested': [drug_name],
                     'model_system': 'K562 cells',
-                    'ic50_values': [{
-                        'drug': drug_name,
-                        'ic50': ic50_estimated if ic50_estimated else 0,
-                        'replicate_count': actual_reps,
-                        'dose_response_data': {
-                            'doses': doses,
-                            'responses_rep1': responses_rep1,
-                            'responses_rep2': responses_rep2,
-                            'avg_responses': avg_responses
-                        },
-                        'qc_flags': get_qc_flags(responses_rep1, responses_rep2, ic50_estimated)
-                    }],
+                    'ic50_values': [drug_entry],
                     'replicate_count': actual_reps,
                     'qc_flags': [],
                     'publication_doi': '',
@@ -290,7 +298,7 @@ def main():
         sys.exit(1)
     
     # Process the screening data
-    variants = process_screening_data(data_file)
+    variants = process_k562_data_v2(data_file)
     
     if variants:
         # Save individual variant datacards

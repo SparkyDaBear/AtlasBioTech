@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, onResidueHover }) => {
+const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, selectedResidue, onResidueHover }) => {
   const pdbViewerRef = useRef(null);
   const stageRef = useRef(null);
   const structureComponentRef = useRef(null);
   const highlightRepresentationRef = useRef(null);
+  const selectedRepresentationRef = useRef(null);
+  const nglRef = useRef(null);
   const [structureLoaded, setStructureLoaded] = useState(false);
   const [loadingStructure, setLoadingStructure] = useState(false);
   const [error, setError] = useState(null);
@@ -23,6 +25,7 @@ const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, onResi
         // Dynamic import to handle potential issues with ES modules
         const NGL = await import('ngl');
         console.log('NGL imported successfully:', NGL);
+        nglRef.current = NGL;
         
         // Create NGL Stage
         const stage = new NGL.Stage(pdbViewerRef.current, {
@@ -66,16 +69,20 @@ const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, onResi
       if (highlightRepresentationRef.current && structureComponentRef.current) {
         structureComponentRef.current.removeRepresentation(highlightRepresentationRef.current);
       }
+      if (selectedRepresentationRef.current && structureComponentRef.current) {
+        structureComponentRef.current.removeRepresentation(selectedRepresentationRef.current);
+      }
       if (stageRef.current) {
         stageRef.current.dispose();
         stageRef.current = null;
         structureComponentRef.current = null;
         highlightRepresentationRef.current = null;
+        selectedRepresentationRef.current = null;
       }
     };
   }, []);
 
-  // Handle residue highlighting
+  // Handle residue highlighting (hover)
   useEffect(() => {
     if (!structureComponentRef.current || !structureLoaded) return;
 
@@ -101,12 +108,63 @@ const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, onResi
           opacity: 1.0
         });
         
-        console.log(`Highlighting residue at position ${position}`);
+        console.log(`Highlighting hovered residue at position ${position}`);
       } catch (error) {
         console.warn('Failed to highlight residue:', error);
       }
     }
   }, [hoveredResidue, structureLoaded]);
+
+  // Handle selected residue highlighting (from sequence viewer)
+  useEffect(() => {
+    if (!structureComponentRef.current || !structureLoaded || !nglRef.current) return;
+
+    // Clear previous selection highlight
+    if (selectedRepresentationRef.current) {
+      structureComponentRef.current.removeRepresentation(selectedRepresentationRef.current);
+      selectedRepresentationRef.current = null;
+    }
+
+    // Add new selection highlight if residue is selected
+    if (selectedResidue) {
+      try {
+        // Create selection string for the residue position
+        const selectionString = `${selectedResidue}`;
+        
+        // Add large spacefill representation for the selected residue
+        selectedRepresentationRef.current = structureComponentRef.current.addRepresentation('spacefill', {
+          sele: selectionString,
+          color: '#3b82f6',
+          scale: 2.5,
+          opacity: 1.0
+        });
+        
+        // Zoom in on the selected residue
+        try {
+          const component = structureComponentRef.current;
+          const structure = component.structure;
+          const atomSet = structure.getAtomSetWithinSelection(new nglRef.current.Selection(selectionString));
+          
+          if (atomSet && atomSet.length > 0) {
+            // Get the center of the selected residue
+            const atomProxy = structure.getAtomProxy();
+            atomSet.forEach(idx => {
+              atomProxy.index = idx;
+            });
+            
+            // Zoom to the residue with animation
+            component.autoView(selectionString, 1000);
+          }
+        } catch (zoomError) {
+          console.warn('Zoom failed, but residue is highlighted:', zoomError);
+        }
+        
+        console.log(`Selected residue at position ${selectedResidue}`);
+      } catch (error) {
+        console.warn('Failed to highlight selected residue:', error);
+      }
+    }
+  }, [selectedResidue, structureLoaded]);
 
   return (
     <div className="bg-white rounded-lg shadow-sm p-6">

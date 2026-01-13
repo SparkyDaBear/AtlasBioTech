@@ -1,8 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], width = 600, height = 400 }) => {
+const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], variantData = null, width = 600, height = 400 }) => {
   const svgRef = useRef(null);
+
+  // Function to convert netgr to relative viability (same as 4PL fitting)
+  const convertToViability = (netgr, netgr_nodrug, t_assay = 72) => {
+    return Math.exp(netgr * t_assay) / Math.exp(netgr_nodrug * t_assay);
+  };
 
   useEffect(() => {
     // Clear previous plot
@@ -34,6 +39,7 @@ const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], width = 600, hei
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
     // Process data: calculate mean and 95% CI for each concentration and drug
+    // Convert netGR to relative viability for consistency with 4PL fits
     const processedData = [];
     
     selectedDrugs.forEach(drug => {
@@ -42,14 +48,21 @@ const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], width = 600, hei
       // Group by concentration
       const concentrations = [...new Set(drugData.map(d => +d.conc))].sort((a, b) => a - b);
       
+      // Get baseline netgr_nodrug (max netgr_obs for this drug)
+      const allNetGRs = drugData.map(d => +d.netgr_obs);
+      const netgr_nodrug = Math.max(...allNetGRs);
+      
       concentrations.forEach(conc => {
         const concData = drugData.filter(d => +d.conc === conc);
-        const values = concData.map(d => +d.netgr_obs);
+        const netgrValues = concData.map(d => +d.netgr_obs);
         
-        if (values.length > 0) {
-          const mean = d3.mean(values);
-          const std = d3.deviation(values) || 0;
-          const n = values.length;
+        // Convert to viability
+        const viabilityValues = netgrValues.map(netgr => convertToViability(netgr, netgr_nodrug));
+        
+        if (viabilityValues.length > 0) {
+          const mean = d3.mean(viabilityValues);
+          const std = d3.deviation(viabilityValues) || 0;
+          const n = viabilityValues.length;
           
           // 95% CI calculation (assuming normal distribution)
           // For small n, use t-distribution critical value (approximation)
@@ -136,13 +149,40 @@ const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], width = 600, hei
     drugGroups.forEach((drugData, drug) => {
       const color = colorScale(drug);
       
-      // Draw line
+      // Draw measured data line connecting points
       g.append('path')
         .datum(drugData)
         .attr('fill', 'none')
         .attr('stroke', color)
         .attr('stroke-width', 2)
+        .attr('stroke-dasharray', '5,3')
+        .attr('opacity', 0.6)
         .attr('d', line);
+
+      // Draw 4PL fitted curve if available
+      if (variantData && variantData.ic50_values) {
+        const drugCurveFit = variantData.ic50_values.find(d => d.drug === drug);
+        if (drugCurveFit && drugCurveFit.curve_fit && drugCurveFit.curve_fit.success) {
+          const fittedCurve = drugCurveFit.curve_fit.fitted_curve;
+          if (fittedCurve && fittedCurve.doses && fittedCurve.responses) {
+            // Create smooth fitted curve line
+            const fittedLine = d3.line()
+              .x((d, i) => xScale(fittedCurve.doses[i]))
+              .y((d, i) => yScale(fittedCurve.responses[i]))
+              .curve(d3.curveMonotoneX);
+            
+            // Draw the fitted curve as a smooth solid line
+            g.append('path')
+              .datum(fittedCurve.responses)
+              .attr('fill', 'none')
+              .attr('stroke', color)
+              .attr('stroke-width', 2.5)
+              .attr('opacity', 0.8)
+              .attr('d', fittedLine)
+              .style('pointer-events', 'none'); // Don't interfere with hover events
+          }
+        }
+      }
 
       // Draw error bars
       g.selectAll(`.error-bar-${drug.replace(/\s+/g, '')}`)
@@ -205,19 +245,48 @@ const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], width = 600, hei
 
     selectedDrugs.forEach((drug, i) => {
       const legendRow = legend.append('g')
-        .attr('transform', `translate(0, ${i * 20})`);
+        .attr('transform', `translate(0, ${i * 40})`);
       
+      // Drug name
+      legendRow.append('text')
+        .attr('x', 0)
+        .attr('y', 0)
+        .style('font-size', '12px')
+        .style('font-weight', 'bold')
+        .text(drug);
+      
+      // 4PL fitted curve (solid line)
       legendRow.append('line')
         .attr('x1', 0)
-        .attr('x2', 15)
+        .attr('x2', 20)
+        .attr('y1', 12)
+        .attr('y2', 12)
         .attr('stroke', colorScale(drug))
-        .attr('stroke-width', 2);
+        .attr('stroke-width', 2.5)
+        .attr('opacity', 0.8);
       
       legendRow.append('text')
-        .attr('x', 20)
-        .attr('y', 4)
-        .style('font-size', '12px')
-        .text(drug);
+        .attr('x', 25)
+        .attr('y', 15)
+        .style('font-size', '10px')
+        .text('4PL fit');
+      
+      // Measured data (dashed line)
+      legendRow.append('line')
+        .attr('x1', 0)
+        .attr('x2', 20)
+        .attr('y1', 25)
+        .attr('y2', 25)
+        .attr('stroke', colorScale(drug))
+        .attr('stroke-width', 2)
+        .attr('stroke-dasharray', '5,3')
+        .attr('opacity', 0.6);
+      
+      legendRow.append('text')
+        .attr('x', 25)
+        .attr('y', 28)
+        .style('font-size', '10px')
+        .text('Measured');
     });
 
     // Add title
@@ -227,9 +296,9 @@ const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], width = 600, hei
       .attr('text-anchor', 'middle')
       .style('font-size', '14px')
       .style('font-weight', 'bold')
-      .text('Dose-Response Curve with 95% CI');
+      .text('Dose-Response Curve with 95% CI and 4PL Fit');
 
-  }, [data, selectedDrugs, width, height]);
+  }, [data, selectedDrugs, variantData, width, height]);
 
   return (
     <div className="dose-response-plot">

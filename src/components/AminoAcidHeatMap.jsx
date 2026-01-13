@@ -76,7 +76,7 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
     d3.selectAll('.heatmap-tooltip').remove();
 
     // Dimensions and margins - use full screen width
-    const margin = { top: 80, right: 400, bottom: 120, left: 400 };
+    const margin = { top: 80, right: 400, bottom: 120, left: 100 };
     const containerWidth = window.innerWidth - 40; // Full width with minimal padding
     const containerHeight = 700; // Increased to accommodate scroll bar and labels
     const width = containerWidth - margin.left - margin.right;
@@ -619,152 +619,155 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
 
   return (
     <>
-      {/* Controls Panel - Full Width */}
-      <div className="heatmap-controls-panel" style={{ 
+      {/* Inline Layout: Controls on left, Heatmap on right */}
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'flex-start', 
+        gap: '2rem',
         width: '100%',
-        margin: '0 auto 2rem auto',
-        background: 'white',
-        borderRadius: '8px',
-        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-        padding: '24px'
+        margin: '0 auto'
       }}>
-        <div className="heatmap-header">
-          <h2>Position vs Amino Acid Heat Map</h2>
-          <p className="heatmap-description">
-            Interactive 2D heat map showing {selectedDrug} response patterns 
-            across protein positions and amino acid substitutions. Each cell represents the mean 
-            netGR value for a specific position-substitution combination at the selected concentration.
-          </p>
+        
+        {/* Controls Panel - Left Side */}
+        <div className="heatmap-controls-panel" style={{ 
+          flex: '0 0 350px',
+          background: 'white',
+          borderRadius: '8px',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+          padding: '24px',
+          position: 'sticky',
+          top: '20px',
+          alignSelf: 'flex-start'
+        }}>
+          <h3 style={{ marginTop: 0, marginBottom: '1.5rem', fontSize: '1.25rem' }}>Heatmap Controls</h3>
           
-          {/* Current Drug Display */}
-          <div className="current-drug" style={{ marginBottom: '1rem' }}>
-            <span style={{ fontWeight: 'bold', marginRight: '1rem' }}>Drug:</span>
-            <span style={{ 
-              color: '#28a745',
-              background: '#f8f9fa',
-              padding: '0.25rem 0.5rem',
-              borderRadius: '0.25rem',
-              border: '1px solid #e9ecef',
-              fontWeight: 'bold'
-            }}>
-              {selectedDrug} {availableDrugs.find(d => d.name === selectedDrug)?.fda_approved ? '✓ FDA Approved' : '(Investigational)'}
-            </span>
-          </div>
-
           {/* Drug Selection Controls */}
-          <div className="drug-controls" style={{ marginBottom: '1rem' }}>
-            <span style={{ marginRight: '1rem', fontWeight: 'bold' }}>Select Drug:</span>
-            {availableDrugs.map((drug) => (
-              <button
-                key={drug.name}
-                onClick={() => setSelectedDrug(drug.name)}
-                style={{
-                  padding: '0.5rem 1rem',
-                  margin: '0 0.25rem',
-                  border: '2px solid #28a745',
-                  borderRadius: '0.25rem',
-                  backgroundColor: selectedDrug === drug.name ? '#28a745' : 'white',
-                  color: selectedDrug === drug.name ? 'white' : '#28a745',
-                  cursor: 'pointer',
-                  fontWeight: 'bold',
-                  transition: 'all 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  if (selectedDrug !== drug.name) {
-                    e.target.style.backgroundColor = '#f8f9fa';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (selectedDrug !== drug.name) {
-                    e.target.style.backgroundColor = 'white';
-                  }
-                }}
-              >
-                {drug.name}
-              </button>
-            ))}
-          </div>
-
-          {/* Concentration Toggle Controls */}
-          <div className="dose-controls" style={{ marginBottom: '1rem' }}>
-            <span style={{ marginRight: '1rem', fontWeight: 'bold' }}>Concentration:</span>
-            {heatmapData?.metadata?.concentrations?.map((conc) => {
-              const unit = heatmapData.metadata.concentration_unit || 'nM';
-              return (
+          <div className="drug-controls" style={{ marginBottom: '1.5rem' }}>
+            <div style={{ marginBottom: '0.75rem', fontWeight: 'bold', fontSize: '0.95rem' }}>Drug:</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              {availableDrugs.map((drug) => (
                 <button
-                  key={conc}
-                  onClick={() => setSelectedConcentration(conc)}
+                  key={drug.name}
+                  onClick={() => setSelectedDrug(drug.name)}
                   style={{
-                    padding: '0.5rem 1rem',
-                    margin: '0 0.25rem',
-                    border: '2px solid #007bff',
-                    borderRadius: '0.25rem',
-                    backgroundColor: selectedConcentration === conc ? '#007bff' : 'white',
-                    color: selectedConcentration === conc ? 'white' : '#007bff',
+                    padding: '0.75rem 1rem',
+                    border: '2px solid #28a745',
+                    borderRadius: '0.375rem',
+                    backgroundColor: selectedDrug === drug.name ? '#28a745' : 'white',
+                    color: selectedDrug === drug.name ? 'white' : '#28a745',
                     cursor: 'pointer',
                     fontWeight: 'bold',
-                    transition: 'all 0.2s ease'
+                    transition: 'all 0.2s ease',
+                    textAlign: 'left',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
                   }}
                   onMouseEnter={(e) => {
-                    if (selectedConcentration !== conc) {
+                    if (selectedDrug !== drug.name) {
                       e.target.style.backgroundColor = '#f8f9fa';
                     }
                   }}
                   onMouseLeave={(e) => {
-                    if (selectedConcentration !== conc) {
+                    if (selectedDrug !== drug.name) {
                       e.target.style.backgroundColor = 'white';
                     }
                   }}
                 >
-                  {conc} {unit}
+                  <span>{drug.name}</span>
+                  {drug.fda_approved && <span style={{ fontSize: '0.85rem' }}>✓ FDA</span>}
                 </button>
-              );
-            })}
+              ))}
+            </div>
+          </div>
+
+          {/* Concentration Toggle Controls */}
+          <div className="dose-controls" style={{ marginBottom: '1.5rem' }}>
+            <div style={{ marginBottom: '0.75rem', fontWeight: 'bold', fontSize: '0.95rem' }}>Concentration:</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              {heatmapData?.metadata?.concentrations?.map((conc) => {
+                const unit = heatmapData.metadata.concentration_unit || 'nM';
+                return (
+                  <button
+                    key={conc}
+                    onClick={() => setSelectedConcentration(conc)}
+                    style={{
+                      padding: '0.75rem 1rem',
+                      border: '2px solid #007bff',
+                      borderRadius: '0.375rem',
+                      backgroundColor: selectedConcentration === conc ? '#007bff' : 'white',
+                      color: selectedConcentration === conc ? 'white' : '#007bff',
+                      cursor: 'pointer',
+                      fontWeight: 'bold',
+                      transition: 'all 0.2s ease',
+                      textAlign: 'left'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (selectedConcentration !== conc) {
+                        e.target.style.backgroundColor = '#f8f9fa';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (selectedConcentration !== conc) {
+                        e.target.style.backgroundColor = 'white';
+                      }
+                    }}
+                  >
+                    {conc} {unit}
+                  </button>
+                );
+              })}
+            </div>
           </div>
           
-          <div className="heatmap-stats">
-            <span className="stat">
-              <strong>{heatmapData?.metadata.total_variants}</strong> variants analyzed
-            </span>
-            <span className="stat">
+          {/* Stats */}
+          <div style={{ 
+            borderTop: '1px solid #e9ecef', 
+            paddingTop: '1rem',
+            fontSize: '0.875rem',
+            color: '#6c757d'
+          }}>
+            <div style={{ marginBottom: '0.5rem' }}>
+              <strong>{heatmapData?.metadata.total_variants}</strong> variants
+            </div>
+            <div style={{ marginBottom: '0.5rem' }}>
               <strong>{heatmapData?.positions?.length}</strong> positions
-            </span>
-            <span className="stat">
-              <strong>{heatmapData?.metadata.amino_acids?.length}</strong> amino acids
-            </span>
-            <span className="stat">
+            </div>
+            <div style={{ marginBottom: '0.5rem' }}>
               Gene: <strong>{heatmapData?.metadata.gene}</strong>
-            </span>
-            <span className="stat">
-              Drug: <strong style={{ color: '#28a745' }}>{selectedDrug}</strong>
-            </span>
-            <span className="stat">
-              Concentration: <strong style={{ color: '#007bff' }}>{selectedConcentration} {heatmapData?.metadata?.concentration_unit || 'nM'}</strong>
-            </span>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Heatmap Visualization Panel - Full Width */}
-      <div className="heatmap-visualization-panel" style={{
-        width: '100%',
-        maxWidth: '100%',
-        background: 'white',
-        borderRadius: '8px',
-        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-        padding: '2px',
-        overflow: 'visible'
-      }}>
-        <div className="heatmap-visualization">
-          <svg ref={svgRef}></svg>
-        </div>
-        <div className="heatmap-footer">
-          <p className="heatmap-note">
-            Heat map shows mean network growth rate (netGR) values for {selectedDrug} at {selectedConcentration} {heatmapData?.metadata?.concentration_unit || 'nM'} across protein positions 
-            (N-terminus to C-terminus) and amino acid substitutions. Border thickness and color indicate measurement 
-            uncertainty (standard deviation across replicates). Use the concentration buttons above to switch between 
-            different drug concentrations. {heatmapData?.positions?.length > 100 ? 'Use mouse wheel to scroll horizontally through positions. ' : ''}Click on colored cells to view specific variant details.
-          </p>
+        {/* Heatmap Visualization Panel - Right Side */}
+        <div className="heatmap-visualization-panel" style={{
+          flex: '1',
+          minWidth: 0,
+          background: 'white',
+          borderRadius: '8px',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+          padding: '24px',
+          overflow: 'visible'
+        }}>
+          <div style={{ marginBottom: '1rem' }}>
+            <h2 style={{ margin: '0 0 0.5rem 0' }}>Position vs Amino Acid Heat Map</h2>
+            <p style={{ margin: 0, color: '#6c757d', fontSize: '0.95rem' }}>
+              Interactive 2D heat map showing {selectedDrug} response patterns 
+              across protein positions and amino acid substitutions at {selectedConcentration} {heatmapData?.metadata?.concentration_unit || 'nM'}.
+            </p>
+          </div>
+          
+          <div className="heatmap-visualization">
+            <svg ref={svgRef}></svg>
+          </div>
+          
+          <div className="heatmap-footer">
+            <p className="heatmap-note">
+              Heat map shows mean network growth rate (netGR) values for {selectedDrug} at {selectedConcentration} {heatmapData?.metadata?.concentration_unit || 'nM'} across protein positions 
+              (N-terminus to C-terminus) and amino acid substitutions. Border thickness and color indicate measurement 
+              uncertainty (standard deviation across replicates). {heatmapData?.positions?.length > 100 ? 'Use mouse wheel to scroll horizontally through positions. ' : ''}Click on colored cells to view specific variant details.
+            </p>
+          </div>
         </div>
       </div>
     </>

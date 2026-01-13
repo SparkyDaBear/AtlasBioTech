@@ -2,15 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useSearchParams, Link } from 'react-router-dom';
 import ProteinOverview from './ProteinOverview';
 import ProteinInteractiveView from './ProteinInteractiveView';
+import ProteinSequenceViewer from './ProteinSequenceViewer';
 import AminoAcidHeatMap from './AminoAcidHeatMap';
 
 const ProteinPage = () => {
   const { proteinId } = useParams();
   const [searchParams] = useSearchParams();
   const [proteinData, setProteinData] = useState(null);
+  const [heatmapData, setHeatmapData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [hoveredResidue, setHoveredResidue] = useState(null);
+  const [selectedResidue, setSelectedResidue] = useState(null);
 
   // Get drug from URL parameter
   const drugFromUrl = searchParams.get('drug');
@@ -34,6 +37,13 @@ const ProteinPage = () => {
         }
         
         setProteinData(protein);
+        
+        // Load heatmap data for sequence viewer
+        const heatmapResponse = await fetch(`${baseUrl}data/v1.0/heatmap_data.json`);
+        if (heatmapResponse.ok) {
+          const heatmapJson = await heatmapResponse.json();
+          setHeatmapData(heatmapJson);
+        }
       } catch (err) {
         console.error('Error loading protein data:', err);
         setError(err.message);
@@ -116,13 +126,25 @@ const ProteinPage = () => {
             </h2>
             <p className="text-gray-600 mb-4">
               Interactive visualization of {proteinData?.protein_name || proteinId} structure.
+              {selectedResidue && <span className="ml-2 text-blue-600 font-semibold">Highlighting residue {selectedResidue}</span>}
             </p>
             <ProteinInteractiveView 
               proteinData={proteinData} 
               proteinId={proteinId} 
               hoveredResidue={hoveredResidue}
+              selectedResidue={selectedResidue}
               onResidueHover={setHoveredResidue}
             />
+            
+            {/* Protein Sequence Viewer */}
+            {heatmapData && (
+              <ProteinSequenceViewer
+                proteinId={proteinId}
+                heatmapData={heatmapData}
+                selectedResidue={selectedResidue}
+                onResidueSelect={setSelectedResidue}
+              />
+            )}
           </div>
         </section>
       </div>

@@ -278,6 +278,110 @@ const VariantCard = () => {
               selectedDrugs={selectedDrugs}
             />
           </div>
+
+          {/* 4PL Curve Fit Parameters */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-3">Curve Fit Parameters (4PL Model)</h3>
+            <p className="text-sm text-gray-600 mb-3">
+              Four-parameter logistic regression results for each drug. The 4PL model equation: 
+              <span className="font-mono ml-2">y = a + (d-a)/(1+(x/c)^b)</span>
+            </p>
+            
+            <div className="space-y-4">
+              {variantData.ic50_values
+                .filter(drugData => selectedDrugs.includes(drugData.drug))
+                .map((drugData, idx) => {
+                  const curveFit = drugData.curve_fit;
+                  if (!curveFit || !curveFit.success) {
+                    return (
+                      <div key={idx} className="border border-gray-200 rounded-lg p-4">
+                        <h4 className="font-semibold text-blue-600 mb-2">{drugData.drug}</h4>
+                        <p className="text-sm text-gray-500">Curve fitting not available or failed</p>
+                      </div>
+                    );
+                  }
+
+                  const params = curveFit.parameters;
+                  return (
+                    <div key={idx} className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                      <h4 className="font-semibold text-blue-600 mb-3">{drugData.drug}</h4>
+                      
+                      <div className="grid grid-cols-2 gap-4 mb-3">
+                        <div className="bg-white p-3 rounded border border-gray-200">
+                          <div className="text-xs text-gray-500 mb-1">IC50 (parameter c)</div>
+                          <div className="text-lg font-bold text-blue-600">
+                            {curveFit.ic50 ? curveFit.ic50.toFixed(2) : 'N/A'} nM
+                          </div>
+                        </div>
+                        
+                        <div className="bg-white p-3 rounded border border-gray-200">
+                          <div className="text-xs text-gray-500 mb-1">Hill Slope (parameter b)</div>
+                          <div className="text-lg font-bold text-green-600">
+                            {params.b ? params.b.toFixed(3) : 'N/A'}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4 mb-3">
+                        <div className="bg-white p-3 rounded border border-gray-200">
+                          <div className="text-xs text-gray-500 mb-1">Min Response (parameter a)</div>
+                          <div className="text-base font-semibold">
+                            {params.a ? params.a.toFixed(4) : 'N/A'}
+                          </div>
+                          <div className="text-xs text-gray-500 mt-1">Lower asymptote</div>
+                        </div>
+                        
+                        <div className="bg-white p-3 rounded border border-gray-200">
+                          <div className="text-xs text-gray-500 mb-1">Max Response (parameter d)</div>
+                          <div className="text-base font-semibold">
+                            {params.d ? params.d.toFixed(4) : 'N/A'}
+                          </div>
+                          <div className="text-xs text-gray-500 mt-1">Upper asymptote</div>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-white p-3 rounded border border-gray-200">
+                          <div className="text-xs text-gray-500 mb-1">R² (Goodness of Fit)</div>
+                          <div className="text-base font-semibold">
+                            {curveFit.r_squared ? curveFit.r_squared.toFixed(4) : 'N/A'}
+                          </div>
+                        </div>
+                        
+                        <div className="bg-white p-3 rounded border border-gray-200">
+                          <div className="text-xs text-gray-500 mb-1">Residual Sum of Squares</div>
+                          <div className="text-base font-semibold">
+                            {curveFit.residual_sum_squares ? curveFit.residual_sum_squares.toFixed(6) : 'N/A'}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="mt-3 text-xs text-gray-500 border-t pt-2">
+                        <div className="flex items-center justify-between">
+                          <span>Model: {curveFit.model_type}</span>
+                          <span className={curveFit.convergence ? 'text-green-600' : 'text-red-600'}>
+                            {curveFit.convergence ? '✓ Converged' : '⚠ Did not converge'}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
+
+            <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded text-sm text-blue-800">
+              <strong>Parameter Definitions:</strong>
+              <ul className="mt-2 space-y-1 ml-4 list-disc">
+                <li><strong>a (Upper Asymptote):</strong> Response at zero drug concentration (no drug, maximum viability)</li>
+                <li><strong>b (Hill Slope):</strong> Steepness of the dose-response curve</li>
+                <li><strong>c (IC50):</strong> Inflection point - concentration at 50% response</li>
+                <li><strong>d (Lower Asymptote):</strong> Response at infinite drug concentration (high drug, minimum viability)</li>
+              </ul>
+              <div className="mt-2 font-mono text-xs">
+                Equation: y = d + (a-d)/(1+(x/c)^b)
+              </div>
+            </div>
+          </div>
         </div>
 
       {/* 3D Structure */}
