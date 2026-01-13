@@ -6,7 +6,8 @@
   padding: 24px;
   padding-bottom: 40px;
   width: 100%;
-  overflow: hidden;
+  max-width: 100%;
+  overflow: visible;
 }
 
 .heatmap-header {
@@ -54,11 +55,12 @@
   justify-content: center;
   margin: 20px 0;
   overflow-x: auto;
+  width: 100%;
 }
 
 .heatmap-visualization svg {
-  max-width: 100%;
-  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .heatmap-footer {

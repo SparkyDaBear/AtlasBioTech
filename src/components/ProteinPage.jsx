@@ -74,9 +74,9 @@ const ProteinPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+      {/* Header - Full Width */}
       <div className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 py-6">
+        <div style={{ width: '100%', padding: '1.5rem 20px' }}>
           <div className="flex items-center justify-between">
             <div>
               <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-2">
@@ -102,14 +102,14 @@ const ProteinPage = () => {
       </div>
 
       {/* Content Sections */}
-      <div className="container mx-auto px-4 py-8 space-y-12">
+      <div style={{ width: '100%', padding: '2rem 0' }}>
         {/* Overview Section */}
-        <section>
+        <section style={{ padding: '0 20px', marginBottom: '3rem' }}>
           <ProteinOverview proteinData={proteinData} proteinId={proteinId} />
         </section>
         
         {/* 3D Structure Section */}
-        <section>
+        <section style={{ padding: '0 20px', marginBottom: '3rem' }}>
           <div className="bg-white rounded-lg shadow-sm p-6">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               3D Structure
@@ -125,26 +125,17 @@ const ProteinPage = () => {
             />
           </div>
         </section>
-        
-        {/* Heat Map Section */}
-        <section>
-          <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Interactive Heat Map
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Explore mutation effects across {proteinData?.protein_name || proteinId} 
-              with concentration-dependent drug response data.
-            </p>
-          </div>
-          <AminoAcidHeatMap 
-            proteinId={proteinId} 
-            hoveredResidue={hoveredResidue}
-            onResidueHover={setHoveredResidue}
-            initialDrug={drugFromUrl}
-          />
-        </section>
       </div>
+        
+      {/* Heat Map Section - Full Width with separate panels */}
+      <section style={{ width: '100%', padding: '0', marginBottom: '3rem' }}>
+        <AminoAcidHeatMap 
+          proteinId={proteinId} 
+          hoveredResidue={hoveredResidue}
+          onResidueHover={setHoveredResidue}
+          initialDrug={drugFromUrl}
+        />
+      </section>
     </div>
   );
 };

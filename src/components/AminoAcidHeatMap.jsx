@@ -6,6 +6,8 @@ import './AminoAcidHeatMap.css';
 const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDrug }) => {
   const svgRef = useRef();
   const navigate = useNavigate();
+  const scrollPosRef = useRef(0); // Persist scroll position across re-renders
+  const onResidueHoverRef = useRef(onResidueHover); // Stable ref to avoid render loop
   const [heatmapData, setHeatmapData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -15,6 +17,11 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
     { name: 'Imatinib', fda_approved: true, approval_date: '2001-05-10' },
     { name: 'Hollyniacine', fda_approved: false, approval_date: null }
   ]);
+
+  // Keep the ref updated with the latest callback
+  useEffect(() => {
+    onResidueHoverRef.current = onResidueHover;
+  }, [onResidueHover]);
 
   // Load heat map data
   useEffect(() => {
@@ -64,15 +71,18 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
 
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove(); // Clear previous render
+    
+    // Clean up any existing tooltips from previous renders
+    d3.selectAll('.heatmap-tooltip').remove();
 
-    // Dimensions and margins
-    const margin = { top: 80, right: 425, bottom: 200, left: 120 };
-    const containerWidth = Math.min(1800, window.innerWidth - 40);
-    const containerHeight = 650;
+    // Dimensions and margins - use full screen width
+    const margin = { top: 80, right: 400, bottom: 120, left: 400 };
+    const containerWidth = window.innerWidth - 40; // Full width with minimal padding
+    const containerHeight = 700; // Increased to accommodate scroll bar and labels
     const width = containerWidth - margin.left - margin.right;
     const height = containerHeight - margin.top - margin.bottom;
 
-    // Set up SVG with scroll container
+    // Set up SVG
     svg
       .attr('width', containerWidth)
       .attr('height', containerHeight);
@@ -84,13 +94,10 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
     const positions = heatmapData.positions.sort((a, b) => a - b);
     const aminoAcids = heatmapData.metadata.amino_acids;
 
-    // Show all positions (no filtering)
-    const displayPositions = positions;
-    
-    // Calculate cell width - show max 100 positions at once
+    // Scrolling configuration - show 100 positions at a time
     const maxVisiblePositions = 100;
-    const cellWidth = width / Math.min(maxVisiblePositions, displayPositions.length);
-    const totalWidth = cellWidth * displayPositions.length;
+    const cellWidth = width / Math.min(maxVisiblePositions, positions.length);
+    const totalWidth = cellWidth * positions.length;
     
     // Create a clipping path for scrollable content
     svg.append('defs')
@@ -110,7 +117,7 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
 
     // Create scales
     const xScale = d3.scaleBand()
-      .domain(displayPositions)
+      .domain(positions)
       .range([0, totalWidth])
       .padding(0.05);
 
@@ -143,14 +150,14 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
     const tooltip = d3.select('body').append('div')
       .attr('class', 'heatmap-tooltip')
       .style('opacity', 0)
-      .style('position', 'absolute')
+      .style('position', 'fixed') // Changed from 'absolute' to 'fixed' to avoid scroll issues
       .style('background', 'rgba(0, 0, 0, 0.9)')
       .style('color', 'white')
       .style('padding', '12px')
       .style('border-radius', '6px')
       .style('font-size', '12px')
       .style('pointer-events', 'none')
-      .style('z-index', '1000')
+      .style('z-index', '10000') // Increased z-index
       .style('box-shadow', '0 4px 8px rgba(0,0,0,0.3)');
 
     // Get all std values to create a scale for uncertainty visualization
@@ -169,9 +176,9 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
       .range([0.5, 3]);
 
     // Create matrix cells
-    displayPositions.forEach(position => {
+    positions.forEach(position => {
       aminoAcids.forEach(aa => {
-        const positionStr = position.toString(); // Convert to string for matrix lookup
+        const positionStr = position.toString();
         const cellData = currentMatrix[positionStr] && currentMatrix[positionStr][aa];
         const concentrationData = cellData ? cellData[selectedConcentration] : null;
         const value = concentrationData ? concentrationData.value : null;
@@ -200,9 +207,9 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
               const variant = `${refAa}${position}${aa}`;
               const unit = heatmapData.metadata.concentration_unit || 'nM';
               
-              // Notify parent component about residue hover
-              if (onResidueHover) {
-                onResidueHover({ position, aminoAcid: aa, variant });
+              // Notify parent component about residue hover using ref to avoid render loop
+              if (onResidueHoverRef.current) {
+                onResidueHoverRef.current({ position, aminoAcid: aa, variant });
               }
               
               // Add uncertainty indication to tooltip
@@ -224,13 +231,13 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
                 </div>
               `;
 
-              tooltip.transition()
+              tooltip.interrupt().transition()
                 .duration(200)
                 .style('opacity', 1);
               
               tooltip.html(tooltipContent)
-                .style('left', (event.pageX + 15) + 'px')
-                .style('top', (event.pageY - 15) + 'px');
+                .style('left', (event.clientX + 15) + 'px')
+                .style('top', (event.clientY - 15) + 'px');
             }
           })
           .on("mouseout", function() {
@@ -238,12 +245,12 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
               .attr("stroke", uncertaintyBorderColor)
               .attr("stroke-width", uncertaintyBorderWidth);
 
-            // Clear residue hover
-            if (onResidueHover) {
-              onResidueHover(null);
+            // Clear residue hover using ref to avoid render loop
+            if (onResidueHoverRef.current) {
+              onResidueHoverRef.current(null);
             }
 
-            tooltip.transition()
+            tooltip.interrupt().transition()
               .duration(300)
               .style('opacity', 0);
           })
@@ -261,35 +268,58 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
       });
     });
 
-    // Add X axis (positions) - to the scrollable content
-    const xAxis = contentGroup.append("g")
+    // Calculate visible range helper
+    const getVisibleRange = (scrollPos) => {
+      const startIndex = Math.floor((scrollPos / totalWidth) * positions.length);
+      const endIndex = Math.min(positions.length - 1, Math.ceil(((scrollPos + width) / totalWidth) * positions.length));
+      return { startIndex, endIndex, positions: positions.slice(startIndex, endIndex + 1) };
+    };
+
+    // Create scale for the fixed bottom axis showing visible positions
+    const visibleXScale = d3.scaleBand()
+      .range([0, width])
+      .padding(0.05);
+
+    // Add fixed X axis at the bottom (updates with scroll)
+    const fixedXAxis = g.append("g")
       .attr("transform", `translate(0,${height})`);
     
-    // Show every Nth tick based on how many positions we have
-    const tickInterval = Math.max(1, Math.floor(displayPositions.length / 30));
-    xAxis.call(d3.axisBottom(xScale)
-      .tickValues(displayPositions.filter((_, i) => i % tickInterval === 0))
-    );
+    // Function to update the fixed x-axis
+    const updateFixedXAxis = (scrollPos) => {
+      const visibleRange = getVisibleRange(scrollPos);
+      visibleXScale.domain(visibleRange.positions);
+      
+      fixedXAxis.selectAll("*").remove();
+      
+      const tickInterval = Math.max(1, Math.ceil(visibleRange.positions.length / 15));
+      fixedXAxis.call(d3.axisBottom(visibleXScale)
+        .tickValues(visibleRange.positions.filter((_, i) => i % tickInterval === 0))
+      );
+      
+      fixedXAxis.selectAll("text")
+        .style("font-size", "11px")
+        .style("font-weight", "500")
+        .attr("transform", "rotate(-45)")
+        .style("text-anchor", "end");
+    };
     
-    xAxis.selectAll("text")
-      .style("font-size", "10px")
-      .attr("transform", "rotate(-45)")
-      .style("text-anchor", "end");
+    // Initialize the fixed x-axis
+    updateFixedXAxis(0);
 
-    // Add Y axis (amino acids) - fixed (not scrolling)
+    // Add Y axis (amino acids) - fixed on the left
     g.append("g")
       .call(d3.axisLeft(yScale))
       .selectAll("text")
       .style("font-size", "11px")
       .style("font-family", "monospace");
 
-    // Add horizontal scroll capability if needed
+    // Add scroll controls if needed
     if (totalWidth > width) {
-      let scrollPos = 0;
+      let isDragging = false;
       
-      // Add scroll indicator
+      // Add scroll bar - positioned lower to avoid overlap with x-axis labels
       const scrollBar = svg.append('g')
-        .attr('transform', `translate(${margin.left}, ${containerHeight - 30})`);
+        .attr('transform', `translate(${margin.left}, ${containerHeight - 50})`);
       
       scrollBar.append('rect')
         .attr('width', width)
@@ -297,25 +327,84 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
         .attr('fill', '#e0e0e0')
         .attr('rx', 5);
       
+      const thumbWidth = (width / totalWidth) * width;
       const scrollThumb = scrollBar.append('rect')
-        .attr('width', (width / totalWidth) * width)
+        .attr('width', thumbWidth)
         .attr('height', 10)
         .attr('fill', '#007bff')
         .attr('rx', 5)
-        .attr('cursor', 'pointer');
+        .attr('cursor', 'grab');
+
+      // Add position indicator - positioned below scroll bar
+      const positionIndicator = svg.append('g')
+        .attr('transform', `translate(${margin.left}, ${containerHeight - 30})`);
       
-      svg.on('wheel', function(event) {
+      const positionText = positionIndicator.append('text')
+        .attr('x', width / 2)
+        .attr('y', 0)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '11px')
+        .style('font-weight', '600')
+        .style('fill', '#666');
+      
+      // Centralized update function that persists scroll position
+      const updateScroll = (newScrollPos) => {
+        const maxScroll = totalWidth - width;
+        const clamped = Math.max(0, Math.min(maxScroll, newScrollPos));
+        scrollPosRef.current = clamped;
+        
+        // Update content position
+        contentGroup.attr('transform', `translate(${-clamped}, 0)`);
+        
+        // Update thumb position - map scroll range to track width
+        const trackWidth = width - thumbWidth;
+        const thumbX = (clamped / maxScroll) * trackWidth;
+        scrollThumb.attr('x', thumbX);
+        
+        // Update axis and indicator
+        updateFixedXAxis(clamped);
+        
+        const range = getVisibleRange(clamped);
+        const startPos = positions[range.startIndex];
+        const endPos = positions[range.endIndex];
+        positionText.text(`Viewing positions ${startPos}-${endPos} of ${positions[0]}-${positions[positions.length-1]}`);
+      };
+      
+      // Initialize to last known scroll position (NOT zero)
+      updateScroll(scrollPosRef.current);
+      
+      // Add drag behavior to scroll thumb
+      const drag = d3.drag()
+        .on('start', function() {
+          isDragging = true;
+          d3.select(this).style('cursor', 'grabbing');
+        })
+        .on('drag', function(event) {
+          const trackWidth = width - thumbWidth;
+          let newX = Math.max(0, Math.min(trackWidth, event.x));
+          let newScrollPos = (newX / trackWidth) * (totalWidth - width);
+          updateScroll(newScrollPos);
+        })
+        .on('end', function() {
+          isDragging = false;
+          d3.select(this).style('cursor', 'grab');
+        });
+      
+      scrollThumb.call(drag);
+      
+      // Mouse wheel scrolling - clean up previous listener and attach new one
+      svg.on('wheel.scroll', null);
+      svg.on('wheel.scroll', function(event) {
+        if (isDragging) return;
         event.preventDefault();
-        const delta = event.deltaY;
-        scrollPos = Math.max(0, Math.min(totalWidth - width, scrollPos + delta));
-        contentGroup.attr('transform', `translate(${-scrollPos}, 0)`);
-        scrollThumb.attr('x', (scrollPos / totalWidth) * width);
-      });
+        event.stopPropagation();
+        updateScroll(scrollPosRef.current + event.deltaY);
+      }, { passive: false });
     }
 
     // Add axis labels
     g.append("text")
-      .attr("transform", `translate(${width / 2}, ${height + 85})`)
+      .attr("transform", `translate(${width / 2}, ${height + 60})`)
       .style("text-anchor", "middle")
       .style("font-size", "14px")
       .style("font-weight", "bold")
@@ -324,7 +413,7 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
 
     g.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", -80)
+      .attr("y", -90) // add 10px more left padding
       .attr("x", -height / 2)
       .style("text-anchor", "middle")
       .style("font-size", "14px")
@@ -332,9 +421,12 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
       .style("fill", "#333")
       .text("Amino Acid Substitution");
 
+    // Calculate the visual center of the heatmap (excluding legend area)
+    const heatmapVisualCenter = margin.left + (width / 2);
+
     // Add title
     svg.append("text")
-      .attr("x", containerWidth / 2)
+      .attr("x", heatmapVisualCenter)
       .attr("y", 30)
       .attr("text-anchor", "middle")
       .style("font-size", "18px")
@@ -345,7 +437,7 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
     // Add subtitle
     const unit = heatmapData.metadata.concentration_unit || 'nM';
     svg.append("text")
-      .attr("x", containerWidth / 2)
+      .attr("x", heatmapVisualCenter)
       .attr("y", 50)
       .attr("text-anchor", "middle")
       .style("font-size", "13px")
@@ -354,12 +446,12 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
 
     // Add data summary
     svg.append("text")
-      .attr("x", containerWidth / 2)
+      .attr("x", heatmapVisualCenter)
       .attr("y", 70)
       .attr("text-anchor", "middle")
       .style("font-size", "11px")
       .style("fill", "#888")
-      .text(`Showing ${displayPositions.length} positions (${displayPositions[0]}-${displayPositions[displayPositions.length-1]}) × ${aminoAcids.length} amino acids${totalWidth > width ? ' - Scroll to view all' : ''}`);
+      .text(`Showing ${positions.length} positions (${positions[0]}-${positions[positions.length-1]}) × ${aminoAcids.length} amino acids${totalWidth > width ? ' - Scroll to navigate' : ''}`);
 
     // Add color legend - VERTICAL
     const legendWidth = 20;
@@ -480,7 +572,7 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
       d3.select('body').selectAll('.heatmap-tooltip').remove();
     };
     
-  }, [heatmapData, loading, error, navigate, selectedConcentration, selectedDrug, hoveredResidue, onResidueHover]);
+  }, [heatmapData, loading, error, navigate, selectedConcentration, selectedDrug]);
 
   // Cleanup effect for tooltips
   useEffect(() => {
@@ -526,134 +618,156 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
   }
 
   return (
-    <div className="heatmap-container">
-      <div className="heatmap-header">
-        <h2>Position vs Amino Acid Heat Map</h2>
-        <p className="heatmap-description">
-          Interactive 2D heat map showing {selectedDrug} response patterns 
-          across protein positions and amino acid substitutions. Each cell represents the mean 
-          netGR value for a specific position-substitution combination at the selected concentration.
-        </p>
-        
-        {/* Current Drug Display */}
-        <div className="current-drug" style={{ marginBottom: '1rem' }}>
-          <span style={{ fontWeight: 'bold', marginRight: '1rem' }}>Drug:</span>
-          <span style={{ 
-            color: '#28a745',
-            background: '#f8f9fa',
-            padding: '0.25rem 0.5rem',
-            borderRadius: '0.25rem',
-            border: '1px solid #e9ecef',
-            fontWeight: 'bold'
-          }}>
-            {selectedDrug} {availableDrugs.find(d => d.name === selectedDrug)?.fda_approved ? '✓ FDA Approved' : '(Investigational)'}
-          </span>
-        </div>
+    <>
+      {/* Controls Panel - Full Width */}
+      <div className="heatmap-controls-panel" style={{ 
+        width: '100%',
+        margin: '0 auto 2rem auto',
+        background: 'white',
+        borderRadius: '8px',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+        padding: '24px'
+      }}>
+        <div className="heatmap-header">
+          <h2>Position vs Amino Acid Heat Map</h2>
+          <p className="heatmap-description">
+            Interactive 2D heat map showing {selectedDrug} response patterns 
+            across protein positions and amino acid substitutions. Each cell represents the mean 
+            netGR value for a specific position-substitution combination at the selected concentration.
+          </p>
+          
+          {/* Current Drug Display */}
+          <div className="current-drug" style={{ marginBottom: '1rem' }}>
+            <span style={{ fontWeight: 'bold', marginRight: '1rem' }}>Drug:</span>
+            <span style={{ 
+              color: '#28a745',
+              background: '#f8f9fa',
+              padding: '0.25rem 0.5rem',
+              borderRadius: '0.25rem',
+              border: '1px solid #e9ecef',
+              fontWeight: 'bold'
+            }}>
+              {selectedDrug} {availableDrugs.find(d => d.name === selectedDrug)?.fda_approved ? '✓ FDA Approved' : '(Investigational)'}
+            </span>
+          </div>
 
-        {/* Drug Selection Controls */}
-        <div className="drug-controls" style={{ marginBottom: '1rem' }}>
-          <span style={{ marginRight: '1rem', fontWeight: 'bold' }}>Select Drug:</span>
-          {availableDrugs.map((drug) => (
-            <button
-              key={drug.name}
-              onClick={() => setSelectedDrug(drug.name)}
-              style={{
-                padding: '0.5rem 1rem',
-                margin: '0 0.25rem',
-                border: '2px solid #28a745',
-                borderRadius: '0.25rem',
-                backgroundColor: selectedDrug === drug.name ? '#28a745' : 'white',
-                color: selectedDrug === drug.name ? 'white' : '#28a745',
-                cursor: 'pointer',
-                fontWeight: 'bold',
-                transition: 'all 0.2s ease'
-              }}
-              onMouseEnter={(e) => {
-                if (selectedDrug !== drug.name) {
-                  e.target.style.backgroundColor = '#f8f9fa';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (selectedDrug !== drug.name) {
-                  e.target.style.backgroundColor = 'white';
-                }
-              }}
-            >
-              {drug.name}
-            </button>
-          ))}
-        </div>
-
-        {/* Concentration Toggle Controls */}
-        <div className="dose-controls" style={{ marginBottom: '1rem' }}>
-          <span style={{ marginRight: '1rem', fontWeight: 'bold' }}>Concentration:</span>
-          {heatmapData?.metadata?.concentrations?.map((conc) => {
-            const unit = heatmapData.metadata.concentration_unit || 'nM';
-            return (
+          {/* Drug Selection Controls */}
+          <div className="drug-controls" style={{ marginBottom: '1rem' }}>
+            <span style={{ marginRight: '1rem', fontWeight: 'bold' }}>Select Drug:</span>
+            {availableDrugs.map((drug) => (
               <button
-                key={conc}
-                onClick={() => setSelectedConcentration(conc)}
+                key={drug.name}
+                onClick={() => setSelectedDrug(drug.name)}
                 style={{
                   padding: '0.5rem 1rem',
                   margin: '0 0.25rem',
-                  border: '2px solid #007bff',
+                  border: '2px solid #28a745',
                   borderRadius: '0.25rem',
-                  backgroundColor: selectedConcentration === conc ? '#007bff' : 'white',
-                  color: selectedConcentration === conc ? 'white' : '#007bff',
+                  backgroundColor: selectedDrug === drug.name ? '#28a745' : 'white',
+                  color: selectedDrug === drug.name ? 'white' : '#28a745',
                   cursor: 'pointer',
                   fontWeight: 'bold',
                   transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
-                  if (selectedConcentration !== conc) {
+                  if (selectedDrug !== drug.name) {
                     e.target.style.backgroundColor = '#f8f9fa';
                   }
                 }}
                 onMouseLeave={(e) => {
-                  if (selectedConcentration !== conc) {
+                  if (selectedDrug !== drug.name) {
                     e.target.style.backgroundColor = 'white';
                   }
                 }}
               >
-                {conc} {unit}
+                {drug.name}
               </button>
-            );
-          })}
+            ))}
+          </div>
+
+          {/* Concentration Toggle Controls */}
+          <div className="dose-controls" style={{ marginBottom: '1rem' }}>
+            <span style={{ marginRight: '1rem', fontWeight: 'bold' }}>Concentration:</span>
+            {heatmapData?.metadata?.concentrations?.map((conc) => {
+              const unit = heatmapData.metadata.concentration_unit || 'nM';
+              return (
+                <button
+                  key={conc}
+                  onClick={() => setSelectedConcentration(conc)}
+                  style={{
+                    padding: '0.5rem 1rem',
+                    margin: '0 0.25rem',
+                    border: '2px solid #007bff',
+                    borderRadius: '0.25rem',
+                    backgroundColor: selectedConcentration === conc ? '#007bff' : 'white',
+                    color: selectedConcentration === conc ? 'white' : '#007bff',
+                    cursor: 'pointer',
+                    fontWeight: 'bold',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (selectedConcentration !== conc) {
+                      e.target.style.backgroundColor = '#f8f9fa';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (selectedConcentration !== conc) {
+                      e.target.style.backgroundColor = 'white';
+                    }
+                  }}
+                >
+                  {conc} {unit}
+                </button>
+              );
+            })}
+          </div>
+          
+          <div className="heatmap-stats">
+            <span className="stat">
+              <strong>{heatmapData?.metadata.total_variants}</strong> variants analyzed
+            </span>
+            <span className="stat">
+              <strong>{heatmapData?.positions?.length}</strong> positions
+            </span>
+            <span className="stat">
+              <strong>{heatmapData?.metadata.amino_acids?.length}</strong> amino acids
+            </span>
+            <span className="stat">
+              Gene: <strong>{heatmapData?.metadata.gene}</strong>
+            </span>
+            <span className="stat">
+              Drug: <strong style={{ color: '#28a745' }}>{selectedDrug}</strong>
+            </span>
+            <span className="stat">
+              Concentration: <strong style={{ color: '#007bff' }}>{selectedConcentration} {heatmapData?.metadata?.concentration_unit || 'nM'}</strong>
+            </span>
+          </div>
         </div>
-        
-        <div className="heatmap-stats">
-          <span className="stat">
-            <strong>{heatmapData?.metadata.total_variants}</strong> variants analyzed
-          </span>
-          <span className="stat">
-            <strong>{heatmapData?.positions?.length}</strong> positions
-          </span>
-          <span className="stat">
-            <strong>{heatmapData?.metadata.amino_acids?.length}</strong> amino acids
-          </span>
-          <span className="stat">
-            Gene: <strong>{heatmapData?.metadata.gene}</strong>
-          </span>
-          <span className="stat">
-            Drug: <strong style={{ color: '#28a745' }}>{selectedDrug}</strong>
-          </span>
-          <span className="stat">
-            Concentration: <strong style={{ color: '#007bff' }}>{selectedConcentration} {heatmapData?.metadata?.concentration_unit || 'nM'}</strong>
-          </span>
+      </div>
+
+      {/* Heatmap Visualization Panel - Full Width */}
+      <div className="heatmap-visualization-panel" style={{
+        width: '100%',
+        maxWidth: '100%',
+        background: 'white',
+        borderRadius: '8px',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+        padding: '2px',
+        overflow: 'visible'
+      }}>
+        <div className="heatmap-visualization">
+          <svg ref={svgRef}></svg>
+        </div>
+        <div className="heatmap-footer">
+          <p className="heatmap-note">
+            Heat map shows mean network growth rate (netGR) values for {selectedDrug} at {selectedConcentration} {heatmapData?.metadata?.concentration_unit || 'nM'} across protein positions 
+            (N-terminus to C-terminus) and amino acid substitutions. Border thickness and color indicate measurement 
+            uncertainty (standard deviation across replicates). Use the concentration buttons above to switch between 
+            different drug concentrations. {heatmapData?.positions?.length > 100 ? 'Use mouse wheel to scroll horizontally through positions. ' : ''}Click on colored cells to view specific variant details.
+          </p>
         </div>
       </div>
-      <div className="heatmap-visualization">
-        <svg ref={svgRef}></svg>
-      </div>
-      <div className="heatmap-footer">
-        <p className="heatmap-note">
-          Heat map shows mean network growth rate (netGR) values for {selectedDrug} at {selectedConcentration} {heatmapData?.metadata?.concentration_unit || 'nM'} across protein positions 
-          (N-terminus to C-terminus) and amino acid substitutions. Border thickness and color indicate measurement 
-          uncertainty (standard deviation across replicates). Use the concentration buttons above to switch between 
-          different drug concentrations. {heatmapData?.positions?.length > 100 ? 'Use mouse wheel to scroll horizontally through all positions. ' : ''}Click on colored cells to view specific variant details.
-        </p>
-      </div>
-    </div>
+    </>
   );
 };
 
