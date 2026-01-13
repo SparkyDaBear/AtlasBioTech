@@ -54,42 +54,48 @@
         "type": "First-generation TKI",
         "fda_approval": "2001",
         "mechanism": "ATP-competitive inhibitor of BCR-ABL kinase",
-        "clinical_use": "First-line treatment for chronic phase CML"
+        "clinical_use": "First-line treatment for chronic phase CML",
+        "fda_approved_dosage": 12.5
       },
       {
         "name": "Dasatinib", 
         "type": "Second-generation TKI",
         "fda_approval": "2006",
         "mechanism": "Dual SRC/ABL kinase inhibitor",
-        "clinical_use": "Imatinib-resistant CML and Ph+ ALL"
+        "clinical_use": "Imatinib-resistant CML and Ph+ ALL",
+        "fda_approved_dosage": 8.2
       },
       {
         "name": "Nilotinib",
         "type": "Second-generation TKI", 
         "fda_approval": "2007",
         "mechanism": "Selective ABL kinase inhibitor",
-        "clinical_use": "Imatinib-resistant CML, first-line CML"
+        "clinical_use": "Imatinib-resistant CML, first-line CML",
+        "fda_approved_dosage": 15.7
       },
       {
         "name": "Bosutinib",
         "type": "Second-generation TKI",
         "fda_approval": "2012", 
         "mechanism": "Dual SRC/ABL kinase inhibitor",
-        "clinical_use": "CML resistant to prior TKI therapy"
+        "clinical_use": "CML resistant to prior TKI therapy",
+        "fda_approved_dosage": 22.3
       },
       {
         "name": "Ponatinib",
         "type": "Third-generation TKI",
         "fda_approval": "2012",
         "mechanism": "Pan-BCR-ABL inhibitor including T315I",
-        "clinical_use": "T315I-positive CML/ALL, multi-TKI resistant"
+        "clinical_use": "T315I-positive CML/ALL, multi-TKI resistant",
+        "fda_approved_dosage": 6.8
       },
       {
         "name": "Asciminib",
         "type": "Allosteric inhibitor",
         "fda_approval": "2021",
         "mechanism": "STAMP (Specifically Targeting the ABL Myristoyl Pocket)",
-        "clinical_use": "CML with T315I or resistance to ≥2 prior TKIs"
+        "clinical_use": "CML with T315I or resistance to ≥2 prior TKIs",
+        "fda_approved_dosage": 28.4
       }
     ],
     "structural_domains": [

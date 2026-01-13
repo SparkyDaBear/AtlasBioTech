@@ -1,7 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], variantData = null, width = 600, height = 400 }) => {
+const DoseResponsePlot = ({ 
+  data, 
+  selectedDrugs = ['Imatinib'], 
+  variantData = null, 
+  width = 600, 
+  height = 400,
+  fdaDosages = {},
+  showFdaDosage = false
+}) => {
   const svgRef = useRef(null);
 
   // Function to convert netgr to relative viability (same as 4PL fitting)
@@ -239,13 +247,46 @@ const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], variantData = nu
         .attr('stroke-width', 1.5);
     });
 
+    // Draw FDA approved dosage lines if enabled
+    if (showFdaDosage) {
+      selectedDrugs.forEach(drug => {
+        const fdaDosage = fdaDosages[drug];
+        if (fdaDosage && fdaDosage >= xScale.domain()[0] && fdaDosage <= xScale.domain()[1]) {
+          const color = colorScale(drug);
+          const xPos = xScale(fdaDosage);
+          
+          // Draw vertical dashed line
+          g.append('line')
+            .attr('x1', xPos)
+            .attr('x2', xPos)
+            .attr('y1', 0)
+            .attr('y2', innerHeight)
+            .attr('stroke', color)
+            .attr('stroke-width', 2)
+            .attr('stroke-dasharray', '8,4')
+            .attr('opacity', 0.7)
+            .style('pointer-events', 'none');
+          
+          // Add label for FDA dosage
+          g.append('text')
+            .attr('x', xPos)
+            .attr('y', -5)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '9px')
+            .style('fill', color)
+            .style('font-weight', 'bold')
+            .text(`FDA: ${fdaDosage} nM`);
+        }
+      });
+    }
+
     // Add legend
     const legend = svg.append('g')
       .attr('transform', `translate(${width - margin.right + 10}, ${margin.top})`);
 
     selectedDrugs.forEach((drug, i) => {
       const legendRow = legend.append('g')
-        .attr('transform', `translate(0, ${i * 40})`);
+        .attr('transform', `translate(0, ${i * 50})`);
       
       // Drug name
       legendRow.append('text')
@@ -287,6 +328,25 @@ const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], variantData = nu
         .attr('y', 28)
         .style('font-size', '10px')
         .text('Measured');
+      
+      // FDA dosage line (if enabled and available)
+      if (showFdaDosage && fdaDosages[drug]) {
+        legendRow.append('line')
+          .attr('x1', 0)
+          .attr('x2', 20)
+          .attr('y1', 38)
+          .attr('y2', 38)
+          .attr('stroke', colorScale(drug))
+          .attr('stroke-width', 2)
+          .attr('stroke-dasharray', '8,4')
+          .attr('opacity', 0.7);
+        
+        legendRow.append('text')
+          .attr('x', 25)
+          .attr('y', 41)
+          .style('font-size', '10px')
+          .text('FDA dosage');
+      }
     });
 
     // Add title
@@ -298,7 +358,7 @@ const DoseResponsePlot = ({ data, selectedDrugs = ['Imatinib'], variantData = nu
       .style('font-weight', 'bold')
       .text('Dose-Response Curve with 95% CI and 4PL Fit');
 
-  }, [data, selectedDrugs, variantData, width, height]);
+  }, [data, selectedDrugs, variantData, width, height, fdaDosages, showFdaDosage]);
 
   return (
     <div className="dose-response-plot">

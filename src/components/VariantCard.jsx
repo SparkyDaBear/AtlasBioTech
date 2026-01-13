@@ -12,6 +12,8 @@ const VariantCard = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [selectedDrugs, setSelectedDrugs] = useState([])
+  const [fdaDosages, setFdaDosages] = useState({})
+  const [showFdaDosage, setShowFdaDosage] = useState(false)
 
   useEffect(() => {
     // Load variant data
@@ -21,6 +23,27 @@ const VariantCard = () => {
         // URL decode the gene parameter in case it's encoded
         const decodedGene = decodeURIComponent(gene)
         const decodedId = decodeURIComponent(id)
+        
+        // Load protein metadata to get FDA dosages
+        try {
+          const metadataResponse = await fetch('/AtlasBioTech/data/v1.0/protein_metadata.json')
+          if (metadataResponse.ok) {
+            const metadata = await metadataResponse.json()
+            const proteinMetadata = metadata[decodedGene]
+            if (proteinMetadata && proteinMetadata.therapeutic_agents) {
+              const dosages = {}
+              proteinMetadata.therapeutic_agents.forEach(agent => {
+                if (agent.fda_approved_dosage) {
+                  dosages[agent.name] = agent.fda_approved_dosage
+                }
+              })
+              setFdaDosages(dosages)
+            }
+          }
+        } catch (err) {
+          console.log('Could not load FDA dosages:', err)
+        }
+        
         // Load variant data from the correct file path  
         const fileName = `${decodedGene}_${decodedId}.json`
         const response = await fetch(`/AtlasBioTech/data/v1.0/variants/${fileName}`)
@@ -97,6 +120,12 @@ const VariantCard = () => {
         })
         // Initialize selectedDrugs with mock data drugs
         setSelectedDrugs(['Imatinib', 'Dasatinib', 'Nilotinib'])
+        // Set FDA dosages for mock data
+        setFdaDosages({
+          'Imatinib': 12.5,
+          'Dasatinib': 8.2,
+          'Nilotinib': 15.7
+        })
       } finally {
         setLoading(false)
       }
@@ -245,6 +274,32 @@ const VariantCard = () => {
             </div>
           </div>
           
+          {/* FDA Dosage Toggle */}
+          <div className="mb-4">
+            <label className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                checked={showFdaDosage}
+                onChange={(e) => setShowFdaDosage(e.target.checked)}
+                className="rounded border-gray-300"
+              />
+              <span className="text-sm font-medium text-gray-700">
+                Show FDA approved dosage lines
+              </span>
+            </label>
+            {showFdaDosage && Object.keys(fdaDosages).length > 0 && (
+              <div className="mt-2 ml-6 text-xs text-gray-500">
+                {selectedDrugs.map(drug => 
+                  fdaDosages[drug] ? (
+                    <div key={drug}>
+                      {drug}: {fdaDosages[drug]} nM
+                    </div>
+                  ) : null
+                )}
+              </div>
+            )}
+          </div>
+          
           {/* Dose-Response Plot */}
           <div className="mb-6">
             <h3 className="text-lg font-semibold mb-2">Dose-Response Analysis</h3>
@@ -257,6 +312,9 @@ const VariantCard = () => {
               <DoseResponsePlot 
                 data={plotData} 
                 selectedDrugs={selectedDrugs}
+                variantData={variantData}
+                fdaDosages={fdaDosages}
+                showFdaDosage={showFdaDosage}
                 width={600}
                 height={400}
               />
