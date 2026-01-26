@@ -1,13 +1,15 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Search, Database } from 'lucide-react'
+import { Home, Database, Mail, BookOpen } from 'lucide-react'
 
 const Layout = ({ children }) => {
   const location = useLocation()
 
   const navigation = [
-    { name: 'Home', href: '/', icon: Search },
+    { name: 'Home', href: '/', icon: Home },
     { name: 'Drug Table', href: '/drugs', icon: Database },
+    { name: 'Documentation', href: '/docs', icon: BookOpen },
+    { name: 'Contact Us', href: '/contact', icon: Mail },
   ]
 
   return (
@@ -18,7 +20,7 @@ const Layout = ({ children }) => {
         borderBottom: '1px solid rgba(139, 92, 246, 0.2)'
       }}>
         <div style={{ width: '100%', padding: '0 20px' }}>
-          <div className="flex justify-between items-center py-5">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 0' }}>
             <Link 
               to="/" 
               className="flex items-center gap-3 hover:opacity-90 transition-opacity"
@@ -27,7 +29,7 @@ const Layout = ({ children }) => {
               }}
             >
               <img 
-                src={`${import.meta.env.BASE_URL}../assets/Atlas_Updated_Logo.webp`}
+                src={`${import.meta.env.BASE_URL}Atlas_Updated_Logo.webp`}
                 alt="Atlas BioTech Logo" 
                 style={{ height: '50px', width: 'auto' }}
               />
@@ -36,41 +38,39 @@ const Layout = ({ children }) => {
             <nav className="flex gap-3">
               {navigation.map((item) => {
                 const Icon = item.icon
-                const isActive = location.pathname === item.href
                 return (
                   <Link
                     key={item.name}
                     to={item.href}
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all"
+                    className="flex items-center gap-2 transition-all"
                     style={{
                       textDecoration: 'none',
-                      background: isActive 
-                        ? 'var(--gradient-purple)' 
-                        : 'rgba(255, 255, 255, 0.05)',
-                      color: isActive 
-                        ? 'white' 
-                        : 'var(--text-on-dark-secondary)',
-                      boxShadow: isActive ? 'var(--shadow-lg)' : 'none',
+                      padding: '12px 24px',
+                      background: 'rgba(255, 255, 255, 0.05)',
+                      color: 'var(--text-on-dark)',
+                      boxShadow: 'none',
                       backdropFilter: 'blur(10px)',
                       border: '1px solid',
-                      borderColor: isActive 
-                        ? 'rgba(139, 92, 246, 0.3)' 
-                        : 'rgba(255, 255, 255, 0.1)'
+                      borderColor: 'rgba(255, 255, 255, 0.1)',
+                      borderRadius: '10px',
+                      fontSize: '1rem',
+                      fontWeight: '600',
+                      whiteSpace: 'nowrap'
                     }}
                     onMouseEnter={(e) => {
-                      if (!isActive) {
-                        e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)'
-                        e.currentTarget.style.color = 'var(--text-on-dark)'
-                      }
+                      e.currentTarget.style.background = 'var(--gradient-purple)'
+                      e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.5)'
+                      e.currentTarget.style.boxShadow = 'var(--shadow-lg)'
+                      e.currentTarget.style.transform = 'translateY(-2px)'
                     }}
                     onMouseLeave={(e) => {
-                      if (!isActive) {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'
-                        e.currentTarget.style.color = 'var(--text-on-dark-secondary)'
-                      }
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'
+                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'
+                      e.currentTarget.style.boxShadow = 'none'
+                      e.currentTarget.style.transform = 'translateY(0)'
                     }}
                   >
-                    <Icon size={18} />
+                    <Icon size={20} />
                     {item.name}
                   </Link>
                 )
@@ -152,27 +152,29 @@ const Layout = ({ children }) => {
               gap: '40px',
               flexWrap: 'wrap',
               marginBottom: '40px',
-              padding: '20px 0',
+              padding: '30px 40px',
               borderTop: '1px solid rgba(139, 92, 246, 0.2)',
-              borderBottom: '1px solid rgba(139, 92, 246, 0.2)'
+              borderBottom: '1px solid rgba(139, 92, 246, 0.2)',
+              background: 'white',
+              borderRadius: '12px'
             }}>
               <img 
-                src={`${import.meta.env.BASE_URL}../assets/NIH_Master_Logo_Vertical_2Color.png`}
+                src={`${import.meta.env.BASE_URL}NIH_Master_Logo_Vertical_2Color.png`}
                 alt="NIH Logo" 
                 style={{ height: '60px', width: 'auto', opacity: 0.8 }}
               />
               <img 
-                src={`${import.meta.env.BASE_URL}../assets/NSF_Official_logo_Med_Res_600ppi_rectangle.png`}
+                src={`${import.meta.env.BASE_URL}NSF_Official_logo_Med_Res_600ppi_rectangle.png`}
                 alt="NSF Logo" 
                 style={{ height: '50px', width: 'auto', opacity: 0.8 }}
               />
               <img 
-                src={`${import.meta.env.BASE_URL}../assets/psu-mark-280.png`}
+                src={`${import.meta.env.BASE_URL}psu-mark-280.png`}
                 alt="Penn State Logo" 
                 style={{ height: '60px', width: 'auto', opacity: 0.8 }}
               />
               <img 
-                src={`${import.meta.env.BASE_URL}../assets/Logo-BFTP_Horizontal-2-color-cropped.png`}
+                src={`${import.meta.env.BASE_URL}Logo-BFTP_Horizontal-2-color-cropped.png`}
                 alt="Ben Franklin Technology Partners Logo" 
                 style={{ height: '40px', width: 'auto', opacity: 0.8 }}
               />
