@@ -256,101 +256,92 @@ const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, select
           style={{ width: '100%', height: '400px' }}
           className="border rounded-lg bg-gray-100"
         ></div>
-        
-        {/* Structure Controls */}
-        <div style={{
-          position: 'absolute',
-          top: '1rem',
-          right: '1rem',
-          background: 'var(--dark-elevated)',
-          borderRadius: '8px',
-          padding: '8px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '4px',
-          border: '1px solid rgba(139, 92, 246, 0.3)'
-        }}>
-          <button 
-            onClick={() => {
-              if (stageRef.current) {
-                stageRef.current.autoView();
-              }
-            }}
-            style={{
-              width: '32px',
-              height: '32px',
-              background: 'var(--primary-color)',
-              color: 'white',
-              border: 'none',
-              borderRadius: '6px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '0.75rem',
-              cursor: 'pointer',
-              transition: 'opacity 0.2s',
-              fontWeight: '600'
-            }}
-            onMouseOver={(e) => e.target.style.opacity = '0.8'}
-            onMouseOut={(e) => e.target.style.opacity = '1'}
-            title="Auto View"
-          >
-            Home
-          </button>
-          <button 
-            onClick={() => {
-              if (stageRef.current) {
-                stageRef.current.toggleFullscreen();
-              }
-            }}
-            style={{
-              width: '32px',
-              height: '32px',
-              background: 'var(--primary-color)',
-              color: 'white',
-              border: 'none',
-              borderRadius: '6px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '0.75rem',
-              cursor: 'pointer',
-              transition: 'opacity 0.2s',
-              fontWeight: '600'
-            }}
-            onMouseOver={(e) => e.target.style.opacity = '0.8'}
-            onMouseOut={(e) => e.target.style.opacity = '1'}
-            title="Fullscreen"
-          >
-            Full
-          </button>
-          <button 
-            onClick={() => {
-              const baseUrl = import.meta.env.BASE_URL || '';
-              window.open(`${baseUrl}data/v1.0/BCR-ABL.pdb`, '_blank');
-            }}
-            style={{
-              width: '32px',
-              height: '32px',
-              background: 'var(--primary-color)',
-              color: 'white',
-              border: 'none',
-              borderRadius: '6px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '0.75rem',
-              cursor: 'pointer',
-              transition: 'opacity 0.2s',
-              fontWeight: '600'
-            }}
-            onMouseOver={(e) => e.target.style.opacity = '0.8'}
-            onMouseOut={(e) => e.target.style.opacity = '1'}
-            title="Download PDB"
-          >
-            DL
-          </button>
-        </div>
+      </div>
+
+      {/* Structure Controls */}
+      <div style={{
+        marginTop: '1rem',
+        display: 'flex',
+        gap: '8px',
+        justifyContent: 'flex-start'
+      }}>
+        <button 
+          onClick={() => {
+            if (stageRef.current) {
+              stageRef.current.autoView();
+            }
+          }}
+          style={{
+            padding: '8px 16px',
+            background: 'var(--primary-color)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '6px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '0.875rem',
+            cursor: 'pointer',
+            transition: 'opacity 0.2s',
+            fontWeight: '600'
+          }}
+          onMouseOver={(e) => e.target.style.opacity = '0.8'}
+          onMouseOut={(e) => e.target.style.opacity = '1'}
+          title="Auto View"
+        >
+          Home
+        </button>
+        <button 
+          onClick={() => {
+            if (stageRef.current) {
+              stageRef.current.toggleFullscreen();
+            }
+          }}
+          style={{
+            padding: '8px 16px',
+            background: 'var(--primary-color)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '6px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '0.875rem',
+            cursor: 'pointer',
+            transition: 'opacity 0.2s',
+            fontWeight: '600'
+          }}
+          onMouseOver={(e) => e.target.style.opacity = '0.8'}
+          onMouseOut={(e) => e.target.style.opacity = '1'}
+          title="Fullscreen"
+        >
+          Fullscreen
+        </button>
+        <button 
+          onClick={() => {
+            const baseUrl = import.meta.env.BASE_URL || '';
+            window.open(`${baseUrl}data/v1.0/BCR-ABL.pdb`, '_blank');
+          }}
+          style={{
+            padding: '8px 16px',
+            background: 'var(--primary-color)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '6px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '0.875rem',
+            cursor: 'pointer',
+            transition: 'opacity 0.2s',
+            fontWeight: '600'
+          }}
+          onMouseOver={(e) => e.target.style.opacity = '0.8'}
+          onMouseOut={(e) => e.target.style.opacity = '1'}
+          title="Download PDB"
+        >
+          Download PDB
+        </button>
       </div>
 
       {/* Structure Information */}
