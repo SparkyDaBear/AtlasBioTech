@@ -6,6 +6,7 @@ const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, select
   const structureComponentRef = useRef(null);
   const highlightRepresentationRef = useRef(null);
   const selectedRepresentationRef = useRef(null);
+  const selectedChainRepresentationRef = useRef(null);
   const nglRef = useRef(null);
   const [structureLoaded, setStructureLoaded] = useState(false);
   const [loadingStructure, setLoadingStructure] = useState(false);
@@ -72,12 +73,16 @@ const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, select
       if (selectedRepresentationRef.current && structureComponentRef.current) {
         structureComponentRef.current.removeRepresentation(selectedRepresentationRef.current);
       }
+      if (selectedChainRepresentationRef.current && structureComponentRef.current) {
+        structureComponentRef.current.removeRepresentation(selectedChainRepresentationRef.current);
+      }
       if (stageRef.current) {
         stageRef.current.dispose();
         stageRef.current = null;
         structureComponentRef.current = null;
         highlightRepresentationRef.current = null;
         selectedRepresentationRef.current = null;
+        selectedChainRepresentationRef.current = null;
       }
     };
   }, []);
@@ -117,54 +122,63 @@ const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, select
 
   // Handle selected residue highlighting (from sequence viewer)
   useEffect(() => {
-    if (!structureComponentRef.current || !structureLoaded || !nglRef.current) return;
+    console.log('Selection effect triggered:', { selectedResidue, structureLoaded });
+    
+    if (!structureComponentRef.current || !structureLoaded || !nglRef.current) {
+      console.log('Structure not ready yet');
+      return;
+    }
 
-    // Clear previous selection highlight
+    // Clear previous selection highlights
     if (selectedRepresentationRef.current) {
       structureComponentRef.current.removeRepresentation(selectedRepresentationRef.current);
       selectedRepresentationRef.current = null;
     }
+    if (selectedChainRepresentationRef.current) {
+      structureComponentRef.current.removeRepresentation(selectedChainRepresentationRef.current);
+      selectedChainRepresentationRef.current = null;
+    }
 
     // Add new selection highlight if residue is selected
-    if (selectedResidue) {
+    if (selectedResidue && selectedResidue.position && selectedResidue.chain) {
       try {
-        // Create selection string for the residue position
-        const selectionString = `${selectedResidue}`;
+        // First, highlight the entire selected chain in grey
+        const chainSelectionString = `:${selectedResidue.chain}`;
         
-        // Add large spacefill representation for the selected residue
+        console.log(`Highlighting chain ${selectedResidue.chain} in grey`);
+        
+        selectedChainRepresentationRef.current = structureComponentRef.current.addRepresentation('cartoon', {
+          sele: chainSelectionString,
+          color: '#9ca3af',
+          opacity: 0.7
+        });
+        
+        // Then highlight the specific residue in red spacefill
+        const residueSelectionString = `${selectedResidue.position}:${selectedResidue.chain}`;
+        
+        console.log(`Highlighting residue: ${residueSelectionString}`);
+        
         selectedRepresentationRef.current = structureComponentRef.current.addRepresentation('spacefill', {
-          sele: selectionString,
-          color: '#3b82f6',
-          scale: 2.5,
+          sele: residueSelectionString,
+          color: '#ef4444',  // Red
+          scale: 1.0,
           opacity: 1.0
         });
         
-        // Zoom in on the selected residue
+        console.log(`Successfully highlighted residue ${selectedResidue.position} on chain ${selectedResidue.chain}`);
+        
+        // Zoom in on the selected residue with animation
         try {
-          const component = structureComponentRef.current;
-          const structure = component.structure;
-          const atomSet = structure.getAtomSetWithinSelection(new nglRef.current.Selection(selectionString));
-          
-          if (atomSet && atomSet.length > 0) {
-            // Get the center of the selected residue
-            const atomProxy = structure.getAtomProxy();
-            atomSet.forEach(idx => {
-              atomProxy.index = idx;
-            });
-            
-            // Zoom to the residue with animation
-            component.autoView(selectionString, 1000);
-          }
+          structureComponentRef.current.autoView(residueSelectionString, 1000);
         } catch (zoomError) {
           console.warn('Zoom failed, but residue is highlighted:', zoomError);
         }
-        
-        console.log(`Selected residue at position ${selectedResidue}`);
       } catch (error) {
-        console.warn('Failed to highlight selected residue:', error);
+        console.error('Failed to highlight selected residue:', error);
+        console.error('Selection was:', selectedResidue);
       }
     }
-  }, [selectedResidue, structureLoaded]);
+  }, [selectedResidue?.position, selectedResidue?.chain, structureLoaded]);
 
   return (
     <div className="bg-white rounded-lg shadow-sm p-6">

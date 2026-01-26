@@ -15,6 +15,11 @@ const ProteinPage = () => {
   const [hoveredResidue, setHoveredResidue] = useState(null);
   const [selectedResidue, setSelectedResidue] = useState(null);
 
+  // Debug logging for selected residue changes
+  useEffect(() => {
+    console.log('ProteinPage - selectedResidue changed:', selectedResidue);
+  }, [selectedResidue]);
+
   // Get drug from URL parameter
   const drugFromUrl = searchParams.get('drug');
 
@@ -126,7 +131,7 @@ const ProteinPage = () => {
             </h2>
             <p className="text-gray-600 mb-4">
               Interactive visualization of {proteinData?.protein_name || proteinId} structure.
-              {selectedResidue && <span className="ml-2 text-blue-600 font-semibold">Highlighting residue {selectedResidue}</span>}
+              {selectedResidue && <span className="ml-2 text-blue-600 font-semibold">Highlighting chain {selectedResidue.chain}, residue {selectedResidue.position}</span>}
             </p>
             <ProteinInteractiveView 
               proteinData={proteinData} 
