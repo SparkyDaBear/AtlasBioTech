@@ -82,8 +82,8 @@ def get_qc_flags(responses_rep1, responses_rep2, ic50):
     
     return flags
 
-def process_k562_data_v2(csv_path):
-    """Process K562 screening CSV data with proper format handling."""
+def process_baf3_data_v2(csv_path):
+    """Process BaF3 screening CSV data with proper format handling."""
     logger.info(f"Processing screening data from {csv_path}")
     
     try:
@@ -209,11 +209,11 @@ def process_k562_data_v2(csv_path):
                     'gene': gene_name,
                     'variant_string': variant_string,
                     'protein_change': protein_change,
-                    'transcript_id': 'UNKNOWN',  # Not provided in K562 data
+                    'transcript_id': 'UNKNOWN',  # Not provided in BaF3 data
                     'position': position,
                     'consequence': 'missense_variant',  # Assuming all are missense
                     'drugs_tested': [drug_name],
-                    'model_system': 'K562 cells',
+                    'model_system': 'BaF3 cells',
                     'ic50_values': [drug_entry],
                     'replicate_count': actual_reps,
                     'qc_flags': [],
@@ -298,7 +298,7 @@ def main():
         sys.exit(1)
     
     # Process the screening data
-    variants = process_k562_data_v2(data_file)
+    variants = process_baf3_data_v2(data_file)
     
     if variants:
         # Save individual variant datacards

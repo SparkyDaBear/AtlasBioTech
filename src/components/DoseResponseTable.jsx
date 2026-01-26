@@ -64,7 +64,7 @@ const DoseResponseTable = ({ data, selectedDrugs = [] }) => {
       sortable: true,
       filter: 'agNumberColumnFilter',
       width: 160,
-      valueFormatter: params => params.value ? `${params.value.toFixed(1)} nM` : ''
+      valueFormatter: params => params.value !== null && params.value !== undefined ? `${params.value.toFixed(1)} nM` : ''
     },
     {
       field: 'mean',

@@ -74,7 +74,7 @@ const VariantCard = () => {
               fold_change: 27.8, 
               confidence_interval: [980, 1520],
               dose_response_data: {
-                doses: [5, 30, 100],
+                doses: [0, 300, 600, 1200],
                 responses_rep1: [0.85, 0.45, 0.15],
                 responses_rep2: [0.82, 0.42, 0.12]
               }
@@ -86,7 +86,7 @@ const VariantCard = () => {
               fold_change: 19.0, 
               confidence_interval: [12.1, 18.3],
               dose_response_data: {
-                doses: [5, 30, 100],
+                doses: [0, 300, 600, 1200],
                 responses_rep1: [0.75, 0.35, 0.08],
                 responses_rep2: [0.73, 0.32, 0.10]
               }
@@ -98,7 +98,7 @@ const VariantCard = () => {
               fold_change: 13.6, 
               confidence_interval: [22.4, 34.6],
               dose_response_data: {
-                doses: [5, 30, 100],
+                doses: [0, 300, 600, 1200],
                 responses_rep1: [0.88, 0.55, 0.25],
                 responses_rep2: [0.85, 0.52, 0.22]
               }

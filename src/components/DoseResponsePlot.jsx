@@ -94,11 +94,21 @@ const DoseResponsePlot = ({
 
     // Set up scales with 10% padding on both axes
     const xExtent = d3.extent(processedData, d => d.concentration);
-    // For log scale, padding is multiplicative (e.g., 10% = factor of 1.1)
-    const xPaddingFactor = 0.9; // Shrinks the range by 10% on each side
-    const xScale = d3.scaleLog()
-      .domain([xExtent[0] / (1 / xPaddingFactor), xExtent[1] / xPaddingFactor])
-      .range([0, innerWidth]);
+    
+    // Use linear scale if minimum concentration is 0 (log scale can't handle 0)
+    let xScale;
+    if (xExtent[0] === 0) {
+      const xPadding = (xExtent[1] - xExtent[0]) * 0.1;
+      xScale = d3.scaleLinear()
+        .domain([xExtent[0] - xPadding, xExtent[1] + xPadding])
+        .range([0, innerWidth]);
+    } else {
+      // For log scale, padding is multiplicative (e.g., 10% = factor of 1.1)
+      const xPaddingFactor = 0.9; // Shrinks the range by 10% on each side
+      xScale = d3.scaleLog()
+        .domain([xExtent[0] / (1 / xPaddingFactor), xExtent[1] / xPaddingFactor])
+        .range([0, innerWidth]);
+    }
 
     // Calculate y-axis extent including error bars (upper and lower bounds)
     const allYValues = processedData.flatMap(d => [d.lower, d.upper]);

@@ -61,19 +61,19 @@ npm run preview
 
 ### Current Dataset
 
-- **56,700+ experimental measurements** from deep mutational scanning
-- **3,136 unique BCR-ABL variants** with dose-response data
-- **2 drugs**: Imatinib (FDA Approved), Hollyniacine (Investigational)
-- **Cell line**: K562
-- **Concentration ranges**: 5, 30, 100 nM with biological replicates (2 replicates per condition)
+- **39,384 experimental measurements** from deep mutational scanning
+- **4,923 unique BCR-ABL variants** with dose-response data
+- **1 drug**: Imatinib (FDA Approved)
+- **Cell line**: BaF3
+- **Concentration ranges**: 0, 300, 600, 1200 nM with biological replicates (2 replicates per condition)
 
 ### Raw Data Files (`data/raw/`)
 
 **Master Dataset** (`master_qDMS_df.csv` - 3.9 MB):
 ```csv
-index,species,type,synSNP,ref_aa,protein_start,alt_aa,conc,netgr_obs,cell_line,rep,Gene,Drug
-0,A102D,snp,False,A,102,D,5,0.02293268,K562,1,BCR-ABL,Imatinib
-1,A102E,mnv,False,A,102,E,5,0.024834553,K562,1,BCR-ABL,Imatinib
+species,type,synSNP,ref_aa,protein_start,alt_aa,conc,netgr_obs,cell_line,rep,Gene,Drug
+I242A,mnv,FALSE,I,242,A,0,0.02150498,BaF3,1,BCR-ABL,Imatinib
+I242C,mnv,FALSE,I,242,C,0,0.028109973,BaF3,1,BCR-ABL,Imatinib
 ```
 
 **Protein Metadata** (`protein_metadata.json` - 5.8 KB):
@@ -88,10 +88,10 @@ index,species,type,synSNP,ref_aa,protein_start,alt_aa,conc,netgr_obs,cell_line,r
 ### JSON Output Structure
 
 Processed data is stored in `public/data/v1.0/`:
-- `search_index.json` - Global search index with 3,136 variants and 2 drugs
-- `heatmap_data.json` - Drug-specific position × amino acid matrices for both drugs
+- `search_index.json` - Global search index with 4,923 variants and 1 drug
+- `heatmap_data.json` - Drug-specific position × amino acid matrices
 - `protein_metadata.json` - Copy of protein information for web access
-- `variants/` - 3,137 individual variant JSON files with dose-response data
+- `variants/` - 4,923 individual variant JSON files with dose-response data
 - `assets/plots/` - Generated visualization assets (if any)
 
 ## Deployment

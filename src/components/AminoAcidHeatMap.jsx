@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import * as d3 from 'd3';
 import { useNavigate } from 'react-router-dom';
 import './AminoAcidHeatMap.css';
@@ -14,9 +14,33 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
   const [selectedConcentration, setSelectedConcentration] = useState(null);
   const [selectedDrug, setSelectedDrug] = useState(initialDrug || 'Imatinib'); // Use initialDrug if provided
   const [availableDrugs, setAvailableDrugs] = useState([
-    { name: 'Imatinib', fda_approved: true, approval_date: '2001-05-10' },
-    { name: 'Hollyniacine', fda_approved: false, approval_date: null }
+    { name: 'Imatinib', fda_approved: true, approval_date: '2001-05-10' }
   ]);
+
+  // Calculate color scale bounds for the selected drug across all concentrations
+  const colorScaleBounds = useMemo(() => {
+    if (!heatmapData || !heatmapData.matrices || !selectedDrug) return { min: 0, max: 1 };
+    
+    const currentMatrix = heatmapData.matrices[selectedDrug];
+    if (!currentMatrix) return { min: 0, max: 1 };
+    
+    const allValues = [];
+    const concentrations = heatmapData.metadata.concentrations || [];
+    Object.values(currentMatrix).forEach(posData => {
+      Object.values(posData).forEach(aaData => {
+        concentrations.forEach(conc => {
+          if (aaData[conc] && aaData[conc].value !== null && aaData[conc].value !== undefined) {
+            allValues.push(aaData[conc].value);
+          }
+        });
+      });
+    });
+    
+    if (allValues.length === 0) return { min: 0, max: 1 };
+    
+    const extent = d3.extent(allValues);
+    return { min: extent[0], max: extent[1] };
+  }, [heatmapData, selectedDrug]);
 
   // Keep the ref updated with the latest callback
   useEffect(() => {
@@ -453,120 +477,6 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
       .style("fill", "#888")
       .text(`Showing ${positions.length} positions (${positions[0]}-${positions[positions.length-1]}) × ${aminoAcids.length} amino acids${totalWidth > width ? ' - Scroll to navigate' : ''}`);
 
-    // Add color legend - VERTICAL
-    const legendWidth = 20;
-    const legendHeight = 200;
-    const legendX = containerWidth - margin.right + 60;
-    const legendY = margin.top + 50;
-
-    // Create gradient definition for vertical orientation
-    const defs = svg.append("defs");
-    const gradient = defs.append("linearGradient")
-      .attr("id", "heatmap-gradient")
-      .attr("x1", "0%")
-      .attr("y1", "100%")  // Start at bottom
-      .attr("x2", "0%")
-      .attr("y2", "0%");   // End at top
-
-    const numStops = 10;
-    for (let i = 0; i <= numStops; i++) {
-      const offset = (i / numStops) * 100;
-      const value = d3.min(allValues) + (d3.max(allValues) - d3.min(allValues)) * (i / numStops);
-      gradient.append("stop")
-        .attr("offset", `${offset}%`)
-        .attr("stop-color", colorScale(value));
-    }
-
-    // Add legend rectangle
-    svg.append("rect")
-      .attr("x", legendX)
-      .attr("y", legendY)
-      .attr("width", legendWidth)
-      .attr("height", legendHeight)
-      .style("fill", "url(#heatmap-gradient)")
-      .style("stroke", "#ccc")
-      .style("stroke-width", 1);
-
-    // Add legend scale - vertical axis on the right
-    const legendScale = d3.scaleLinear()
-      .domain(d3.extent(allValues))
-      .range([legendY + legendHeight, legendY]);  // Reversed for bottom-to-top
-
-    const legendAxis = d3.axisRight(legendScale)
-      .ticks(5)
-      .tickFormat(d3.format(".2f"));
-
-    svg.append("g")
-      .attr("transform", `translate(${legendX + legendWidth},0)`)
-      .call(legendAxis)
-      .selectAll("text")
-      .style("font-size", "10px");
-
-    // Add legend title - rotated vertically
-    svg.append("text")
-      .attr("x", legendX + legendWidth / 2)
-      .attr("y", legendY - 12)
-      .attr("text-anchor", "middle")
-      .style("font-size", "12px")
-      .style("font-weight", "bold")
-      .style("fill", "#333")
-      .text("Mean netGR");
-
-    // Add uncertainty legend
-    const uncertaintyLegendY = legendY + legendHeight + 30;
-    
-    svg.append("text")
-      .attr("x", legendX + legendWidth / 2)
-      .attr("y", uncertaintyLegendY)
-      .attr("text-anchor", "middle")
-      .style("font-size", "11px")
-      .style("font-weight", "bold")
-      .style("fill", "#333")
-      .text("Uncertainty");
-
-    // Low uncertainty example
-    svg.append("rect")
-      .attr("x", legendX)
-      .attr("y", uncertaintyLegendY + 8)
-      .attr("width", legendWidth)
-      .attr("height", 15)
-      .attr("fill", colorScale(d3.mean(allValues) || 0))
-      .attr("stroke", "#fff")
-      .attr("stroke-width", 0.5);
-
-    svg.append("text")
-      .attr("x", legendX + legendWidth + 5)
-      .attr("y", uncertaintyLegendY + 18)
-      .style("font-size", "9px")
-      .style("fill", "#333")
-      .text("Low");
-
-    // High uncertainty example
-    svg.append("rect")
-      .attr("x", legendX)
-      .attr("y", uncertaintyLegendY + 28)
-      .attr("width", legendWidth)
-      .attr("height", 15)
-      .attr("fill", colorScale(d3.mean(allValues) || 0))
-      .attr("stroke", "#ff6b6b")
-      .attr("stroke-width", 2.5);
-
-    svg.append("text")
-      .attr("x", legendX + legendWidth + 5)
-      .attr("y", uncertaintyLegendY + 38)
-      .style("font-size", "9px")
-      .style("fill", "#333")
-      .text("High");
-
-    // Add instructions
-    svg.append("text")
-      .attr("x", legendX + legendWidth / 2)
-      .attr("y", uncertaintyLegendY + 65)
-      .attr("text-anchor", "middle")
-      .style("font-size", "10px")
-      .style("fill", "#666")
-      .text("Click cells to view variants");
-
     // Cleanup tooltip on component unmount
     return () => {
       d3.select('body').selectAll('.heatmap-tooltip').remove();
@@ -720,6 +630,54 @@ const AminoAcidHeatMap = ({ proteinId, hoveredResidue, onResidueHover, initialDr
             </div>
           </div>
           
+          {/* Color Scale Legend */}
+          <div className="color-scale-legend" style={{ marginBottom: '1.5rem' }}>
+            <div style={{ marginBottom: '0.75rem', fontWeight: 'bold', fontSize: '0.95rem' }}>Color Scale (Mean netGR):</div>
+            <div style={{ 
+              background: 'linear-gradient(to right, #440154, #482878, #3e4989, #31688e, #26828e, #1f9e89, #35b779, #6ece58, #b5de2b, #fde724)',
+              height: '30px',
+              borderRadius: '4px',
+              border: '1px solid #ccc',
+              marginBottom: '0.5rem'
+            }}></div>
+            <div style={{ 
+              display: 'flex', 
+              justifyContent: 'space-between',
+              fontSize: '0.75rem',
+              color: '#333',
+              fontWeight: '500'
+            }}>
+              <span>{colorScaleBounds.min.toFixed(3)}</span>
+              <span>{colorScaleBounds.max.toFixed(3)}</span>
+            </div>
+            <div style={{ 
+              marginTop: '1rem',
+              fontSize: '0.875rem'
+            }}>
+              <div style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Uncertainty:</div>
+              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.4rem' }}>
+                <div style={{ 
+                  width: '20px', 
+                  height: '20px', 
+                  backgroundColor: '#35b779',
+                  border: '1px solid #fff',
+                  marginRight: '0.5rem'
+                }}></div>
+                <span style={{ fontSize: '0.8rem' }}>Low (thin border)</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div style={{ 
+                  width: '20px', 
+                  height: '20px', 
+                  backgroundColor: '#35b779',
+                  border: '3px solid #ff6b6b',
+                  marginRight: '0.5rem'
+                }}></div>
+                <span style={{ fontSize: '0.8rem' }}>High (thick red border)</span>
+              </div>
+            </div>
+          </div>
+
           {/* Stats */}
           <div style={{ 
             borderTop: '1px solid #e9ecef', 
