@@ -371,7 +371,12 @@ const DoseResponsePlot = ({
   }, [data, selectedDrugs, variantData, width, height, fdaDosages, showFdaDosage]);
 
   return (
-    <div className="dose-response-plot">
+    <div style={{ 
+      background: 'white', 
+      padding: '20px', 
+      borderRadius: '8px',
+      display: 'inline-block'
+    }}>
       <svg ref={svgRef}></svg>
     </div>
   );

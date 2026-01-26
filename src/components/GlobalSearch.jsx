@@ -135,19 +135,52 @@ const GlobalSearch = () => {
       </form>
 
       {isOpen && suggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto">
+        <div style={{
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+          marginTop: '4px',
+          background: 'var(--dark-surface)',
+          border: '1px solid var(--primary-color)',
+          borderRadius: '12px',
+          boxShadow: 'var(--shadow-xl)',
+          zIndex: 50,
+          maxHeight: '384px',
+          overflowY: 'auto'
+        }}>
           {suggestions.map((suggestion, index) => (
             <button
               key={suggestion.id}
               onClick={() => handleSuggestionClick(suggestion)}
-              className="w-full px-4 py-3 text-left hover:bg-gray-50 flex items-center gap-3 border-b border-gray-100 last:border-b-0"
+              style={{
+                width: '100%',
+                padding: '12px 16px',
+                textAlign: 'left',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                borderBottom: index < suggestions.length - 1 ? '1px solid rgba(139, 92, 246, 0.2)' : 'none',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'background 0.2s ease'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'var(--dark-elevated)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
             >
-              <span className="text-lg">{getTypeIcon(suggestion.type)}</span>
-              <div className="flex-1">
-                <div className="font-medium text-gray-900">{suggestion.title}</div>
-                <div className="text-sm text-gray-500">{suggestion.subtitle}</div>
+              <span style={{ fontSize: '1.125rem' }}>{getTypeIcon(suggestion.type)}</span>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontWeight: '600', color: 'var(--text-on-dark)', marginBottom: '2px' }}>{suggestion.title}</div>
+                <div style={{ fontSize: '0.875rem', color: 'var(--text-on-dark-secondary)' }}>{suggestion.subtitle}</div>
               </div>
-              <div className="text-xs text-gray-400 uppercase tracking-wide">
+              <div style={{
+                fontSize: '0.75rem',
+                color: 'var(--primary-color)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                fontWeight: '600'
+              }}>
                 {suggestion.type}
               </div>
             </button>

@@ -258,14 +258,41 @@ const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, select
         ></div>
         
         {/* Structure Controls */}
-        <div className="absolute top-4 right-4 bg-white rounded-lg shadow-lg p-2 space-y-1">
+        <div style={{
+          position: 'absolute',
+          top: '1rem',
+          right: '1rem',
+          background: 'var(--dark-elevated)',
+          borderRadius: '8px',
+          padding: '8px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '4px',
+          border: '1px solid rgba(139, 92, 246, 0.3)'
+        }}>
           <button 
             onClick={() => {
               if (stageRef.current) {
                 stageRef.current.autoView();
               }
             }}
-            className="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded flex items-center justify-center text-xs transition-colors"
+            style={{
+              width: '32px',
+              height: '32px',
+              background: 'var(--primary-color)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '6px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.75rem',
+              cursor: 'pointer',
+              transition: 'opacity 0.2s',
+              fontWeight: '600'
+            }}
+            onMouseOver={(e) => e.target.style.opacity = '0.8'}
+            onMouseOut={(e) => e.target.style.opacity = '1'}
             title="Auto View"
           >
             Home
@@ -276,7 +303,23 @@ const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, select
                 stageRef.current.toggleFullscreen();
               }
             }}
-            className="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded flex items-center justify-center text-xs transition-colors"
+            style={{
+              width: '32px',
+              height: '32px',
+              background: 'var(--primary-color)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '6px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.75rem',
+              cursor: 'pointer',
+              transition: 'opacity 0.2s',
+              fontWeight: '600'
+            }}
+            onMouseOver={(e) => e.target.style.opacity = '0.8'}
+            onMouseOut={(e) => e.target.style.opacity = '1'}
             title="Fullscreen"
           >
             Full
@@ -286,7 +329,23 @@ const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, select
               const baseUrl = import.meta.env.BASE_URL || '';
               window.open(`${baseUrl}data/v1.0/BCR-ABL.pdb`, '_blank');
             }}
-            className="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded flex items-center justify-center text-xs transition-colors"
+            style={{
+              width: '32px',
+              height: '32px',
+              background: 'var(--primary-color)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '6px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.75rem',
+              cursor: 'pointer',
+              transition: 'opacity 0.2s',
+              fontWeight: '600'
+            }}
+            onMouseOver={(e) => e.target.style.opacity = '0.8'}
+            onMouseOut={(e) => e.target.style.opacity = '1'}
             title="Download PDB"
           >
             DL
@@ -295,23 +354,34 @@ const ProteinInteractiveView = ({ proteinData, proteinId, hoveredResidue, select
       </div>
 
       {/* Structure Information */}
-      <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-        <div className="grid grid-cols-2 gap-4 text-sm">
+      <div style={{
+        marginTop: '1rem',
+        padding: '1rem',
+        background: 'var(--dark-elevated)',
+        borderRadius: '8px',
+        border: '1px solid rgba(139, 92, 246, 0.2)'
+      }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '1rem',
+          fontSize: '0.95rem'
+        }}>
           <div>
-            <span className="text-gray-600">Viewer:</span>
-            <span className="ml-2 font-medium text-blue-600">NGL Viewer</span>
+            <span style={{ color: 'var(--text-on-dark-secondary)' }}>Viewer:</span>
+            <span style={{ marginLeft: '8px', fontWeight: '500', color: 'var(--primary-color)' }}>NGL Viewer</span>
           </div>
           <div>
-            <span className="text-gray-600">Protein:</span>
-            <span className="ml-2 font-medium">{proteinData?.protein_name || proteinId}</span>
+            <span style={{ color: 'var(--text-on-dark-secondary)' }}>Protein:</span>
+            <span style={{ marginLeft: '8px', fontWeight: '500', color: 'var(--text-on-dark)' }}>{proteinData?.protein_name || proteinId}</span>
           </div>
           <div>
-            <span className="text-gray-600">Source:</span>
-            <span className="ml-2 font-medium text-green-600">AlphaFold Prediction</span>
+            <span style={{ color: 'var(--text-on-dark-secondary)' }}>Source:</span>
+            <span style={{ marginLeft: '8px', fontWeight: '500', color: 'var(--secondary-color)' }}>AlphaFold Prediction</span>
           </div>
           <div>
-            <span className="text-gray-600">Representations:</span>
-            <span className="ml-2 font-medium">Cartoon + Surface</span>
+            <span style={{ color: 'var(--text-on-dark-secondary)' }}>Representations:</span>
+            <span style={{ marginLeft: '8px', fontWeight: '500', color: 'var(--text-on-dark)' }}>Cartoon + Surface</span>
           </div>
         </div>
       </div>

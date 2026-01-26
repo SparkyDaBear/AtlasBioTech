@@ -111,29 +111,91 @@ const ProteinPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div style={{ minHeight: '100vh' }}>
       {/* Header - Full Width */}
-      <div className="bg-white shadow-sm">
-        <div style={{ width: '100%', padding: '1.5rem 20px' }}>
-          <div className="flex items-center justify-between">
-            <div>
-              <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-2">
-                <Link to="/" className="hover:text-blue-600">Home</Link>
-                <span>/</span>
-                <span className="text-gray-900">{proteinData?.protein_name || proteinId}</span>
-              </nav>
-              <h1 className="text-3xl font-bold text-gray-900">
+      <div style={{
+        background: 'linear-gradient(135deg, var(--dark-surface) 0%, var(--dark-elevated) 100%)',
+        borderBottom: '2px solid var(--primary-color)',
+        padding: '2.5rem 20px'
+      }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          {/* Breadcrumb Navigation */}
+          <nav style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '8px', 
+            fontSize: '0.95rem',
+            marginBottom: '1.5rem'
+          }}>
+            <Link 
+              to="/" 
+              style={{
+                color: 'var(--primary-color)',
+                textDecoration: 'none',
+                fontWeight: '500',
+                transition: 'opacity 0.2s'
+              }}
+              onMouseOver={(e) => e.target.style.opacity = '0.7'}
+              onMouseOut={(e) => e.target.style.opacity = '1'}
+            >
+              Home
+            </Link>
+            <span style={{ color: 'var(--text-on-dark-secondary)' }}>/</span>
+            <span style={{ color: 'var(--text-on-dark)' }}>{proteinData?.protein_name || proteinId}</span>
+          </nav>
+
+          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '2rem' }}>
+            <div style={{ flex: 1 }}>
+              {/* Main Protein Name */}
+              <h1 style={{
+                fontSize: '2.5rem',
+                fontWeight: '700',
+                color: 'var(--text-on-dark)',
+                marginBottom: '0.75rem',
+                lineHeight: '1.2'
+              }}>
                 {proteinData?.protein_name || proteinId}
               </h1>
+              
+              {/* Official Name */}
               {proteinData?.official_name && proteinData.official_name !== proteinData.protein_name && (
-                <p className="text-gray-600 mt-1">
-                  Official name: {proteinData.official_name}
+                <p style={{
+                  color: 'var(--text-on-dark-secondary)',
+                  fontSize: '1.1rem',
+                  marginTop: '0.5rem'
+                }}>
+                  <span style={{ color: 'var(--primary-color)', fontWeight: '600' }}>Official name:</span> {proteinData.official_name}
                 </p>
               )}
             </div>
-            <div className="text-right">
-              <p className="text-sm text-gray-500">Protein ID</p>
-              <p className="font-mono text-lg font-semibold text-gray-900">{proteinId}</p>
+
+            {/* Protein ID Badge */}
+            <div style={{
+              background: 'var(--dark-elevated)',
+              border: '2px solid var(--primary-color)',
+              borderRadius: '12px',
+              padding: '1rem 1.5rem',
+              textAlign: 'center',
+              minWidth: '180px'
+            }}>
+              <p style={{ 
+                fontSize: '0.875rem', 
+                color: 'var(--text-on-dark-secondary)',
+                marginBottom: '0.5rem',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                fontWeight: '600'
+              }}>
+                Protein ID
+              </p>
+              <p style={{ 
+                fontFamily: 'monospace', 
+                fontSize: '1.25rem', 
+                fontWeight: '700',
+                color: 'var(--primary-color)'
+              }}>
+                {proteinId}
+              </p>
             </div>
           </div>
         </div>
@@ -148,20 +210,47 @@ const ProteinPage = () => {
         
         {/* 3D Structure Section */}
         <section style={{ padding: '0 20px', marginBottom: '3rem' }}>
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          <div style={{
+            background: 'var(--dark-surface)',
+            borderRadius: '12px',
+            padding: '24px',
+            border: '1px solid var(--primary-color)'
+          }}>
+            <h2 style={{
+              fontSize: '1.75rem',
+              fontWeight: 'bold',
+              color: 'var(--text-on-dark)',
+              marginBottom: '1rem'
+            }}>
               3D Structure
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p style={{
+              color: 'var(--text-on-dark-secondary)',
+              marginBottom: '1rem',
+              fontSize: '1.05rem'
+            }}>
               Interactive visualization of {proteinData?.protein_name || proteinId} structure.
               {selectedResidues.length > 0 && (
-                <span className="ml-2">
-                  <span className="text-blue-600 font-semibold">
+                <span style={{ marginLeft: '8px' }}>
+                  <span style={{ color: 'var(--primary-color)', fontWeight: '600' }}>
                     {selectedResidues.length} residue{selectedResidues.length !== 1 ? 's' : ''} selected
                   </span>
                   <button
                     onClick={clearSelections}
-                    className="ml-2 px-2 py-1 text-xs bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                    style={{
+                      marginLeft: '8px',
+                      padding: '4px 12px',
+                      fontSize: '0.875rem',
+                      background: 'var(--gradient-gold)',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '6px',
+                      cursor: 'pointer',
+                      fontWeight: '600',
+                      transition: 'opacity 0.2s'
+                    }}
+                    onMouseOver={(e) => e.target.style.opacity = '0.8'}
+                    onMouseOut={(e) => e.target.style.opacity = '1'}
                   >
                     Clear All
                   </button>

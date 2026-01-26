@@ -202,55 +202,98 @@ const VariantCard = () => {
   const plotData = preparePlotData();
 
   return (
-    <div className="variant-card">
-      <div className="variant-header">
-        <div className="flex-1">
-          <h1 className="variant-title">
-            {variantData.gene} {variantData.variant_string}
-          </h1>
-          <p className="variant-subtitle">
-            {variantData.protein_change} • {variantData.consequence.replace('_', ' ')}
-          </p>
-        </div>
-        <div className="flex gap-2">
-
-          <button onClick={() => navigate(-1)} className="btn btn-secondary">
+    <div style={{ minHeight: '100vh' }}>
+      <div style={{
+        background: 'linear-gradient(135deg, var(--dark-surface) 0%, var(--dark-elevated) 100%)',
+        borderBottom: '2px solid var(--primary-color)',
+        padding: '2rem 20px',
+        marginBottom: '2rem'
+      }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ flex: 1 }}>
+            <h1 style={{
+              fontSize: '2.5rem',
+              fontWeight: '700',
+              color: 'var(--text-on-dark)',
+              marginBottom: '0.5rem'
+            }}>
+              {variantData.gene} {variantData.variant_string}
+            </h1>
+            <p style={{
+              fontSize: '1.1rem',
+              color: 'var(--text-on-dark-secondary)'
+            }}>
+              {variantData.protein_change} • {variantData.consequence.replace('_', ' ')}
+            </p>
+          </div>
+          <button 
+            onClick={() => navigate(-1)} 
+            style={{
+              padding: '0.75rem 1.5rem',
+              background: 'var(--gradient-purple)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontWeight: '600',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              transition: 'opacity 0.2s'
+            }}
+            onMouseOver={(e) => e.target.style.opacity = '0.8'}
+            onMouseOut={(e) => e.target.style.opacity = '1'}
+          >
             <ArrowLeft size={16} />
             Back
           </button>
         </div>
       </div>
 
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 20px' }}>
+
       {/* Metadata */}
-      <div className="card mb-6">
-        <h2 className="text-xl font-semibold mb-4">Variant Metadata</h2>
-        <div className="metadata-grid">
-          <div className="metadata-item">
-            <div className="metadata-label">Transcript</div>
-            <div className="metadata-value">{variantData.transcript_id}</div>
+      <div style={{
+        background: 'var(--dark-surface)',
+        border: '1px solid var(--primary-color)',
+        borderRadius: '12px',
+        padding: '24px',
+        marginBottom: '2rem'
+      }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--text-on-dark)', marginBottom: '1.5rem' }}>Variant Metadata</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
+          <div>
+            <div style={{ fontSize: '0.875rem', color: 'var(--text-on-dark-secondary)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Transcript</div>
+            <div style={{ fontSize: '1.1rem', fontWeight: '600', color: 'var(--text-on-dark)', fontFamily: 'monospace' }}>{variantData.transcript_id}</div>
           </div>
-          <div className="metadata-item">
-            <div className="metadata-label">Position</div>
-            <div className="metadata-value">{variantData.position}</div>
+          <div>
+            <div style={{ fontSize: '0.875rem', color: 'var(--text-on-dark-secondary)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Position</div>
+            <div style={{ fontSize: '1.1rem', fontWeight: '600', color: 'var(--text-on-dark)' }}>{variantData.position}</div>
           </div>
-          <div className="metadata-item">
-            <div className="metadata-label">Model System</div>
-            <div className="metadata-value">{variantData.model_system}</div>
+          <div>
+            <div style={{ fontSize: '0.875rem', color: 'var(--text-on-dark-secondary)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Model System</div>
+            <div style={{ fontSize: '1.1rem', fontWeight: '600', color: 'var(--text-on-dark)' }}>{variantData.model_system}</div>
           </div>
-          <div className="metadata-item">
-            <div className="metadata-label">Replicates</div>
-            <div className="metadata-value">{variantData.replicate_count}</div>
+          <div>
+            <div style={{ fontSize: '0.875rem', color: 'var(--text-on-dark-secondary)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Replicates</div>
+            <div style={{ fontSize: '1.1rem', fontWeight: '600', color: 'var(--text-on-dark)' }}>{variantData.replicate_count}</div>
           </div>
         </div>
       </div>
 
       {/* IC50 Summary - Full Width */}
-      <div className="card mb-6">
-          <h2 className="text-xl font-semibold mb-4">IC50 Summary</h2>
+      <div style={{
+        background: 'var(--dark-surface)',
+        border: '1px solid var(--primary-color)',
+        borderRadius: '12px',
+        padding: '24px',
+        marginBottom: '2rem'
+      }}>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--text-on-dark)', marginBottom: '1.5rem' }}>IC50 Summary</h2>
           
           {/* Drug Selection */}
           <div className="mb-4">
-            <label className="text-sm font-medium text-gray-700 mb-2 block">
+            <label style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--text-on-dark)', marginBottom: '0.75rem', display: 'block' }}>
               Select drugs to display:
             </label>
             <div className="flex flex-wrap gap-2">
@@ -268,7 +311,7 @@ const VariantCard = () => {
                     }}
                     className="rounded border-gray-300"
                   />
-                  <span className="text-sm">{drug}</span>
+                  <span style={{ fontSize: '0.95rem', color: 'var(--text-on-dark)' }}>{drug}</span>
                 </label>
               ))}
             </div>
@@ -283,12 +326,12 @@ const VariantCard = () => {
                 onChange={(e) => setShowFdaDosage(e.target.checked)}
                 className="rounded border-gray-300"
               />
-              <span className="text-sm font-medium text-gray-700">
+              <span style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--text-on-dark)' }}>
                 Show FDA approved dosage lines
               </span>
             </label>
             {showFdaDosage && Object.keys(fdaDosages).length > 0 && (
-              <div className="mt-2 ml-6 text-xs text-gray-500">
+              <div style={{ marginTop: '0.5rem', marginLeft: '1.5rem', fontSize: '0.8rem', color: 'var(--text-on-dark-secondary)' }}>
                 {selectedDrugs.map(drug => 
                   fdaDosages[drug] ? (
                     <div key={drug}>
@@ -302,9 +345,9 @@ const VariantCard = () => {
           
           {/* Dose-Response Plot */}
           <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-2">Dose-Response Analysis</h3>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: 'var(--text-on-dark)', marginBottom: '0.75rem' }}>Dose-Response Analysis</h3>
             
-            <div className="text-sm text-gray-600 mb-4">
+            <div style={{ fontSize: '0.95rem', color: 'var(--text-on-dark-secondary)', marginBottom: '1rem' }}>
               <p>Plot Data Points: {plotData.length}</p>
             </div>
             
@@ -339,8 +382,8 @@ const VariantCard = () => {
 
           {/* 4PL Curve Fit Parameters */}
           <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-3">Curve Fit Parameters (4PL Model)</h3>
-            <p className="text-sm text-gray-600 mb-3">
+            <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: 'var(--text-on-dark)', marginBottom: '1rem' }}>Curve Fit Parameters (4PL Model)</h3>
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-on-dark-secondary)', marginBottom: '1rem' }}>
               Four-parameter logistic regression results for each drug. The 4PL model equation: 
               <span className="font-mono ml-2">y = a + (d-a)/(1+(x/c)^b)</span>
             </p>
@@ -354,70 +397,81 @@ const VariantCard = () => {
                     return (
                       <div key={idx} className="border border-gray-200 rounded-lg p-4">
                         <h4 className="font-semibold text-blue-600 mb-2">{drugData.drug}</h4>
-                        <p className="text-sm text-gray-500">Curve fitting not available or failed</p>
+                        <p style={{ fontSize: '0.95rem', color: 'var(--text-on-dark-secondary)' }}>Curve fitting not available or failed</p>
                       </div>
                     );
                   }
 
                   const params = curveFit.parameters;
                   return (
-                    <div key={idx} className="border border-gray-200 rounded-lg p-4 bg-gray-50">
-                      <h4 className="font-semibold text-blue-600 mb-3">{drugData.drug}</h4>
+                    <div key={idx} style={{
+                      border: '1px solid rgba(139, 92, 246, 0.4)',
+                      borderRadius: '12px',
+                      padding: '1.5rem',
+                      background: 'var(--dark-elevated)'
+                    }}>
+                      <h4 style={{ fontWeight: '700', color: 'var(--primary-color)', marginBottom: '1rem', fontSize: '1.1rem' }}>{drugData.drug}</h4>
                       
                       <div className="grid grid-cols-2 gap-4 mb-3">
-                        <div className="bg-white p-3 rounded border border-gray-200">
-                          <div className="text-xs text-gray-500 mb-1">IC50 (parameter c)</div>
-                          <div className="text-lg font-bold text-blue-600">
+                        <div style={{ background: 'var(--dark-surface)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(139, 92, 246, 0.3)' }}>
+                          <div style={{ fontSize: '1rem', color: 'var(--text-on-dark)', marginBottom: '6px', fontWeight: '600' }}>IC50 (parameter c)</div>
+                          <div style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--text-on-dark)' }}>
                             {curveFit.ic50 ? curveFit.ic50.toFixed(2) : 'N/A'} nM
                           </div>
                         </div>
                         
-                        <div className="bg-white p-3 rounded border border-gray-200">
-                          <div className="text-xs text-gray-500 mb-1">Hill Slope (parameter b)</div>
-                          <div className="text-lg font-bold text-green-600">
+                        <div style={{ background: 'var(--dark-surface)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(139, 92, 246, 0.3)' }}>
+                          <div style={{ fontSize: '1rem', color: 'var(--text-on-dark)', marginBottom: '6px', fontWeight: '600' }}>Hill Slope (parameter b)</div>
+                          <div style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--text-on-dark)' }}>
                             {params.b ? params.b.toFixed(3) : 'N/A'}
                           </div>
                         </div>
                       </div>
 
                       <div className="grid grid-cols-2 gap-4 mb-3">
-                        <div className="bg-white p-3 rounded border border-gray-200">
-                          <div className="text-xs text-gray-500 mb-1">Min Response (parameter a)</div>
-                          <div className="text-base font-semibold">
+                        <div style={{ background: 'var(--dark-surface)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(139, 92, 246, 0.3)' }}>
+                          <div style={{ fontSize: '1rem', color: 'var(--text-on-dark)', marginBottom: '6px', fontWeight: '600' }}>Min Response (parameter a)</div>
+                          <div style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--text-on-dark)' }}>
                             {params.a ? params.a.toFixed(4) : 'N/A'}
                           </div>
-                          <div className="text-xs text-gray-500 mt-1">Lower asymptote</div>
+                          <div style={{ fontSize: '0.75rem', color: 'var(--text-on-dark-secondary)', marginTop: '4px' }}>Lower asymptote</div>
                         </div>
                         
-                        <div className="bg-white p-3 rounded border border-gray-200">
-                          <div className="text-xs text-gray-500 mb-1">Max Response (parameter d)</div>
-                          <div className="text-base font-semibold">
+                        <div style={{ background: 'var(--dark-surface)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(139, 92, 246, 0.3)' }}>
+                          <div style={{ fontSize: '1rem', color: 'var(--text-on-dark)', marginBottom: '6px', fontWeight: '600' }}>Max Response (parameter d)</div>
+                          <div style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--text-on-dark)' }}>
                             {params.d ? params.d.toFixed(4) : 'N/A'}
                           </div>
-                          <div className="text-xs text-gray-500 mt-1">Upper asymptote</div>
+                          <div style={{ fontSize: '0.75rem', color: 'var(--text-on-dark-secondary)', marginTop: '4px' }}>Upper asymptote</div>
                         </div>
                       </div>
 
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-white p-3 rounded border border-gray-200">
-                          <div className="text-xs text-gray-500 mb-1">R² (Goodness of Fit)</div>
-                          <div className="text-base font-semibold">
+                        <div style={{ background: 'var(--dark-surface)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(139, 92, 246, 0.3)' }}>
+                          <div style={{ fontSize: '1rem', color: 'var(--text-on-dark)', marginBottom: '6px', fontWeight: '600' }}>R² (Goodness of Fit)</div>
+                          <div style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--text-on-dark)' }}>
                             {curveFit.r_squared ? curveFit.r_squared.toFixed(4) : 'N/A'}
                           </div>
                         </div>
                         
-                        <div className="bg-white p-3 rounded border border-gray-200">
-                          <div className="text-xs text-gray-500 mb-1">Residual Sum of Squares</div>
-                          <div className="text-base font-semibold">
+                        <div style={{ background: 'var(--dark-surface)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(139, 92, 246, 0.3)' }}>
+                          <div style={{ fontSize: '1rem', color: 'var(--text-on-dark)', marginBottom: '6px', fontWeight: '600' }}>Residual Sum of Squares</div>
+                          <div style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--text-on-dark)' }}>
                             {curveFit.residual_sum_squares ? curveFit.residual_sum_squares.toFixed(6) : 'N/A'}
                           </div>
                         </div>
                       </div>
 
-                      <div className="mt-3 text-xs text-gray-500 border-t pt-2">
+                      <div style={{
+                        marginTop: '12px',
+                        fontSize: '0.8rem',
+                        color: 'var(--text-on-dark-secondary)',
+                        borderTop: '1px solid rgba(139, 92, 246, 0.2)',
+                        paddingTop: '8px'
+                      }}>
                         <div className="flex items-center justify-between">
                           <span>Model: {curveFit.model_type}</span>
-                          <span className={curveFit.convergence ? 'text-green-600' : 'text-red-600'}>
+                          <span style={{ color: curveFit.convergence ? 'var(--secondary-color)' : '#ef4444' }}>
                             {curveFit.convergence ? '✓ Converged' : '⚠ Did not converge'}
                           </span>
                         </div>
@@ -427,15 +481,23 @@ const VariantCard = () => {
                 })}
             </div>
 
-            <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded text-sm text-blue-800">
-              <strong>Parameter Definitions:</strong>
-              <ul className="mt-2 space-y-1 ml-4 list-disc">
-                <li><strong>a (Upper Asymptote):</strong> Response at zero drug concentration (no drug, maximum viability)</li>
-                <li><strong>b (Hill Slope):</strong> Steepness of the dose-response curve</li>
-                <li><strong>c (IC50):</strong> Inflection point - concentration at 50% response</li>
-                <li><strong>d (Lower Asymptote):</strong> Response at infinite drug concentration (high drug, minimum viability)</li>
-              </ul>
-              <div className="mt-2 font-mono text-xs">
+            <div style={{
+              marginTop: '1.5rem',
+              padding: '1rem',
+              background: 'var(--dark-elevated)',
+              border: '1px solid rgba(139, 92, 246, 0.4)',
+              borderRadius: '8px',
+              fontSize: '0.95rem',
+              color: 'var(--text-on-dark-secondary)'
+            }}>
+              <strong style={{ color: 'var(--primary-color)' }}>Parameter Definitions:</strong>
+              <div style={{ marginTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <div><strong style={{ color: 'var(--text-on-dark)' }}>a (Upper Asymptote):</strong> Response at zero drug concentration (no drug, maximum viability)</div>
+                <div><strong style={{ color: 'var(--text-on-dark)' }}>b (Hill Slope):</strong> Steepness of the dose-response curve</div>
+                <div><strong style={{ color: 'var(--text-on-dark)' }}>c (IC50):</strong> Inflection point - concentration at 50% response</div>
+                <div><strong style={{ color: 'var(--text-on-dark)' }}>d (Lower Asymptote):</strong> Response at infinite drug concentration (high drug, minimum viability)</div>
+              </div>
+              <div style={{ marginTop: '0.5rem', fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--secondary-color)' }}>
                 Equation: y = d + (a-d)/(1+(x/c)^b)
               </div>
             </div>
@@ -444,10 +506,16 @@ const VariantCard = () => {
 
       {/* 3D Structure */}
       {variantData.pdb_structure && (
-        <div className="card mt-6">
+        <div style={{
+          background: 'var(--dark-surface)',
+          border: '1px solid var(--primary-color)',
+          borderRadius: '12px',
+          padding: '24px',
+          marginTop: '2rem'
+        }}>
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold">3D Structure</h2>
-            <div className="text-sm text-gray-500">
+            <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--text-on-dark)' }}>3D Structure</h2>
+            <div style={{ fontSize: '0.95rem', color: 'var(--text-on-dark-secondary)' }}>
               PDB: {variantData.pdb_structure.pdb_id} | Chain: {variantData.pdb_structure.chain}
             </div>
           </div>
@@ -457,8 +525,14 @@ const VariantCard = () => {
 
       {/* Dose-Response Plots */}
       {variantData.plots && variantData.plots.length > 0 && (
-        <div className="card mt-6">
-          <h2 className="text-xl font-semibold mb-4">Dose-Response Curves</h2>
+        <div style={{
+          background: 'var(--dark-surface)',
+          border: '1px solid var(--primary-color)',
+          borderRadius: '12px',
+          padding: '24px',
+          marginTop: '2rem'
+        }}>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--text-on-dark)', marginBottom: '1.5rem' }}>Dose-Response Curves</h2>
           <div className="plots-gallery">
             {variantData.plots.map((plot, index) => (
               <div key={index} className="plot-card">
@@ -481,8 +555,14 @@ const VariantCard = () => {
       )}
 
       {/* Links and Downloads */}
-      <div className="card mt-6">
-        <h2 className="text-xl font-semibold mb-4">Additional Resources</h2>
+      <div style={{
+        background: 'var(--dark-surface)',
+        border: '1px solid var(--primary-color)',
+        borderRadius: '12px',
+        padding: '24px',
+        marginTop: '2rem'
+      }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--text-on-dark)', marginBottom: '1.5rem' }}>Additional Resources</h2>
         <div className="flex flex-wrap gap-3">
           {variantData.publication_doi && (
             <a
@@ -500,6 +580,7 @@ const VariantCard = () => {
             Download Data
           </button>
         </div>
+      </div>
       </div>
     </div>
   )

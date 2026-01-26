@@ -22,16 +22,37 @@ const ProteinOverview = ({ proteinData, proteinId }) => {
   } = proteinData;
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Overview</h2>
+    <div className="card" style={{
+      background: 'var(--dark-surface)',
+      border: '1px solid var(--primary-color)',
+      borderRadius: '12px',
+      padding: '24px'
+    }}>
+      <h2 style={{ 
+        fontSize: '2rem', 
+        fontWeight: '800', 
+        color: 'var(--text-on-dark)', 
+        marginBottom: '30px'
+      }}>
+        Overview
+      </h2>
       
-      <div className="space-y-6">
+      <div style={{ display: 'grid', gap: '30px' }}>
         {/* Clinical Significance */}
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+          <h3 style={{ 
+            fontSize: '1.25rem', 
+            fontWeight: '700', 
+            color: 'var(--primary-color)', 
+            marginBottom: '12px'
+          }}>
             Clinical Significance
           </h3>
-          <p className="text-gray-700 text-sm leading-relaxed">
+          <p style={{ 
+            color: 'var(--text-on-dark-secondary)', 
+            fontSize: '1.05rem', 
+            lineHeight: '1.8'
+          }}>
             {clinical_significance}
           </p>
         </div>
@@ -39,10 +60,19 @@ const ProteinOverview = ({ proteinData, proteinId }) => {
         {/* Description */}
         {description && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 style={{ 
+              fontSize: '1.25rem', 
+              fontWeight: '700', 
+              color: 'var(--primary-color)', 
+              marginBottom: '12px'
+            }}>
               Description
             </h3>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p style={{ 
+              color: 'var(--text-on-dark-secondary)', 
+              fontSize: '1.05rem', 
+              lineHeight: '1.8'
+            }}>
               {description}
             </p>
           </div>
@@ -51,10 +81,19 @@ const ProteinOverview = ({ proteinData, proteinId }) => {
         {/* Function */}
         {functional_description && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 style={{ 
+              fontSize: '1.25rem', 
+              fontWeight: '700', 
+              color: 'var(--primary-color)', 
+              marginBottom: '12px'
+            }}>
               Function
             </h3>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p style={{ 
+              color: 'var(--text-on-dark-secondary)', 
+              fontSize: '1.05rem', 
+              lineHeight: '1.8'
+            }}>
               {functional_description}
             </p>
           </div>
@@ -63,16 +102,40 @@ const ProteinOverview = ({ proteinData, proteinId }) => {
         {/* Structural Domains */}
         {structural_domains.length > 0 && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 style={{ 
+              fontSize: '1.25rem', 
+              fontWeight: '700', 
+              color: 'var(--primary-color)', 
+              marginBottom: '15px'
+            }}>
               Key Domains
             </h3>
-            <div className="space-y-2">
+            <div style={{ display: 'grid', gap: '15px' }}>
               {structural_domains.slice(0, 3).map((domain, index) => (
-                <div key={index} className="border-l-2 border-blue-400 pl-3 py-1">
-                  <h4 className="font-medium text-gray-900 text-sm">
+                <div 
+                  key={index} 
+                  style={{
+                    borderLeft: '3px solid',
+                    borderColor: index % 2 === 0 ? 'var(--primary-color)' : 'var(--secondary-color)',
+                    paddingLeft: '15px',
+                    paddingTop: '8px',
+                    paddingBottom: '8px',
+                    background: 'var(--dark-elevated)',
+                    borderRadius: '0 8px 8px 0'
+                  }}
+                >
+                  <h4 style={{ 
+                    fontWeight: '600', 
+                    color: 'var(--text-on-dark)', 
+                    fontSize: '1rem',
+                    marginBottom: '4px'
+                  }}>
                     {domain.name}
                   </h4>
-                  <p className="text-xs text-gray-600">
+                  <p style={{ 
+                    fontSize: '0.9rem', 
+                    color: 'var(--text-on-dark-secondary)'
+                  }}>
                     {domain.residues}
                   </p>
                 </div>
@@ -84,10 +147,19 @@ const ProteinOverview = ({ proteinData, proteinId }) => {
         {/* Drug Resistance */}
         {drug_resistance && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 style={{ 
+              fontSize: '1.25rem', 
+              fontWeight: '700', 
+              color: 'var(--primary-color)', 
+              marginBottom: '12px'
+            }}>
               Drug Resistance
             </h3>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p style={{ 
+              color: 'var(--text-on-dark-secondary)', 
+              fontSize: '1.05rem', 
+              lineHeight: '1.8'
+            }}>
               {drug_resistance}
             </p>
           </div>
@@ -96,55 +168,74 @@ const ProteinOverview = ({ proteinData, proteinId }) => {
         {/* Top Therapeutic Agents */}
         {therapeutic_agents.length > 0 && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 style={{ 
+              fontSize: '1.25rem', 
+              fontWeight: '700', 
+              color: 'var(--primary-color)', 
+              marginBottom: '15px'
+            }}>
               FDA Approved Agents
             </h3>
-            <div className="space-y-2">
-              {therapeutic_agents.slice(0, 3).map((agent, index) => (
-                <div key={index} className="border border-gray-200 rounded p-2">
-                  <div className="flex items-center justify-between mb-1">
-                    <h4 className="font-medium text-gray-900 text-sm">{agent.name}</h4>
-                    <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded">
-                      Approved
-                    </span>
-                  </div>
-                  <p className="text-xs text-gray-600">{agent.mechanism}</p>
-                </div>
-              ))}
-            </div>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {therapeutic_agents.slice(0, 6).map((agent, index) => {
+                const agentName = typeof agent === 'string' ? agent : agent.name || agent;
+                const fdaUrl = `https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=BasicSearch.process&searchterm=${encodeURIComponent(agentName)}`;
+                return (
+                  <li key={index} style={{ fontSize: '1.05rem' }}>
+                    <a 
+                      href={fdaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: 'var(--primary-color)',
+                        textDecoration: 'none',
+                        fontWeight: '500',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onMouseOver={(e) => e.target.style.textDecoration = 'underline'}
+                      onMouseOut={(e) => e.target.style.textDecoration = 'none'}
+                    >
+                      {agentName} ↗
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         )}
 
         {/* External Links */}
-        {Object.keys(external_links).length > 0 && (
+        {external_links && Object.keys(external_links).length > 0 && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Database Links
+            <h3 style={{ 
+              fontSize: '1.25rem', 
+              fontWeight: '700', 
+              color: 'var(--primary-color)', 
+              marginBottom: '15px'
+            }}>
+              External Resources
             </h3>
-            <div className="grid grid-cols-2 gap-2">
-              {external_links.uniprot && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              {Object.entries(external_links).map(([name, url]) => (
                 <a
-                  href={external_links.uniprot}
+                  key={name}
+                  href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center p-2 border border-gray-200 rounded hover:border-blue-300 transition-colors"
+                  style={{
+                    padding: '10px 20px',
+                    background: 'var(--dark-elevated)',
+                    border: '1px solid rgba(139, 92, 246, 0.3)',
+                    borderRadius: '8px',
+                    color: 'var(--primary-color)',
+                    textDecoration: 'none',
+                    fontSize: '0.95rem',
+                    fontWeight: '600'
+                  }}
                 >
-                  <span className="w-6 h-6 bg-blue-100 rounded text-blue-600 text-xs font-bold flex items-center justify-center mr-2">UP</span>
-                  <span className="text-sm text-gray-700">UniProt</span>
+                  {name} ↗
                 </a>
-              )}
-              
-              {external_links.alphafold && (
-                <a
-                  href={external_links.alphafold}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center p-2 border border-gray-200 rounded hover:border-purple-300 transition-colors"
-                >
-                  <span className="w-6 h-6 bg-purple-100 rounded text-purple-600 text-xs font-bold flex items-center justify-center mr-2">AF</span>
-                  <span className="text-sm text-gray-700">AlphaFold</span>
-                </a>
-              )}
+              ))}
             </div>
           </div>
         )}

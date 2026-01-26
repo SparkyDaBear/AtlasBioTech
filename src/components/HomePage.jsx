@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Search, TrendingUp, Database, Microscope } from 'lucide-react'
 import GlobalSearch from './GlobalSearch'
 
 const HomePage = () => {
@@ -17,33 +16,6 @@ const HomePage = () => {
       .then(data => setStats(data.stats))
       .catch(err => console.error('Error loading stats:', err))
   }, [])
-
-  const features = [
-    {
-      icon: Search,
-      title: 'Global Search',
-      description: 'Search by gene symbol, variant notation (e.g., EGFR p.L858R), or drug name',
-      color: 'text-blue-600'
-    },
-    {
-      icon: TrendingUp,
-      title: 'IC50 Analysis',
-      description: 'View dose-response curves, IC50 values, and drug resistance patterns',
-      color: 'text-green-600'
-    },
-    {
-      icon: Microscope,
-      title: '3D Structures',
-      description: 'Explore protein structures with mutation highlighting using Mol* viewer',
-      color: 'text-purple-600'
-    },
-    {
-      icon: Database,
-      title: 'Comprehensive Data',
-      description: 'FDA approved drugs, variants, and mutational resistance profiles',
-      color: 'text-orange-600'
-    }
-  ]
 
   return (
     <div>
@@ -171,56 +143,6 @@ const HomePage = () => {
             </div>
             <div style={{ color: 'rgba(255, 255, 255, 0.9)', fontWeight: '600' }}>Variants</div>
           </div>
-        </div>
-
-        {/* Features Grid */}
-        <div className="grid grid-2 gap-8 mb-12">
-          {features.map((feature, index) => {
-            const Icon = feature.icon
-            const isGold = index % 2 === 1
-            return (
-              <div key={index} className="card" style={{
-                background: 'var(--dark-surface)',
-                border: '1px solid rgba(139, 92, 246, 0.2)',
-                boxShadow: 'var(--shadow-lg)',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-5px)'
-                e.currentTarget.style.boxShadow = 'var(--shadow-xl)'
-                e.currentTarget.style.borderColor = isGold ? 'rgba(245, 158, 11, 0.5)' : 'rgba(139, 92, 246, 0.5)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)'
-                e.currentTarget.style.boxShadow = 'var(--shadow-lg)'
-                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.2)'
-              }}>
-                <div className="flex items-start gap-4">
-                  <div style={{
-                    padding: '12px',
-                    borderRadius: '12px',
-                    background: isGold ? 'var(--gradient-gold)' : 'var(--gradient-purple)',
-                    color: 'white'
-                  }}>
-                    <Icon size={28} />
-                  </div>
-                  <div>
-                    <h3 style={{
-                      fontSize: '1.25rem',
-                      fontWeight: '700',
-                      color: 'var(--text-on-dark)',
-                      marginBottom: '10px'
-                    }}>
-                      {feature.title}
-                    </h3>
-                    <p style={{ color: 'var(--text-on-dark-secondary)', lineHeight: '1.6' }}>
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
         </div>
 
         {/* Quick Actions */}
