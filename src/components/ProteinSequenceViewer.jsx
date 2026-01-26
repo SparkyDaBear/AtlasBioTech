@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ProteinSequenceViewer.css';
 
-const ProteinSequenceViewer = ({ proteinId, onResidueSelect, selectedResidue, heatmapData }) => {
+const ProteinSequenceViewer = ({ proteinId, onResidueSelect, selectedResidues, heatmapData }) => {
   const [sequence, setSequence] = useState(null);
   const [hoveredPosition, setHoveredPosition] = useState(null);
   const [selectedChain, setSelectedChain] = useState('A');
@@ -101,9 +101,9 @@ const ProteinSequenceViewer = ({ proteinId, onResidueSelect, selectedResidue, he
               {/* Residues - break into groups of 10 */}
               <div className="sequence-residues">
                 {line.map((residue, idx) => {
-                  const isSelected = selectedResidue && 
-                                    selectedResidue.position === residue.position && 
-                                    selectedResidue.chain === selectedChain;
+                  const isSelected = selectedResidues?.some(
+                    r => r.position === residue.position && r.chain === selectedChain
+                  );
                   const isHovered = hoveredPosition === residue.position;
                   const needsSpace = idx > 0 && idx % 10 === 0;
                   

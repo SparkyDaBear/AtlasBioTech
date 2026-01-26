@@ -13,12 +13,35 @@ const ProteinPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [hoveredResidue, setHoveredResidue] = useState(null);
-  const [selectedResidue, setSelectedResidue] = useState(null);
+  const [selectedResidues, setSelectedResidues] = useState([]);
+
+  // Handle residue selection toggle
+  const handleResidueSelect = (selection) => {
+    setSelectedResidues(prev => {
+      // Check if this residue is already selected
+      const index = prev.findIndex(
+        r => r.position === selection.position && r.chain === selection.chain
+      );
+      
+      if (index >= 0) {
+        // Already selected - remove it
+        return prev.filter((_, i) => i !== index);
+      } else {
+        // Not selected - add it
+        return [...prev, selection];
+      }
+    });
+  };
+
+  // Clear all selections
+  const clearSelections = () => {
+    setSelectedResidues([]);
+  };
 
   // Debug logging for selected residue changes
   useEffect(() => {
-    console.log('ProteinPage - selectedResidue changed:', selectedResidue);
-  }, [selectedResidue]);
+    console.log('ProteinPage - selectedResidues changed:', selectedResidues);
+  }, [selectedResidues]);
 
   // Get drug from URL parameter
   const drugFromUrl = searchParams.get('drug');
@@ -131,13 +154,25 @@ const ProteinPage = () => {
             </h2>
             <p className="text-gray-600 mb-4">
               Interactive visualization of {proteinData?.protein_name || proteinId} structure.
-              {selectedResidue && <span className="ml-2 text-blue-600 font-semibold">Highlighting chain {selectedResidue.chain}, residue {selectedResidue.position}</span>}
+              {selectedResidues.length > 0 && (
+                <span className="ml-2">
+                  <span className="text-blue-600 font-semibold">
+                    {selectedResidues.length} residue{selectedResidues.length !== 1 ? 's' : ''} selected
+                  </span>
+                  <button
+                    onClick={clearSelections}
+                    className="ml-2 px-2 py-1 text-xs bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                  >
+                    Clear All
+                  </button>
+                </span>
+              )}
             </p>
             <ProteinInteractiveView 
               proteinData={proteinData} 
               proteinId={proteinId} 
               hoveredResidue={hoveredResidue}
-              selectedResidue={selectedResidue}
+              selectedResidues={selectedResidues}
               onResidueHover={setHoveredResidue}
             />
             
@@ -146,8 +181,8 @@ const ProteinPage = () => {
               <ProteinSequenceViewer
                 proteinId={proteinId}
                 heatmapData={heatmapData}
-                selectedResidue={selectedResidue}
-                onResidueSelect={setSelectedResidue}
+                selectedResidues={selectedResidues}
+                onResidueSelect={handleResidueSelect}
               />
             )}
           </div>
